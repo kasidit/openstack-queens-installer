@@ -1,0 +1,32 @@
++ echo 'Run as root or sudo'
+Run as root or sudo
++ echo '1. enable management network'
+1. enable management network
++ cp files/interfaces /etc/network/interfaces
++ cp files/hosts /etc/hosts
++ ifdown ens3
+Internet Systems Consortium DHCP Client 4.3.3
+Copyright 2004-2015 Internet Systems Consortium.
+All rights reserved.
+For info, please visit https://www.isc.org/software/dhcp/
+
+Listening on LPF/ens3/00:55:09:25:20:17
+Sending on   LPF/ens3/00:55:09:25:20:17
+Sending on   Socket/fallback
+DHCPRELEASE on ens3 to 10.0.2.2 port 67 (xid=0x3246b5e9)
+send_packet: Network is unreachable
+send_packet: please consult README file regarding broadcast address.
+dhclient.c:2474: Failed to send 300 byte long packet over fallback interface.
++ ifup ens3
+Internet Systems Consortium DHCP Client 4.3.3
+Copyright 2004-2015 Internet Systems Consortium.
+All rights reserved.
+For info, please visit https://www.isc.org/software/dhcp/
+
+Listening on LPF/ens3/00:55:09:25:20:17
+Sending on   LPF/ens3/00:55:09:25:20:17
+Sending on   Socket/fallback
+DHCPDISCOVER on ens3 to 255.255.255.255 port 67 interval 3 (xid=0x74156d1b)
+DHCPDISCOVER on ens3 to 255.255.255.255 port 67 interval 8 (xid=0x74156d1b)
+DHCPDISCOVER on ens3 to 255.255.255.255 port 67 interval 9 (xid=0x74156d1b)
+DHCPDISCOVER on ens3 to 255.255.255.255 port 67 interval 14 (xid=0x74156d1b)

@@ -1,0 +1,95 @@
+[DEFAULT]
+transport_url = rabbit://openstack:RABBIT_PASS@controller
+my_ip = 10.0.10.11
+use_neutron = True
+firewall_driver = nova.virt.firewall.NoopFirewallDriver
+dhcpbridge_flagfile=/etc/nova/nova.conf
+dhcpbridge=/usr/bin/nova-dhcpbridge
+force_dhcp_release=true
+state_path=/var/lib/nova
+enabled_apis=osapi_compute,metadata
+[api]
+auth_strategy=keystone
+[api_database]
+connection = mysql+pymysql://nova:NOVA_DBPASS@controller/nova_api
+[barbican]
+[cache]
+[cells]
+enable=False
+[cinder]
+[cloudpipe]
+[conductor]
+[console]
+[consoleauth]
+[cors]
+[cors.subdomain]
+[crypto]
+[database]
+connection = mysql+pymysql://nova:NOVA_DBPASS@controller/nova
+[ephemeral_storage_encryption]
+[filter_scheduler]
+[glance]
+api_servers = http://controller:9292
+[guestfs]
+[healthcheck]
+[hyperv]
+[image_file_url]
+[ironic]
+[key_manager]
+[keystone_authtoken]
+auth_uri = http://controller:5000
+auth_url = http://controller:35357
+memcached_servers = controller:11211
+auth_type = password
+project_domain_name = default
+user_domain_name = default
+project_name = service
+username = nova
+password = NOVA_PASS
+[libvirt]
+[matchmaker_redis]
+[metrics]
+[mks]
+[neutron]
+[notifications]
+[osapi_v21]
+[oslo_concurrency]
+lock_path=/var/lib/nova/tmp
+[oslo_messaging_amqp]
+[oslo_messaging_kafka]
+[oslo_messaging_notifications]
+[oslo_messaging_rabbit]
+[oslo_messaging_zmq]
+[oslo_middleware]
+[oslo_policy]
+[pci]
+[placement]
+os_region_name = RegionOne
+project_domain_name = Default
+project_name = service
+auth_type = password
+user_domain_name = Default
+auth_url = http://controller:35357/v3
+username = placement
+password = NOVA_PASS
+[quota]
+[rdp]
+[remote_debug]
+[scheduler]
+[serial_console]
+[service_user]
+[spice]
+[ssl]
+[trusted_computing]
+[upgrade_levels]
+[vendordata_dynamic_auth]
+[vmware]
+[vnc]
+enabled = true
+vncserver_listen = $my_ip
+vncserver_proxyclient_address = $my_ip
+[workarounds]
+[wsgi]
+api_paste_config=/etc/nova/api-paste.ini
+[xenserver]
+[xvp]

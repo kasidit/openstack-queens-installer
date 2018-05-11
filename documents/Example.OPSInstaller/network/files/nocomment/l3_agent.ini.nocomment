@@ -1,0 +1,5 @@
+[DEFAULT]
+interface_driver = openvswitch
+external_network_bridge =
+[agent]
+[ovs]

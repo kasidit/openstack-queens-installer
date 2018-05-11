@@ -1,0 +1,16 @@
+#!/bin/sh -e
+#
+# rc.local
+#
+# This script is executed at the end of each multiuser runlevel.
+# Make sure that the script will "exit 0" on success or any other
+# value on error.
+#
+# In order to enable or disable this script just change the execution
+# bits.
+#
+# By default this script does nothing.
+/sbin/iptables -P FORWARD ACCEPT
+/sbin/iptables --table nat -A POSTROUTING -o ens3 -j MASQUERADE
+/sbin/iptables -A FORWARD -p tcp --syn -s 10.201.0.0/24 -j TCPMSS --clamp-mss-to-pmtu
+exit 0

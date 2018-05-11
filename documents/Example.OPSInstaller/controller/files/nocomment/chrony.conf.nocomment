@@ -1,0 +1,18 @@
+server 0.th.pool.ntp.org iburst
+server 1.th.pool.ntp.org iburst
+server 2.th.pool.ntp.org iburst
+server 3.th.pool.ntp.org iburst
+server ntp.ubuntu.com iburst
+pool 2.debian.pool.ntp.org offline iburst
+keyfile /etc/chrony/chrony.keys
+commandkey 1
+driftfile /var/lib/chrony/chrony.drift
+log tracking measurements statistics
+logdir /var/log/chrony
+maxupdateskew 100.0
+dumponexit
+dumpdir /var/lib/chrony
+allow 10.0.10.0/24
+logchange 0.5
+hwclockfile /etc/adjtime
+rtcsync
