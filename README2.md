@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # openstack-ocata-installer
 
 Copyright 2017 Kasidit Chanchio 
@@ -1813,3 +1814,6 @@ OpenStack ประกอบไปด้วย software component ที่อ�
 [2] https://docs.openstack.org/ocata/install/ubuntu-services.html <br>
 [3] https://docs.openstack.org/ocata/networking-guide/ <br>
 [4] <a href="https://www.youtube.com/playlist?list=PLmUxMbTCUhr4vYsaeEKVkvAGF5K1Tw8oJ">OpenStack ocata installation youtube video playlist</a>
+=======
+# openstack-queens-installer
+>>>>>>> 52c01fb39622b69bc429df14d50b01e2e45a48ed
