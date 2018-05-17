@@ -1,3 +1,8 @@
+
+UNDER construction! 
+
+This content is outdated! It belongs to the previous openstack installer I have written a year ago. Please discard it. DO NOT READ FURTHER.  
+
 <<<<<<< HEAD
 # openstack-ocata-installer
 
