@@ -1,4 +1,4 @@
-# OpenStack ocata installation script 
+# OpenStack Queens installation script 
 # on Ubuntu 16.04.2 by kasidit chanchio
 # vasabilab, dept of computer science, Thammasat University, Thailand
 # copyright 2014 
@@ -15,8 +15,8 @@ source ./admin-openrc.sh
 echo "openstack network create --share --provider-physical-network provider --provider-network-type flat provider1"
 openstack network create --share --provider-physical-network provider \
  --provider-network-type flat provider1
-echo "openstack subnet create --subnet-range vasabi-1234external_cidr4321-ibasav --gateway vasabi-1234gateway_ip4321-ibasav --network provider1 --allocation-pool start=vasabi-1234start_floating_ip4321-ibasav,end=vasabi-1234end_floating_ip4321-ibasav --dns-nameserver 8.8.4.4 provider1-v4"
-openstack subnet create --subnet-range vasabi-1234external_cidr4321-ibasav --gateway vasabi-1234gateway_ip4321-ibasav \
+echo "openstack subnet create --subnet-range vasabi-1234external_cidr4321-ibasav --gateway vasabi-1234external_gateway_ip4321-ibasav --network provider1 --allocation-pool start=vasabi-1234start_floating_ip4321-ibasav,end=vasabi-1234end_floating_ip4321-ibasav --dns-nameserver 8.8.4.4 provider1-v4"
+openstack subnet create --subnet-range vasabi-1234external_cidr4321-ibasav --gateway vasabi-1234external_gateway_ip4321-ibasav \
  --network provider1 --allocation-pool start=vasabi-1234start_floating_ip4321-ibasav,end=vasabi-1234end_floating_ip4321-ibasav \
  --dns-nameserver 8.8.4.4 provider1-v4
 echo "openstack security group rule create --proto icmp default"

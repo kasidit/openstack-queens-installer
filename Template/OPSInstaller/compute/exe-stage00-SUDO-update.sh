@@ -1,9 +1,9 @@
-# OpenStack ocata installation script on Ubuntu 16.04.2 
+# OpenStack Queens installation script on Ubuntu 16.04.2 
 # by kasidit chanchio
 # vasabilab, dept of computer science, 
 # Thammasat University, Thailand
 #
-# Copyright 2017  Kasidit Chanchio
+# Copyright 2018  Kasidit Chanchio
 #
 # this script or commands below should be called
 # prior to openstack installation

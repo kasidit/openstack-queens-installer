@@ -29,6 +29,7 @@ export ORIDEMO_PASS=vasabilabDEMO_PASS
 export ORIADMIN_PASS=vasabilabADMIN_PASS
 export ORIDOMAINNAME=vasabi-1234domainname4321-ibasav
 export ORIGATEWAY_IP=vasabi-1234gateway_ip4321-ibasav
+export ORIEXTERNAL_GATEWAY_IP=vasabi-1234external_gateway_ip4321-ibasav
 export ORICONTROLLER_IP=vasabi-1234controller_ip4321-ibasav
 export ORINETWORK_IP=vasabi-1234network_ip4321-ibasav
 export ORICOMPUTE_IP=vasabi-1234compute_ip4321-ibasav
@@ -527,6 +528,18 @@ printf "\n\n${CHANGETOPIC} changed to\n\n"
 sed -i "s/${ORIADMIN_PASS}/${ADMIN_PASS}/g" ${SCRIPT_FILES}
 printf "\n----------\n"
 #
+# Change management network address in  ${ETC_FILES} and ${SCRIPT_FILES}
+#
+printf "\nsubstitution\n"
+
+printf "\n----------\n"
+printf "\nnetwork address (in etc files) changed to\n"
+sed -i "s/${ORIMANAGEMENT_NETWORK}/${MANAGEMENT_NETWORK}/g" ${ETC_FILES}
+#
+printf "\n----------\n"
+printf "\nnetwork address (in script files) changed to\n"
+sed -i "s/${ORIMANAGEMENT_NETWORK}/${MANAGEMENT_NETWORK}/g" ${SCRIPT_FILES}
+#
 # Change domainname in  ${ETC_FILES} and ${SCRIPT_FILES}
 #
 printf "\n----------\n"
@@ -543,11 +556,11 @@ printf "\n----------\n"
 printf "\nsubstitution\n"
 
 printf "\n----------\n"
-printf "\nController's IP (in etc files) changed to\n"
+printf "\nManagement Network gateway IP (in etc files) changed to\n"
 sed -i "s/${ORIGATEWAY_IP}/${GATEWAY_IP}/g" ${ETC_FILES}
 #
 printf "\n----------\n"
-printf "\nController's IP (in etc files) changed to\n"
+printf "\nManagement Network gateway IP (in etc files) changed to\n"
 sed -i "s/${ORIGATEWAY_IP}/${GATEWAY_IP}/g" ${SCRIPT_FILES}
 #
 # Change controller ip in  ${ETC_FILES} and ${SCRIPT_FILES}
@@ -610,18 +623,6 @@ printf "\n----------\n"
 printf "\nnetwork cidr (in script files) changed to\n"
 sed -i "s/${ORIEXTERNAL_CIDR}/${EXTERNAL_CIDR}/g" ${SCRIPT_FILES}
 #
-# Change management network address in  ${ETC_FILES} and ${SCRIPT_FILES}
-#
-printf "\nsubstitution\n"
-
-printf "\n----------\n"
-printf "\nnetwork address (in etc files) changed to\n"
-sed -i "s/${ORIMANAGEMENT_NETWORK}/${MANAGEMENT_NETWORK}/g" ${ETC_FILES}
-#
-printf "\n----------\n"
-printf "\nnetwork address (in script files) changed to\n"
-sed -i "s/${ORIMANAGEMENT_NETWORK}/${MANAGEMENT_NETWORK}/g" ${SCRIPT_FILES}
-#
 # Change start floating ip in  ${ETC_FILES} and ${SCRIPT_FILES}
 #
 printf "\nsubstitution\n"
@@ -650,13 +651,13 @@ printf "\nsubstitution\n"
 
 printf "\n----------\n"
 printf "\ngateway ip (in etc files) changed to\n"
-sed -i "s/${ORIGATEWAY_IP}/${GATEWAY_IP}/g" ${ETC_FILES}
+sed -i "s/${ORIEXTERNAL_GATEWAY_IP}/${EXTERNAL_GATEWAY_IP}/g" ${ETC_FILES}
 #
 printf "\nsubstitution\n"
 
 printf "\n----------\n"
 printf "\ngateway ip (in script files) changed to\n"
-sed -i "s/${ORIGATEWAY_IP}/${GATEWAY_IP}/g" ${SCRIPT_FILES}
+sed -i "s/${ORIEXTERNAL_GATEWAY_IP}/${EXTERNAL_GATEWAY_IP}/g" ${SCRIPT_FILES}
 #
 # Change broadcast address in  ${ETC_FILES} and ${SCRIPT_FILES}
 #

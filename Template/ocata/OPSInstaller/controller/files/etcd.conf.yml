@@ -1,9 +1,0 @@
-name: controller
-data-dir: /var/lib/etcd
-initial-cluster-state: 'new'
-initial-cluster-token: 'etcd-cluster-01'
-initial-cluster: controller=http://vasabi-1234controller_ip4321-ibasav:2380
-initial-advertise-peer-urls: http://vasabi-1234controller_ip4321-ibasav:2380
-advertise-client-urls: http://vasabi-1234controller_ip4321-ibasav:2379
-listen-peer-urls: http://0.0.0.0:2380
-listen-client-urls: http://vasabi-1234controller_ip4321-ibasav:2379

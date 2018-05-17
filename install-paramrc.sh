@@ -59,7 +59,7 @@ export DNS_IP=8.8.8.8
 #
 # ---- gateway host ----
 #
-# The GATEWAY_IP_NIC is only used when you use the controller 
+# (Deprecated) The GATEWAY_IP_NIC is only used when you use the controller 
 # to simulate a network gateway.
 #
 export GATEWAY_IP_NIC=ens3
@@ -88,6 +88,7 @@ export VLAN_NETWORK_NODE_IP_NIC=ens5
 #
 export EXTERNAL_CIDR=10.201.0.0\\/24
 export EXTERNAL_CIDR_NIC=ens6
+export EXTERNAL_GATEWAY_IP=10.201.0.1
 #
 export START_FLOATING_IP=10.201.0.100
 export END_FLOATING_IP=10.201.0.200

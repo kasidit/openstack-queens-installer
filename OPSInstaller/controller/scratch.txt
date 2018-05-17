@@ -1,4 +1,0 @@
-cp /etc/apt/sources.list /etc/apt/sources.list.saved
-cp files/local-sources.list /etc/apt/sources.list
- 
-apt-get update
