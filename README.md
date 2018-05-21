@@ -1,7 +1,7 @@
 # openstack-queens-installer
 
 Copyright 2017 Kasidit Chanchio 
-
+***** script ใช้ได้แล้ว แต่ คำแนะนำการใช้งานอยู่ในระหว่างเปลี่ยนแปลง *****
 Author: กษิดิศ ชาญเชี่ยว <br>
 Contact: kasiditchanchio@gmail.com <br>
 Department of computer science <br>
