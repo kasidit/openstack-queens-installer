@@ -22,6 +22,7 @@ export GLANCE_DBPASS=$(openssl rand -hex 10)
 export GLANCE_PASS=$(openssl rand -hex 10)
 export NOVA_DBPASS=$(openssl rand -hex 10)
 export NOVA_PASS=$(openssl rand -hex 10)
+export PLACEMENT_PASS=$(openssl rand -hex 10)
 export DASH_DBPASS=$(openssl rand -hex 10)
 export CINDER_DBPASS=$(openssl rand -hex 10)
 export CINDER_PASS=$(openssl rand -hex 10)
@@ -45,6 +46,7 @@ export GLANCE_DBPASS=GLANCE_DBPASS
 export GLANCE_PASS=GLANCE_PASS
 export NOVA_DBPASS=NOVA_DBPASS
 export NOVA_PASS=NOVA_PASS
+export PLACEMENT_PASS=PLACEMENT_PASS
 export DASH_DBPASS=DASH_DBPASS
 export CINDER_DBPASS=CINDER_DBPASS
 export CINDER_PASS=CINDER_PASS
@@ -70,6 +72,7 @@ export ORIGLANCE_DBPASS=vasabilabGLANCE_DBPASS
 export ORIGLANCE_PASS=vasabilabGLANCE_PASS
 export ORINOVA_DBPASS=vasabilabNOVA_DBPASS
 export ORINOVA_PASS=vasabilabNOVA_PASS
+export ORIPLACEMENT_PASS=vasabilabPLACEMENT_PASS
 export ORIDASH_DBPASS=vasabilabDASH_DBPASS
 export ORICINDER_DBPASS=vasabilabCINDER_DBPASS
 export ORICINDER_PASS=vasabilabCINDER_PASS
@@ -254,6 +257,27 @@ grep -n "${ORINOVA_PASS}" ${SCRIPT_FILES} | tee ./tmpfile ; wc -l ./tmpfile
 printf "\n\n${CHANGETOPIC} changed to\n\n"
 sed -i "s/${ORINOVA_PASS}/${NOVA_PASS}/g" ${SCRIPT_FILES}
 grep -n "${NOVA_PASS}" ${SCRIPT_FILES}  | tee ./tmpfile ; wc -l ./tmpfile 
+printf "\n----------\n"
+#
+# Change NOVA_PASS 
+#
+CHANGETOPIC=PLACEMENT_PASS
+#
+printf "\nsubstitution\n"
+
+printf "\n----------\n"
+grep -n "${ORIPLACEMENT_PASS}" ${ETC_FILES} | tee ./tmpfile ; wc -l ./tmpfile
+printf "\n\n${CHANGETOPIC} (in etc files) changed to\n\n"
+sed -i "s/${ORIPLACEMENT_PASS}/${PLACEMENT_PASS}/g" ${ETC_FILES}
+grep -n "${PLACEMENT_PASS}"  ${ETC_FILES}  | tee ./tmpfile ; wc -l ./tmpfile 
+#
+printf "\nsubstitution\n"
+
+printf "\n----------\n"
+grep -n "${ORIPLACEMENT_PASS}" ${SCRIPT_FILES} | tee ./tmpfile ; wc -l ./tmpfile
+printf "\n\n${CHANGETOPIC} changed to\n\n"
+sed -i "s/${ORIPLACEMENT_PASS}/${PLACEMENT_PASS}/g" ${SCRIPT_FILES}
+grep -n "${PLACEMENT_PASS}" ${SCRIPT_FILES}  | tee ./tmpfile ; wc -l ./tmpfile 
 printf "\n----------\n"
 #
 # Change DASH_DBPASS 
