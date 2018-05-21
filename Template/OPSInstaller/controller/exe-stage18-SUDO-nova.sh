@@ -1,15 +1,14 @@
 # OpenStack Queens installation script 
-# on Ubuntu 16.04.2 by kasidit chanchio
+# on Ubuntu 16.04.4 by kasidit chanchio
 # vasabilab, dept of computer science, Thammasat University, Thailand
-# copyright 2014 
+# copyright 2018 
 #
 #
 #!/bin/bash -x
 cd $HOME/OPSInstaller/controller
 pwd
 echo "Run this script with sudo or as root."
-echo -n "1. install nova...press"
-#read varkey
+echo -n "Install nova..."
 
 apt-get -y install nova-api nova-conductor nova-consoleauth \
   nova-novncproxy nova-scheduler nova-placement-api

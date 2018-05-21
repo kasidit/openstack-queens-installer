@@ -1,4 +1,4 @@
-# OpenStack Queens installation script on Ubuntu 16.04.2 
+# OpenStack Queens installation script on Ubuntu 16.04.4 
 # by kasidit chanchio
 # vasabilab, dept of computer science, 
 # Thammasat University, Thailand
@@ -10,10 +10,6 @@
 #!/bin/bash -x
 cd $HOME/OPSInstaller/controller
 pwd
-#
-# set max connection error of mysql to a high value
-#
-#mysql -u root -pvasabilabMYSQL_PASS -e "SET GLOBAL max_connect_errors=10000;"
 #
 echo -n "* install rabbitmq.. press" 
 #read varkey

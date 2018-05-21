@@ -8,5 +8,5 @@
 #!/bin/bash -x
 #
 # horizon
-ssh -t openstack@controller sudo /bin/bash -x ./OPSInstaller/controller/exe-stage32-SUDO-horizon.sh | tee log/s32-controller.log
+ssh -t openstack@controller sudo /bin/bash -x ./OPSInstaller/controller/exe-stage36-SUDO-horizon.sh | tee log/s36-controller.log
 printf "\nnext run ./OS-installer-09-set-dvr.sh\n"

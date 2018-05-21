@@ -11,5 +11,3 @@ pwd
 printf "check chrony\n"
 chronyc sources
 #
-#printf "1. set mysql\n"
-#apt-get -y install python-mysqldb

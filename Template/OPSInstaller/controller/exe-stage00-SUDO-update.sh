@@ -1,4 +1,4 @@
-# OpenStack Queens installation script on Ubuntu 16.04.2 
+# OpenStack Queens installation script on Ubuntu 16.04.4 
 # by kasidit chanchio
 # vasabilab, dept of computer science, 
 # Thammasat University, Thailand
@@ -28,8 +28,5 @@ apt-get update
 apt-get -y dist-upgrade
 apt-get -y install python-openstackclient
 # reboot (if needed)
-printf "if you are using the OS-installer script, the script will reboot this node \n"
-printf "(the controller) for you automatically after it finishes rebooting evry other nodes.\n"
-printf "Otherwise, you have to reboot this node manually.\n"
 sleep 5
-#reboot
+echo "reboot the controller after other nodes"

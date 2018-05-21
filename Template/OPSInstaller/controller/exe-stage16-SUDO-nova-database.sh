@@ -1,15 +1,14 @@
 # OpenStack Queens installation script 
-# on Ubuntu 16.04.2 by kasidit chanchio
+# on Ubuntu 16.04.4 by kasidit chanchio
 # vasabilab, dept of computer science, Thammasat University, Thailand
-# copyright 2014 
+# copyright 2018 
 #
 #
 #!/bin/bash -x
 cd $HOME/OPSInstaller/controller
 pwd
 echo "Run this script  as user."
-printf "\n1. create nova database tables...press"
-#read varkey
+printf "\nCreate nova database tables...\n"
 
 mysql -u root -pvasabilabMYSQL_PASS -e "CREATE DATABASE nova_api;"
 mysql -u root -pvasabilabMYSQL_PASS -e "CREATE DATABASE nova;"

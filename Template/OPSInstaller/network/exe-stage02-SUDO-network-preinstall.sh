@@ -32,16 +32,9 @@ ifup vasabi-1234vlan_network_node_ip_nic4321-ibasav
 ifdown vasabi-1234external_cidr_nic4321-ibasav
 ifup vasabi-1234external_cidr_nic4321-ibasav
 #
-# prevent fragmentation 
-#
-#ifconfig vasabi-1234network_ip_nic4321-ibasav mtu 1700
-#ifconfig vasabi-1234data_tunnel_network_node_ip_nic4321-ibasav mtu 1700
-#ifconfig vasabi-1234external_cidr_nic4321-ibasav mtu 1700
-#
 sleep 5
 date
 # restore later 
 #cp /etc/sudoers files/sudoers.save
-#echo "vasabi ALL=NOPASSWD: ALL" >> /etc/sudoers
 #
 ifconfig

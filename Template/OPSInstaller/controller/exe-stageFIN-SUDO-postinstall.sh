@@ -1,4 +1,4 @@
-# OpenStack Queens installation script on Ubuntu 16.04.2 
+# OpenStack Queens installation script on Ubuntu 16.04.4 
 # by kasidit chanchio
 # vasabilab, dept of computer science, 
 # Thammasat University, Thailand

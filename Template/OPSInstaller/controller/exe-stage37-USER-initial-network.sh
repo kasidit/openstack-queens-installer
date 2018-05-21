@@ -1,7 +1,7 @@
 # OpenStack Queens installation script 
-# on Ubuntu 16.04.2 by kasidit chanchio
+# on Ubuntu 16.04.4 by kasidit chanchio
 # vasabilab, dept of computer science, Thammasat University, Thailand
-# copyright 2014 
+# copyright 2018 
 #
 #
 #!/bin/bash -x
@@ -29,9 +29,6 @@ echo "openstack flavor create --id 1 --vcpus 1 --ram 512 --disk 1 m1.mini"
 openstack flavor create --id 1 --vcpus 1 --ram 512 --disk 1 m1.mini
 echo "Ping vasabi-1234start_floating_ip4321-ibasav"
 ping -c 4 vasabi-1234start_floating_ip4321-ibasav
-#echo "Please login to the controller node, source admin-openrc.sh, and enter the following command"
-#echo "openstack server create --flavor 1 --image cirros --nic net-id=<Provider network ID> provider-instance1"
-#echo "Or proceed to install horizon"
 
 echo "openstack network set --external provider1"
 openstack network set --external provider1
@@ -44,8 +41,6 @@ echo "openstack router create router1"
 openstack router create router1
 echo "openstack router add subnet router1 selfservice1-v4"
 openstack router add subnet router1 selfservice1-v4
-#echo "neutron router-gateway-set router1 provider1"
-#neutron router-gateway-set router1 provider1
 echo "openstack router set router1 --external-gateway provider1"
 openstack router set router1 --external-gateway provider1
 echo "openstack floating ip create provider1"
