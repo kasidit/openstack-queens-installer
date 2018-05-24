@@ -1,7 +1,9 @@
 # openstack-queens-installer
 
-Copyright 2017 Kasidit Chanchio 
-***** script ใช้ได้แล้ว แต่ คำแนะนำการใช้งานอยู่ในระหว่างเปลี่ยนแปลง *****
+Copyright 2018 Kasidit Chanchio 
+
+# script ใช้ได้แล้ว แต่ คำแนะนำการใช้งานอยู่ในระหว่างเปลี่ยนแปลง 
+
 Author: กษิดิศ ชาญเชี่ยว <br>
 Contact: kasiditchanchio@gmail.com <br>
 Department of computer science <br>
@@ -9,19 +11,18 @@ Faculty of science and technology <br>
 Thammasat University.
 
 <p>
-<h2>Tutorial: การติดตั้งระบบ OpenStack Ocata แบบ Multi-node & DVR ด้วย installation scripts บน ubuntu 16.04 </h2> <br>
+<h2>Tutorial: การติดตั้งระบบ OpenStack Queens แบบ Multi-node & DVR ด้วย installation scripts บน ubuntu 16.04 </h2> <br>
 <p>
 ให้ นศ เตรียมเครื่องตามส่วนที่ 1 และหลังจากนั้นเลือกเอาอันใดอันหนึ่งว่าจะติดตั้งด้วย scripts(ส่วนที่ 2) หรือด้วยมือ (ส่วนที่ 3)  
 <ul>
  <li> 1. <a href="#part1">เตรียมเครื่องและเนตสำหรับติตดั้ง</a>
       <ul>
        <li> <a href="#kvmhost">1.1 การเตรียมเครื่องเพื่อติดตั้งบน kvm vm หรือเครื่องจริง</a>
-       <li> <a href="#vboxhost">1.2 การเตรียมเครื่องสำหรับติดตั้งบน vbox vm</a>
-       <li> <a href="#btrfssnapshot">1.3 การสร้าง snapshot บน btrfs บน ubuntu 16.04 host</a>
+       <li> <a href="#btrfssnapshot">1.2 การสร้าง snapshot บน btrfs บน ubuntu 16.04 host</a>
       </ul>
  <li> 2. <a href="#part2">ติดตั้งด้วย scripts</a> 
       <ul>
-       <li> <a href="#downloadinstaller">2.1 ดาวน์โหลด openstack-ocata-installer scripts</a>
+       <li> <a href="#downloadinstaller">2.1 ดาวน์โหลด openstack-queens-installer scripts</a>
        <li> <a href="#paramrc">2.2 กำหนดค่าพารามีเตอร์สำหรับการติดตั้ง </a>
        <li> <a href="#usescript">2.3 ติดตั้ง OpenStack ocata ด้วย scripts </a> 
        <li> <a href="#testhorizon">2.4 ใช้งาน OpenStack Horizon</a>
@@ -64,17 +65,17 @@ Thammasat University.
 <p><p> 
 network ที่ใช้ในการติดตั้งได้แก่ 
  <ul>
- <li> management network: มี cidr 10.0.10.0/24 และ gateway คือ 10.0.10.1  openstack ใช้เนตนี้เป็นเนตหลักเพื่อออกอินเตอเนตและส่งคำสั่งระหว่างโหนด(หรือเครื่องทั้ง 4)ต่างๆของมัน  
+ <li> management network: มี cidr 10.201.0.0/24 และ gateway คือ 10.201.0.1  openstack ใช้เนตนี้เป็นเนตหลักเพื่อออกอินเตอเนตและส่งคำสั่งระหว่างโหนด(หรือเครื่องทั้ง 4)ต่างๆของมัน  
  <li> data tunnel network: ใช้สร้าง tunnel สำหรับส่งข้อมูลของ vm ที่จะถูกสร้างขึ้นภายใน openstack เนตนี้ใช้สำหรับส่งข้อมูลระว่าง vm กันเอง (east-west) และระหว่าง vm กับ internet (north-south)
  <li> vlan network: ใช้ส่งข้อมูลระหว่าง vm ภายใน openstack กับ vlan network ภายนอก openstack 
- <li> external network: คือเนตที่เป็น internet service provider ของ openstack ในที่นี้เราจะใช้ management network 
+ <li> external network: คือเนตที่เป็น internet service provider ของ openstack ซึ่งในที่นี้เราจะใช้ management network 
  </ul>
 จากภาพที่ 1 สมมุตว่า NIC ที่ 1 คือ ens3 NIC ที่ 2 คือ ens4 NIC ที่ 3 คือ ens5 NIC ที่ 4 คือ ens6 จะเห็นว่าเครื่อง conroller มี ens3 อันเดียว เครื่อง network compute แบะ compute1 ทั้งหมด มี ens3 ถึง ens6 
 <p><p>
 <table>
 <tr><td>
 <details>
- <summary><b>[กดเพื่อดูรายละเอียด] สำหรับวิชา คพ. 449: คำอธิบายการจำลองการติดตั้งโดยใช้ KVM virtual machines และ openvswitch network bridges</b></summary> 
+ <summary><b>[กดเพื่อดูรายละเอียด] คำอธิบายการจำลองการติดตั้งโดยใช้ KVM virtual machines และ openvswitch network bridges</b></summary> 
 เราจะจำลองการติดตั้งโดยใช้ kvm vm 4 เครื่องเชื่อมต่อกับ openvswitch network bridges บนเครื่อง server ใน lab ดังภาพที่ 2 
   <p>
   <img src="documents/architecturetunnel.png"> <br>
@@ -361,13 +362,7 @@ openstack@compute1:~$
 <p><p>
 เมื่อเช็คเสร็จแล้วให้ ลบ และ ifdown หรือ ifconfig down IP address ของ ens4 ens5 ens6 บนทุกเครื่องออก เราจะใช้ installation scripts กำหนดค่า หรือกำหนดค่าเองด้วยมือภายหลัง   
 <p><p>
- <i><a id="vboxhost"><h4>1.2 การเตรียมเครื่องสำหรับติดตั้งบน vbox vm </h4></a></i>
-<p>
-นศ สามารถอ่านคำอธิบายการเตรียม vbox vm สำหรับติดตั้ง openstack ocata ได้ที่เอกสาร <a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/documents/openstack-ocata-vbox-vm-preparation.pdf">documents/openstack-ocata-vbox-vm-preparation.pdf</a> ขอให้สร้าง vm และกำหนดค่าต่างๆตามนั้น 
-<p><p>
-นศ สามารถดูคลิป youtube ประกอบได้ที่ (ผมไม่ได้เตียม script พูดประกอบ clip ขอให้ทนฟังการพูดตะกุกตะกักหน่อยนะครับ :-) ) <a href="https://www.youtube.com/watch?v=AkDoef8gUJY&index=1&list=PLmUxMbTCUhr4vYsaeEKVkvAGF5K1Tw8oJ">set up virtual gateway on controller</a> และ <a href="https://www.youtube.com/watch?v=N3AfvrlJw2M&index=2&list=PLmUxMbTCUhr4vYsaeEKVkvAGF5K1Tw8oJ">install and setup network, compute, and compute1 vbox vms</a>
-<p><p>
-<i><a id="btrfssnapshot"><h4>1.3 การสร้าง snapshot บน btrfs บน ubuntu 16.04 host</h4></a></i>
+<i><a id="btrfssnapshot"><h4>1.2 การสร้าง snapshot บน btrfs บน ubuntu 16.04 host</h4></a></i>
 <p>
 เนื้อหาในส่วนนี้ใช้สำหรับผู้ที่ประสงค์ใช้ btrfs เป๋น file system ของ host computers ที่จะใช้ติดตั้ง openstack และต้องการทำ snapshot ของ partition ที่ใช้ในการติดตั้งบนแต่ละเครื่องเป็นระยะๆ ถ้า นศ ไม่ได้ใช้ btrfs ก็ให้ข้ามส่วนนี้ไป
 <p><p>
