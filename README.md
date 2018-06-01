@@ -6,9 +6,6 @@ Copyright 2018 Kasidit Chanchio
 
 Author: กษิดิศ ชาญเชี่ยว <br>
 Contact: kasiditchanchio@gmail.com <br>
-Department of computer science <br>
-Faculty of science and technology <br>
-Thammasat University.
 
 <p>
 <h2>Tutorial: การติดตั้งระบบ OpenStack Queens แบบ Multi-node & DVR ด้วย installation scripts บน ubuntu 16.04 </h2> <br>
@@ -503,10 +500,10 @@ ID 265 gen 7813 top level 5 path @home_snapshot1
 <p>
 <i><a id="downloadinstaller"><h4>2.1 ดาวน์โหลด openstack-ocata-installer scripts</h4></a></i>
 <p><p>
-นศ จะใช้เครื่อง controller เป็นหลักในการติดตั้งด้วย script เริ่มต้นด้วยการ login เข้า openstack user (makes sure ว่า username และ password คือ "openstack" บนทุกเครื่อง) และ download script ด้วยคำสั่ง (ดู <a href="https://www.youtube.com/watch?v=a0JQYmsaPIs&list=PLmUxMbTCUhr4vYsaeEKVkvAGF5K1Tw8oJ&index=3">youtube video</a>)
+นศ จะใช้เครื่อง controller เป็นหลักในการติดตั้งด้วย script เริ่มต้นด้วยการ login เข้า openstack user (makes sure ว่า username และ password คือ "openstack" บนทุกเครื่อง) และ download script ด้วยคำสั่ง 
 <pre>
 $ cd $HOME
-$ git clone https://github.com/kasidit/openstack-ocata-installer
+$ git clone https://github.com/kasidit/openstack-queens-installer
 $ cd openstack-ocata-installer
 </pre>
 <p>
@@ -518,18 +515,13 @@ documents  install-paramrc.sh       OPSInstaller-init.tar
 $
 </pre>
 <p>
-ในกรณีที่ นศ จะติดตั้งบน vbox vm ขอให้ copy ไฟล์ <a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/documents/Example.vbox.install-paramrc.sh">Example.vbox.install-paramrc.sh</a> มาเป็น install-paramrc.sh ใน openstack-ocata-installer directory
-<pre>
-$ cp documents/Example.vbox.install-paramrc.sh install-paramrc.sh
-</pre>
-<p>
-แต่ถ้าติดตั้งบน kvm หรือเครื่องจริงก็ให้ใช้ไฟล์ <a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/install-paramrc.sh">install-paramrc.sh</a> ที่มีอยู่แต่เดิมเป็นตัวอย่าง <br> 
+ให้ใช้ไฟล์ <a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/install-paramrc.sh">install-paramrc.sh</a> เป็นตัวอย่าง <br> 
 <p>
 <i><a id="paramrc"><h4>2.2 กำหนดค่าพารามีเตอร์สำหรับการติดตั้ง </h4></a></i>
 <p>
-ต่อไป นศ จะกำหนด configuration สำหรับการติอตั้งโดยกำหนดค่าในไฟล์ <a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/install-paramrc.sh">install-paramrc.sh</a> ซึ่งถ้า นศ กำหนดค่า vm และเนตตามที่ระบุใน ส่วนที่ 1.1 และติดตั้งบน kvm (ที่ใช้รหัส ens เป็นชื่อ NIC) นศ ก็สามารถใช้ไฟล์ install-paramrc.sh นี้ได้เลย และในกรณีที่ นศ ใช้ vbox ติดตั้งและกำหนดค่าต่างๆเหมือนที่อธิบายในส่วน 1.2 นศ ก็สามารถใช้ไฟล์ Example.vbox.install-paramrc.sh ได้เลยเช่นกัน (ข้ามไปทำส่วนที่ 2.3 ได้)
+ต่อไป นศ จะกำหนด configuration สำหรับการติอตั้งโดยกำหนดค่าในไฟล์ <a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/install-paramrc.sh">install-paramrc.sh</a> ซึ่งถ้า นศ กำหนดค่า vm และเนตตามที่ระบุใน ส่วนที่ 1.1 และติดตั้งบน kvm (ที่ใช้รหัส ens เป็นชื่อ NIC) นศ ก็สามารถใช้ไฟล์ install-paramrc.sh นี้ได้เลย 
 <p><p>
-แต่อย่างไรก็ตาม หาก นศ ติดตั้งบนเครื่องจริง ชื่อ NICs และค่าอื่นๆก็อาจเปลี่ยนไป ดังนั้นผมจะอธิบายความหมายของตัวแปรต่างๆในไฟล์ install-paramrc.sh เพื่อที่จะได้กำหนดค่าอย่างถูกต้อง (ดู <a href="https://www.youtube.com/watch?v=a0JQYmsaPIs&list=PLmUxMbTCUhr4vYsaeEKVkvAGF5K1Tw8oJ&index=3">youtube video</a>) อันดับแรก environment variables สามอันแรกในไฟล์นั้นได้แก่
+แต่อย่างไรก็ตาม หาก นศ ติดตั้งบนเครื่องจริง ชื่อ NICs และค่าอื่นๆก็อาจเปลี่ยนไป ดังนั้นผมจะอธิบายความหมายของตัวแปรต่างๆในไฟล์ install-paramrc.sh เพื่อที่จะได้กำหนดค่าอย่างถูกต้อง อันดับแรก environment variables สามตัวแรกในไฟล์นี้ได้แก่
 <pre>
 export INSTALL_TYPE=full
 export NETWORK_TYPE=dvr_ovs
@@ -615,6 +607,7 @@ export VLAN_NETWORK_NODE_IP_NIC=ens5
 #
 export EXTERNAL_CIDR=10.0.10.0\\/24
 export EXTERNAL_CIDR_NIC=ens6
+export EXTERNAL_GATEWAY_IP=10.0.0.1
 #
 export START_FLOATING_IP=10.0.10.100
 export END_FLOATING_IP=10.0.10.200
@@ -640,7 +633,7 @@ export VLAN_COMPUTE_NODE_IP_NIC=ens5
 ในไฟล์ install-paramrc.sh เรากำหนดค่าตัวแปรสำหรับ compute1 node ในแบบเดียวกันกับการกำหนดค่าของ compute node ข้างต้น 
 <p>
 <p>
-<i><a id="usescript"><h4>2.3 การติดตั้ง OpenStack ocata ด้วย scripts </h4></a></i>
+<i><a id="usescript"><h4>2.3 การติดตั้ง OpenStack queens ด้วย scripts </h4></a></i>
 <p>
 <p>
 เริ่มต้นการติดตั้งด้วยคำสั่งต่อไปนี้ (หมายเหตุ นศ ต้องออกคำสั่งใน user mode คือเป็น openstack user ห้ามใช้ sudo จนจบ script เหล่านี้)
