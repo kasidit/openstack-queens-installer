@@ -589,7 +589,7 @@ export MANAGEMENT_NETWORK=10.0.10.0
 export MANAGEMENT_BROADCAST_ADDRESS=10.0.10.255 
 export DNS_IP=8.8.8.8
 </pre>
-ถัดจากนั้นเป็นตัวแปร GATEWAY_IP_NIC ซึ่งจะใช้สำหรับการติดตั้งด้วย vbox (ซึ่งจะใช้ controller เป็น virtual gateway) เท่านั้น เนื่องจากเราไม่ได้ใช้ vbox นศ จึงไม่ต้องกำหนดค่าให้ตัวแปรนี้ 
+ถัดจากนั้นเป็นตัวแปร GATEWAY_IP_NIC ซึ่งจะใช้สำหรับการติดตั้งด้วย vbox (ซึ่งจะใช้ controller เป็น virtual gateway) เท่านั้น เนื่องจากเราไม่ได้ใช้ vbox นศ จึงไม่ต้องกำหนดค่าให้ตัวแปรนี้ <b>ขอให้ละตัวแปรนี้ไว้ไม่ต้อง comment ออก</b>
 <p><p>
 ตัวแปร CONTROLLER_IP และ CONTROLLER_IP_NIC ใช้ระบุค่า IP address และ NIC แรกของเครื่อง controller และตัวแปร GATEWAY_IP ใช้ระบุค่า IP address ของ gateway router ของ management network ซึ่งในที่นี้จะหมายถึง IP address ของ gateway router ของ external network ด้วย เพราะเราจะใช้ management network เป็น external network ในการติดตั้งของเรา
 <pre>
