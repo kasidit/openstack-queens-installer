@@ -21,7 +21,7 @@ Contact: kasiditchanchio@gmail.com <br>
       <ul>
        <li> <a href="#downloadinstaller">2.1 ดาวน์โหลด openstack-queens-installer scripts</a>
        <li> <a href="#paramrc">2.2 กำหนดค่าพารามีเตอร์สำหรับการติดตั้ง </a>
-       <li> <a href="#usescript">2.3 ติดตั้ง OpenStack ocata ด้วย scripts </a> 
+       <li> <a href="#usescript">2.3 ติดตั้ง OpenStack queens ด้วย scripts </a> 
        <li> <a href="#testhorizon">2.4 ใช้งาน OpenStack Horizon</a>
       </ul>
  <li> 3. <a href="#part3">ติดตั้งด้วยมือ</a> 
@@ -498,13 +498,13 @@ ID 265 gen 7813 top level 5 path @home_snapshot1
 <h3>ส่วนที่ 2: ติดตั้งด้วย scripts</h3>
 </a>
 <p>
-<i><a id="downloadinstaller"><h4>2.1 ดาวน์โหลด openstack-ocata-installer scripts</h4></a></i>
+<i><a id="downloadinstaller"><h4>2.1 ดาวน์โหลด openstack-queens-installer scripts</h4></a></i>
 <p><p>
 นศ จะใช้เครื่อง controller เป็นหลักในการติดตั้งด้วย script เริ่มต้นด้วยการ login เข้า openstack user (makes sure ว่า username และ password คือ "openstack" บนทุกเครื่อง) และ download script ด้วยคำสั่ง 
 <pre>
 $ cd $HOME
 $ git clone https://github.com/kasidit/openstack-queens-installer
-$ cd openstack-ocata-installer
+$ cd openstack-queens-installer
 </pre>
 <p>
 เมื่อดู content ของ directory จะมีไฟล์และ subdirectory ดังนี้
@@ -515,11 +515,11 @@ documents  install-paramrc.sh       OPSInstaller-init.tar
 $
 </pre>
 <p>
-ให้ใช้ไฟล์ <a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/install-paramrc.sh">install-paramrc.sh</a> เป็นตัวอย่าง <br> 
+ให้ใช้ไฟล์ <a href="https://github.com/kasidit/openstack-queens-installer/blob/master/install-paramrc.sh">install-paramrc.sh</a> เป็นตัวอย่าง <br> 
 <p>
 <i><a id="paramrc"><h4>2.2 กำหนดค่าพารามีเตอร์สำหรับการติดตั้ง </h4></a></i>
 <p>
-ต่อไป นศ จะกำหนด configuration สำหรับการติอตั้งโดยกำหนดค่าในไฟล์ <a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/install-paramrc.sh">install-paramrc.sh</a> ซึ่งถ้า นศ กำหนดค่า vm และเนตตามที่ระบุใน ส่วนที่ 1.1 และติดตั้งบน kvm (ที่ใช้รหัส ens เป็นชื่อ NIC) นศ ก็สามารถใช้ไฟล์ install-paramrc.sh นี้ได้เลย 
+ต่อไป นศ จะกำหนด configuration สำหรับการติอตั้งโดยกำหนดค่าในไฟล์ <a href="https://github.com/kasidit/openstack-queens-installer/blob/master/install-paramrc.sh">install-paramrc.sh</a> ซึ่งถ้า นศ กำหนดค่า vm และเนตตามที่ระบุใน ส่วนที่ 1.1 และติดตั้งบน kvm (ที่ใช้รหัส ens เป็นชื่อ NIC) นศ ก็สามารถใช้ไฟล์ install-paramrc.sh นี้ได้เลย 
 <p><p>
 แต่อย่างไรก็ตาม หาก นศ ติดตั้งบนเครื่องจริง ชื่อ NICs และค่าอื่นๆก็อาจเปลี่ยนไป ดังนั้นผมจะอธิบายความหมายของตัวแปรต่างๆในไฟล์ install-paramrc.sh เพื่อที่จะได้กำหนดค่าอย่างถูกต้อง อันดับแรก environment variables สามตัวแรกในไฟล์นี้ได้แก่
 <pre>
@@ -638,7 +638,7 @@ export VLAN_COMPUTE_NODE_IP_NIC=ens5
 <p>
 เริ่มต้นการติดตั้งด้วยคำสั่งต่อไปนี้ (หมายเหตุ นศ ต้องออกคำสั่งใน user mode คือเป็น openstack user ห้ามใช้ sudo จนจบ script เหล่านี้)
 <pre>
-$ cd $HOME/openstack-ocata-installer
+$ cd $HOME/openstack-queens-installer
 $ ./exe-config-installer.sh
 </pre>
 คำสั่ง ./exe-config-installer.sh จะนำค่าที่กำหนดใน install-paramrc.sh ไปแทนค่า template ของ scripts สำหรับติดตั้ง openstack ในไฟล์ OPSInstaller-init.tar และสร้าง directory ใหม่ชือ OPSInstaller ขึ้น (ดู <a href="https://www.youtube.com/watch?v=zIVLVEvaDgs&list=PLmUxMbTCUhr4vYsaeEKVkvAGF5K1Tw8oJ&index=4">youtube video</a>)
@@ -655,7 +655,7 @@ $ ./OS-installer-00-0-set-gateway.sh
 <pre>
 $ ./OS-installer-00-1-set-remote-access.sh
 </pre>
-script ที่สองจะ update ubuntu 16.04 บนโหนดต่างๆให้เป็นเวอรชันล่าสุดและกำหนด cloud repository สำหรับ openstack ocata installation
+script ที่สองจะ update ubuntu 16.04 บนโหนดต่างๆให้เป็นเวอรชันล่าสุดและกำหนด cloud repository สำหรับ openstack queens installation
 <pre>
 $ ./OS-installer-00-2-update-ubuntu.sh 
 </pre>
@@ -732,33 +732,33 @@ $ ./OS-installer-10-initial-user-network.sh
 <p><p>
 การติดตั้งด้วยมือเป็นวิธีการติดตั้งที่จะทำให้ผู้ติดตั้งได้มีโอกาสเรียนรู้จักส่วนประกอบของ OpenStack มากที่สุด OpenStack ประกอบไปด้วย software component หลาย software ผู้ใช้จะต้องติดตั้งและกำหนดค่าในไฟล์ configuration ของ component เหล่านั้น ซึ่งส่วนใหญ่จะอยู่ใน /etc directory 
 <p><p>
-เพื่อความสะดวกในการเขียนคู่มือนี้ ผมจะอ้างอิงถึง configuration ไฟล์ใน "files" subdirectory นศ สามารถดูตัวอย่างไฟล์ได้ตาม URL link บนแต่ละไฟล์และ เปรียบเทียบกับ official openstack ocata installation document [2] ที่ผมจะแนบ link ไว้ให้เป็นระยะๆแล้ว copy เนื้อหาของ configuration ไฟล์ไปใช้ตามที่จำเป็น หรือทำอีกวิธีหนึ่งคือ
+เพื่อความสะดวกในการเขียนคู่มือนี้ ผมจะอ้างอิงถึง configuration ไฟล์ใน "files" subdirectory นศ สามารถดูตัวอย่างไฟล์ได้ตาม URL link บนแต่ละไฟล์และ เปรียบเทียบกับ official openstack queens installation document [2] ที่ผมจะแนบ link ไว้ให้เป็นระยะๆแล้ว copy เนื้อหาของ configuration ไฟล์ไปใช้ตามที่จำเป็น หรือทำอีกวิธีหนึ่งคือ
 <table><tr><td>
 <details>
 <summary>[กดเพื่อดูรายละเอียด] ใช้ scriptsสร้าง configuration ไฟล์ใน "files" directory แล้ว scp ไปไว้บนทุกๆเครื่องด้วยตนเอง  (คล้ายส่วนที่ 2.1 และ 2.2)</summary>
 <pre>
 $ cd $HOME
-$ git clone https://github.com/kasidit/openstack-ocata-installer
-$ cd openstack-ocata-installer
+$ git clone https://github.com/kasidit/openstack-queens-installer
+$ cd openstack-queens-installer
 </pre>
 กำหนดค่าใน install-paramrc.sh (<a href="#paramrc">ดูส่วนที่ 2.2</a>) และรัน ./exe-config-installer.sh
 <pre>
 $ ./exe-config-installer.sh
 </pre>
-หลังจากนั้น script จะสร้าง installation scripts ใน $HOME/openstack-ocata-installer/OPSInstaller/* directory และสร้าง configuration ไฟล์ใน  $HOME/openstack-ocata-installer/OPSInstaller/*/files/ directories ซึ่ง นศ สามารถอ้างอิงถึง configuration ไฟล์ใน "files" directory และดูเป็นตัวอย่างได้ 
+หลังจากนั้น script จะสร้าง installation scripts ใน $HOME/openstack-queens-installer/OPSInstaller/* directory และสร้าง configuration ไฟล์ใน  $HOME/openstack-queens-installer/OPSInstaller/*/files/ directories ซึ่ง นศ สามารถอ้างอิงถึง configuration ไฟล์ใน "files" directory และดูเป็นตัวอย่างได้ 
 <p><p>
 <ul>
-<li>ถ้า นศ ติดตั้งด้วยมือบนเครื่อง controller ให้ดูตัวอย่าง configuration ไฟล์ที่  $HOME/openstack-ocata-installer/OPSInstaller/controller/files/ 
-<li>ถ้า นศ ติดตั้งด้วยมือบนเครื่อง network ให้ดูไฟล์ที่  $HOME/openstack-ocata-installer/OPSInstaller/network/files/ 
-<li>ถ้า นศ ติดตั้งด้วยมือบนเครื่อง compute ให้ดูไฟล์ที่  $HOME/openstack-ocata-installer/OPSInstaller/compute/files/
-<li>ถ้า นศ ติดตั้งด้วยมือบนเครื่อง compute1 ให้ดูไฟล์ที่  $HOME/openstack-ocata-installer/OPSInstaller/compute1/files/
+<li>ถ้า นศ ติดตั้งด้วยมือบนเครื่อง controller ให้ดูตัวอย่าง configuration ไฟล์ที่  $HOME/openstack-queens-installer/OPSInstaller/controller/files/ 
+<li>ถ้า นศ ติดตั้งด้วยมือบนเครื่อง network ให้ดูไฟล์ที่  $HOME/openstack-queens-installer/OPSInstaller/network/files/ 
+<li>ถ้า นศ ติดตั้งด้วยมือบนเครื่อง compute ให้ดูไฟล์ที่  $HOME/openstack-queens-installer/OPSInstaller/compute/files/
+<li>ถ้า นศ ติดตั้งด้วยมือบนเครื่อง compute1 ให้ดูไฟล์ที่  $HOME/openstack-queens-installer/OPSInstaller/compute1/files/
 </ul>
 ถ้า นศ ต้องการ sudo cp ไฟล์เหล่านี้ เหมือนในคำสั่งที่จะใช้ต่อไปในการติดตั้งด้วยมือ นศ ต้อง tar ไฟล์ใน "files" directory เหล่านี้และ scp ไปยังเครื่อง controller network compute และ compute1 และ untar ด้วยตนเองก่อนการติดตั้ง 
 <p><p>
 <b>เครื่อง controller</b>
 <p><p>
 <pre>
-$ cd $HOME/openstack-ocata-installer/OPSInstaller
+$ cd $HOME/openstack-queens-installer/OPSInstaller
 $ cd controller 
 $ tar cvf controller-files.tar files
 $ cp controller-files.tar $HOME/
@@ -770,7 +770,7 @@ ls จะแสดง directory "files" ใน openstack account บนเคร
 <p><p>
 ถ่ายโอนข้อมูลจาก directory network/files ไปที่เครื่อง network node
 <pre>
-$ cd $HOME/openstack-ocata-installer/OPSInstaller
+$ cd $HOME/openstack-queens-installer/OPSInstaller
 $ cd network 
 $ tar cvf network-files.tar files
 $ scp network-files.tar openstack@10.0.10.21:/home/openstack/
@@ -781,7 +781,7 @@ ls จะแสดง directory "files" ใน openstack account บนเคร
 <p><p>
 ถ่ายโอนข้อมูลจาก directory compute/files ไปที่เครื่อง compute node
 <pre>
-$ cd $HOME/openstack-ocata-installer/OPSInstaller
+$ cd $HOME/openstack-queens-installer/OPSInstaller
 $ cd compute 
 $ tar cvf compute-files.tar files
 $ scp compute-files.tar openstack@10.0.10.31:/home/openstack/
@@ -792,7 +792,7 @@ ls จะแสดง directory "files" ใน openstack account บนเคร
 <p><p>
 ถ่ายโอนข้อมูลจาก directory compute1/files ไปที่เครื่อง compute1 node
 <pre>
-$ cd $HOME/openstack-ocata-installer/OPSInstaller
+$ cd $HOME/openstack-queens-installer/OPSInstaller
 $ cd compute1 
 $ tar cvf compute1-files.tar files
 $ scp compute1-files.tar openstack@10.0.10.32:/home/openstack/
@@ -811,15 +811,15 @@ ls จะแสดง directory "files" ใน openstack account บนเคร
 <p><p>
 login เข้า user openstack และ modify ไฟล์ /etc/hosts 
 <pre>
-$ cd $HOME/openstack-ocata-installer/OPSInstaller/controller
-$ sudo cp <a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/documents/Example.OPSInstaller/controller/files/hosts">files/hosts</a> /etc/hosts
+$ cd $HOME/openstack-queens-installer/OPSInstaller/controller
+$ sudo cp <a href="https://github.com/kasidit/openstack-queens-installer/blob/master/documents/Example.OPSInstaller/controller/files/hosts">files/hosts</a> /etc/hosts
 </pre>
 รันคำสั่งต่อไปนี้
 <pre>
 $ sudo sed -i "s/us.arch/th.arch/g" /etc/apt/sources.list
 $ sudo apt-get update
 $ sudo apt-get -y install software-properties-common
-$ sudo add-apt-repository cloud-archive:ocata
+$ sudo add-apt-repository cloud-archive:queens
 </pre>
 คำสั่ง add-apt-repository จะรอให้ นศ กด [ENTER] 
 <p>
@@ -834,12 +834,12 @@ $ sudo reboot
 <p><p>
 login เข้า user openstack และใช้คำสั่งต่อไปนี้
 <pre>
-$ cd $HOME/openstack-ocata-installer/OPSInstaller/
-$ sudo cp <a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/documents/Example.OPSInstaller/network/files/hosts">files/hosts</a> /etc/hosts
+$ cd $HOME/openstack-queens-installer/OPSInstaller/
+$ sudo cp <a href="https://github.com/kasidit/openstack-queens-installer/blob/master/documents/Example.OPSInstaller/network/files/hosts">files/hosts</a> /etc/hosts
 $ sudo sed -i "s/us.arch/th.arch/g" /etc/apt/sources.list
 $ sudo apt-get update
 $ sudo apt-get -y install software-properties-common
-$ sudo add-apt-repository cloud-archive:ocata
+$ sudo add-apt-repository cloud-archive:queens
 </pre>
 คำสั่งสุดท้ายจะรอให้ นศ กด [ENTER] 
 <p>
@@ -854,11 +854,11 @@ $ sudo reboot
 <p><p>
 login เข้า user openstack และใช้คำสั่งต่อไปนี้
 <pre>
-$ sudo cp <a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/documents/Example.OPSInstaller/compute/files/hosts">files/hosts</a> /etc/hosts
+$ sudo cp <a href="https://github.com/kasidit/openstack-queens-installer/blob/master/documents/Example.OPSInstaller/compute/files/hosts">files/hosts</a> /etc/hosts
 $ sudo sed -i "s/us.arch/th.arch/g" /etc/apt/sources.list
 $ sudo apt-get update
 $ sudo apt-get -y install software-properties-common
-$ sudo add-apt-repository cloud-archive:ocata
+$ sudo add-apt-repository cloud-archive:queens
 </pre>
 คำสั่งสุดท้ายจะรอให้ นศ กด [ENTER] 
 <p>
@@ -873,11 +873,11 @@ $ sudo reboot
 <p><p>
 login เข้า user openstack และใช้คำสั่งต่อไปนี้
 <pre>
-$ sudo cp <a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/documents/Example.OPSInstaller/compute1/files/hosts">files/hosts</a> /etc/hosts
+$ sudo cp <a href="https://github.com/kasidit/openstack-queens-installer/blob/master/documents/Example.OPSInstaller/compute1/files/hosts">files/hosts</a> /etc/hosts
 $ sudo sed -i "s/us.arch/th.arch/g" /etc/apt/sources.list
 $ sudo apt-get update
 $ sudo apt-get -y install software-properties-common
-$ sudo add-apt-repository cloud-archive:ocata
+$ sudo add-apt-repository cloud-archive:queens
 </pre>
 คำสั่งสุดท้ายจะรอให้ นศ กด [ENTER] 
 <p><pre>
@@ -896,13 +896,13 @@ $ sudo apt-get -y install chrony
 </pre>
 <table>
 <tr><td>คำถาม <b>PROJECT</b> วิชา คพ. 449: (1) ขอให้ นศ อธิบายว่า chrony ใช้ทำอะไร และค่าที่กำหนดในไฟล์ chrony.conf หมายถึงอะไร</td></tr>
-<tr><td>Hint : See <a href="https://docs.openstack.org/ocata/install-guide-ubuntu/environment-ntp-controller.html">Network Time Protocol on controller</a></td></tr>
+<tr><td>Hint : See <a href="https://docs.openstack.org/queens/install-guide-ubuntu/environment-ntp-controller.html">Network Time Protocol on controller</a></td></tr>
 <tr><td>ตัวอย่าง configuration files ที่ลบ comments ออก: 
-<a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/documents/Example.OPSInstaller/controller/files/nocomment/chrony.conf.nocomment">chrony.conf</a>
+<a href="https://github.com/kasidit/openstack-queens-installer/blob/master/documents/Example.OPSInstaller/controller/files/nocomment/chrony.conf.nocomment">chrony.conf</a>
 </td></tr>
 </table> 
 <pre>
-$ sudo cp <a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/documents/Example.OPSInstaller/controller/files/chrony.conf">files/chrony.conf</a> /etc/chrony/chrony.conf
+$ sudo cp <a href="https://github.com/kasidit/openstack-queens-installer/blob/master/documents/Example.OPSInstaller/controller/files/chrony.conf">files/chrony.conf</a> /etc/chrony/chrony.conf
 $ 
 $ sudo service chrony restart
 </pre>
@@ -913,7 +913,7 @@ $ sudo service chrony restart
 <tr><td>คำถาม <b>PROJECT</b> วิชา คพ. 449: (2) ไฟล์ interfaces ต่างจาก interfaces ใน ส่วนที่ 1 อย่างไร </td></tr>
 </table>
 <pre>
-$ sudo cp <a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/documents/Example.OPSInstaller/network/files/interfaces">files/interfaces</a> /etc/network/interfaces
+$ sudo cp <a href="https://github.com/kasidit/openstack-queens-installer/blob/master/documents/Example.OPSInstaller/network/files/interfaces">files/interfaces</a> /etc/network/interfaces
 </pre>
 <pre>
 $ sudo ifdown ens3
@@ -929,13 +929,13 @@ $
 $ sudo apt-get -y install chrony
 </pre>
 <table><tr><td>คำถาม <b>PROJECT</b> วิชา คพ. 449: (3) ค่าที่กำหนดในไฟล์ chrony.conf หมายถึงอะไร </td></tr>
-<tr><td>Hint : See <a href="https://docs.openstack.org/ocata/install-guide-ubuntu/environment-ntp-other.html">Network Time Protocol on controller</a>, <a href="https://docs.openstack.org/ocata/install-guide-ubuntu/environment-ntp-verify.html">Verify</a></td></tr>
+<tr><td>Hint : See <a href="https://docs.openstack.org/queens/install-guide-ubuntu/environment-ntp-other.html">Network Time Protocol on controller</a>, <a href="https://docs.openstack.org/queens/install-guide-ubuntu/environment-ntp-verify.html">Verify</a></td></tr>
 <tr><td>ตัวอย่าง configuration files ที่ลบ comments ออก: 
-<a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/documents/Example.OPSInstaller/network/files/nocomment/chrony.conf.nocomment">chrony.conf</a>
+<a href="https://github.com/kasidit/openstack-queens-installer/blob/master/documents/Example.OPSInstaller/network/files/nocomment/chrony.conf.nocomment">chrony.conf</a>
 </td></tr> 
 </table>
 <pre>
-$ sudo cp <a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/documents/Example.OPSInstaller/network/files/chrony.conf">files/chrony.conf</a> /etc/chrony/chrony.conf
+$ sudo cp <a href="https://github.com/kasidit/openstack-queens-installer/blob/master/documents/Example.OPSInstaller/network/files/chrony.conf">files/chrony.conf</a> /etc/chrony/chrony.conf
 $ sudo service chrony restart
 </pre>
 <p><p>
@@ -943,7 +943,7 @@ $ sudo service chrony restart
 <p><p>
 <table><tr><td>คำถาม <b>PROJECT</b> วิชา คพ. 449: (4) ไฟล์ interfaces ต่างจาก interfaces ใน ส่วนที่ 1 อย่างไร </td></tr></table>
 <pre>
-$ sudo cp <a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/documents/Example.OPSInstaller/compute/files/interfaces">files/interfaces</a> /etc/network/interfaces
+$ sudo cp <a href="https://github.com/kasidit/openstack-queens-installer/blob/master/documents/Example.OPSInstaller/compute/files/interfaces">files/interfaces</a> /etc/network/interfaces
 $ sudo ifdown ens3
 $ sudo ifup ens3
 $ sudo ifdown ens4
@@ -957,13 +957,13 @@ $ sudo apt-get -y install chrony
 </pre>
 <table>
 <tr><td>คำถาม <b>PROJECT</b> วิชา คพ. 449: (5) ค่าที่กำหนดในไฟล์ chrony.conf หมายถึงอะไร </td></tr>
-<tr><td>Hint : See <a href="https://docs.openstack.org/ocata/install-guide-ubuntu/environment-ntp-other.html">Network Time Protocol on controller</a>, <a href="https://docs.openstack.org/ocata/install-guide-ubuntu/environment-ntp-verify.html">Verify</a></td></tr>
+<tr><td>Hint : See <a href="https://docs.openstack.org/queens/install-guide-ubuntu/environment-ntp-other.html">Network Time Protocol on controller</a>, <a href="https://docs.openstack.org/queens/install-guide-ubuntu/environment-ntp-verify.html">Verify</a></td></tr>
 <tr><td>ตัวอย่าง configuration files ที่ลบ comments ออก: 
-<a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/documents/Example.OPSInstaller/compute/files/nocomment/chrony.conf.nocomment">chrony.conf</a>
+<a href="https://github.com/kasidit/openstack-queens-installer/blob/master/documents/Example.OPSInstaller/compute/files/nocomment/chrony.conf.nocomment">chrony.conf</a>
 </td></tr>  
 </table>
 <pre>
-$ sudo cp <a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/documents/Example.OPSInstaller/compute/files/chrony.conf">files/chrony.conf</a> /etc/chrony/chrony.conf
+$ sudo cp <a href="https://github.com/kasidit/openstack-queens-installer/blob/master/documents/Example.OPSInstaller/compute/files/chrony.conf">files/chrony.conf</a> /etc/chrony/chrony.conf
 $ sudo service chrony restart
 </pre>
 <p><p>
@@ -971,7 +971,7 @@ $ sudo service chrony restart
 <p><p>
 <table><tr><td>คำถาม <b>PROJECT</b> วิชา คพ. 449: (6) ไฟล์ interfaces ต่างจาก interfaces ใน ส่วนที่ 1 อย่างไร </td></tr></table>
 <pre>
-$ sudo cp <a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/documents/Example.OPSInstaller/compute1/files/interfaces">files/interfaces</a> /etc/network/interfaces
+$ sudo cp <a href="https://github.com/kasidit/openstack-queens-installer/blob/master/documents/Example.OPSInstaller/compute1/files/interfaces">files/interfaces</a> /etc/network/interfaces
 $ sudo ifdown ens3
 $ sudo ifup ens3
 $ sudo ifdown ens4
@@ -985,13 +985,13 @@ $ sudo apt-get -y install chrony
 </pre>
 <table>
 <tr><td>คำถาม <b>PROJECT</b> วิชา คพ. 449: (7) ค่าที่กำหนดในไฟล์ chrony.conf หมายถึงอะไร </td></tr>
-<tr><td>Hint : See <a href="https://docs.openstack.org/ocata/install-guide-ubuntu/environment-ntp-other.html">Network Time Protocol on controller</a>, <a href="https://docs.openstack.org/ocata/install-guide-ubuntu/environment-ntp-verify.html">Verify</a></td></tr>
+<tr><td>Hint : See <a href="https://docs.openstack.org/queens/install-guide-ubuntu/environment-ntp-other.html">Network Time Protocol on controller</a>, <a href="https://docs.openstack.org/queens/install-guide-ubuntu/environment-ntp-verify.html">Verify</a></td></tr>
 <tr><td>ตัวอย่าง configuration files ที่ลบ comments ออก: 
-<a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/documents/Example.OPSInstaller/compute1/files/nocomment/chrony.conf.nocomment">chrony.conf</a>
+<a href="https://github.com/kasidit/openstack-queens-installer/blob/master/documents/Example.OPSInstaller/compute1/files/nocomment/chrony.conf.nocomment">chrony.conf</a>
 </td></tr>   
 </table>
 <pre>
-$ sudo cp <a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/documents/Example.OPSInstaller/compute1/files/chrony.conf">files/chrony.conf</a> /etc/chrony/chrony.conf
+$ sudo cp <a href="https://github.com/kasidit/openstack-queens-installer/blob/master/documents/Example.OPSInstaller/compute1/files/chrony.conf">files/chrony.conf</a> /etc/chrony/chrony.conf
 $ sudo service chrony restart
 </pre>
 <p><p>
@@ -1006,10 +1006,10 @@ $ sudo apt-get -y install python-pymysql
 </pre>
 <table>
 <tr><td>คำถาม <b>PROJECT</b> วิชา คพ. 449: (8) นศ ต้องกำหนดค่าอะไรบ้างในไฟล์  99-openstack.cnf </td></tr>
-<tr><td>Hint : See <a href="https://docs.openstack.org/ocata/install-guide-ubuntu/environment-sql-database.html">Install/config mysql</a></td></tr>
+<tr><td>Hint : See <a href="https://docs.openstack.org/queens/install-guide-ubuntu/environment-sql-database.html">Install/config mysql</a></td></tr>
 </table>
 <pre>
-cp <a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/documents/Example.OPSInstaller/controller/files/99-openstack.cnf">files/99-openstack.cnf</a> /etc/mysql/mariadb.conf.d/99-openstack.cnf
+cp <a href="https://github.com/kasidit/openstack-queens-installer/blob/master/documents/Example.OPSInstaller/controller/files/99-openstack.cnf">files/99-openstack.cnf</a> /etc/mysql/mariadb.conf.d/99-openstack.cnf
 service mysql restart
 mysql_secure_installation
 </pre>
@@ -1027,7 +1027,7 @@ $ sudo chronyc sources
 </pre>
 <table>
  <tr><td>คำถาม <b>PROJECT</b> วิชา คพ. 449: (9) ผลการรัน chronyc ต่างจากบนเครื่อง controller อย่างไร </td></tr>
-<tr><td>Hint : See <a href="https://docs.openstack.org/ocata/install-guide-ubuntu/environment-ntp-verify.html">Verify</a></td></tr>
+<tr><td>Hint : See <a href="https://docs.openstack.org/queens/install-guide-ubuntu/environment-ntp-verify.html">Verify</a></td></tr>
 </table>
 <p><p>
 <b>เครื่อง compute1</b>
@@ -1050,14 +1050,14 @@ $ sudo apt-get install memcached python-memcache
 </pre>
 <table>
 <tr><td>คำถาม <b>PROJECT</b> วิชา คพ. 449: (10) memcache คืออะไร มีการกำหนดค่าอะไรใน memcached.conf </td></tr>
-<tr><td>Hint : See <a href="https://docs.openstack.org/ocata/install-guide-ubuntu/environment-messaging.html">RabbitMQ</a>, <a href="https://docs.openstack.org/ocata/install-guide-ubuntu/environment-memcached.html">Memcache</a></td></tr>
+<tr><td>Hint : See <a href="https://docs.openstack.org/queens/install-guide-ubuntu/environment-messaging.html">RabbitMQ</a>, <a href="https://docs.openstack.org/queens/install-guide-ubuntu/environment-memcached.html">Memcache</a></td></tr>
 <tr><td>ตัวอย่าง configuration files ที่ลบ comments ออก: 
-<a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/documents/Example.OPSInstaller/controller/files/nocomment/memcached.conf.nocomment">memcached.conf</a>
+<a href="https://github.com/kasidit/openstack-queens-installer/blob/master/documents/Example.OPSInstaller/controller/files/nocomment/memcached.conf.nocomment">memcached.conf</a>
 </td></tr> 
 </table>
 </pre>
 <pre>
-$ sudo cp <a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/documents/Example.OPSInstaller/controller/files/memcached.conf">files/memcached.conf</a> /etc/memcached.conf
+$ sudo cp <a href="https://github.com/kasidit/openstack-queens-installer/blob/master/documents/Example.OPSInstaller/controller/files/memcached.conf">files/memcached.conf</a> /etc/memcached.conf
 $ sudo service memcached restart
 </pre>
 <p><p>
@@ -1078,13 +1078,13 @@ S sudo apt-get -y install keystone
 </pre>
 <table>
 <tr><td>คำถาม <b>PROJECT</b> วิชา คพ. 449: (11) มีการกำหนดค่าอะไรใน keystone.conf  </td></tr>
-<tr><td>Hint : See <a href="https://docs.openstack.org/ocata/install-guide-ubuntu/keystone.html">Install Keystone</a></td></tr>
+<tr><td>Hint : See <a href="https://docs.openstack.org/queens/install-guide-ubuntu/keystone.html">Install Keystone</a></td></tr>
 <tr><td>ตัวอย่าง configuration files ที่ลบ comments ออก: 
-<a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/documents/Example.OPSInstaller/controller/files/nocomment/keystone.conf.nocomment">keystone.conf</a>
+<a href="https://github.com/kasidit/openstack-queens-installer/blob/master/documents/Example.OPSInstaller/controller/files/nocomment/keystone.conf.nocomment">keystone.conf</a>
 </td></tr>  
 </table>
 <pre>
-$ sudo cp <a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/documents/Example.OPSInstaller/controller/files/keystone.conf">files/keystone.conf</a> /etc/keystone/keystone.conf
+$ sudo cp <a href="https://github.com/kasidit/openstack-queens-installer/blob/master/documents/Example.OPSInstaller/controller/files/keystone.conf">files/keystone.conf</a> /etc/keystone/keystone.conf
 $ sudo su -s /bin/sh -c "keystone-manage db_sync" keystone
 $
 $ sudo keystone-manage fernet_setup --keystone-user keystone --keystone-group keystone
@@ -1099,13 +1099,13 @@ $
 </pre>
 <table>
 <tr><td>คำถาม <b>PROJECT</b> วิชา คพ. 449: (12) มีการกำหนดค่าอะไรใน apache2.conf  </td></tr>
-<tr><td>Hint : See <a href="https://docs.openstack.org/ocata/install-guide-ubuntu/keystone.html">Install Keystone</a></td></tr>
+<tr><td>Hint : See <a href="https://docs.openstack.org/queens/install-guide-ubuntu/keystone.html">Install Keystone</a></td></tr>
 <tr><td>ตัวอย่าง configuration files ที่ลบ comments ออก: 
-<a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/documents/Example.OPSInstaller/controller/files/nocomment/apache2.conf.nocomment">apache2.conf</a>
+<a href="https://github.com/kasidit/openstack-queens-installer/blob/master/documents/Example.OPSInstaller/controller/files/nocomment/apache2.conf.nocomment">apache2.conf</a>
 </td></tr>  
 </table>
 <pre>
-$ sudo cp <a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/documents/Example.OPSInstaller/controller/files/apache2.conf">files/apache2.conf</a> /etc/apache2/apache2.conf
+$ sudo cp <a href="https://github.com/kasidit/openstack-queens-installer/blob/master/documents/Example.OPSInstaller/controller/files/apache2.conf">files/apache2.conf</a> /etc/apache2/apache2.conf
 $ sudo service apache2 restart
 $ sudo rm -f /var/lib/keystone/keystone.db
 </pre>
@@ -1138,13 +1138,13 @@ $
 </pre>
 <table>
 <tr><td>คำถาม <b>PROJECT</b> วิชา คพ. 449: (13) มีการกำหนดค่าอะไรใน keystone-paste.conf (คำถามนี้อาจถูกลบออกเนื่องจากบรรทัดถัดไปอาจ Deprecate)</td></tr>
-<tr><td>Hint : See <a href="https://docs.openstack.org/ocata/install-guide-ubuntu/keystone-verify.html">Verify Keystone</a></td></tr>
+<tr><td>Hint : See <a href="https://docs.openstack.org/queens/install-guide-ubuntu/keystone-verify.html">Verify Keystone</a></td></tr>
 <tr><td>ตัวอย่าง configuration files ที่ลบ comments ออก: 
-<a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/documents/Example.OPSInstaller/controller/files/nocomment/keystone-paste.ini.nocomment">keystone-paste.ini</a>
+<a href="https://github.com/kasidit/openstack-queens-installer/blob/master/documents/Example.OPSInstaller/controller/files/nocomment/keystone-paste.ini.nocomment">keystone-paste.ini</a>
 </td></tr>
 </table>
 <pre>
-$ sudo cp <a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/documents/Example.OPSInstaller/controller/files/keystone-paste.ini">files/keystone-paste.ini</a> /etc/keystone/keystone-paste.ini
+$ sudo cp <a href="https://github.com/kasidit/openstack-queens-installer/blob/master/documents/Example.OPSInstaller/controller/files/keystone-paste.ini">files/keystone-paste.ini</a> /etc/keystone/keystone-paste.ini
 $
 </pre>
 คำสั่งสองคำสั่งถัดไป ทดสอบว่า keystone ทำงานถูกต้อง โดยใช้สองคำสั่งถัดไปเรียกดู token สำหรับ admin และ demo users
@@ -1161,10 +1161,10 @@ $ openstack --os-auth-url http://controller:5000/v3 \
   --os-project-name demo --os-username demo --os-password demopassword token issue
 $
 </pre>
-ให้ นศ สร้างไฟล์ <a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/documents/Example.OPSInstaller/controller/admin-openrc.sh">./admin-openrc.sh</a> และทดสอบว่าสามารถเรียกใช้คำสั่ง openstack CLI ได้
+ให้ นศ สร้างไฟล์ <a href="https://github.com/kasidit/openstack-queens-installer/blob/master/documents/Example.OPSInstaller/controller/admin-openrc.sh">./admin-openrc.sh</a> และทดสอบว่าสามารถเรียกใช้คำสั่ง openstack CLI ได้
 <p>
 <pre>
-$ vi <a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/documents/Example.OPSInstaller/controller/admin-openrc.sh">./admin-openrc.sh</a>
+$ vi <a href="https://github.com/kasidit/openstack-queens-installer/blob/master/documents/Example.OPSInstaller/controller/admin-openrc.sh">./admin-openrc.sh</a>
 $ source ./admin-openrc.sh
 $ openstack token issue
 </pre>
@@ -1205,15 +1205,15 @@ $ sudo apt-get -y install glance
 </pre>
 <table>
 <tr><td>คำถาม <b>PROJECT</b> วิชา คพ. 449: (14) มีการกำหนดค่าอะไรใน glance-api.conf และ glance-registry.conf </td></tr>
-<tr><td>Hint : See <a href="https://docs.openstack.org/ocata/install-guide-ubuntu/glance.html">Install Glance</a></td></tr>
+<tr><td>Hint : See <a href="https://docs.openstack.org/queens/install-guide-ubuntu/glance.html">Install Glance</a></td></tr>
 <tr><td>ตัวอย่าง configuration files ที่ลบ comments ออก: 
-<a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/documents/Example.OPSInstaller/controller/files/nocomment/glance-api.conf.nocomment">glance-api.conf</a>, 
-<a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/documents/Example.OPSInstaller/controller/files/nocomment/glance-registry.conf.nocomment">glance-api.conf</a>
+<a href="https://github.com/kasidit/openstack-queens-installer/blob/master/documents/Example.OPSInstaller/controller/files/nocomment/glance-api.conf.nocomment">glance-api.conf</a>, 
+<a href="https://github.com/kasidit/openstack-queens-installer/blob/master/documents/Example.OPSInstaller/controller/files/nocomment/glance-registry.conf.nocomment">glance-api.conf</a>
 </td></tr>
 </table>
 <pre>
-$ sudo cp <a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/documents/Example.OPSInstaller/controller/files/glance-api.conf">files/glance-api.conf</a> /etc/glance/glance-api.conf
-$ sudo cp <a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/documents/Example.OPSInstaller/controller/files/glance-registry.conf">files/glance-registry.conf</a> /etc/glance/glance-registry.conf
+$ sudo cp <a href="https://github.com/kasidit/openstack-queens-installer/blob/master/documents/Example.OPSInstaller/controller/files/glance-api.conf">files/glance-api.conf</a> /etc/glance/glance-api.conf
+$ sudo cp <a href="https://github.com/kasidit/openstack-queens-installer/blob/master/documents/Example.OPSInstaller/controller/files/glance-registry.conf">files/glance-registry.conf</a> /etc/glance/glance-registry.conf
 $
 $ sudo su -s /bin/sh -c "glance-manage db_sync" glance
 $
@@ -1287,13 +1287,13 @@ $
 </pre>
 <table>
 <tr><td>คำถาม <b>PROJECT</b> วิชา คพ. 449: (15) มีการกำหนดค่าอะไรใน nova.conf </td></tr>
-<tr><td>Hint : See <a href="https://docs.openstack.org/ocata/install-guide-ubuntu/nova.html">Install Nova</a></td></tr>
+<tr><td>Hint : See <a href="https://docs.openstack.org/queens/install-guide-ubuntu/nova.html">Install Nova</a></td></tr>
 <tr><td>ตัวอย่าง configuration files ที่ลบ comments ออก: 
-<a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/documents/Example.OPSInstaller/controller/files/nocomment/nova.conf.nocomment">nova.conf</a>
+<a href="https://github.com/kasidit/openstack-queens-installer/blob/master/documents/Example.OPSInstaller/controller/files/nocomment/nova.conf.nocomment">nova.conf</a>
 </td></tr>
 </table>
 <pre>
-$ sudo cp <a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/documents/Example.OPSInstaller/controller/files/nova.conf">files/nova.conf</a> /etc/nova/nova.conf
+$ sudo cp <a href="https://github.com/kasidit/openstack-queens-installer/blob/master/documents/Example.OPSInstaller/controller/files/nova.conf">files/nova.conf</a> /etc/nova/nova.conf
 $
 $ sudo su -s /bin/sh -c "nova-manage api_db sync" nova
 $ sudo su -s /bin/sh -c "nova-manage cell_v2 map_cell0" nova
@@ -1316,15 +1316,15 @@ $ sudo apt-get -y install nova-compute
 </pre>
 <table>
 <tr><td>คำถาม <b>PROJECT</b> วิชา คพ. 449: (16) มีการกำหนดค่าอะไรใน nova.conf nova-compute.conf (บนเครื่อง compute)</td></tr>
-<tr><td>Hint : See <a href="https://docs.openstack.org/ocata/install-guide-ubuntu/nova.html">Install Nova</a></td></tr>
+<tr><td>Hint : See <a href="https://docs.openstack.org/queens/install-guide-ubuntu/nova.html">Install Nova</a></td></tr>
 <tr><td>ตัวอย่าง configuration files ที่ลบ comments ออก: 
-<a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/documents/Example.OPSInstaller/compute/files/nocomment/nova.conf.nocomment">nova.conf</a>,
-<a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/documents/Example.OPSInstaller/compute/files/nocomment/nova-compute.conf.nocomment">nova-compute.conf</a> 
+<a href="https://github.com/kasidit/openstack-queens-installer/blob/master/documents/Example.OPSInstaller/compute/files/nocomment/nova.conf.nocomment">nova.conf</a>,
+<a href="https://github.com/kasidit/openstack-queens-installer/blob/master/documents/Example.OPSInstaller/compute/files/nocomment/nova-compute.conf.nocomment">nova-compute.conf</a> 
 </td></tr>
 </table>
 <pre>
-$ sudo cp <a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/documents/Example.OPSInstaller/compute/files/nova.conf">files/nova.conf</a> /etc/nova/nova.conf
-$ sudo cp <a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/documents/Example.OPSInstaller/compute/files/nova-compute.conf">files/nova-compute.conf</a> /etc/nova/nova-compute.conf
+$ sudo cp <a href="https://github.com/kasidit/openstack-queens-installer/blob/master/documents/Example.OPSInstaller/compute/files/nova.conf">files/nova.conf</a> /etc/nova/nova.conf
+$ sudo cp <a href="https://github.com/kasidit/openstack-queens-installer/blob/master/documents/Example.OPSInstaller/compute/files/nova-compute.conf">files/nova-compute.conf</a> /etc/nova/nova-compute.conf
 $
 $ sudo service nova-compute restart
 </pre>
@@ -1337,15 +1337,15 @@ $
 </pre>
 <table>
 <tr><td>คำถาม <b>PROJECT</b> วิชา คพ. 449: (17) มีการกำหนดค่าอะไรใน nova.conf nova-compute.conf (บนเครื่อง compute)</td></tr>
-<tr><td>Hint : See <a href="https://docs.openstack.org/ocata/install-guide-ubuntu/nova.html">Install Nova</a></td></tr>
+<tr><td>Hint : See <a href="https://docs.openstack.org/queens/install-guide-ubuntu/nova.html">Install Nova</a></td></tr>
 <tr><td>ตัวอย่าง configuration files ที่ลบ comments ออก: 
-<a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/documents/Example.OPSInstaller/compute1/files/nocomment/nova.conf.nocomment">nova.conf</a>,
-<a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/documents/Example.OPSInstaller/compute1/files/nocomment/nova-compute.conf.nocomment">nova-compute.conf</a> 
+<a href="https://github.com/kasidit/openstack-queens-installer/blob/master/documents/Example.OPSInstaller/compute1/files/nocomment/nova.conf.nocomment">nova.conf</a>,
+<a href="https://github.com/kasidit/openstack-queens-installer/blob/master/documents/Example.OPSInstaller/compute1/files/nocomment/nova-compute.conf.nocomment">nova-compute.conf</a> 
 </td></tr>
 </table>
 <pre>
-$ sudo cp <a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/documents/Example.OPSInstaller/compute1/files/nova.conf">files/nova.conf</a> /etc/nova/nova.conf
-$ sudo cp <a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/documents/Example.OPSInstaller/compute1/files/nova-compute.conf">files/nova-compute.conf</a> /etc/nova/nova-compute.conf
+$ sudo cp <a href="https://github.com/kasidit/openstack-queens-installer/blob/master/documents/Example.OPSInstaller/compute1/files/nova.conf">files/nova.conf</a> /etc/nova/nova.conf
+$ sudo cp <a href="https://github.com/kasidit/openstack-queens-installer/blob/master/documents/Example.OPSInstaller/compute1/files/nova-compute.conf">files/nova-compute.conf</a> /etc/nova/nova-compute.conf
 $
 $ sudo service nova-compute restart
 </pre>
@@ -1415,17 +1415,17 @@ $
 </pre>
 <table>
 <tr><td>คำถาม <b>PROJECT</b> วิชา คพ. 449: (18) มีการกำหนดค่าอะไรใน neutron.conf ml2_conf.ini nova.conf </td></tr>
-<tr><td>Hint: <a href="https://docs.openstack.org/ocata/install-guide-ubuntu/neutron.html">Neutron Basic Install</a>,<a href="https://docs.openstack.org/ocata/networking-guide/deploy-ovs.html">Neutron OVS Mechanisms</a>,<a href="https://docs.openstack.org/ocata/networking-guide/deploy-ovs-provider.html">Neutron OVS provider</a>, <a href="https://docs.openstack.org/ocata/networking-guide/deploy-ovs-selfservice.html">Neutron OVS Self-service</a>  </td></tr>
+<tr><td>Hint: <a href="https://docs.openstack.org/queens/install-guide-ubuntu/neutron.html">Neutron Basic Install</a>,<a href="https://docs.openstack.org/queens/networking-guide/deploy-ovs.html">Neutron OVS Mechanisms</a>,<a href="https://docs.openstack.org/queens/networking-guide/deploy-ovs-provider.html">Neutron OVS provider</a>, <a href="https://docs.openstack.org/queens/networking-guide/deploy-ovs-selfservice.html">Neutron OVS Self-service</a>  </td></tr>
 <tr><td>ตัวอย่าง configuration files ที่ลบ comments ออก: 
-<a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/documents/Example.OPSInstaller/controller/files/nocomment/neutron.conf.nocomment">neutron.conf</a>,
-<a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/documents/Example.OPSInstaller/controller/files/nocomment/ml2_conf.ini.nocomment">ml2_conf.ini</a>,  
-<a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/documents/Example.OPSInstaller/controller/files/nocomment/nova-stage23.conf.nocomment">nova-stage23.conf</a> 
+<a href="https://github.com/kasidit/openstack-queens-installer/blob/master/documents/Example.OPSInstaller/controller/files/nocomment/neutron.conf.nocomment">neutron.conf</a>,
+<a href="https://github.com/kasidit/openstack-queens-installer/blob/master/documents/Example.OPSInstaller/controller/files/nocomment/ml2_conf.ini.nocomment">ml2_conf.ini</a>,  
+<a href="https://github.com/kasidit/openstack-queens-installer/blob/master/documents/Example.OPSInstaller/controller/files/nocomment/nova-stage23.conf.nocomment">nova-stage23.conf</a> 
 </td></tr>
 </table>
 <pre>
-$ sudo cp <a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/documents/Example.OPSInstaller/controller/files/neutron.conf">files/neutron.conf</a> /etc/neutron/neutron.conf
-$ sudo cp <a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/documents/Example.OPSInstaller/controller/files/ml2_conf.ini">files/ml2_conf.ini</a> /etc/neutron/plugins/ml2/ml2_conf.ini
-$ sudo cp <a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/documents/Example.OPSInstaller/controller/files/nova-stage23.conf">files/nova-stage23.conf</a> /etc/nova/nova.conf
+$ sudo cp <a href="https://github.com/kasidit/openstack-queens-installer/blob/master/documents/Example.OPSInstaller/controller/files/neutron.conf">files/neutron.conf</a> /etc/neutron/neutron.conf
+$ sudo cp <a href="https://github.com/kasidit/openstack-queens-installer/blob/master/documents/Example.OPSInstaller/controller/files/ml2_conf.ini">files/ml2_conf.ini</a> /etc/neutron/plugins/ml2/ml2_conf.ini
+$ sudo cp <a href="https://github.com/kasidit/openstack-queens-installer/blob/master/documents/Example.OPSInstaller/controller/files/nova-stage23.conf">files/nova-stage23.conf</a> /etc/nova/nova.conf
 $
 $ sudo su -s /bin/sh -c "neutron-db-manage --config-file /etc/neutron/neutron.conf \
   --config-file /etc/neutron/plugins/ml2/ml2_conf.ini upgrade head" neutron
@@ -1449,15 +1449,15 @@ $
 </pre>
 <table>
 <tr><td>คำถาม <b>PROJECT</b> วิชา คพ. 449: (19) มีการกำหนดค่าอะไรใน neutron.conf ml2_conf.ini </td></tr>
-<tr><td>Hint: <a href="https://docs.openstack.org/ocata/install-guide-ubuntu/neutron.html">Neutron Basic Install</a>,<a href="https://docs.openstack.org/ocata/networking-guide/deploy-ovs.html">Neutron OVS Mechanisms</a>,<a href="https://docs.openstack.org/ocata/networking-guide/deploy-ovs-provider.html">Neutron OVS provider</a>, <a href="https://docs.openstack.org/ocata/networking-guide/deploy-ovs-selfservice.html">Neutron OVS Self-service</a>  </td></tr>
+<tr><td>Hint: <a href="https://docs.openstack.org/queens/install-guide-ubuntu/neutron.html">Neutron Basic Install</a>,<a href="https://docs.openstack.org/queens/networking-guide/deploy-ovs.html">Neutron OVS Mechanisms</a>,<a href="https://docs.openstack.org/queens/networking-guide/deploy-ovs-provider.html">Neutron OVS provider</a>, <a href="https://docs.openstack.org/queens/networking-guide/deploy-ovs-selfservice.html">Neutron OVS Self-service</a>  </td></tr>
 <tr><td>ตัวอย่าง configuration files ที่ลบ comments ออก: 
-<a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/documents/Example.OPSInstaller/network/files/nocomment/neutron.conf.nocomment">neutron.conf</a>,
-<a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/documents/Example.OPSInstaller/network/files/nocomment/ml2_conf.ini.nocomment">ml2_conf.ini</a>
+<a href="https://github.com/kasidit/openstack-queens-installer/blob/master/documents/Example.OPSInstaller/network/files/nocomment/neutron.conf.nocomment">neutron.conf</a>,
+<a href="https://github.com/kasidit/openstack-queens-installer/blob/master/documents/Example.OPSInstaller/network/files/nocomment/ml2_conf.ini.nocomment">ml2_conf.ini</a>
 </td></tr>
 </table>
 <pre>
-$ sudo cp <a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/documents/Example.OPSInstaller/network/files/neutron.conf">files/neutron.conf</a> /etc/neutron/neutron.conf
-$ sudo cp <a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/documents/Example.OPSInstaller/network/files/ml2_conf.ini">files/ml2_conf.ini</a> /etc/neutron/plugins/ml2/ml2_conf.ini
+$ sudo cp <a href="https://github.com/kasidit/openstack-queens-installer/blob/master/documents/Example.OPSInstaller/network/files/neutron.conf">files/neutron.conf</a> /etc/neutron/neutron.conf
+$ sudo cp <a href="https://github.com/kasidit/openstack-queens-installer/blob/master/documents/Example.OPSInstaller/network/files/ml2_conf.ini">files/ml2_conf.ini</a> /etc/neutron/plugins/ml2/ml2_conf.ini
 $
 $ sudo service openvswitch-switch start
 </pre>
@@ -1471,15 +1471,15 @@ $ sudo ovs-vsctl add-port br-vlan ens5
 </pre>
 <table>
 <tr><td>คำถาม <b>PROJECT</b> วิชา คพ. 449: (20) มีการกำหนดค่าอะไรใน openvswitch_agent.ini l3_agent.ini </td></tr>
-<tr><td>Hint: <a href="https://docs.openstack.org/ocata/install-guide-ubuntu/neutron.html">Neutron Basic Install</a>,<a href="https://docs.openstack.org/ocata/networking-guide/deploy-ovs.html">Neutron OVS Mechanisms</a>,<a href="https://docs.openstack.org/ocata/networking-guide/deploy-ovs-provider.html">Neutron OVS provider</a>, <a href="https://docs.openstack.org/ocata/networking-guide/deploy-ovs-selfservice.html">Neutron OVS Self-service</a>  </td></tr>
+<tr><td>Hint: <a href="https://docs.openstack.org/queens/install-guide-ubuntu/neutron.html">Neutron Basic Install</a>,<a href="https://docs.openstack.org/queens/networking-guide/deploy-ovs.html">Neutron OVS Mechanisms</a>,<a href="https://docs.openstack.org/queens/networking-guide/deploy-ovs-provider.html">Neutron OVS provider</a>, <a href="https://docs.openstack.org/queens/networking-guide/deploy-ovs-selfservice.html">Neutron OVS Self-service</a>  </td></tr>
 <tr><td>ตัวอย่าง configuration files ที่ลบ comments ออก: 
-<a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/documents/Example.OPSInstaller/network/files/nocomment/openvswitch_agent.ini.nocomment">openvswitch_agent.ini</a>,
-<a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/documents/Example.OPSInstaller/network/files/nocomment/l3_agent.ini.nocomment">l3_agent.ini</a>
+<a href="https://github.com/kasidit/openstack-queens-installer/blob/master/documents/Example.OPSInstaller/network/files/nocomment/openvswitch_agent.ini.nocomment">openvswitch_agent.ini</a>,
+<a href="https://github.com/kasidit/openstack-queens-installer/blob/master/documents/Example.OPSInstaller/network/files/nocomment/l3_agent.ini.nocomment">l3_agent.ini</a>
 </td></tr>
 </table>
 <pre>
-$ sudo cp <a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/documents/Example.OPSInstaller/network/files/openvswitch_agent.ini">files/openvswitch_agent.ini</a> /etc/neutron/plugins/ml2/openvswitch_agent.ini
-$ sudo cp <a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/documents/Example.OPSInstaller/network/files/l3_agent.ini">files/l3_agent.ini</a> /etc/neutron/l3_agent.ini
+$ sudo cp <a href="https://github.com/kasidit/openstack-queens-installer/blob/master/documents/Example.OPSInstaller/network/files/openvswitch_agent.ini">files/openvswitch_agent.ini</a> /etc/neutron/plugins/ml2/openvswitch_agent.ini
+$ sudo cp <a href="https://github.com/kasidit/openstack-queens-installer/blob/master/documents/Example.OPSInstaller/network/files/l3_agent.ini">files/l3_agent.ini</a> /etc/neutron/l3_agent.ini
 $
 $ sudo service openvswitch-switch restart
 $ sudo service neutron-openvswitch-agent restart
@@ -1502,21 +1502,21 @@ $ sudo apt-get -y install neutron-dhcp-agent neutron-metadata-agent
 </pre>
 <table>
 <tr><td>คำถาม <b>PROJECT</b> วิชา คพ. 449: (21) มีการกำหนดค่าอะไรใน neutron.conf ml2_conf.ini openvswitch_agent.ini dhcp_agent.ini metadata_agent.ini </td></tr>
-<tr><td>Hint: <a href="https://docs.openstack.org/ocata/install-guide-ubuntu/neutron.html">Neutron Basic Install</a>,<a href="https://docs.openstack.org/ocata/networking-guide/deploy-ovs.html">Neutron OVS Mechanisms</a>,<a href="https://docs.openstack.org/ocata/networking-guide/deploy-ovs-provider.html">Neutron OVS provider</a>, <a href="https://docs.openstack.org/ocata/networking-guide/deploy-ovs-selfservice.html">Neutron OVS Self-service</a>  </td></tr>
+<tr><td>Hint: <a href="https://docs.openstack.org/queens/install-guide-ubuntu/neutron.html">Neutron Basic Install</a>,<a href="https://docs.openstack.org/queens/networking-guide/deploy-ovs.html">Neutron OVS Mechanisms</a>,<a href="https://docs.openstack.org/queens/networking-guide/deploy-ovs-provider.html">Neutron OVS provider</a>, <a href="https://docs.openstack.org/queens/networking-guide/deploy-ovs-selfservice.html">Neutron OVS Self-service</a>  </td></tr>
 <tr><td>ตัวอย่าง configuration files ที่ลบ comments ออก: 
-<a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/documents/Example.OPSInstaller/compute/files/nocomment/neutron.conf.nocomment">neutron.conf</a>,
-<a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/documents/Example.OPSInstaller/compute/files/nocomment/ml2_conf.ini.nocomment">ml2_conf.ini</a>,
-<a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/documents/Example.OPSInstaller/compute/files/nocomment/openvswitch_agent.ini.nocomment">openvswitch_agent.ini</a>,
-<a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/documents/Example.OPSInstaller/compute/files/nocomment/dhcp_agent.ini.nocomment">dhcp_agent.ini</a>,
-<a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/documents/Example.OPSInstaller/compute/files/nocomment/metadata_agent.ini.nocomment">metadata_agent.ini</a>
+<a href="https://github.com/kasidit/openstack-queens-installer/blob/master/documents/Example.OPSInstaller/compute/files/nocomment/neutron.conf.nocomment">neutron.conf</a>,
+<a href="https://github.com/kasidit/openstack-queens-installer/blob/master/documents/Example.OPSInstaller/compute/files/nocomment/ml2_conf.ini.nocomment">ml2_conf.ini</a>,
+<a href="https://github.com/kasidit/openstack-queens-installer/blob/master/documents/Example.OPSInstaller/compute/files/nocomment/openvswitch_agent.ini.nocomment">openvswitch_agent.ini</a>,
+<a href="https://github.com/kasidit/openstack-queens-installer/blob/master/documents/Example.OPSInstaller/compute/files/nocomment/dhcp_agent.ini.nocomment">dhcp_agent.ini</a>,
+<a href="https://github.com/kasidit/openstack-queens-installer/blob/master/documents/Example.OPSInstaller/compute/files/nocomment/metadata_agent.ini.nocomment">metadata_agent.ini</a>
 </td></tr>
 </table>
 <pre>
-$ sudo cp <a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/documents/Example.OPSInstaller/compute/files/neutron.conf">files/neutron.conf</a> /etc/neutron/neutron.conf
-$ sudo cp <a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/documents/Example.OPSInstaller/compute/files/ml2_conf.ini">files/ml2_conf.ini</a> /etc/neutron/plugins/ml2/ml2_conf.ini
-$ sudo cp <a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/documents/Example.OPSInstaller/compute/files/openvswitch_agent.ini">files/openvswitch_agent.ini</a> /etc/neutron/plugins/ml2/openvswitch_agent.ini
-$ sudo cp <a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/documents/Example.OPSInstaller/compute/files/dhcp_agent.ini">files/dhcp_agent.ini</a> /etc/neutron/dhcp_agent.ini
-$ sudo cp <a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/documents/Example.OPSInstaller/compute/files/metadata_agent.ini">files/metadata_agent.ini</a> /etc/neutron/metadata_agent.ini
+$ sudo cp <a href="https://github.com/kasidit/openstack-queens-installer/blob/master/documents/Example.OPSInstaller/compute/files/neutron.conf">files/neutron.conf</a> /etc/neutron/neutron.conf
+$ sudo cp <a href="https://github.com/kasidit/openstack-queens-installer/blob/master/documents/Example.OPSInstaller/compute/files/ml2_conf.ini">files/ml2_conf.ini</a> /etc/neutron/plugins/ml2/ml2_conf.ini
+$ sudo cp <a href="https://github.com/kasidit/openstack-queens-installer/blob/master/documents/Example.OPSInstaller/compute/files/openvswitch_agent.ini">files/openvswitch_agent.ini</a> /etc/neutron/plugins/ml2/openvswitch_agent.ini
+$ sudo cp <a href="https://github.com/kasidit/openstack-queens-installer/blob/master/documents/Example.OPSInstaller/compute/files/dhcp_agent.ini">files/dhcp_agent.ini</a> /etc/neutron/dhcp_agent.ini
+$ sudo cp <a href="https://github.com/kasidit/openstack-queens-installer/blob/master/documents/Example.OPSInstaller/compute/files/metadata_agent.ini">files/metadata_agent.ini</a> /etc/neutron/metadata_agent.ini
 $
 $ sudo service openvswitch-switch start
 $
@@ -1533,13 +1533,13 @@ $
 </pre>
 <table>
 <tr><td>คำถาม <b>PROJECT</b> วิชา คพ. 449: (22) มีการกำหนดค่าอะไรใน nova.conf </td></tr>
-<tr><td>Hint: <a href="https://docs.openstack.org/ocata/install-guide-ubuntu/neutron.html">Neutron Basic Install</a>,<a href="https://docs.openstack.org/ocata/networking-guide/deploy-ovs.html">Neutron OVS Mechanisms</a>,<a href="https://docs.openstack.org/ocata/networking-guide/deploy-ovs-provider.html">Neutron OVS provider</a>, <a href="https://docs.openstack.org/ocata/networking-guide/deploy-ovs-selfservice.html">Neutron OVS Self-service</a>  </td></tr>
+<tr><td>Hint: <a href="https://docs.openstack.org/queens/install-guide-ubuntu/neutron.html">Neutron Basic Install</a>,<a href="https://docs.openstack.org/queens/networking-guide/deploy-ovs.html">Neutron OVS Mechanisms</a>,<a href="https://docs.openstack.org/queens/networking-guide/deploy-ovs-provider.html">Neutron OVS provider</a>, <a href="https://docs.openstack.org/queens/networking-guide/deploy-ovs-selfservice.html">Neutron OVS Self-service</a>  </td></tr>
 <tr><td>ตัวอย่าง configuration files ที่ลบ comments ออก: 
-<a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/documents/Example.OPSInstaller/compute/files/nocomment/nova-stage29.conf.nocomment">nova-stage29.conf</a>
+<a href="https://github.com/kasidit/openstack-queens-installer/blob/master/documents/Example.OPSInstaller/compute/files/nocomment/nova-stage29.conf.nocomment">nova-stage29.conf</a>
 </td></tr> 
 </table>
 <pre>
-$ sudo cp <a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/documents/Example.OPSInstaller/compute/files/nova-stage29.conf">files/nova-stage29.conf</a> /etc/nova/nova.conf
+$ sudo cp <a href="https://github.com/kasidit/openstack-queens-installer/blob/master/documents/Example.OPSInstaller/compute/files/nova-stage29.conf">files/nova-stage29.conf</a> /etc/nova/nova.conf
 $
 $ sudo service nova-compute restart
 $ sudo service openvswitch-switch restart
@@ -1556,21 +1556,21 @@ $ sudo apt-get -y install neutron-dhcp-agent neutron-metadata-agent
 </pre>
 <table>
 <tr><td>คำถาม <b>PROJECT</b> วิชา คพ. 449: (23) มีการกำหนดค่าอะไรใน neutron.conf ml2_conf.ini openvswitch_agent.ini dhcp_agent.ini metadata_agent.ini </td></tr>
-<tr><td>Hint: <a href="https://docs.openstack.org/ocata/install-guide-ubuntu/neutron.html">Neutron Basic Install</a>,<a href="https://docs.openstack.org/ocata/networking-guide/deploy-ovs.html">Neutron OVS Mechanisms</a>,<a href="https://docs.openstack.org/ocata/networking-guide/deploy-ovs-provider.html">Neutron OVS provider</a>, <a href="https://docs.openstack.org/ocata/networking-guide/deploy-ovs-selfservice.html">Neutron OVS Self-service</a>  </td></tr>
+<tr><td>Hint: <a href="https://docs.openstack.org/queens/install-guide-ubuntu/neutron.html">Neutron Basic Install</a>,<a href="https://docs.openstack.org/queens/networking-guide/deploy-ovs.html">Neutron OVS Mechanisms</a>,<a href="https://docs.openstack.org/queens/networking-guide/deploy-ovs-provider.html">Neutron OVS provider</a>, <a href="https://docs.openstack.org/queens/networking-guide/deploy-ovs-selfservice.html">Neutron OVS Self-service</a>  </td></tr>
 <tr><td>ตัวอย่าง configuration files ที่ลบ comments ออก: 
-<a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/documents/Example.OPSInstaller/compute1/files/nocomment/neutron.conf.nocomment">neutron.conf</a>,
-<a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/documents/Example.OPSInstaller/compute1/files/nocomment/ml2_conf.ini.nocomment">ml2_conf.ini</a>,
-<a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/documents/Example.OPSInstaller/compute1/files/nocomment/openvswitch_agent.ini.nocomment">openvswitch_agent.ini</a>,
-<a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/documents/Example.OPSInstaller/compute1/files/nocomment/dhcp_agent.ini.nocomment">dhcp_agent.ini</a>,
-<a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/documents/Example.OPSInstaller/compute1/files/nocomment/metadata_agent.ini.nocomment">metadata_agent.ini</a>
+<a href="https://github.com/kasidit/openstack-queens-installer/blob/master/documents/Example.OPSInstaller/compute1/files/nocomment/neutron.conf.nocomment">neutron.conf</a>,
+<a href="https://github.com/kasidit/openstack-queens-installer/blob/master/documents/Example.OPSInstaller/compute1/files/nocomment/ml2_conf.ini.nocomment">ml2_conf.ini</a>,
+<a href="https://github.com/kasidit/openstack-queens-installer/blob/master/documents/Example.OPSInstaller/compute1/files/nocomment/openvswitch_agent.ini.nocomment">openvswitch_agent.ini</a>,
+<a href="https://github.com/kasidit/openstack-queens-installer/blob/master/documents/Example.OPSInstaller/compute1/files/nocomment/dhcp_agent.ini.nocomment">dhcp_agent.ini</a>,
+<a href="https://github.com/kasidit/openstack-queens-installer/blob/master/documents/Example.OPSInstaller/compute1/files/nocomment/metadata_agent.ini.nocomment">metadata_agent.ini</a>
 </td></tr> 
 </table>
 <pre>
-$ sudo cp <a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/documents/Example.OPSInstaller/compute1/files/neutron.conf">files/neutron.conf</a> /etc/neutron/neutron.conf
-$ sudo cp <a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/documents/Example.OPSInstaller/compute1/files/ml2_conf.ini">files/ml2_conf.ini</a> /etc/neutron/plugins/ml2/ml2_conf.ini
-$ sudo cp <a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/documents/Example.OPSInstaller/compute1/files/openvswitch_agent.ini">files/openvswitch_agent.ini</a> /etc/neutron/plugins/ml2/openvswitch_agent.ini
-$ sudo cp <a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/documents/Example.OPSInstaller/compute1/files/dhcp_agent.ini">files/dhcp_agent.ini</a> /etc/neutron/dhcp_agent.ini
-$ sudo cp <a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/documents/Example.OPSInstaller/compute1/files/metadata_agent.ini">files/metadata_agent.ini</a> /etc/neutron/metadata_agent.ini
+$ sudo cp <a href="https://github.com/kasidit/openstack-queens-installer/blob/master/documents/Example.OPSInstaller/compute1/files/neutron.conf">files/neutron.conf</a> /etc/neutron/neutron.conf
+$ sudo cp <a href="https://github.com/kasidit/openstack-queens-installer/blob/master/documents/Example.OPSInstaller/compute1/files/ml2_conf.ini">files/ml2_conf.ini</a> /etc/neutron/plugins/ml2/ml2_conf.ini
+$ sudo cp <a href="https://github.com/kasidit/openstack-queens-installer/blob/master/documents/Example.OPSInstaller/compute1/files/openvswitch_agent.ini">files/openvswitch_agent.ini</a> /etc/neutron/plugins/ml2/openvswitch_agent.ini
+$ sudo cp <a href="https://github.com/kasidit/openstack-queens-installer/blob/master/documents/Example.OPSInstaller/compute1/files/dhcp_agent.ini">files/dhcp_agent.ini</a> /etc/neutron/dhcp_agent.ini
+$ sudo cp <a href="https://github.com/kasidit/openstack-queens-installer/blob/master/documents/Example.OPSInstaller/compute1/files/metadata_agent.ini">files/metadata_agent.ini</a> /etc/neutron/metadata_agent.ini
 $
 $ sudo service openvswitch-switch start
 $
@@ -1587,13 +1587,13 @@ $
 </pre>
 <table>
 <tr><td>คำถาม <b>PROJECT</b> วิชา คพ. 449: (24) มีการกำหนดค่าอะไรใน nova.conf </td></tr>
-<tr><td>Hint: <a href="https://docs.openstack.org/ocata/install-guide-ubuntu/neutron.html">Neutron Basic Install</a>,<a href="https://docs.openstack.org/ocata/networking-guide/deploy-ovs.html">Neutron OVS Mechanisms</a>,<a href="https://docs.openstack.org/ocata/networking-guide/deploy-ovs-provider.html">Neutron OVS provider</a>, <a href="https://docs.openstack.org/ocata/networking-guide/deploy-ovs-selfservice.html">Neutron OVS Self-service</a>  </td></tr>
+<tr><td>Hint: <a href="https://docs.openstack.org/queens/install-guide-ubuntu/neutron.html">Neutron Basic Install</a>,<a href="https://docs.openstack.org/queens/networking-guide/deploy-ovs.html">Neutron OVS Mechanisms</a>,<a href="https://docs.openstack.org/queens/networking-guide/deploy-ovs-provider.html">Neutron OVS provider</a>, <a href="https://docs.openstack.org/queens/networking-guide/deploy-ovs-selfservice.html">Neutron OVS Self-service</a>  </td></tr>
 <tr><td>ตัวอย่าง configuration files ที่ลบ comments ออก: 
-<a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/documents/Example.OPSInstaller/compute1/files/nocomment/nova-stage29.conf.nocomment">nova-stage29.conf</a>
+<a href="https://github.com/kasidit/openstack-queens-installer/blob/master/documents/Example.OPSInstaller/compute1/files/nocomment/nova-stage29.conf.nocomment">nova-stage29.conf</a>
 </td></tr>
 </table>
 <pre>
-$ sudo cp <a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/documents/Example.OPSInstaller/compute1/files/nova-stage29.conf">files/nova-stage29.conf</a> /etc/nova/nova.conf
+$ sudo cp <a href="https://github.com/kasidit/openstack-queens-installer/blob/master/documents/Example.OPSInstaller/compute1/files/nova-stage29.conf">files/nova-stage29.conf</a> /etc/nova/nova.conf
 $
 $ sudo service nova-compute restart
 $ sudo service openvswitch-switch restart
@@ -1620,10 +1620,10 @@ $ sudo apt-get -y install openstack-dashboard
 </pre>
 <table>
 <tr><td>คำถาม <b>PROJECT</b> วิชา คพ. 449: (25) มีการกำหนดค่าอะไรใน local_setting.py </td></tr>
-<tr><td>Hint : See <a href="https://docs.openstack.org/ocata/install-guide-ubuntu/horizon.html">Install Horizon</a></td></tr>
+<tr><td>Hint : See <a href="https://docs.openstack.org/queens/install-guide-ubuntu/horizon.html">Install Horizon</a></td></tr>
 </table>
 <p><pre>
-$ sudo cp <a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/documents/Example.OPSInstaller/controller/files/local_settings.py">files/local_settings.py</a> /etc/openstack-dashboard/local_settings.py
+$ sudo cp <a href="https://github.com/kasidit/openstack-queens-installer/blob/master/documents/Example.OPSInstaller/controller/files/local_settings.py">files/local_settings.py</a> /etc/openstack-dashboard/local_settings.py
 $ sudo service apache2 reload
 $
 $ sudo chown www-data:www-data /var/lib/openstack-dashboard/secret_key
@@ -1638,13 +1638,13 @@ $ sudo service apache2 reload
 <p><p>
 <table>
 <tr><td>คำถาม <b>PROJECT</b> วิชา คพ. 449: (26) มีการกำหนดค่าอะไรใน neutron.conf </td></tr>
-<tr><td>Hint: See <a href="https://docs.openstack.org/ocata/networking-guide/deploy-ovs-ha-dvr.html#deploy-ovs-ha-dvr">Openvswitch HA with DVR</a> </td></tr>
+<tr><td>Hint: See <a href="https://docs.openstack.org/queens/networking-guide/deploy-ovs-ha-dvr.html#deploy-ovs-ha-dvr">Openvswitch HA with DVR</a> </td></tr>
 <tr><td>ตัวอย่าง configuration files ที่ลบ comments ออก: 
-<a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/documents/Example.OPSInstaller/controller/files/nocomment/neutron_stage33.conf.nocomment">neutron_stage33.conf</a>
+<a href="https://github.com/kasidit/openstack-queens-installer/blob/master/documents/Example.OPSInstaller/controller/files/nocomment/neutron_stage33.conf.nocomment">neutron_stage33.conf</a>
 </td></tr>
 </table>
 <pre>
-$ sudo cp <a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/documents/Example.OPSInstaller/controller/files/neutron_stage33.conf">files/neutron_stage33.conf</a> /etc/neutron/neutron.conf
+$ sudo cp <a href="https://github.com/kasidit/openstack-queens-installer/blob/master/documents/Example.OPSInstaller/controller/files/neutron_stage33.conf">files/neutron_stage33.conf</a> /etc/neutron/neutron.conf
 $ sudo service neutron-server restart
 </pre>
 <p><p>
@@ -1652,15 +1652,15 @@ $ sudo service neutron-server restart
 <p><p>
 <table>
 <tr><td>คำถาม <b>PROJECT</b> วิชา คพ. 449: (27) มีการกำหนดค่าอะไรใน openvswitch_agent.ini l3_agent.ini </td></tr>
-<tr><td>Hint: See <a href="https://docs.openstack.org/ocata/networking-guide/deploy-ovs-ha-dvr.html#deploy-ovs-ha-dvr">Openvswitch HA with DVR</a> </td></tr>
+<tr><td>Hint: See <a href="https://docs.openstack.org/queens/networking-guide/deploy-ovs-ha-dvr.html#deploy-ovs-ha-dvr">Openvswitch HA with DVR</a> </td></tr>
 <tr><td>ตัวอย่าง configuration files ที่ลบ comments ออก: 
-<a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/documents/Example.OPSInstaller/network/files/nocomment/openvswitch_agent_stage34.ini.nocomment">openvswitch_agent_stage34.ini</a>,
-<a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/documents/Example.OPSInstaller/network/files/nocomment/l3_agent_stage34.ini.nocomment">l3_agent_stage34.ini</a>
+<a href="https://github.com/kasidit/openstack-queens-installer/blob/master/documents/Example.OPSInstaller/network/files/nocomment/openvswitch_agent_stage34.ini.nocomment">openvswitch_agent_stage34.ini</a>,
+<a href="https://github.com/kasidit/openstack-queens-installer/blob/master/documents/Example.OPSInstaller/network/files/nocomment/l3_agent_stage34.ini.nocomment">l3_agent_stage34.ini</a>
 </td></tr>
 </table>
 <pre>
-$ sudo cp <a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/documents/Example.OPSInstaller/network/files/openvswitch_agent_stage34.ini">files/openvswitch_agent_stage34.ini</a> /etc/neutron/plugins/ml2/openvswitch_agent.ini
-$ sudo cp <a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/documents/Example.OPSInstaller/network/files/l3_agent_stage34.ini">files/l3_agent_stage34.ini</a> /etc/neutron/l3_agent.ini
+$ sudo cp <a href="https://github.com/kasidit/openstack-queens-installer/blob/master/documents/Example.OPSInstaller/network/files/openvswitch_agent_stage34.ini">files/openvswitch_agent_stage34.ini</a> /etc/neutron/plugins/ml2/openvswitch_agent.ini
+$ sudo cp <a href="https://github.com/kasidit/openstack-queens-installer/blob/master/documents/Example.OPSInstaller/network/files/l3_agent_stage34.ini">files/l3_agent_stage34.ini</a> /etc/neutron/l3_agent.ini
 $
 $ sudo service openvswitch-switch restart
 $ sudo service neutron-openvswitch-agent restart
@@ -1671,17 +1671,17 @@ $ sudo service neutron-l3-agent restart
 <p><p>
 <table>
 <tr><td>คำถาม <b>PROJECT</b> วิชา คพ. 449: (28) มีการกำหนดค่าอะไรใน openvswitch_agent.ini l3_agent.ini </td></tr>
-<tr><td>Hint: See <a href="https://docs.openstack.org/ocata/networking-guide/deploy-ovs-ha-dvr.html#deploy-ovs-ha-dvr">Openvswitch HA with DVR</a> </td></tr>
+<tr><td>Hint: See <a href="https://docs.openstack.org/queens/networking-guide/deploy-ovs-ha-dvr.html#deploy-ovs-ha-dvr">Openvswitch HA with DVR</a> </td></tr>
 <tr><td>ตัวอย่าง configuration files ที่ลบ comments ออก: 
-<a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/documents/Example.OPSInstaller/compute/files/nocomment/openvswitch_agent_stage35.ini.nocomment">openvswitch_agent_stage35.ini</a>,
-<a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/documents/Example.OPSInstaller/compute/files/nocomment/l3_agent_stage35.ini.nocomment">l3_agent_stage35.ini</a>
+<a href="https://github.com/kasidit/openstack-queens-installer/blob/master/documents/Example.OPSInstaller/compute/files/nocomment/openvswitch_agent_stage35.ini.nocomment">openvswitch_agent_stage35.ini</a>,
+<a href="https://github.com/kasidit/openstack-queens-installer/blob/master/documents/Example.OPSInstaller/compute/files/nocomment/l3_agent_stage35.ini.nocomment">l3_agent_stage35.ini</a>
 </td></tr>
 </table>
 <pre>
 $ sudo apt-get -y install neutron-l3-agent 
 $
-$ sudo cp <a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/documents/Example.OPSInstaller/compute/files/openvswitch_agent_stage35.ini">files/openvswitch_agent_stage35.ini</a> /etc/neutron/plugins/ml2/openvswitch_agent.ini
-$ sudo cp <a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/documents/Example.OPSInstaller/compute/files/l3_agent_stage35.ini">files/l3_agent_stage35.ini</a> /etc/neutron/l3_agent.ini
+$ sudo cp <a href="https://github.com/kasidit/openstack-queens-installer/blob/master/documents/Example.OPSInstaller/compute/files/openvswitch_agent_stage35.ini">files/openvswitch_agent_stage35.ini</a> /etc/neutron/plugins/ml2/openvswitch_agent.ini
+$ sudo cp <a href="https://github.com/kasidit/openstack-queens-installer/blob/master/documents/Example.OPSInstaller/compute/files/l3_agent_stage35.ini">files/l3_agent_stage35.ini</a> /etc/neutron/l3_agent.ini
 $
 $ sudo service openvswitch-switch restart
 $ sudo service neutron-openvswitch-agent restart
@@ -1692,17 +1692,17 @@ $ sudo service neutron-l3-agent restart
 <p><p>
 <table>
 <tr><td>คำถาม <b>PROJECT</b> วิชา คพ. 449: (29) มีการกำหนดค่าอะไรใน openvswitch_agent.ini l3_agent.ini </td></tr>
-<tr><td>Hint: See <a href="https://docs.openstack.org/ocata/networking-guide/deploy-ovs-ha-dvr.html#deploy-ovs-ha-dvr">Openvswitch HA with DVR</a> </td></tr>
+<tr><td>Hint: See <a href="https://docs.openstack.org/queens/networking-guide/deploy-ovs-ha-dvr.html#deploy-ovs-ha-dvr">Openvswitch HA with DVR</a> </td></tr>
 <tr><td>ตัวอย่าง configuration files ที่ลบ comments ออก: 
-<a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/documents/Example.OPSInstaller/compute1/files/nocomment/openvswitch_agent_stage36.ini.nocomment">openvswitch_agent_stage36.ini</a>,
-<a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/documents/Example.OPSInstaller/compute1/files/nocomment/l3_agent_stage36.ini.nocomment">l3_agent_stage36.ini</a>
+<a href="https://github.com/kasidit/openstack-queens-installer/blob/master/documents/Example.OPSInstaller/compute1/files/nocomment/openvswitch_agent_stage36.ini.nocomment">openvswitch_agent_stage36.ini</a>,
+<a href="https://github.com/kasidit/openstack-queens-installer/blob/master/documents/Example.OPSInstaller/compute1/files/nocomment/l3_agent_stage36.ini.nocomment">l3_agent_stage36.ini</a>
 </td></tr>
 </table>
 <pre>
 $ sudo apt-get -y install neutron-l3-agent 
 $
-$ sudo cp <a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/documents/Example.OPSInstaller/compute1/files/openvswitch_agent_stage36.ini">files/openvswitch_agent_stage36.ini</a> /etc/neutron/plugins/ml2/openvswitch_agent.ini
-$ sudo cp <a href="https://github.com/kasidit/openstack-ocata-installer/blob/master/documents/Example.OPSInstaller/compute1/files/l3_agent_stage36.ini">files/l3_agent_stage36.ini</a> /etc/neutron/l3_agent.ini
+$ sudo cp <a href="https://github.com/kasidit/openstack-queens-installer/blob/master/documents/Example.OPSInstaller/compute1/files/openvswitch_agent_stage36.ini">files/openvswitch_agent_stage36.ini</a> /etc/neutron/plugins/ml2/openvswitch_agent.ini
+$ sudo cp <a href="https://github.com/kasidit/openstack-queens-installer/blob/master/documents/Example.OPSInstaller/compute1/files/l3_agent_stage36.ini">files/l3_agent_stage36.ini</a> /etc/neutron/l3_agent.ini
 $
 $ sudo service openvswitch-switch restart
 $ sudo service neutron-openvswitch-agent restart
@@ -1798,9 +1798,9 @@ OpenStack ประกอบไปด้วย software component ที่อ�
 <h3>อ้างอิง</h3>
 <p><p>
 [1] http://docs.openstack.org/ <br>
-[2] https://docs.openstack.org/ocata/install/ubuntu-services.html <br>
-[3] https://docs.openstack.org/ocata/networking-guide/ <br>
-[4] <a href="https://www.youtube.com/playlist?list=PLmUxMbTCUhr4vYsaeEKVkvAGF5K1Tw8oJ">OpenStack ocata installation youtube video playlist</a>
+[2] https://docs.openstack.org/queens/install/ubuntu-services.html <br>
+[3] https://docs.openstack.org/queens/networking-guide/ <br>
+[4] <a href="https://www.youtube.com/playlist?list=PLmUxMbTCUhr4vYsaeEKVkvAGF5K1Tw8oJ">OpenStack queens installation youtube video playlist</a>
 =======
 # openstack-queens-installer
 >>>>>>> 52c01fb39622b69bc429df14d50b01e2e45a48ed
