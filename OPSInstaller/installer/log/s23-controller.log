@@ -1,291 +1,0 @@
-+ cd /home/openstack/OPSInstaller/controller
-+ pwd
-/home/openstack/OPSInstaller/controller
-+ echo 'Run this script with sudo or as root.'
-Run this script with sudo or as root.
-+ echo -n 'Install nuetron...'
-Install nuetron...+ apt-get -y install neutron-server neutron-plugin-ml2 python-neutronclient
-Reading package lists... 0%Reading package lists... 100%Reading package lists... Done
-Building dependency tree... 0%Building dependency tree... 0%Building dependency tree... 50%Building dependency tree... 50%Building dependency tree       
-Reading state information... 0%Reading state information... 0%Reading state information... Done
-python-neutronclient is already the newest version (1:6.7.0-0ubuntu1~cloud0).
-python-neutronclient set to manually installed.
-The following packages were automatically installed and are no longer required:
-  linux-headers-4.4.0-116 linux-headers-4.4.0-116-generic linux-image-4.4.0-116-generic
-  linux-image-extra-4.4.0-116-generic
-Use 'sudo apt autoremove' to remove them.
-The following additional packages will be installed:
-  ipset libipset3 neutron-common python-designateclient python-logutils python-neutron python-neutron-fwaas
-  python-neutron-lib python-openvswitch python-ovsdbapp python-pecan python-ryu python-singledispatch python-tinyrpc
-  python-waitress python-weakrefmethod python-webtest
-Suggested packages:
-  python-neutron-lib-doc python-pecan-doc python-ryu-doc python-tinyrpc-doc python-waitress-doc python-webtest-doc
-  python-pyquery
-The following NEW packages will be installed:
-  ipset libipset3 neutron-common neutron-plugin-ml2 neutron-server python-designateclient python-logutils
-  python-neutron python-neutron-fwaas python-neutron-lib python-openvswitch python-ovsdbapp python-pecan python-ryu
-  python-singledispatch python-tinyrpc python-waitress python-weakrefmethod python-webtest
-0 upgraded, 19 newly installed, 0 to remove and 0 not upgraded.
-Need to get 2,901 kB of archives.
-After this operation, 25.1 MB of additional disk space will be used.
-0% [Working]            Get:1 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 libipset3 amd64 6.29-1 [43.6 kB]
-0% [1 libipset3 14.2 kB/43.6 kB 33%] [Connecting to ubuntu-cloud.archive.canonical.com (91.189.92.152)]                                                                                                       2% [Connecting to ubuntu-cloud.archive.canonical.com (91.189.92.152)]                                                                     Get:2 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 ipset amd64 6.29-1 [33.3 kB]
-3% [2 ipset 11.3 kB/33.3 kB 34%] [Connecting to ubuntu-cloud.archive.canonical.com (91.189.92.152)]                                                                                                   4% [Waiting for headers] [Connecting to ubuntu-cloud.archive.canonical.com (91.189.92.152)]                                                                                           Get:3 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 python-logutils all 0.3.3-5 [16.7 kB]
-4% [3 python-logutils 4,100 B/16.7 kB 25%] [Connecting to ubuntu-cloud.archive.canonical.com (91.189.92.152)]                                                                                                             6% [Waiting for headers] [Connecting to ubuntu-cloud.archive.canonical.com (91.189.92.152)]                                                                                           Get:4 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 python-singledispatch all 3.4.0.3-2 [9,848 B]
-6% [4 python-singledispatch 6,996 B/9,848 B 71%] [Connecting to ubuntu-cloud.archive.canonical.com (91.189.92.152)]                                                                                                                   7% [Waiting for headers] [Connecting to ubuntu-cloud.archive.canonical.com (91.189.92.152)]                                                                                           Get:5 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 python-waitress all 0.8.10-1 [54.1 kB]
-7% [5 python-waitress 8,443 B/54.1 kB 16%] [Connecting to ubuntu-cloud.archive.canonical.com (91.189.92.152)]                                                                                                             10% [Waiting for headers] [Waiting for headers]                                               Get:6 http://th.archive.ubuntu.com/ubuntu xenial/universe amd64 python-weakrefmethod all 1.0-1 [4,274 B]
-10% [6 python-weakrefmethod 4,101 B/4,274 B 96%] [Waiting for headers]                                                                      11% [Waiting for headers]                         Get:7 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-designateclient all 2.9.0-0ubuntu1~cloud0 [45.6 kB]
-11% [7 python-designateclient 6,975 B/45.6 kB 15%]12% [7 python-designateclient 37.4 kB/45.6 kB 82%]                                                  13% [Working]             Get:8 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-neutron-lib all 1.13.0-0ubuntu1~cloud0 [124 kB]
-13% [8 python-neutron-lib 4,077 B/124 kB 3%]15% [8 python-neutron-lib 60.5 kB/124 kB 49%]                                             18% [Waiting for headers]                         Get:9 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-openvswitch all 2.9.0-0ubuntu1~cloud0 [75.3 kB]
-19% [9 python-openvswitch 50.2 kB/75.3 kB 67%]                                              21% [Working]             Get:10 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-ovsdbapp all 0.9.1-0ubuntu1~cloud0 [46.4 kB]
-21% [10 python-ovsdbapp 664 B/46.4 kB 1%]                                         23% [Waiting for headers]                         Get:11 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-webtest all 2.0.28-1ubuntu1~cloud0 [27.8 kB]
-23% [11 python-webtest 317 B/27.8 kB 1%]                                        25% [Waiting for headers]                         Get:12 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-pecan all 1.2.1-2~cloud0 [86.7 kB]
-25% [12 python-pecan 1,169 B/86.7 kB 1%]                                        28% [Working]             Get:13 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-tinyrpc all 0.6-1~cloud0 [17.0 kB]
-28% [13 python-tinyrpc 1,114 B/17.0 kB 7%]                                          30% [Working]             Get:14 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-ryu all 4.15-0ubuntu2~cloud0 [654 kB]
-30% [14 python-ryu 4,115 B/654 kB 1%]38% [14 python-ryu 287 kB/654 kB 44%]                                     49% [Waiting for headers]                         Get:15 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-neutron all 2:12.0.1-0ubuntu1.1~cloud0 [1,502 kB]
-49% [15 python-neutron 8,251 B/1,502 kB 1%]61% [15 python-neutron 448 kB/1,502 kB 30%]80% [15 python-neutron 1,130 kB/1,502 kB 75%]                                             Get:16 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-neutron-fwaas all 1:12.0.0-0ubuntu1~cloud0 [121 kB]
-92% [16 python-neutron-fwaas 11.8 kB/121 kB 10%]                                                Get:17 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 neutron-common all 2:12.0.1-0ubuntu1.1~cloud0 [28.3 kB]
-                                                96% [17 neutron-common 1,607 B/28.3 kB 6%]                                          Get:18 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 neutron-plugin-ml2 all 2:12.0.1-0ubuntu1.1~cloud0 [5,136 B]
-98% [18 neutron-plugin-ml2 1,973 B/5,136 B 38%]                                               Get:19 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 neutron-server all 2:12.0.1-0ubuntu1.1~cloud0 [5,262 B]
-                                               99% [19 neutron-server 2,365 B/5,262 B 45%]                                           100% [Working]              Fetched 2,901 kB in 5s (547 kB/s)
-Selecting previously unselected package libipset3:amd64.
-(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 148274 files and directories currently installed.)
-Preparing to unpack .../libipset3_6.29-1_amd64.deb ...
-Unpacking libipset3:amd64 (6.29-1) ...
-Selecting previously unselected package ipset.
-Preparing to unpack .../ipset_6.29-1_amd64.deb ...
-Unpacking ipset (6.29-1) ...
-Selecting previously unselected package python-designateclient.
-Preparing to unpack .../python-designateclient_2.9.0-0ubuntu1~cloud0_all.deb ...
-Unpacking python-designateclient (2.9.0-0ubuntu1~cloud0) ...
-Selecting previously unselected package python-neutron-lib.
-Preparing to unpack .../python-neutron-lib_1.13.0-0ubuntu1~cloud0_all.deb ...
-Unpacking python-neutron-lib (1.13.0-0ubuntu1~cloud0) ...
-Selecting previously unselected package python-openvswitch.
-Preparing to unpack .../python-openvswitch_2.9.0-0ubuntu1~cloud0_all.deb ...
-Unpacking python-openvswitch (2.9.0-0ubuntu1~cloud0) ...
-Selecting previously unselected package python-ovsdbapp.
-Preparing to unpack .../python-ovsdbapp_0.9.1-0ubuntu1~cloud0_all.deb ...
-Unpacking python-ovsdbapp (0.9.1-0ubuntu1~cloud0) ...
-Selecting previously unselected package python-logutils.
-Preparing to unpack .../python-logutils_0.3.3-5_all.deb ...
-Unpacking python-logutils (0.3.3-5) ...
-Selecting previously unselected package python-singledispatch.
-Preparing to unpack .../python-singledispatch_3.4.0.3-2_all.deb ...
-Unpacking python-singledispatch (3.4.0.3-2) ...
-Selecting previously unselected package python-waitress.
-Preparing to unpack .../python-waitress_0.8.10-1_all.deb ...
-Unpacking python-waitress (0.8.10-1) ...
-Selecting previously unselected package python-webtest.
-Preparing to unpack .../python-webtest_2.0.28-1ubuntu1~cloud0_all.deb ...
-Unpacking python-webtest (2.0.28-1ubuntu1~cloud0) ...
-Selecting previously unselected package python-pecan.
-Preparing to unpack .../python-pecan_1.2.1-2~cloud0_all.deb ...
-Unpacking python-pecan (1.2.1-2~cloud0) ...
-Selecting previously unselected package python-tinyrpc.
-Preparing to unpack .../python-tinyrpc_0.6-1~cloud0_all.deb ...
-Unpacking python-tinyrpc (0.6-1~cloud0) ...
-Selecting previously unselected package python-ryu.
-Preparing to unpack .../python-ryu_4.15-0ubuntu2~cloud0_all.deb ...
-Unpacking python-ryu (4.15-0ubuntu2~cloud0) ...
-Selecting previously unselected package python-weakrefmethod.
-Preparing to unpack .../python-weakrefmethod_1.0-1_all.deb ...
-Unpacking python-weakrefmethod (1.0-1) ...
-Selecting previously unselected package python-neutron.
-Preparing to unpack .../python-neutron_2%3a12.0.1-0ubuntu1.1~cloud0_all.deb ...
-Unpacking python-neutron (2:12.0.1-0ubuntu1.1~cloud0) ...
-Selecting previously unselected package python-neutron-fwaas.
-Preparing to unpack .../python-neutron-fwaas_1%3a12.0.0-0ubuntu1~cloud0_all.deb ...
-Unpacking python-neutron-fwaas (1:12.0.0-0ubuntu1~cloud0) ...
-Selecting previously unselected package neutron-common.
-Preparing to unpack .../neutron-common_2%3a12.0.1-0ubuntu1.1~cloud0_all.deb ...
-Unpacking neutron-common (2:12.0.1-0ubuntu1.1~cloud0) ...
-Selecting previously unselected package neutron-plugin-ml2.
-Preparing to unpack .../neutron-plugin-ml2_2%3a12.0.1-0ubuntu1.1~cloud0_all.deb ...
-Unpacking neutron-plugin-ml2 (2:12.0.1-0ubuntu1.1~cloud0) ...
-Selecting previously unselected package neutron-server.
-Preparing to unpack .../neutron-server_2%3a12.0.1-0ubuntu1.1~cloud0_all.deb ...
-Unpacking neutron-server (2:12.0.1-0ubuntu1.1~cloud0) ...
-Processing triggers for libc-bin (2.23-0ubuntu10) ...
-Processing triggers for man-db (2.7.5-1) ...
-Processing triggers for systemd (229-4ubuntu21.2) ...
-Processing triggers for ureadahead (0.100.0-19) ...
-Setting up libipset3:amd64 (6.29-1) ...
-Setting up ipset (6.29-1) ...
-Setting up python-designateclient (2.9.0-0ubuntu1~cloud0) ...
-update-alternatives: using /usr/bin/python2-designate to provide /usr/bin/designate (designate) in auto mode
-Setting up python-neutron-lib (1.13.0-0ubuntu1~cloud0) ...
-Setting up python-openvswitch (2.9.0-0ubuntu1~cloud0) ...
-Setting up python-ovsdbapp (0.9.1-0ubuntu1~cloud0) ...
-Setting up python-logutils (0.3.3-5) ...
-Setting up python-singledispatch (3.4.0.3-2) ...
-Setting up python-waitress (0.8.10-1) ...
-update-alternatives: using /usr/bin/waitress-serve-python2 to provide /usr/bin/waitress-serve (waitress-serve) in auto mode
-Setting up python-webtest (2.0.28-1ubuntu1~cloud0) ...
-Setting up python-pecan (1.2.1-2~cloud0) ...
-update-alternatives: using /usr/bin/python2-pecan to provide /usr/bin/pecan (pecan) in auto mode
-update-alternatives: using /usr/bin/python2-gunicorn_pecan to provide /usr/bin/gunicorn_pecan (gunicorn_pecan) in auto mode
-Setting up python-tinyrpc (0.6-1~cloud0) ...
-Setting up python-ryu (4.15-0ubuntu2~cloud0) ...
-update-alternatives: using /usr/bin/python2-ryu to provide /usr/bin/ryu (ryu) in auto mode
-update-alternatives: using /usr/bin/python2-ryu-manager to provide /usr/bin/ryu-manager (ryu-manager) in auto mode
-Setting up python-weakrefmethod (1.0-1) ...
-Setting up python-neutron (2:12.0.1-0ubuntu1.1~cloud0) ...
-Setting up python-neutron-fwaas (1:12.0.0-0ubuntu1~cloud0) ...
-Setting up neutron-common (2:12.0.1-0ubuntu1.1~cloud0) ...
-Adding system user `neutron' (UID 118) ...
-Adding new user `neutron' (UID 118) with group `neutron' ...
-Not creating home directory `/var/lib/neutron'.
-Setting up neutron-plugin-ml2 (2:12.0.1-0ubuntu1.1~cloud0) ...
-Setting up neutron-server (2:12.0.1-0ubuntu1.1~cloud0) ...
-Processing triggers for libc-bin (2.23-0ubuntu10) ...
-Processing triggers for systemd (229-4ubuntu21.2) ...
-Processing triggers for ureadahead (0.100.0-19) ...
-+ apt-get -y install openvswitch-switch
-Reading package lists... 0%Reading package lists... 100%Reading package lists... Done
-Building dependency tree... 0%Building dependency tree... 0%Building dependency tree... 50%Building dependency tree... 50%Building dependency tree       
-Reading state information... 0%Reading state information... 0%Reading state information... Done
-The following packages were automatically installed and are no longer required:
-  linux-headers-4.4.0-116 linux-headers-4.4.0-116-generic linux-image-4.4.0-116-generic
-  linux-image-extra-4.4.0-116-generic
-Use 'sudo apt autoremove' to remove them.
-The following additional packages will be installed:
-  openvswitch-common
-Suggested packages:
-  openvswitch-doc
-The following NEW packages will be installed:
-  openvswitch-common openvswitch-switch
-0 upgraded, 2 newly installed, 0 to remove and 0 not upgraded.
-Need to get 2,085 kB of archives.
-After this operation, 9,395 kB of additional disk space will be used.
-0% [Working]0% [Waiting for headers]                        Get:1 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 openvswitch-common amd64 2.9.0-0ubuntu1~cloud0 [721 kB]
-0% [1 openvswitch-common 0 B/721 kB 0%]1% [1 openvswitch-common 37.4 kB/721 kB 5%]5% [1 openvswitch-common 130 kB/721 kB 18%]13% [1 openvswitch-common 347 kB/721 kB 48%]28% [1 openvswitch-common 721 kB/721 kB 100%]                                             38% [Working]             Get:2 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 openvswitch-switch amd64 2.9.0-0ubuntu1~cloud0 [1,364 kB]
-38% [2 openvswitch-switch 6,971 B/1,364 kB 1%]59% [2 openvswitch-switch 564 kB/1,364 kB 41%]84% [2 openvswitch-switch 1,203 kB/1,364 kB 88%]                                                100% [Working]              Fetched 2,085 kB in 4s (485 kB/s)
-Selecting previously unselected package openvswitch-common.
-(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 151819 files and directories currently installed.)
-Preparing to unpack .../openvswitch-common_2.9.0-0ubuntu1~cloud0_amd64.deb ...
-Unpacking openvswitch-common (2.9.0-0ubuntu1~cloud0) ...
-Selecting previously unselected package openvswitch-switch.
-Preparing to unpack .../openvswitch-switch_2.9.0-0ubuntu1~cloud0_amd64.deb ...
-Unpacking openvswitch-switch (2.9.0-0ubuntu1~cloud0) ...
-Processing triggers for man-db (2.7.5-1) ...
-Processing triggers for systemd (229-4ubuntu21.2) ...
-Processing triggers for ureadahead (0.100.0-19) ...
-Setting up openvswitch-common (2.9.0-0ubuntu1~cloud0) ...
-Setting up openvswitch-switch (2.9.0-0ubuntu1~cloud0) ...
-update-alternatives: using /usr/lib/openvswitch-switch/ovs-vswitchd to provide /usr/sbin/ovs-vswitchd (ovs-vswitchd) in auto mode
-ovs-vswitchd.service is a disabled or a static unit, not starting it.
-ovsdb-server.service is a disabled or a static unit, not starting it.
-Processing triggers for systemd (229-4ubuntu21.2) ...
-Processing triggers for ureadahead (0.100.0-19) ...
-+ cp files/neutron.conf /etc/neutron/neutron.conf
-+ cp files/ml2_conf.ini /etc/neutron/plugins/ml2/ml2_conf.ini
-+ cp files/nova-stage23.conf /etc/nova/nova.conf
-+ su -s /bin/sh -c 'neutron-db-manage --config-file /etc/neutron/neutron.conf   --config-file /etc/neutron/plugins/ml2/ml2_conf.ini upgrade head' neutron
-INFO  [alembic.runtime.migration] Context impl MySQLImpl.
-INFO  [alembic.runtime.migration] Will assume non-transactional DDL.
-  Running upgrade for neutron ...
-INFO  [alembic.runtime.migration] Context impl MySQLImpl.
-INFO  [alembic.runtime.migration] Will assume non-transactional DDL.
-INFO  [alembic.runtime.migration] Running upgrade  -> kilo, kilo_initial
-INFO  [alembic.runtime.migration] Running upgrade kilo -> 354db87e3225, nsxv_vdr_metadata.py
-INFO  [alembic.runtime.migration] Running upgrade 354db87e3225 -> 599c6a226151, neutrodb_ipam
-INFO  [alembic.runtime.migration] Running upgrade 599c6a226151 -> 52c5312f6baf, Initial operations in support of address scopes
-INFO  [alembic.runtime.migration] Running upgrade 52c5312f6baf -> 313373c0ffee, Flavor framework
-INFO  [alembic.runtime.migration] Running upgrade 313373c0ffee -> 8675309a5c4f, network_rbac
-INFO  [alembic.runtime.migration] Running upgrade 8675309a5c4f -> 45f955889773, quota_usage
-INFO  [alembic.runtime.migration] Running upgrade 45f955889773 -> 26c371498592, subnetpool hash
-INFO  [alembic.runtime.migration] Running upgrade 26c371498592 -> 1c844d1677f7, add order to dnsnameservers
-INFO  [alembic.runtime.migration] Running upgrade 1c844d1677f7 -> 1b4c6e320f79, address scope support in subnetpool
-INFO  [alembic.runtime.migration] Running upgrade 1b4c6e320f79 -> 48153cb5f051, qos db changes
-INFO  [alembic.runtime.migration] Running upgrade 48153cb5f051 -> 9859ac9c136, quota_reservations
-INFO  [alembic.runtime.migration] Running upgrade 9859ac9c136 -> 34af2b5c5a59, Add dns_name to Port
-INFO  [alembic.runtime.migration] Running upgrade 34af2b5c5a59 -> 59cb5b6cf4d, Add availability zone
-INFO  [alembic.runtime.migration] Running upgrade 59cb5b6cf4d -> 13cfb89f881a, add is_default to subnetpool
-INFO  [alembic.runtime.migration] Running upgrade 13cfb89f881a -> 32e5974ada25, Add standard attribute table
-INFO  [alembic.runtime.migration] Running upgrade 32e5974ada25 -> ec7fcfbf72ee, Add network availability zone
-INFO  [alembic.runtime.migration] Running upgrade ec7fcfbf72ee -> dce3ec7a25c9, Add router availability zone
-INFO  [alembic.runtime.migration] Running upgrade dce3ec7a25c9 -> c3a73f615e4, Add ip_version to AddressScope
-INFO  [alembic.runtime.migration] Running upgrade c3a73f615e4 -> 659bf3d90664, Add tables and attributes to support external DNS integration
-INFO  [alembic.runtime.migration] Running upgrade 659bf3d90664 -> 1df244e556f5, add_unique_ha_router_agent_port_bindings
-INFO  [alembic.runtime.migration] Running upgrade 1df244e556f5 -> 19f26505c74f, Auto Allocated Topology - aka Get-Me-A-Network
-INFO  [alembic.runtime.migration] Running upgrade 19f26505c74f -> 15be73214821, add dynamic routing model data
-INFO  [alembic.runtime.migration] Running upgrade 15be73214821 -> b4caf27aae4, add_bgp_dragent_model_data
-INFO  [alembic.runtime.migration] Running upgrade b4caf27aae4 -> 15e43b934f81, rbac_qos_policy
-INFO  [alembic.runtime.migration] Running upgrade 15e43b934f81 -> 31ed664953e6, Add resource_versions row to agent table
-INFO  [alembic.runtime.migration] Running upgrade 31ed664953e6 -> 2f9e956e7532, tag support
-INFO  [alembic.runtime.migration] Running upgrade 2f9e956e7532 -> 3894bccad37f, add_timestamp_to_base_resources
-INFO  [alembic.runtime.migration] Running upgrade 3894bccad37f -> 0e66c5227a8a, Add desc to standard attr table
-INFO  [alembic.runtime.migration] Running upgrade 0e66c5227a8a -> 45f8dd33480b, qos dscp db addition
-INFO  [alembic.runtime.migration] Running upgrade 45f8dd33480b -> 5abc0278ca73, Add support for VLAN trunking
-INFO  [alembic.runtime.migration] Running upgrade kilo -> 30018084ec99, Initial no-op Liberty contract rule.
-INFO  [alembic.runtime.migration] Running upgrade 30018084ec99 -> 4ffceebfada, network_rbac
-INFO  [alembic.runtime.migration] Running upgrade 4ffceebfada -> 5498d17be016, Drop legacy OVS and LB plugin tables
-INFO  [alembic.runtime.migration] Running upgrade 5498d17be016 -> 2a16083502f3, Metaplugin removal
-INFO  [alembic.runtime.migration] Running upgrade 2a16083502f3 -> 2e5352a0ad4d, Add missing foreign keys
-INFO  [alembic.runtime.migration] Running upgrade 2e5352a0ad4d -> 11926bcfe72d, add geneve ml2 type driver
-INFO  [alembic.runtime.migration] Running upgrade 11926bcfe72d -> 4af11ca47297, Drop cisco monolithic tables
-INFO  [alembic.runtime.migration] Running upgrade 4af11ca47297 -> 1b294093239c, Drop embrane plugin table
-INFO  [alembic.runtime.migration] Running upgrade 1b294093239c -> 8a6d8bdae39, standardattributes migration
-INFO  [alembic.runtime.migration] Running upgrade 8a6d8bdae39 -> 2b4c2465d44b, DVR sheduling refactoring
-INFO  [alembic.runtime.migration] Running upgrade 2b4c2465d44b -> e3278ee65050, Drop NEC plugin tables
-INFO  [alembic.runtime.migration] Running upgrade e3278ee65050 -> c6c112992c9, rbac_qos_policy
-INFO  [alembic.runtime.migration] Running upgrade c6c112992c9 -> 5ffceebfada, network_rbac_external
-INFO  [alembic.runtime.migration] Running upgrade 5ffceebfada -> 4ffceebfcdc, standard_desc
-INFO  [alembic.runtime.migration] Running upgrade 4ffceebfcdc -> 7bbb25278f53, device_owner_ha_replicate_int
-INFO  [alembic.runtime.migration] Running upgrade 7bbb25278f53 -> 89ab9a816d70, Rename ml2_network_segments table
-INFO  [alembic.runtime.migration] Running upgrade 5abc0278ca73 -> d3435b514502, Add device_id index to Port
-INFO  [alembic.runtime.migration] Running upgrade d3435b514502 -> 30107ab6a3ee, provisioning_blocks.py
-INFO  [alembic.runtime.migration] Running upgrade 30107ab6a3ee -> c415aab1c048, add revisions table
-INFO  [alembic.runtime.migration] Running upgrade c415aab1c048 -> a963b38d82f4, add dns name to portdnses
-INFO  [alembic.runtime.migration] Running upgrade a963b38d82f4 -> 3d0e74aa7d37, Add flavor_id to Router
-INFO  [alembic.runtime.migration] Running upgrade 3d0e74aa7d37 -> 030a959ceafa, uniq_routerports0port_id
-INFO  [alembic.runtime.migration] Running upgrade 030a959ceafa -> a5648cfeeadf, Add support for Subnet Service Types
-INFO  [alembic.runtime.migration] Running upgrade a5648cfeeadf -> 0f5bef0f87d4, add_qos_minimum_bandwidth_rules
-INFO  [alembic.runtime.migration] Running upgrade 0f5bef0f87d4 -> 67daae611b6e, add standardattr to qos policies
-INFO  [alembic.runtime.migration] Running upgrade 89ab9a816d70 -> c879c5e1ee90, Add segment_id to subnet
-INFO  [alembic.runtime.migration] Running upgrade c879c5e1ee90 -> 8fd3918ef6f4, Add segment_host_mapping table.
-INFO  [alembic.runtime.migration] Running upgrade 8fd3918ef6f4 -> 4bcd4df1f426, Rename ml2_dvr_port_bindings
-INFO  [alembic.runtime.migration] Running upgrade 4bcd4df1f426 -> b67e765a3524, Remove mtu column from networks.
-INFO  [alembic.runtime.migration] Running upgrade 67daae611b6e -> 6b461a21bcfc, uniq_floatingips0floating_network_id0fixed_port_id0fixed_ip_addr
-INFO  [alembic.runtime.migration] Running upgrade 6b461a21bcfc -> 5cd92597d11d, Add ip_allocation to port
-INFO  [alembic.runtime.migration] Running upgrade 5cd92597d11d -> 929c968efe70, add_pk_version_table
-INFO  [alembic.runtime.migration] Running upgrade 929c968efe70 -> a9c43481023c, extend_pk_with_host_and_add_status_to_ml2_port_binding
-INFO  [alembic.runtime.migration] Running upgrade a9c43481023c -> 804a3c76314c, Add data_plane_status to Port
-INFO  [alembic.runtime.migration] Running upgrade 804a3c76314c -> 2b42d90729da, qos add direction to bw_limit_rule table
-INFO  [alembic.runtime.migration] Running upgrade 2b42d90729da -> 62c781cb6192, add is default to qos policies
-INFO  [alembic.runtime.migration] Running upgrade 62c781cb6192 -> c8c222d42aa9, logging api
-INFO  [alembic.runtime.migration] Running upgrade c8c222d42aa9 -> 349b6fd605a6, Add dns_domain to portdnses
-INFO  [alembic.runtime.migration] Running upgrade 349b6fd605a6 -> 7d32f979895f, add mtu for networks
-INFO  [alembic.runtime.migration] Running upgrade 7d32f979895f -> 594422d373ee, fip qos
-INFO  [alembic.runtime.migration] Running upgrade b67e765a3524 -> a84ccf28f06a, migrate dns name from port
-INFO  [alembic.runtime.migration] Running upgrade a84ccf28f06a -> 7d9d8eeec6ad, rename tenant to project
-INFO  [alembic.runtime.migration] Running upgrade 7d9d8eeec6ad -> a8b517cff8ab, Add routerport bindings for L3 HA
-INFO  [alembic.runtime.migration] Running upgrade a8b517cff8ab -> 3b935b28e7a0, migrate to pluggable ipam
-INFO  [alembic.runtime.migration] Running upgrade 3b935b28e7a0 -> b12a3ef66e62, add standardattr to qos policies
-INFO  [alembic.runtime.migration] Running upgrade b12a3ef66e62 -> 97c25b0d2353, Add Name and Description to the networksegments table
-INFO  [alembic.runtime.migration] Running upgrade 97c25b0d2353 -> 2e0d7a8a1586, Add binding index to RouterL3AgentBinding
-INFO  [alembic.runtime.migration] Running upgrade 2e0d7a8a1586 -> 5c85685d616d, Remove availability ranges.
-  OK
-INFO  [alembic.runtime.migration] Context impl MySQLImpl.
-INFO  [alembic.runtime.migration] Will assume non-transactional DDL.
-  Running upgrade for neutron-fwaas ...
-INFO  [alembic.runtime.migration] Context impl MySQLImpl.
-INFO  [alembic.runtime.migration] Will assume non-transactional DDL.
-INFO  [alembic.runtime.migration] Running upgrade  -> start_neutron_fwaas, start neutron-fwaas chain
-INFO  [alembic.runtime.migration] Running upgrade start_neutron_fwaas -> 4202e3047e47, add_index_tenant_id
-INFO  [alembic.runtime.migration] Running upgrade 4202e3047e47 -> 540142f314f4, FWaaS router insertion
-INFO  [alembic.runtime.migration] Running upgrade 540142f314f4 -> 796c68dffbb, cisco_csr_fwaas
-INFO  [alembic.runtime.migration] Running upgrade 796c68dffbb -> kilo, kilo
-INFO  [alembic.runtime.migration] Running upgrade kilo -> c40fbb377ad, Initial Liberty no-op script.
-INFO  [alembic.runtime.migration] Running upgrade c40fbb377ad -> 4b47ea298795, add reject rule
-INFO  [alembic.runtime.migration] Running upgrade 4b47ea298795 -> d6a12e637e28, neutron-fwaas v2.0
-INFO  [alembic.runtime.migration] Running upgrade d6a12e637e28 -> 876782258a43, create_default_firewall_groups_table
-INFO  [alembic.runtime.migration] Running upgrade 876782258a43 -> f24e0d5e5bff, uniq_firewallgroupportassociation0port
-INFO  [alembic.runtime.migration] Running upgrade kilo -> 67c8e8d61d5, Initial Liberty no-op script.
-INFO  [alembic.runtime.migration] Running upgrade 67c8e8d61d5 -> 458aa42b14b, fw_table_alter script to make <name> column case sensitive
-INFO  [alembic.runtime.migration] Running upgrade 458aa42b14b -> f83a0b2964d0, rename tenant to project
-INFO  [alembic.runtime.migration] Running upgrade f83a0b2964d0 -> fd38cd995cc0, change shared attribute for firewall resource
-  OK
-+ service nova-api restart
-+ service neutron-server restart

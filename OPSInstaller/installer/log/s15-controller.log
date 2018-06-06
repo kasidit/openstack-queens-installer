@@ -1,71 +1,0 @@
-+ cd /home/openstack/OPSInstaller/controller
-+ pwd
-/home/openstack/OPSInstaller/controller
-+ echo 'Run this script as a user.'
-Run this script as a user.
-+ echo -n 'Get cirros image...'
-Get cirros image...+ source ./admin-openrc.sh
-++ export OS_PROJECT_DOMAIN_NAME=default
-++ OS_PROJECT_DOMAIN_NAME=default
-++ export OS_USER_DOMAIN_NAME=default
-++ OS_USER_DOMAIN_NAME=default
-++ export OS_PROJECT_NAME=admin
-++ OS_PROJECT_NAME=admin
-++ export OS_USERNAME=admin
-++ OS_USERNAME=admin
-++ export OS_PASSWORD=adminpassword
-++ OS_PASSWORD=adminpassword
-++ export OS_AUTH_URL=http://controller:5000/v3
-++ OS_AUTH_URL=http://controller:5000/v3
-++ export OS_IDENTITY_API_VERSION=3
-++ OS_IDENTITY_API_VERSION=3
-++ export OS_IMAGE_API_VERSION=2
-++ OS_IMAGE_API_VERSION=2
-+ wget http://download.cirros-cloud.net/0.3.5/cirros-0.3.5-x86_64-disk.img
---2018-06-06 16:51:32--  http://download.cirros-cloud.net/0.3.5/cirros-0.3.5-x86_64-disk.img
-Resolving download.cirros-cloud.net (download.cirros-cloud.net)... 64.90.42.85, 2607:f298:6:a036::bd6:a72a
-Connecting to download.cirros-cloud.net (download.cirros-cloud.net)|64.90.42.85|:80... connected.
-HTTP request sent, awaiting response... 200 OK
-Length: 13267968 (13M) [text/plain]
-Saving to: ‘cirros-0.3.5-x86_64-disk.img’
-
-cirros-0.3.5-x86_64-disk.img    0%[                                                ]       0  --.-KB/s               cirros-0.3.5-x86_64-disk.img    0%[                                                ]  15.41K  70.9KB/s               cirros-0.3.5-x86_64-disk.img    0%[                                                ]  43.93K   101KB/s               cirros-0.3.5-x86_64-disk.img    0%[                                                ] 102.38K   158KB/s               cirros-0.3.5-x86_64-disk.img    1%[                                                ] 216.45K   250KB/s               cirros-0.3.5-x86_64-disk.img    3%[>                                               ] 444.57K   411KB/s               cirros-0.3.5-x86_64-disk.img    6%[==>                                             ] 900.82K   694KB/s               cirros-0.3.5-x86_64-disk.img   12%[=====>                                          ]   1.59M  1.06MB/s               cirros-0.3.5-x86_64-disk.img   19%[========>                                       ]   2.41M  1.42MB/s               cirros-0.3.5-x86_64-disk.img   24%[==========>                                     ]   3.12M  1.64MB/s               cirros-0.3.5-x86_64-disk.img   31%[==============>                                 ]   3.96M  1.89MB/s               cirros-0.3.5-x86_64-disk.img   38%[=================>                              ]   4.84M  2.11MB/s               cirros-0.3.5-x86_64-disk.img   45%[====================>                           ]   5.79M  2.31MB/s               cirros-0.3.5-x86_64-disk.img   53%[========================>                       ]   6.83M  2.53MB/s               cirros-0.3.5-x86_64-disk.img   57%[==========================>                     ]   7.26M  2.40MB/s    eta 2s     cirros-0.3.5-x86_64-disk.img   70%[================================>               ]   8.88M  2.75MB/s    eta 2s     cirros-0.3.5-x86_64-disk.img   75%[===================================>            ]   9.59M  2.79MB/s    eta 2s     cirros-0.3.5-x86_64-disk.img   82%[======================================>         ]  10.42M  2.87MB/s    eta 2s     cirros-0.3.5-x86_64-disk.img   89%[=========================================>      ]  11.27M  3.11MB/s    eta 2s     cirros-0.3.5-x86_64-disk.img   95%[=============================================>  ]  12.14M  3.34MB/s    eta 0s     cirros-0.3.5-x86_64-disk.img  100%[===============================================>]  12.65M  3.49MB/s    in 4.2s    
-
-2018-06-06 16:51:37 (2.98 MB/s) - ‘cirros-0.3.5-x86_64-disk.img’ saved [13267968/13267968]
-
-+ printf '\nUpload cirros image to glance...\n'
-
-Upload cirros image to glance...
-+ openstack image create cirros --file cirros-0.3.5-x86_64-disk.img --disk-format qcow2 --container-format bare --public
-+------------------+------------------------------------------------------+
-| Field            | Value                                                |
-+------------------+------------------------------------------------------+
-| checksum         | f8ab98ff5e73ebab884d80c9dc9c7290                     |
-| container_format | bare                                                 |
-| created_at       | 2018-06-06T09:51:40Z                                 |
-| disk_format      | qcow2                                                |
-| file             | /v2/images/e45c1c43-6dfe-4213-ba34-221a6e21ff80/file |
-| id               | e45c1c43-6dfe-4213-ba34-221a6e21ff80                 |
-| min_disk         | 0                                                    |
-| min_ram          | 0                                                    |
-| name             | cirros                                               |
-| owner            | f5b534e85cbf403385e9e2719dd9e279                     |
-| protected        | False                                                |
-| schema           | /v2/schemas/image                                    |
-| size             | 13267968                                             |
-| status           | active                                               |
-| tags             |                                                      |
-| updated_at       | 2018-06-06T09:51:40Z                                 |
-| virtual_size     | None                                                 |
-| visibility       | public                                               |
-+------------------+------------------------------------------------------+
-+ printf '\nList glnace images and remove cirros file...\n'
-
-List glnace images and remove cirros file...
-+ openstack image list
-+--------------------------------------+--------+--------+
-| ID                                   | Name   | Status |
-+--------------------------------------+--------+--------+
-| e45c1c43-6dfe-4213-ba34-221a6e21ff80 | cirros | active |
-+--------------------------------------+--------+--------+
-+ rm cirros-0.3.5-x86_64-disk.img
