@@ -1,0 +1,240 @@
++ cd /home/openstack/OPSInstaller/controller
++ pwd
+/home/openstack/OPSInstaller/controller
++ echo 'Run this script with sudo or as root.'
+Run this script with sudo or as root.
++ echo -n 'Install glance...'
+Install glance...+ apt-get -y install glance
+Reading package lists... 0%Reading package lists... 100%Reading package lists... Done
+Building dependency tree... 0%Building dependency tree... 0%Building dependency tree... 50%Building dependency tree... 50%Building dependency tree       
+Reading state information... 0%Reading state information... 0%Reading state information... Done
+The following packages were automatically installed and are no longer required:
+  linux-headers-4.4.0-116 linux-headers-4.4.0-116-generic linux-image-4.4.0-116-generic
+  linux-image-extra-4.4.0-116-generic
+Use 'sudo apt autoremove' to remove them.
+The following additional packages will be installed:
+  glance-api glance-common glance-registry glance-store-common libblas-common libblas3 libgfortran3 liblapack3
+  libpq5 libquadmath0 python-automaton python-barbicanclient python-castellan python-cursive
+  python-egenix-mxdatetime python-egenix-mxtools python-glance python-glance-store python-httplib2 python-ipaddr
+  python-kazoo python-networkx python-numpy python-psycopg2 python-semantic-version python-simplegeneric
+  python-swiftclient python-taskflow python-wsme
+Suggested packages:
+  python-ceph python-automaton-doc python-castellan-doc python-cursive-doc python-egenix-mxdatetime-dbg
+  python-egenix-mxdatetime-doc python-egenix-mxtools-dbg python-egenix-mxtools-doc python-kazoo-doc
+  python-matplotlib python-scipy python-pygraphviz | python-pydot gcc gfortran python-dev python-nose
+  python-numpy-dbg python-numpy-doc python-psycopg2-doc python-semantic-version-doc python-pydotplus
+The following NEW packages will be installed:
+  glance glance-api glance-common glance-registry glance-store-common libblas-common libblas3 libgfortran3
+  liblapack3 libpq5 libquadmath0 python-automaton python-barbicanclient python-castellan python-cursive
+  python-egenix-mxdatetime python-egenix-mxtools python-glance python-glance-store python-httplib2 python-ipaddr
+  python-kazoo python-networkx python-numpy python-psycopg2 python-semantic-version python-simplegeneric
+  python-swiftclient python-taskflow python-wsme
+0 upgraded, 30 newly installed, 0 to remove and 0 not upgraded.
+Need to get 7,871 kB of archives.
+After this operation, 37.5 MB of additional disk space will be used.
+0% [Working]            Get:1 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 python-semantic-version all 2.3.1-1 [7,772 B]
+0% [1 python-semantic-version 6,996 B/7,772 B 90%] [Connecting to ubuntu-cloud.archive.canonical.com (91.189.92.152)]                                                                                                                     1% [Connecting to ubuntu-cloud.archive.canonical.com (91.189.92.152)]                                                                     Get:2 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 libblas-common amd64 3.6.0-2ubuntu2 [5,342 B]
+1% [2 libblas-common 2,653 B/5,342 B 50%] [Connecting to ubuntu-cloud.archive.canonical.com (91.189.92.152)]                                                                                                            1% [Waiting for headers] [Connecting to ubuntu-cloud.archive.canonical.com (91.189.92.152)]                                                                                           Get:3 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 libblas3 amd64 3.6.0-2ubuntu2 [147 kB]
+2% [3 libblas3 11.3 kB/147 kB 8%] [Connecting to ubuntu-cloud.archive.canonical.com (91.189.92.152)]                                                                                                    Get:4 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 libquadmath0 amd64 5.4.0-6ubuntu1~16.04.9 [131 kB]
+4% [4 libquadmath0 35.3 kB/131 kB 27%] [Connecting to ubuntu-cloud.archive.canonical.com (91.189.92.152)]                                                                                                         Get:5 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 libgfortran3 amd64 5.4.0-6ubuntu1~16.04.9 [260 kB]
+6% [5 libgfortran3 24.9 kB/260 kB 10%] [Connecting to ubuntu-cloud.archive.canonical.com (91.189.92.152)]                                                                                                         Get:6 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 liblapack3 amd64 3.6.0-2ubuntu2 [1,938 kB]
+                                                                                                         9% [6 liblapack3 22.8 kB/1,938 kB 1%] [Connecting to ubuntu-cloud.archive.canonical.com (91.189.92.152)]                                                                                                        29% [Waiting for headers] [Waiting for headers]                                               Get:7 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 libpq5 amd64 9.5.13-0ubuntu0.16.04 [78.7 kB]
+30% [7 libpq5 36.0 kB/78.7 kB 46%] [Waiting for headers]                                                        Get:8 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 python-egenix-mxtools amd64 3.2.9-1 [75.3 kB]
+31% [8 python-egenix-mxtools 51.6 kB/75.3 kB 69%] [Waiting for headers]                                                                       Get:9 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 python-egenix-mxdatetime amd64 3.2.9-1 [68.3 kB]
+33% [9 python-egenix-mxdatetime 41.6 kB/68.3 kB 61%] [Waiting for headers]                                                                          Get:10 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 python-httplib2 all 0.9.1+dfsg-1 [34.2 kB]
+                                                                          34% [10 python-httplib2 34.2 kB/34.2 kB 100%] [Waiting for headers]                                                                   Get:11 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 python-ipaddr all 2.1.11-2 [14.9 kB]
+                                                                   35% [11 python-ipaddr 1,203 B/14.9 kB 8%] [Waiting for headers]                                                               35% [Waiting for headers] [Waiting for headers]                                               Get:12 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 glance-store-common all 0.23.0-0ubuntu1~cloud0 [4,506 B]
+35% [Waiting for headers] [12 glance-store-common 4,080 B/4,506 B 91%]                                                                      36% [Waiting for headers]                         Get:13 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 python-kazoo all 2.2.1-1ubuntu1 [79.9 kB]
+37% [13 python-kazoo 79.4 kB/79.9 kB 99%] [Waiting for headers]                                                               38% [Waiting for headers] [Waiting for headers]                                               Get:14 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 python-networkx all 1.11-1ubuntu1 [806 kB]
+39% [14 python-networkx 171 kB/806 kB 21%] [Waiting for headers]                                                                Get:15 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-automaton all 1.14.0-0ubuntu1~cloud0 [14.9 kB]
+46% [14 python-networkx 802 kB/806 kB 99%] [15 python-automaton 2,631 B/14.9 kB 18%]                                                                                    47% [Waiting for headers] [15 python-automaton 14.2 kB/14.9 kB 96%]                                                                   Get:16 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 python-numpy amd64 1:1.11.0-1ubuntu1 [1,763 kB]
+47% [16 python-numpy 20.1 kB/1,763 kB 1%] [15 python-automaton 14.2 kB/14.9 kB 96%]                                                                                   Get:17 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-barbicanclient all 4.6.0-0ubuntu1~cloud0 [961 kB]
+65% [16 python-numpy 1,762 kB/1,763 kB 100%] [17 python-barbicanclient 19.3 kB/961 kB 2%]                                                                                         66% [Waiting for headers] [17 python-barbicanclient 39.6 kB/961 kB 4%]                                                                      Get:18 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 python-simplegeneric all 0.8.1-1 [11.5 kB]
+66% [18 python-simplegeneric 11.5 kB/11.5 kB 100%] [17 python-barbicanclient 39.6 kB/961 kB 4%]                                                                                               67% [Waiting for headers] [17 python-barbicanclient 39.6 kB/961 kB 4%]                                                                      Get:19 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 python-wsme all 0.8.0-2ubuntu2 [61.0 kB]
+67% [19 python-wsme 14.8 kB/61.0 kB 24%] [17 python-barbicanclient 39.6 kB/961 kB 4%]                                                                                     68% [17 python-barbicanclient 39.6 kB/961 kB 4%]69% [17 python-barbicanclient 116 kB/961 kB 12%]70% [17 python-barbicanclient 242 kB/961 kB 25%]73% [17 python-barbicanclient 486 kB/961 kB 51%]77% [17 python-barbicanclient 881 kB/961 kB 92%]                                                78% [Working]             Get:20 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-castellan all 0.17.0-0ubuntu1~cloud0 [36.6 kB]
+78% [20 python-castellan 0 B/36.6 kB 0%]                                        79% [Working]             Get:21 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-cursive all 0.2.1-0ubuntu1~cloud0 [14.3 kB]
+79% [21 python-cursive 0 B/14.3 kB 0%]                                      80% [Working]             Get:22 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-swiftclient all 1:3.5.0-0ubuntu1~cloud0 [61.2 kB]
+80% [22 python-swiftclient 0 B/61.2 kB 0%]                                          81% [Working]             Get:23 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-glance-store all 0.23.0-0ubuntu1~cloud0 [82.5 kB]
+81% [23 python-glance-store 0 B/82.5 kB 0%]                                           83% [Working]             Get:24 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-psycopg2 amd64 2.7.4-1~cloud0 [156 kB]
+83% [24 python-psycopg2 0 B/156 kB 0%]                                      85% [Working]             Get:25 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-taskflow all 3.1.0-0ubuntu2~cloud0 [249 kB]
+85% [25 python-taskflow 0 B/249 kB 0%]                                      88% [Working]             Get:26 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-glance all 2:16.0.1-0ubuntu1.1~cloud0 [698 kB]
+88% [26 python-glance 0 B/698 kB 0%]94% [26 python-glance 505 kB/698 kB 72%]                                        96% [Working]             Get:27 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 glance-common all 2:16.0.1-0ubuntu1.1~cloud0 [10.6 kB]
+96% [27 glance-common 0 B/10.6 kB 0%]                                     97% [Working]             Get:28 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 glance-api all 2:16.0.1-0ubuntu1.1~cloud0 [71.7 kB]
+97% [28 glance-api 0 B/71.7 kB 0%]                                  98% [Working]             Get:29 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 glance-registry all 2:16.0.1-0ubuntu1.1~cloud0 [27.2 kB]
+98% [29 glance-registry 0 B/27.2 kB 0%]                                       99% [Working]             Get:30 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 glance all 2:16.0.1-0ubuntu1.1~cloud0 [1,750 B]
+99% [30 glance 0 B/1,750 B 0%]                              100% [Working]              Fetched 7,871 kB in 4s (1,589 kB/s)
+Selecting previously unselected package python-semantic-version.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 141524 files and directories currently installed.)
+Preparing to unpack .../python-semantic-version_2.3.1-1_all.deb ...
+Unpacking python-semantic-version (2.3.1-1) ...
+Selecting previously unselected package glance-store-common.
+Preparing to unpack .../glance-store-common_0.23.0-0ubuntu1~cloud0_all.deb ...
+Unpacking glance-store-common (0.23.0-0ubuntu1~cloud0) ...
+Selecting previously unselected package libblas-common.
+Preparing to unpack .../libblas-common_3.6.0-2ubuntu2_amd64.deb ...
+Unpacking libblas-common (3.6.0-2ubuntu2) ...
+Selecting previously unselected package libblas3.
+Preparing to unpack .../libblas3_3.6.0-2ubuntu2_amd64.deb ...
+Unpacking libblas3 (3.6.0-2ubuntu2) ...
+Selecting previously unselected package libquadmath0:amd64.
+Preparing to unpack .../libquadmath0_5.4.0-6ubuntu1~16.04.9_amd64.deb ...
+Unpacking libquadmath0:amd64 (5.4.0-6ubuntu1~16.04.9) ...
+Selecting previously unselected package libgfortran3:amd64.
+Preparing to unpack .../libgfortran3_5.4.0-6ubuntu1~16.04.9_amd64.deb ...
+Unpacking libgfortran3:amd64 (5.4.0-6ubuntu1~16.04.9) ...
+Selecting previously unselected package liblapack3.
+Preparing to unpack .../liblapack3_3.6.0-2ubuntu2_amd64.deb ...
+Unpacking liblapack3 (3.6.0-2ubuntu2) ...
+Selecting previously unselected package libpq5:amd64.
+Preparing to unpack .../libpq5_9.5.13-0ubuntu0.16.04_amd64.deb ...
+Unpacking libpq5:amd64 (9.5.13-0ubuntu0.16.04) ...
+Selecting previously unselected package python-automaton.
+Preparing to unpack .../python-automaton_1.14.0-0ubuntu1~cloud0_all.deb ...
+Unpacking python-automaton (1.14.0-0ubuntu1~cloud0) ...
+Selecting previously unselected package python-barbicanclient.
+Preparing to unpack .../python-barbicanclient_4.6.0-0ubuntu1~cloud0_all.deb ...
+Unpacking python-barbicanclient (4.6.0-0ubuntu1~cloud0) ...
+Selecting previously unselected package python-castellan.
+Preparing to unpack .../python-castellan_0.17.0-0ubuntu1~cloud0_all.deb ...
+Unpacking python-castellan (0.17.0-0ubuntu1~cloud0) ...
+Selecting previously unselected package python-cursive.
+Preparing to unpack .../python-cursive_0.2.1-0ubuntu1~cloud0_all.deb ...
+Unpacking python-cursive (0.2.1-0ubuntu1~cloud0) ...
+Selecting previously unselected package python-egenix-mxtools.
+Preparing to unpack .../python-egenix-mxtools_3.2.9-1_amd64.deb ...
+Unpacking python-egenix-mxtools (3.2.9-1) ...
+Selecting previously unselected package python-egenix-mxdatetime.
+Preparing to unpack .../python-egenix-mxdatetime_3.2.9-1_amd64.deb ...
+Unpacking python-egenix-mxdatetime (3.2.9-1) ...
+Selecting previously unselected package python-swiftclient.
+Preparing to unpack .../python-swiftclient_1%3a3.5.0-0ubuntu1~cloud0_all.deb ...
+Unpacking python-swiftclient (1:3.5.0-0ubuntu1~cloud0) ...
+Selecting previously unselected package python-glance-store.
+Preparing to unpack .../python-glance-store_0.23.0-0ubuntu1~cloud0_all.deb ...
+Unpacking python-glance-store (0.23.0-0ubuntu1~cloud0) ...
+Selecting previously unselected package python-httplib2.
+Preparing to unpack .../python-httplib2_0.9.1+dfsg-1_all.deb ...
+Unpacking python-httplib2 (0.9.1+dfsg-1) ...
+Selecting previously unselected package python-ipaddr.
+Preparing to unpack .../python-ipaddr_2.1.11-2_all.deb ...
+Unpacking python-ipaddr (2.1.11-2) ...
+Selecting previously unselected package python-kazoo.
+Preparing to unpack .../python-kazoo_2.2.1-1ubuntu1_all.deb ...
+Unpacking python-kazoo (2.2.1-1ubuntu1) ...
+Selecting previously unselected package python-networkx.
+Preparing to unpack .../python-networkx_1.11-1ubuntu1_all.deb ...
+Unpacking python-networkx (1.11-1ubuntu1) ...
+Selecting previously unselected package python-numpy.
+Preparing to unpack .../python-numpy_1%3a1.11.0-1ubuntu1_amd64.deb ...
+Unpacking python-numpy (1:1.11.0-1ubuntu1) ...
+Selecting previously unselected package python-psycopg2.
+Preparing to unpack .../python-psycopg2_2.7.4-1~cloud0_amd64.deb ...
+Unpacking python-psycopg2 (2.7.4-1~cloud0) ...
+Selecting previously unselected package python-taskflow.
+Preparing to unpack .../python-taskflow_3.1.0-0ubuntu2~cloud0_all.deb ...
+Unpacking python-taskflow (3.1.0-0ubuntu2~cloud0) ...
+Selecting previously unselected package python-simplegeneric.
+Preparing to unpack .../python-simplegeneric_0.8.1-1_all.deb ...
+Unpacking python-simplegeneric (0.8.1-1) ...
+Selecting previously unselected package python-wsme.
+Preparing to unpack .../python-wsme_0.8.0-2ubuntu2_all.deb ...
+Unpacking python-wsme (0.8.0-2ubuntu2) ...
+Selecting previously unselected package python-glance.
+Preparing to unpack .../python-glance_2%3a16.0.1-0ubuntu1.1~cloud0_all.deb ...
+Unpacking python-glance (2:16.0.1-0ubuntu1.1~cloud0) ...
+Selecting previously unselected package glance-common.
+Preparing to unpack .../glance-common_2%3a16.0.1-0ubuntu1.1~cloud0_all.deb ...
+Unpacking glance-common (2:16.0.1-0ubuntu1.1~cloud0) ...
+Selecting previously unselected package glance-api.
+Preparing to unpack .../glance-api_2%3a16.0.1-0ubuntu1.1~cloud0_all.deb ...
+Unpacking glance-api (2:16.0.1-0ubuntu1.1~cloud0) ...
+Selecting previously unselected package glance-registry.
+Preparing to unpack .../glance-registry_2%3a16.0.1-0ubuntu1.1~cloud0_all.deb ...
+Unpacking glance-registry (2:16.0.1-0ubuntu1.1~cloud0) ...
+Selecting previously unselected package glance.
+Preparing to unpack .../glance_2%3a16.0.1-0ubuntu1.1~cloud0_all.deb ...
+Unpacking glance (2:16.0.1-0ubuntu1.1~cloud0) ...
+Processing triggers for libc-bin (2.23-0ubuntu10) ...
+Processing triggers for man-db (2.7.5-1) ...
+Processing triggers for systemd (229-4ubuntu21.2) ...
+Processing triggers for ureadahead (0.100.0-19) ...
+Setting up python-semantic-version (2.3.1-1) ...
+Setting up glance-store-common (0.23.0-0ubuntu1~cloud0) ...
+Setting up libblas-common (3.6.0-2ubuntu2) ...
+Setting up libblas3 (3.6.0-2ubuntu2) ...
+update-alternatives: using /usr/lib/libblas/libblas.so.3 to provide /usr/lib/libblas.so.3 (libblas.so.3) in auto mode
+Setting up libquadmath0:amd64 (5.4.0-6ubuntu1~16.04.9) ...
+Setting up libgfortran3:amd64 (5.4.0-6ubuntu1~16.04.9) ...
+Setting up liblapack3 (3.6.0-2ubuntu2) ...
+update-alternatives: using /usr/lib/lapack/liblapack.so.3 to provide /usr/lib/liblapack.so.3 (liblapack.so.3) in auto mode
+Setting up libpq5:amd64 (9.5.13-0ubuntu0.16.04) ...
+Setting up python-automaton (1.14.0-0ubuntu1~cloud0) ...
+Setting up python-barbicanclient (4.6.0-0ubuntu1~cloud0) ...
+update-alternatives: using /usr/bin/python2-barbican to provide /usr/bin/barbican (barbican) in auto mode
+Setting up python-castellan (0.17.0-0ubuntu1~cloud0) ...
+Setting up python-cursive (0.2.1-0ubuntu1~cloud0) ...
+Setting up python-egenix-mxtools (3.2.9-1) ...
+Setting up python-egenix-mxdatetime (3.2.9-1) ...
+Setting up python-swiftclient (1:3.5.0-0ubuntu1~cloud0) ...
+update-alternatives: using /usr/bin/python2-swift to provide /usr/bin/swift (swift) in auto mode
+Setting up python-glance-store (0.23.0-0ubuntu1~cloud0) ...
+update-alternatives: using /usr/bin/python2-glance-rootwrap to provide /usr/bin/glance-rootwrap (glance-rootwrap) in auto mode
+Setting up python-httplib2 (0.9.1+dfsg-1) ...
+Setting up python-ipaddr (2.1.11-2) ...
+Setting up python-kazoo (2.2.1-1ubuntu1) ...
+Setting up python-networkx (1.11-1ubuntu1) ...
+Setting up python-numpy (1:1.11.0-1ubuntu1) ...
+Setting up python-psycopg2 (2.7.4-1~cloud0) ...
+Setting up python-taskflow (3.1.0-0ubuntu2~cloud0) ...
+Setting up python-simplegeneric (0.8.1-1) ...
+Setting up python-wsme (0.8.0-2ubuntu2) ...
+Setting up python-glance (2:16.0.1-0ubuntu1.1~cloud0) ...
+Setting up glance-common (2:16.0.1-0ubuntu1.1~cloud0) ...
+Setting up glance-api (2:16.0.1-0ubuntu1.1~cloud0) ...
+Setting up glance-registry (2:16.0.1-0ubuntu1.1~cloud0) ...
+Setting up glance (2:16.0.1-0ubuntu1.1~cloud0) ...
+Processing triggers for libc-bin (2.23-0ubuntu10) ...
+Processing triggers for systemd (229-4ubuntu21.2) ...
+Processing triggers for ureadahead (0.100.0-19) ...
++ cp files/glance-api.conf /etc/glance/glance-api.conf
++ cp files/glance-registry.conf /etc/glance/glance-registry.conf
++ echo 'su -s /bin/sh -c "glance-manage db_sync" glance'
+su -s /bin/sh -c "glance-manage db_sync" glance
++ su -s /bin/sh -c 'glance-manage db_sync' glance
+/usr/lib/python2.7/dist-packages/oslo_db/sqlalchemy/enginefacade.py:1334: OsloDBDeprecationWarning: EngineFacade is deprecated; please use oslo_db.sqlalchemy.enginefacade
+  expire_on_commit=expire_on_commit, _conf=conf)
+2018-06-06 16:51:23.401 11445 INFO alembic.runtime.migration [-] Context impl MySQLImpl.
+2018-06-06 16:51:23.402 11445 INFO alembic.runtime.migration [-] Will assume non-transactional DDL.
+2018-06-06 16:51:23.416 11445 INFO alembic.runtime.migration [-] Context impl MySQLImpl.
+2018-06-06 16:51:23.416 11445 INFO alembic.runtime.migration [-] Will assume non-transactional DDL.
+INFO  [alembic.runtime.migration] Context impl MySQLImpl.
+INFO  [alembic.runtime.migration] Will assume non-transactional DDL.
+INFO  [alembic.runtime.migration] Running upgrade  -> liberty, liberty initial
+INFO  [alembic.runtime.migration] Running upgrade liberty -> mitaka01, add index on created_at and updated_at columns of 'images' table
+INFO  [alembic.runtime.migration] Running upgrade mitaka01 -> mitaka02, update metadef os_nova_server
+INFO  [alembic.runtime.migration] Running upgrade mitaka02 -> ocata_expand01, add visibility to images
+INFO  [alembic.runtime.migration] Running upgrade ocata_expand01 -> pike_expand01, empty expand for symmetry with pike_contract01
+INFO  [alembic.runtime.migration] Running upgrade pike_expand01 -> queens_expand01
+INFO  [alembic.runtime.migration] Context impl MySQLImpl.
+INFO  [alembic.runtime.migration] Will assume non-transactional DDL.
+Upgraded database to: queens_expand01, current revision(s): queens_expand01
+INFO  [alembic.runtime.migration] Context impl MySQLImpl.
+INFO  [alembic.runtime.migration] Will assume non-transactional DDL.
+INFO  [alembic.runtime.migration] Context impl MySQLImpl.
+INFO  [alembic.runtime.migration] Will assume non-transactional DDL.
+Database migration is up to date. No migration needed.
+INFO  [alembic.runtime.migration] Context impl MySQLImpl.
+INFO  [alembic.runtime.migration] Will assume non-transactional DDL.
+INFO  [alembic.runtime.migration] Context impl MySQLImpl.
+INFO  [alembic.runtime.migration] Will assume non-transactional DDL.
+INFO  [alembic.runtime.migration] Running upgrade mitaka02 -> ocata_contract01, remove is_public from images
+INFO  [alembic.runtime.migration] Running upgrade ocata_contract01 -> pike_contract01, drop glare artifacts tables
+INFO  [alembic.runtime.migration] Running upgrade pike_contract01 -> queens_contract01
+INFO  [alembic.runtime.migration] Context impl MySQLImpl.
+INFO  [alembic.runtime.migration] Will assume non-transactional DDL.
+Upgraded database to: queens_contract01, current revision(s): queens_contract01
+INFO  [alembic.runtime.migration] Context impl MySQLImpl.
+INFO  [alembic.runtime.migration] Will assume non-transactional DDL.
+Database is synced successfully.
++ service glance-registry restart
++ service glance-api restart

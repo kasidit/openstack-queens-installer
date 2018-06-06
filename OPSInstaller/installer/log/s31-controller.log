@@ -1,0 +1,293 @@
++ cd /home/openstack/OPSInstaller/controller
++ pwd
+/home/openstack/OPSInstaller/controller
++ echo 'Run this script as a user.'
+Run this script as a user.
++ source ./admin-openrc.sh
+++ export OS_PROJECT_DOMAIN_NAME=default
+++ OS_PROJECT_DOMAIN_NAME=default
+++ export OS_USER_DOMAIN_NAME=default
+++ OS_USER_DOMAIN_NAME=default
+++ export OS_PROJECT_NAME=admin
+++ OS_PROJECT_NAME=admin
+++ export OS_USERNAME=admin
+++ OS_USERNAME=admin
+++ export OS_PASSWORD=adminpassword
+++ OS_PASSWORD=adminpassword
+++ export OS_AUTH_URL=http://controller:5000/v3
+++ OS_AUTH_URL=http://controller:5000/v3
+++ export OS_IDENTITY_API_VERSION=3
+++ OS_IDENTITY_API_VERSION=3
+++ export OS_IMAGE_API_VERSION=2
+++ OS_IMAGE_API_VERSION=2
++ echo 'openstack network create --share --provider-physical-network provider --provider-network-type flat provider1'
+openstack network create --share --provider-physical-network provider --provider-network-type flat provider1
++ openstack network create --share --provider-physical-network provider --provider-network-type flat provider1
++---------------------------+--------------------------------------+
+| Field                     | Value                                |
++---------------------------+--------------------------------------+
+| admin_state_up            | UP                                   |
+| availability_zone_hints   |                                      |
+| availability_zones        |                                      |
+| created_at                | 2018-06-06T10:35:32Z                 |
+| description               |                                      |
+| dns_domain                | None                                 |
+| id                        | 60327f4a-170f-4129-9f3e-644a1aff618f |
+| ipv4_address_scope        | None                                 |
+| ipv6_address_scope        | None                                 |
+| is_default                | False                                |
+| is_vlan_transparent       | None                                 |
+| mtu                       | 1500                                 |
+| name                      | provider1                            |
+| port_security_enabled     | True                                 |
+| project_id                | f5b534e85cbf403385e9e2719dd9e279     |
+| provider:network_type     | flat                                 |
+| provider:physical_network | provider                             |
+| provider:segmentation_id  | None                                 |
+| qos_policy_id             | None                                 |
+| revision_number           | 2                                    |
+| router:external           | Internal                             |
+| segments                  | None                                 |
+| shared                    | True                                 |
+| status                    | ACTIVE                               |
+| subnets                   |                                      |
+| tags                      |                                      |
+| updated_at                | 2018-06-06T10:35:32Z                 |
++---------------------------+--------------------------------------+
++ echo 'openstack subnet create --subnet-range 10.0.0.0/24 --gateway 10.0.0.1 --network provider1 --allocation-pool start=10.0.0.100,end=10.0.0.200 --dns-nameserver 8.8.4.4 provider1-v4'
+openstack subnet create --subnet-range 10.0.0.0/24 --gateway 10.0.0.1 --network provider1 --allocation-pool start=10.0.0.100,end=10.0.0.200 --dns-nameserver 8.8.4.4 provider1-v4
++ openstack subnet create --subnet-range 10.0.0.0/24 --gateway 10.0.0.1 --network provider1 --allocation-pool start=10.0.0.100,end=10.0.0.200 --dns-nameserver 8.8.4.4 provider1-v4
++-------------------+--------------------------------------+
+| Field             | Value                                |
++-------------------+--------------------------------------+
+| allocation_pools  | 10.0.0.100-10.0.0.200                |
+| cidr              | 10.0.0.0/24                          |
+| created_at        | 2018-06-06T10:35:36Z                 |
+| description       |                                      |
+| dns_nameservers   | 8.8.4.4                              |
+| enable_dhcp       | True                                 |
+| gateway_ip        | 10.0.0.1                             |
+| host_routes       |                                      |
+| id                | 8167855e-2679-4f9e-bb58-08d50974f901 |
+| ip_version        | 4                                    |
+| ipv6_address_mode | None                                 |
+| ipv6_ra_mode      | None                                 |
+| name              | provider1-v4                         |
+| network_id        | 60327f4a-170f-4129-9f3e-644a1aff618f |
+| project_id        | f5b534e85cbf403385e9e2719dd9e279     |
+| revision_number   | 0                                    |
+| segment_id        | None                                 |
+| service_types     |                                      |
+| subnetpool_id     | None                                 |
+| tags              |                                      |
+| updated_at        | 2018-06-06T10:35:36Z                 |
++-------------------+--------------------------------------+
++ echo 'openstack security group rule create --proto icmp default'
+openstack security group rule create --proto icmp default
++ openstack security group rule create --proto icmp default
++-------------------+--------------------------------------+
+| Field             | Value                                |
++-------------------+--------------------------------------+
+| created_at        | 2018-06-06T10:35:41Z                 |
+| description       |                                      |
+| direction         | ingress                              |
+| ether_type        | IPv4                                 |
+| id                | 59b39d96-683b-4f67-9985-12698e242f00 |
+| name              | None                                 |
+| port_range_max    | None                                 |
+| port_range_min    | None                                 |
+| project_id        | f5b534e85cbf403385e9e2719dd9e279     |
+| protocol          | icmp                                 |
+| remote_group_id   | None                                 |
+| remote_ip_prefix  | 0.0.0.0/0                            |
+| revision_number   | 0                                    |
+| security_group_id | dfd52bb0-d2b7-4375-8824-72e9c6b2a34e |
+| updated_at        | 2018-06-06T10:35:41Z                 |
++-------------------+--------------------------------------+
++ echo 'openstack security group rule create --proto tcp --dst-port 22 default'
+openstack security group rule create --proto tcp --dst-port 22 default
++ openstack security group rule create --proto tcp --dst-port 22 default
++-------------------+--------------------------------------+
+| Field             | Value                                |
++-------------------+--------------------------------------+
+| created_at        | 2018-06-06T10:35:44Z                 |
+| description       |                                      |
+| direction         | ingress                              |
+| ether_type        | IPv4                                 |
+| id                | 0d60fe8f-efae-45e0-8165-a537cb26b784 |
+| name              | None                                 |
+| port_range_max    | 22                                   |
+| port_range_min    | 22                                   |
+| project_id        | f5b534e85cbf403385e9e2719dd9e279     |
+| protocol          | tcp                                  |
+| remote_group_id   | None                                 |
+| remote_ip_prefix  | 0.0.0.0/0                            |
+| revision_number   | 0                                    |
+| security_group_id | dfd52bb0-d2b7-4375-8824-72e9c6b2a34e |
+| updated_at        | 2018-06-06T10:35:44Z                 |
++-------------------+--------------------------------------+
++ echo 'openstack flavor create --id 0 --vcpus 1 --ram 64 --disk 1 m1.nano'
+openstack flavor create --id 0 --vcpus 1 --ram 64 --disk 1 m1.nano
++ openstack flavor create --id 0 --vcpus 1 --ram 64 --disk 1 m1.nano
++----------------------------+---------+
+| Field                      | Value   |
++----------------------------+---------+
+| OS-FLV-DISABLED:disabled   | False   |
+| OS-FLV-EXT-DATA:ephemeral  | 0       |
+| disk                       | 1       |
+| id                         | 0       |
+| name                       | m1.nano |
+| os-flavor-access:is_public | True    |
+| properties                 |         |
+| ram                        | 64      |
+| rxtx_factor                | 1.0     |
+| swap                       |         |
+| vcpus                      | 1       |
++----------------------------+---------+
++ echo 'openstack flavor create --id 1 --vcpus 1 --ram 512 --disk 1 m1.mini'
+openstack flavor create --id 1 --vcpus 1 --ram 512 --disk 1 m1.mini
++ openstack flavor create --id 1 --vcpus 1 --ram 512 --disk 1 m1.mini
++----------------------------+---------+
+| Field                      | Value   |
++----------------------------+---------+
+| OS-FLV-DISABLED:disabled   | False   |
+| OS-FLV-EXT-DATA:ephemeral  | 0       |
+| disk                       | 1       |
+| id                         | 1       |
+| name                       | m1.mini |
+| os-flavor-access:is_public | True    |
+| properties                 |         |
+| ram                        | 512     |
+| rxtx_factor                | 1.0     |
+| swap                       |         |
+| vcpus                      | 1       |
++----------------------------+---------+
++ echo 'Ping 10.0.0.100'
+Ping 10.0.0.100
++ ping -c 4 10.0.0.100
+PING 10.0.0.100 (10.0.0.100) 56(84) bytes of data.
+64 bytes from 10.0.0.100: icmp_seq=1 ttl=64 time=6.11 ms
+64 bytes from 10.0.0.100: icmp_seq=2 ttl=64 time=0.756 ms
+64 bytes from 10.0.0.100: icmp_seq=3 ttl=64 time=0.802 ms
+64 bytes from 10.0.0.100: icmp_seq=4 ttl=64 time=0.881 ms
+
+--- 10.0.0.100 ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 3000ms
+rtt min/avg/max/mdev = 0.756/2.139/6.119/2.298 ms
++ echo 'openstack network set --external provider1'
+openstack network set --external provider1
++ openstack network set --external provider1
++ echo 'openstack network create selfservice1'
+openstack network create selfservice1
++ openstack network create selfservice1
++---------------------------+--------------------------------------+
+| Field                     | Value                                |
++---------------------------+--------------------------------------+
+| admin_state_up            | UP                                   |
+| availability_zone_hints   |                                      |
+| availability_zones        |                                      |
+| created_at                | 2018-06-06T10:36:01Z                 |
+| description               |                                      |
+| dns_domain                | None                                 |
+| id                        | 7690ba2b-dc73-4acb-b8f5-05614919c9c1 |
+| ipv4_address_scope        | None                                 |
+| ipv6_address_scope        | None                                 |
+| is_default                | False                                |
+| is_vlan_transparent       | None                                 |
+| mtu                       | 1450                                 |
+| name                      | selfservice1                         |
+| port_security_enabled     | True                                 |
+| project_id                | f5b534e85cbf403385e9e2719dd9e279     |
+| provider:network_type     | vxlan                                |
+| provider:physical_network | None                                 |
+| provider:segmentation_id  | 66                                   |
+| qos_policy_id             | None                                 |
+| revision_number           | 2                                    |
+| router:external           | Internal                             |
+| segments                  | None                                 |
+| shared                    | False                                |
+| status                    | ACTIVE                               |
+| subnets                   |                                      |
+| tags                      |                                      |
+| updated_at                | 2018-06-06T10:36:02Z                 |
++---------------------------+--------------------------------------+
++ echo 'openstack subnet create --subnet-range 192.0.2.0/24 --network selfservice1 --dns-nameserver 8.8.4.4 selfservice1-v4'
+openstack subnet create --subnet-range 192.0.2.0/24 --network selfservice1 --dns-nameserver 8.8.4.4 selfservice1-v4
++ openstack subnet create --subnet-range 192.0.2.0/24 --network selfservice1 --dns-nameserver 8.8.4.4 selfservice1-v4
++-------------------+--------------------------------------+
+| Field             | Value                                |
++-------------------+--------------------------------------+
+| allocation_pools  | 192.0.2.2-192.0.2.254                |
+| cidr              | 192.0.2.0/24                         |
+| created_at        | 2018-06-06T10:36:06Z                 |
+| description       |                                      |
+| dns_nameservers   | 8.8.4.4                              |
+| enable_dhcp       | True                                 |
+| gateway_ip        | 192.0.2.1                            |
+| host_routes       |                                      |
+| id                | 50eb47f4-1362-453a-8d19-53da13466fe7 |
+| ip_version        | 4                                    |
+| ipv6_address_mode | None                                 |
+| ipv6_ra_mode      | None                                 |
+| name              | selfservice1-v4                      |
+| network_id        | 7690ba2b-dc73-4acb-b8f5-05614919c9c1 |
+| project_id        | f5b534e85cbf403385e9e2719dd9e279     |
+| revision_number   | 0                                    |
+| segment_id        | None                                 |
+| service_types     |                                      |
+| subnetpool_id     | None                                 |
+| tags              |                                      |
+| updated_at        | 2018-06-06T10:36:06Z                 |
++-------------------+--------------------------------------+
++ echo 'openstack router create router1'
+openstack router create router1
++ openstack router create router1
++-------------------------+--------------------------------------+
+| Field                   | Value                                |
++-------------------------+--------------------------------------+
+| admin_state_up          | UP                                   |
+| availability_zone_hints |                                      |
+| availability_zones      |                                      |
+| created_at              | 2018-06-06T10:36:10Z                 |
+| description             |                                      |
+| distributed             | True                                 |
+| external_gateway_info   | None                                 |
+| flavor_id               | None                                 |
+| ha                      | False                                |
+| id                      | 26d3f807-8927-4aef-aed2-b952879be687 |
+| name                    | router1                              |
+| project_id              | f5b534e85cbf403385e9e2719dd9e279     |
+| revision_number         | 1                                    |
+| routes                  |                                      |
+| status                  | ACTIVE                               |
+| tags                    |                                      |
+| updated_at              | 2018-06-06T10:36:10Z                 |
++-------------------------+--------------------------------------+
++ echo 'openstack router add subnet router1 selfservice1-v4'
+openstack router add subnet router1 selfservice1-v4
++ openstack router add subnet router1 selfservice1-v4
++ echo 'openstack router set router1 --external-gateway provider1'
+openstack router set router1 --external-gateway provider1
++ openstack router set router1 --external-gateway provider1
++ echo 'openstack floating ip create provider1'
+openstack floating ip create provider1
++ openstack floating ip create provider1
++---------------------+--------------------------------------+
+| Field               | Value                                |
++---------------------+--------------------------------------+
+| created_at          | 2018-06-06T10:36:27Z                 |
+| description         |                                      |
+| fixed_ip_address    | None                                 |
+| floating_ip_address | 10.0.0.112                           |
+| floating_network_id | 60327f4a-170f-4129-9f3e-644a1aff618f |
+| id                  | 95b0fea2-ca7a-44fb-a31d-5fcfbff27441 |
+| name                | 10.0.0.112                           |
+| port_id             | None                                 |
+| project_id          | f5b534e85cbf403385e9e2719dd9e279     |
+| qos_policy_id       | None                                 |
+| revision_number     | 0                                    |
+| router_id           | None                                 |
+| status              | DOWN                                 |
+| subnet_id           | None                                 |
+| updated_at          | 2018-06-06T10:36:27Z                 |
++---------------------+--------------------------------------+

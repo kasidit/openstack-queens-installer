@@ -1,0 +1,276 @@
++ cd /home/openstack/OPSInstaller/controller
++ pwd
+/home/openstack/OPSInstaller/controller
++ echo 'check chrony'
+check chrony
++ chronyc sources
+210 Number of sources = 7
+MS Name/IP address         Stratum Poll Reach LastRx Last sample
+===============================================================================
+^* ntp1.bknix.co.th              1   6   377    12    -71us[ -136us] +/- 2769us
+^- ntp02.cpe.rmutt.ac.th         2   6   377    14  +3165us[+3100us] +/-  158ms
+^- 124.109.2.169                 2   6   377    12  -5761us[-5761us] +/-   71ms
+^- golem.canonical.com           2   6   377     9    +12ms[  +12ms] +/-  210ms
+^? ntp.kasetsart.org             0   6     0   10y     +0ns[   +0ns] +/-    0ns
+^? 2001:3c8:e10e:399f::20        0   6     0   10y     +0ns[   +0ns] +/-    0ns
+^? 2401:5700:100:503::1813       0   6     0   10y     +0ns[   +0ns] +/-    0ns
++ sleep 1
++ apt-get -y install mariadb-server
+Reading package lists... 0%Reading package lists... 100%Reading package lists... Done
+Building dependency tree... 0%Building dependency tree... 0%Building dependency tree... 50%Building dependency tree... 50%Building dependency tree       
+Reading state information... 0%Reading state information... 0%Reading state information... Done
+The following packages were automatically installed and are no longer required:
+  linux-headers-4.4.0-116 linux-headers-4.4.0-116-generic linux-image-4.4.0-116-generic
+  linux-image-extra-4.4.0-116-generic
+Use 'sudo apt autoremove' to remove them.
+The following additional packages will be installed:
+  libaio1 libcgi-fast-perl libcgi-pm-perl libdbd-mysql-perl libdbi-perl libencode-locale-perl libfcgi-perl
+  libhtml-parser-perl libhtml-tagset-perl libhtml-template-perl libhttp-date-perl libhttp-message-perl
+  libio-html-perl liblwp-mediatypes-perl libmysqlclient20 libterm-readkey-perl libtimedate-perl liburi-perl
+  mariadb-client-10.0 mariadb-client-core-10.0 mariadb-common mariadb-server-10.0 mariadb-server-core-10.0
+  mysql-common
+Suggested packages:
+  libclone-perl libmldbm-perl libnet-daemon-perl libsql-statement-perl libdata-dump-perl libipc-sharedcache-perl
+  libwww-perl mailx mariadb-test tinyca
+The following NEW packages will be installed:
+  libaio1 libcgi-fast-perl libcgi-pm-perl libdbd-mysql-perl libdbi-perl libencode-locale-perl libfcgi-perl
+  libhtml-parser-perl libhtml-tagset-perl libhtml-template-perl libhttp-date-perl libhttp-message-perl
+  libio-html-perl liblwp-mediatypes-perl libmysqlclient20 libterm-readkey-perl libtimedate-perl liburi-perl
+  mariadb-client-10.0 mariadb-client-core-10.0 mariadb-common mariadb-server mariadb-server-10.0
+  mariadb-server-core-10.0 mysql-common
+0 upgraded, 25 newly installed, 0 to remove and 0 not upgraded.
+Need to get 16.9 MB of archives.
+After this operation, 147 MB of additional disk space will be used.
+0% [Working]            Get:1 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 mysql-common all 5.7.22-0ubuntu0.16.04.1 [15.4 kB]
+0% [1 mysql-common 0 B/15.4 kB 0%]                                  1% [Working]            Get:2 http://th.archive.ubuntu.com/ubuntu xenial-updates/universe amd64 mariadb-common all 10.0.34-0ubuntu0.16.04.1 [16.0 kB]
+1% [2 mariadb-common 0 B/16.0 kB 0%]                                    2% [Working]            Get:3 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 libdbi-perl amd64 1.634-1build1 [743 kB]
+2% [3 libdbi-perl 0 B/743 kB 0%]                                6% [Working]            Get:4 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 libmysqlclient20 amd64 5.7.22-0ubuntu0.16.04.1 [809 kB]
+6% [4 libmysqlclient20 0 B/809 kB 0%]                                     11% [Working]             Get:5 http://th.archive.ubuntu.com/ubuntu xenial-updates/universe amd64 libdbd-mysql-perl amd64 4.033-1ubuntu0.1 [84.3 kB]
+11% [5 libdbd-mysql-perl 0 B/84.3 kB 0%]                                        12% [Working]             Get:6 http://th.archive.ubuntu.com/ubuntu xenial/universe amd64 libterm-readkey-perl amd64 2.33-1build1 [27.2 kB]
+12% [6 libterm-readkey-perl 0 B/27.2 kB 0%]                                           13% [Working]             Get:7 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 libaio1 amd64 0.3.110-2 [6,356 B]
+13% [7 libaio1 0 B/6,356 B 0%]                              14% [Working]             Get:8 http://th.archive.ubuntu.com/ubuntu xenial-updates/universe amd64 mariadb-client-core-10.0 amd64 10.0.34-0ubuntu0.16.04.1 [4,289 kB]
+14% [8 mariadb-client-core-10.0 0 B/4,289 kB 0%]                                                35% [Working]             Get:9 http://th.archive.ubuntu.com/ubuntu xenial-updates/universe amd64 mariadb-client-10.0 amd64 10.0.34-0ubuntu0.16.04.1 [1,173 kB]
+35% [9 mariadb-client-10.0 0 B/1,173 kB 0%]                                           41% [Working]             Get:10 http://th.archive.ubuntu.com/ubuntu xenial-updates/universe amd64 mariadb-server-core-10.0 amd64 10.0.34-0ubuntu0.16.04.1 [4,851 kB]
+41% [10 mariadb-server-core-10.0 0 B/4,851 kB 0%]64% [10 mariadb-server-core-10.0 4,835 kB/4,851 kB 100%]                                                        65% [Working]             Get:11 http://th.archive.ubuntu.com/ubuntu xenial-updates/universe amd64 mariadb-server-10.0 amd64 10.0.34-0ubuntu0.16.04.1 [4,268 kB]
+65% [11 mariadb-server-10.0 0 B/4,268 kB 0%]                                            86% [Working]             Get:12 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 libhtml-tagset-perl all 3.20-2 [13.5 kB]
+86% [12 libhtml-tagset-perl 0 B/13.5 kB 0%]                                           87% [Working]             Get:13 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 liburi-perl all 1.71-1 [76.9 kB]
+87% [13 liburi-perl 0 B/76.9 kB 0%]                                   88% [Working]             Get:14 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 libhtml-parser-perl amd64 3.72-1 [86.1 kB]
+88% [14 libhtml-parser-perl 0 B/86.1 kB 0%]                                           89% [Working]             Get:15 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 libcgi-pm-perl all 4.26-1 [185 kB]
+89% [15 libcgi-pm-perl 0 B/185 kB 0%]                                     91% [Working]             Get:16 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 libfcgi-perl amd64 0.77-1build1 [32.3 kB]
+91% [16 libfcgi-perl 0 B/32.3 kB 0%]                                    92% [Working]             Get:17 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 libcgi-fast-perl all 1:2.10-1 [10.2 kB]
+92% [17 libcgi-fast-perl 0 B/10.2 kB 0%]                                        92% [Working]             Get:18 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 libencode-locale-perl all 1.05-1 [12.3 kB]
+92% [18 libencode-locale-perl 0 B/12.3 kB 0%]                                             93% [Working]             Get:19 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 libhtml-template-perl all 2.95-2 [60.4 kB]
+93% [19 libhtml-template-perl 0 B/60.4 kB 0%]                                             94% [Working]             Get:20 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 libtimedate-perl all 2.3000-2 [37.5 kB]
+94% [20 libtimedate-perl 0 B/37.5 kB 0%]                                        95% [Working]             Get:21 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 libhttp-date-perl all 6.02-1 [10.4 kB]
+95% [21 libhttp-date-perl 0 B/10.4 kB 0%]                                         96% [Working]             Get:22 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 libio-html-perl all 1.001-1 [14.9 kB]
+96% [22 libio-html-perl 0 B/14.9 kB 0%]                                       97% [Working]             Get:23 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 liblwp-mediatypes-perl all 6.02-1 [21.7 kB]
+97% [23 liblwp-mediatypes-perl 0 B/21.7 kB 0%]                                              98% [Working]             Get:24 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 libhttp-message-perl all 6.11-1 [74.3 kB]
+98% [24 libhttp-message-perl 0 B/74.3 kB 0%]                                            99% [Working]             Get:25 http://th.archive.ubuntu.com/ubuntu xenial-updates/universe amd64 mariadb-server all 10.0.34-0ubuntu0.16.04.1 [13.1 kB]
+99% [25 mariadb-server 0 B/13.1 kB 0%]                                      100% [Working]              Fetched 16.9 MB in 2s (7,650 kB/s)
+Preconfiguring packages ...
+Selecting previously unselected package mysql-common.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 133178 files and directories currently installed.)
+Preparing to unpack .../mysql-common_5.7.22-0ubuntu0.16.04.1_all.deb ...
+Unpacking mysql-common (5.7.22-0ubuntu0.16.04.1) ...
+Selecting previously unselected package mariadb-common.
+Preparing to unpack .../mariadb-common_10.0.34-0ubuntu0.16.04.1_all.deb ...
+Unpacking mariadb-common (10.0.34-0ubuntu0.16.04.1) ...
+Selecting previously unselected package libdbi-perl.
+Preparing to unpack .../libdbi-perl_1.634-1build1_amd64.deb ...
+Unpacking libdbi-perl (1.634-1build1) ...
+Selecting previously unselected package libmysqlclient20:amd64.
+Preparing to unpack .../libmysqlclient20_5.7.22-0ubuntu0.16.04.1_amd64.deb ...
+Unpacking libmysqlclient20:amd64 (5.7.22-0ubuntu0.16.04.1) ...
+Selecting previously unselected package libdbd-mysql-perl.
+Preparing to unpack .../libdbd-mysql-perl_4.033-1ubuntu0.1_amd64.deb ...
+Unpacking libdbd-mysql-perl (4.033-1ubuntu0.1) ...
+Selecting previously unselected package libterm-readkey-perl.
+Preparing to unpack .../libterm-readkey-perl_2.33-1build1_amd64.deb ...
+Unpacking libterm-readkey-perl (2.33-1build1) ...
+Selecting previously unselected package libaio1:amd64.
+Preparing to unpack .../libaio1_0.3.110-2_amd64.deb ...
+Unpacking libaio1:amd64 (0.3.110-2) ...
+Selecting previously unselected package mariadb-client-core-10.0.
+Preparing to unpack .../mariadb-client-core-10.0_10.0.34-0ubuntu0.16.04.1_amd64.deb ...
+Unpacking mariadb-client-core-10.0 (10.0.34-0ubuntu0.16.04.1) ...
+Selecting previously unselected package mariadb-client-10.0.
+Preparing to unpack .../mariadb-client-10.0_10.0.34-0ubuntu0.16.04.1_amd64.deb ...
+Unpacking mariadb-client-10.0 (10.0.34-0ubuntu0.16.04.1) ...
+Selecting previously unselected package mariadb-server-core-10.0.
+Preparing to unpack .../mariadb-server-core-10.0_10.0.34-0ubuntu0.16.04.1_amd64.deb ...
+Unpacking mariadb-server-core-10.0 (10.0.34-0ubuntu0.16.04.1) ...
+Processing triggers for man-db (2.7.5-1) ...
+Processing triggers for libc-bin (2.23-0ubuntu10) ...
+Setting up mysql-common (5.7.22-0ubuntu0.16.04.1) ...
+update-alternatives: using /etc/mysql/my.cnf.fallback to provide /etc/mysql/my.cnf (my.cnf) in auto mode
+Setting up mariadb-common (10.0.34-0ubuntu0.16.04.1) ...
+update-alternatives: using /etc/mysql/mariadb.cnf to provide /etc/mysql/my.cnf (my.cnf) in auto mode
+Selecting previously unselected package mariadb-server-10.0.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 133535 files and directories currently installed.)
+Preparing to unpack .../mariadb-server-10.0_10.0.34-0ubuntu0.16.04.1_amd64.deb ...
+Unpacking mariadb-server-10.0 (10.0.34-0ubuntu0.16.04.1) ...
+Selecting previously unselected package libhtml-tagset-perl.
+Preparing to unpack .../libhtml-tagset-perl_3.20-2_all.deb ...
+Unpacking libhtml-tagset-perl (3.20-2) ...
+Selecting previously unselected package liburi-perl.
+Preparing to unpack .../liburi-perl_1.71-1_all.deb ...
+Unpacking liburi-perl (1.71-1) ...
+Selecting previously unselected package libhtml-parser-perl.
+Preparing to unpack .../libhtml-parser-perl_3.72-1_amd64.deb ...
+Unpacking libhtml-parser-perl (3.72-1) ...
+Selecting previously unselected package libcgi-pm-perl.
+Preparing to unpack .../libcgi-pm-perl_4.26-1_all.deb ...
+Unpacking libcgi-pm-perl (4.26-1) ...
+Selecting previously unselected package libfcgi-perl.
+Preparing to unpack .../libfcgi-perl_0.77-1build1_amd64.deb ...
+Unpacking libfcgi-perl (0.77-1build1) ...
+Selecting previously unselected package libcgi-fast-perl.
+Preparing to unpack .../libcgi-fast-perl_1%3a2.10-1_all.deb ...
+Unpacking libcgi-fast-perl (1:2.10-1) ...
+Selecting previously unselected package libencode-locale-perl.
+Preparing to unpack .../libencode-locale-perl_1.05-1_all.deb ...
+Unpacking libencode-locale-perl (1.05-1) ...
+Selecting previously unselected package libhtml-template-perl.
+Preparing to unpack .../libhtml-template-perl_2.95-2_all.deb ...
+Unpacking libhtml-template-perl (2.95-2) ...
+Selecting previously unselected package libtimedate-perl.
+Preparing to unpack .../libtimedate-perl_2.3000-2_all.deb ...
+Unpacking libtimedate-perl (2.3000-2) ...
+Selecting previously unselected package libhttp-date-perl.
+Preparing to unpack .../libhttp-date-perl_6.02-1_all.deb ...
+Unpacking libhttp-date-perl (6.02-1) ...
+Selecting previously unselected package libio-html-perl.
+Preparing to unpack .../libio-html-perl_1.001-1_all.deb ...
+Unpacking libio-html-perl (1.001-1) ...
+Selecting previously unselected package liblwp-mediatypes-perl.
+Preparing to unpack .../liblwp-mediatypes-perl_6.02-1_all.deb ...
+Unpacking liblwp-mediatypes-perl (6.02-1) ...
+Selecting previously unselected package libhttp-message-perl.
+Preparing to unpack .../libhttp-message-perl_6.11-1_all.deb ...
+Unpacking libhttp-message-perl (6.11-1) ...
+Selecting previously unselected package mariadb-server.
+Preparing to unpack .../mariadb-server_10.0.34-0ubuntu0.16.04.1_all.deb ...
+Unpacking mariadb-server (10.0.34-0ubuntu0.16.04.1) ...
+Processing triggers for systemd (229-4ubuntu21.2) ...
+Processing triggers for ureadahead (0.100.0-19) ...
+Processing triggers for man-db (2.7.5-1) ...
+Setting up libdbi-perl (1.634-1build1) ...
+Setting up libmysqlclient20:amd64 (5.7.22-0ubuntu0.16.04.1) ...
+Setting up libdbd-mysql-perl (4.033-1ubuntu0.1) ...
+Setting up libterm-readkey-perl (2.33-1build1) ...
+Setting up libaio1:amd64 (0.3.110-2) ...
+Setting up mariadb-client-core-10.0 (10.0.34-0ubuntu0.16.04.1) ...
+Setting up mariadb-client-10.0 (10.0.34-0ubuntu0.16.04.1) ...
+Setting up mariadb-server-core-10.0 (10.0.34-0ubuntu0.16.04.1) ...
+Setting up mariadb-server-10.0 (10.0.34-0ubuntu0.16.04.1) ...
+Setting up libhtml-tagset-perl (3.20-2) ...
+Setting up liburi-perl (1.71-1) ...
+Setting up libhtml-parser-perl (3.72-1) ...
+Setting up libcgi-pm-perl (4.26-1) ...
+Setting up libfcgi-perl (0.77-1build1) ...
+Setting up libcgi-fast-perl (1:2.10-1) ...
+Setting up libencode-locale-perl (1.05-1) ...
+Setting up libhtml-template-perl (2.95-2) ...
+Setting up libtimedate-perl (2.3000-2) ...
+Setting up libhttp-date-perl (6.02-1) ...
+Setting up libio-html-perl (1.001-1) ...
+Setting up liblwp-mediatypes-perl (6.02-1) ...
+Setting up libhttp-message-perl (6.11-1) ...
+Setting up mariadb-server (10.0.34-0ubuntu0.16.04.1) ...
+Processing triggers for libc-bin (2.23-0ubuntu10) ...
+Processing triggers for systemd (229-4ubuntu21.2) ...
+Processing triggers for ureadahead (0.100.0-19) ...
++ apt-get -y install python-pymysql
+Reading package lists... 0%Reading package lists... 100%Reading package lists... Done
+Building dependency tree... 0%Building dependency tree... 0%Building dependency tree... 50%Building dependency tree... 50%Building dependency tree       
+Reading state information... 0%Reading state information... 0%Reading state information... Done
+The following packages were automatically installed and are no longer required:
+  linux-headers-4.4.0-116 linux-headers-4.4.0-116-generic linux-image-4.4.0-116-generic
+  linux-image-extra-4.4.0-116-generic
+Use 'sudo apt autoremove' to remove them.
+Suggested packages:
+  python-pymysql-doc
+The following NEW packages will be installed:
+  python-pymysql
+0 upgraded, 1 newly installed, 0 to remove and 0 not upgraded.
+Need to get 60.4 kB of archives.
+After this operation, 323 kB of additional disk space will be used.
+0% [Working]0% [Waiting for headers]                        Get:1 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-pymysql all 0.8.0-1~cloud0 [60.4 kB]
+3% [1 python-pymysql 2,631 B/60.4 kB 4%]50% [1 python-pymysql 37.4 kB/60.4 kB 62%]                                          100% [Working]              Fetched 60.4 kB in 1s (51.0 kB/s)
+Selecting previously unselected package python-pymysql.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 133903 files and directories currently installed.)
+Preparing to unpack .../python-pymysql_0.8.0-1~cloud0_all.deb ...
+Unpacking python-pymysql (0.8.0-1~cloud0) ...
+Setting up python-pymysql (0.8.0-1~cloud0) ...
++ printf '* set openstack.cnf configuration... \n'
+* set openstack.cnf configuration... 
++ sleep 2
++ cp files/99-openstack.cnf /etc/mysql/mariadb.conf.d/99-openstack.cnf
++ service mysql restart
++ printf '\n *** First, enter blank for mysql password. Then set new password to\n        mysqlpassword \n*** \n'
+
+ *** First, enter blank for mysql password. Then set new password to
+        mysqlpassword 
+*** 
++ sleep 2
++ mysql_secure_installation
+
+NOTE: RUNNING ALL PARTS OF THIS SCRIPT IS RECOMMENDED FOR ALL MariaDB
+      SERVERS IN PRODUCTION USE!  PLEASE READ EACH STEP CAREFULLY!
+
+In order to log into MariaDB to secure it, we'll need the current
+password for the root user.  If you've just installed MariaDB, and
+you haven't set the root password yet, the password will be blank,
+so you should just press enter here.
+
+Enter current password for root (enter for none): 
+OK, successfully used password, moving on...
+
+Setting the root password ensures that nobody can log into the MariaDB
+root user without the proper authorisation.
+
+Set root password? [Y/n] y
+New password: 
+Re-enter new password: 
+Password updated successfully!
+Reloading privilege tables..
+ ... Success!
+
+
+By default, a MariaDB installation has an anonymous user, allowing anyone
+to log into MariaDB without having to have a user account created for
+them.  This is intended only for testing, and to make the installation
+go a bit smoother.  You should remove them before moving into a
+production environment.
+
+Remove anonymous users? [Y/n] y
+ ... Success!
+
+Normally, root should only be allowed to connect from 'localhost'.  This
+ensures that someone cannot guess at the root password from the network.
+
+Disallow root login remotely? [Y/n] y
+ ... Success!
+
+By default, MariaDB comes with a database named 'test' that anyone can
+access.  This is also intended only for testing, and should be removed
+before moving into a production environment.
+
+Remove test database and access to it? [Y/n] y
+ - Dropping test database...
+ ... Success!
+ - Removing privileges on test database...
+ ... Success!
+
+Reloading the privilege tables will ensure that all changes made so far
+will take effect immediately.
+
+Reload privilege tables now? [Y/n] y
+ ... Success!
+
+Cleaning up...
+
+All done!  If you've completed all of the above steps, your MariaDB
+installation should now be secure.
+
+Thanks for using MariaDB!

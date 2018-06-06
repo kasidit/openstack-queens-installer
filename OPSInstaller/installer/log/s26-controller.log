@@ -1,0 +1,7 @@
++ cd /home/openstack/OPSInstaller/controller
++ pwd
+/home/openstack/OPSInstaller/controller
++ echo 'Run this script with sudo or as root.'
+Run this script with sudo or as root.
++ echo ' no nothing'
+ no nothing

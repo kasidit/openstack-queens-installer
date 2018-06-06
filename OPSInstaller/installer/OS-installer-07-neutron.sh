@@ -41,4 +41,4 @@ if [ "$nettype" == "$ovs" ]
 then
 ssh -t openstack@controller /bin/bash -x ./OPSInstaller/controller/exe-stage37-USER-initial-network.sh | tee log/s37-controller.log
 fi
-printf "\nnext run ./OS-installer-08-horizon.sh\n"
+printf "\nnext run ./OS-installer-08-set-dvr.sh\n"

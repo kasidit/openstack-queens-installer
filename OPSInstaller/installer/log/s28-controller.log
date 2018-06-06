@@ -1,0 +1,71 @@
++ cd /home/openstack/OPSInstaller/controller
++ pwd
+/home/openstack/OPSInstaller/controller
++ echo 'Run this script as a user.'
+Run this script as a user.
++ source ./admin-openrc.sh
+++ export OS_PROJECT_DOMAIN_NAME=default
+++ OS_PROJECT_DOMAIN_NAME=default
+++ export OS_USER_DOMAIN_NAME=default
+++ OS_USER_DOMAIN_NAME=default
+++ export OS_PROJECT_NAME=admin
+++ OS_PROJECT_NAME=admin
+++ export OS_USERNAME=admin
+++ OS_USERNAME=admin
+++ export OS_PASSWORD=adminpassword
+++ OS_PASSWORD=adminpassword
+++ export OS_AUTH_URL=http://controller:5000/v3
+++ OS_AUTH_URL=http://controller:5000/v3
+++ export OS_IDENTITY_API_VERSION=3
+++ OS_IDENTITY_API_VERSION=3
+++ export OS_IMAGE_API_VERSION=2
+++ OS_IMAGE_API_VERSION=2
++ openstack extension list --network
++----------------------------------------------------------------------------------------------+---------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Name                                                                                         | Alias                     | Description                                                                                                                                              |
++----------------------------------------------------------------------------------------------+---------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Default Subnetpools                                                                          | default-subnetpools       | Provides ability to mark and use a subnetpool as the default.                                                                                            |
+| Availability Zone                                                                            | availability_zone         | The availability zone extension.                                                                                                                         |
+| Network Availability Zone                                                                    | network_availability_zone | Availability zone support for network.                                                                                                                   |
+| Auto Allocated Topology Services                                                             | auto-allocated-topology   | Auto Allocated Topology Services.                                                                                                                        |
+| Neutron L3 Configurable external gateway mode                                                | ext-gw-mode               | Extension of the router abstraction for specifying whether SNAT should occur on the external gateway                                                     |
+| Port Binding                                                                                 | binding                   | Expose port bindings of a virtual port to external application                                                                                           |
+| agent                                                                                        | agent                     | The agent management extension.                                                                                                                          |
+| Subnet Allocation                                                                            | subnet_allocation         | Enables allocation of subnets from a subnet pool                                                                                                         |
+| L3 Agent Scheduler                                                                           | l3_agent_scheduler        | Schedule routers among l3 agents                                                                                                                         |
+| Tag support                                                                                  | tag                       | Enables to set tag on resources.                                                                                                                         |
+| Neutron external network                                                                     | external-net              | Adds external network attribute to network resource.                                                                                                     |
+| Tag support for resources with standard attribute: trunk, policy, security_group, floatingip | standard-attr-tag         | Enables to set tag on resources with standard attribute.                                                                                                 |
+| Neutron Service Flavors                                                                      | flavors                   | Flavor specification for Neutron advanced services.                                                                                                      |
+| Network MTU                                                                                  | net-mtu                   | Provides MTU attribute for a network resource.                                                                                                           |
+| Network IP Availability                                                                      | network-ip-availability   | Provides IP availability data for each network and subnet.                                                                                               |
+| Quota management support                                                                     | quotas                    | Expose functions for quotas management per tenant                                                                                                        |
+| If-Match constraints based on revision_number                                                | revision-if-match         | Extension indicating that If-Match based on revision_number is supported.                                                                                |
+| HA Router extension                                                                          | l3-ha                     | Adds HA capability to routers.                                                                                                                           |
+| Provider Network                                                                             | provider                  | Expose mapping of virtual networks to physical networks                                                                                                  |
+| Multi Provider Network                                                                       | multi-provider            | Expose mapping of virtual networks to multiple physical networks                                                                                         |
+| Quota details management support                                                             | quota_details             | Expose functions for quotas usage statistics per project                                                                                                 |
+| Address scope                                                                                | address-scope             | Address scopes extension.                                                                                                                                |
+| Neutron Extra Route                                                                          | extraroute                | Extra routes configuration for L3 router                                                                                                                 |
+| Network MTU (writable)                                                                       | net-mtu-writable          | Provides a writable MTU attribute for a network resource.                                                                                                |
+| Subnet service types                                                                         | subnet-service-types      | Provides ability to set the subnet service_types field                                                                                                   |
+| Resource timestamps                                                                          | standard-attr-timestamp   | Adds created_at and updated_at fields to all Neutron resources that have Neutron standard attributes.                                                    |
+| Neutron Service Type Management                                                              | service-type              | API for retrieving service providers for Neutron advanced services                                                                                       |
+| Router Flavor Extension                                                                      | l3-flavors                | Flavor support for routers.                                                                                                                              |
+| Port Security                                                                                | port-security             | Provides port security                                                                                                                                   |
+| Neutron Extra DHCP options                                                                   | extra_dhcp_opt            | Extra options configuration for DHCP. For example PXE boot options to DHCP clients can be specified (e.g. tftp-server, server-ip-address, bootfile-name) |
+| Resource revision numbers                                                                    | standard-attr-revisions   | This extension will display the revision number of neutron resources.                                                                                    |
+| Pagination support                                                                           | pagination                | Extension that indicates that pagination is enabled.                                                                                                     |
+| Sorting support                                                                              | sorting                   | Extension that indicates that sorting is enabled.                                                                                                        |
+| security-group                                                                               | security-group            | The security groups extension.                                                                                                                           |
+| DHCP Agent Scheduler                                                                         | dhcp_agent_scheduler      | Schedule networks among dhcp agents                                                                                                                      |
+| Router Availability Zone                                                                     | router_availability_zone  | Availability zone support for router.                                                                                                                    |
+| RBAC Policies                                                                                | rbac-policies             | Allows creation and modification of policies that control tenant access to resources.                                                                    |
+| Tag support for resources: subnet, subnetpool, port, router                                  | tag-ext                   | Extends tag support to more L2 and L3 resources.                                                                                                         |
+| standard-attr-description                                                                    | standard-attr-description | Extension to add descriptions to standard attributes                                                                                                     |
+| IP address substring filtering                                                               | ip-substring-filtering    | Provides IP address substring filtering when listing ports                                                                                               |
+| Neutron L3 Router                                                                            | router                    | Router abstraction for basic L3 forwarding between L2 Neutron networks and access to external networks via a NAT gateway.                                |
+| Allowed Address Pairs                                                                        | allowed-address-pairs     | Provides allowed address pairs                                                                                                                           |
+| project_id field enabled                                                                     | project-id                | Extension that indicates that project_id field is enabled.                                                                                               |
+| Distributed Virtual Router                                                                   | dvr                       | Enables configuration of Distributed Virtual Routers.                                                                                                    |
++----------------------------------------------------------------------------------------------+---------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------+

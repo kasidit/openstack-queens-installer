@@ -1,0 +1,151 @@
++ cd /home/openstack/OPSInstaller/controller
++ pwd
+/home/openstack/OPSInstaller/controller
++ echo 'Run this script  as user.'
+Run this script  as user.
++ echo -n 'Create nova user and endpoint...'
+Create nova user and endpoint...+ source ./admin-openrc.sh
+++ export OS_PROJECT_DOMAIN_NAME=default
+++ OS_PROJECT_DOMAIN_NAME=default
+++ export OS_USER_DOMAIN_NAME=default
+++ OS_USER_DOMAIN_NAME=default
+++ export OS_PROJECT_NAME=admin
+++ OS_PROJECT_NAME=admin
+++ export OS_USERNAME=admin
+++ OS_USERNAME=admin
+++ export OS_PASSWORD=adminpassword
+++ OS_PASSWORD=adminpassword
+++ export OS_AUTH_URL=http://controller:5000/v3
+++ OS_AUTH_URL=http://controller:5000/v3
+++ export OS_IDENTITY_API_VERSION=3
+++ OS_IDENTITY_API_VERSION=3
+++ export OS_IMAGE_API_VERSION=2
+++ OS_IMAGE_API_VERSION=2
++ openstack user create --domain default --password NOVA_PASS nova
++---------------------+----------------------------------+
+| Field               | Value                            |
++---------------------+----------------------------------+
+| domain_id           | default                          |
+| enabled             | True                             |
+| id                  | 681663c909ab40289aaf80961eb4d148 |
+| name                | nova                             |
+| options             | {}                               |
+| password_expires_at | None                             |
++---------------------+----------------------------------+
++ openstack role add --project service --user nova admin
++ openstack service create --name nova --description 'OpenStack Compute' compute
++-------------+----------------------------------+
+| Field       | Value                            |
++-------------+----------------------------------+
+| description | OpenStack Compute                |
+| enabled     | True                             |
+| id          | 44d85f34d61746e9bf0035c64bdc14a6 |
+| name        | nova                             |
+| type        | compute                          |
++-------------+----------------------------------+
++ openstack endpoint create --region RegionOne compute public http://controller:8774/v2.1/
++--------------+----------------------------------+
+| Field        | Value                            |
++--------------+----------------------------------+
+| enabled      | True                             |
+| id           | 489023de72c740ec9939a00355a7a2fc |
+| interface    | public                           |
+| region       | RegionOne                        |
+| region_id    | RegionOne                        |
+| service_id   | 44d85f34d61746e9bf0035c64bdc14a6 |
+| service_name | nova                             |
+| service_type | compute                          |
+| url          | http://controller:8774/v2.1/     |
++--------------+----------------------------------+
++ openstack endpoint create --region RegionOne compute internal http://controller:8774/v2.1/
++--------------+----------------------------------+
+| Field        | Value                            |
++--------------+----------------------------------+
+| enabled      | True                             |
+| id           | 40fc8a3412654fd8bce56b8d75a593a8 |
+| interface    | internal                         |
+| region       | RegionOne                        |
+| region_id    | RegionOne                        |
+| service_id   | 44d85f34d61746e9bf0035c64bdc14a6 |
+| service_name | nova                             |
+| service_type | compute                          |
+| url          | http://controller:8774/v2.1/     |
++--------------+----------------------------------+
++ openstack endpoint create --region RegionOne compute admin http://controller:8774/v2.1/
++--------------+----------------------------------+
+| Field        | Value                            |
++--------------+----------------------------------+
+| enabled      | True                             |
+| id           | 0c3dee926a474c9e851e088e7254441c |
+| interface    | admin                            |
+| region       | RegionOne                        |
+| region_id    | RegionOne                        |
+| service_id   | 44d85f34d61746e9bf0035c64bdc14a6 |
+| service_name | nova                             |
+| service_type | compute                          |
+| url          | http://controller:8774/v2.1/     |
++--------------+----------------------------------+
++ openstack user create --domain default --password NOVA_PASS placement
++---------------------+----------------------------------+
+| Field               | Value                            |
++---------------------+----------------------------------+
+| domain_id           | default                          |
+| enabled             | True                             |
+| id                  | b60a1b7b691347f7beab9c3b597e0ea5 |
+| name                | placement                        |
+| options             | {}                               |
+| password_expires_at | None                             |
++---------------------+----------------------------------+
++ openstack role add --project service --user placement admin
++ openstack service create --name placement --description 'Placement API' placement
++-------------+----------------------------------+
+| Field       | Value                            |
++-------------+----------------------------------+
+| description | Placement API                    |
+| enabled     | True                             |
+| id          | 8818b038c45444e0aaea418c649dd596 |
+| name        | placement                        |
+| type        | placement                        |
++-------------+----------------------------------+
++ openstack endpoint create --region RegionOne placement public http://controller:8778
++--------------+----------------------------------+
+| Field        | Value                            |
++--------------+----------------------------------+
+| enabled      | True                             |
+| id           | 8a5b4c34140147e0b1b91650e60d4f82 |
+| interface    | public                           |
+| region       | RegionOne                        |
+| region_id    | RegionOne                        |
+| service_id   | 8818b038c45444e0aaea418c649dd596 |
+| service_name | placement                        |
+| service_type | placement                        |
+| url          | http://controller:8778           |
++--------------+----------------------------------+
++ openstack endpoint create --region RegionOne placement internal http://controller:8778
++--------------+----------------------------------+
+| Field        | Value                            |
++--------------+----------------------------------+
+| enabled      | True                             |
+| id           | ef5770fb69a842eea65973ff61b3e8d9 |
+| interface    | internal                         |
+| region       | RegionOne                        |
+| region_id    | RegionOne                        |
+| service_id   | 8818b038c45444e0aaea418c649dd596 |
+| service_name | placement                        |
+| service_type | placement                        |
+| url          | http://controller:8778           |
++--------------+----------------------------------+
++ openstack endpoint create --region RegionOne placement admin http://controller:8778
++--------------+----------------------------------+
+| Field        | Value                            |
++--------------+----------------------------------+
+| enabled      | True                             |
+| id           | 3d09849df0d84bc68a1d9ad090a38ea7 |
+| interface    | admin                            |
+| region       | RegionOne                        |
+| region_id    | RegionOne                        |
+| service_id   | 8818b038c45444e0aaea418c649dd596 |
+| service_name | placement                        |
+| service_type | placement                        |
+| url          | http://controller:8778           |
++--------------+----------------------------------+

@@ -1,0 +1,10 @@
++ cd /home/openstack/OPSInstaller/compute1
++ pwd
+/home/openstack/OPSInstaller/compute1
++ printf 'check chrony\n'
+check chrony
++ chronyc sources
+210 Number of sources = 1
+MS Name/IP address         Stratum Poll Reach LastRx Last sample
+===============================================================================
+^* controller                    2   6     7    49    +91us[ +986us] +/- 4852us

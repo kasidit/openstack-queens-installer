@@ -1,0 +1,144 @@
++ cd /home/openstack/OPSInstaller/controller
++ pwd
+/home/openstack/OPSInstaller/controller
++ echo 'Run this script with sudo or as root.'
+Run this script with sudo or as root.
++ echo 'install horizon..'
+install horizon..
++ apt-get -y install openstack-dashboard
+Reading package lists... 0%Reading package lists... 100%Reading package lists... Done
+Building dependency tree... 0%Building dependency tree... 0%Building dependency tree... 50%Building dependency tree... 50%Building dependency tree       
+Reading state information... 0%Reading state information... 0%Reading state information... Done
+The following packages were automatically installed and are no longer required:
+  linux-headers-4.4.0-116 linux-headers-4.4.0-116-generic linux-image-4.4.0-116-generic
+  linux-image-extra-4.4.0-116-generic
+Use 'sudo apt autoremove' to remove them.
+The following additional packages will be installed:
+  python-bson python-bson-ext python-csscompressor python-django python-django-appconf python-django-common
+  python-django-compressor python-django-horizon python-django-openstack-auth python-django-pyscss python-gridfs
+  python-heatclient python-pathlib python-pint python-pymongo python-pymongo-ext python-pyscss python-rcssmin
+  python-rjsmin
+Suggested packages:
+  python-flup python-sqlite geoip-database-extra | geoip-database-contrib gettext python-django-doc ipython bpython
+  libgdal1 python-django-appconf-doc python-pymongo-doc
+The following NEW packages will be installed:
+  openstack-dashboard python-bson python-bson-ext python-csscompressor python-django python-django-appconf
+  python-django-common python-django-compressor python-django-horizon python-django-openstack-auth
+  python-django-pyscss python-gridfs python-heatclient python-pathlib python-pint python-pymongo python-pymongo-ext
+  python-pyscss python-rcssmin python-rjsmin
+0 upgraded, 20 newly installed, 0 to remove and 0 not upgraded.
+Need to get 12.6 MB of archives.
+After this operation, 91.5 MB of additional disk space will be used.
+0% [Working]            Get:1 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 python-pint all 0.6-1ubuntu1 [67.5 kB]
+0% [1 python-pint 14.2 kB/67.5 kB 21%] [Connecting to ubuntu-cloud.archive.canonical.com (91.189.92.152)]                                                                                                         1% [Connecting to ubuntu-cloud.archive.canonical.com (91.189.92.152)]                                                                     Get:2 http://th.archive.ubuntu.com/ubuntu xenial/universe amd64 python-bson amd64 3.2-1build1 [24.2 kB]
+2% [2 python-bson 14.2 kB/24.2 kB 59%] [Connecting to ubuntu-cloud.archive.canonical.com (91.189.92.152)]                                                                                                         3% [Connecting to ubuntu-cloud.archive.canonical.com (91.189.92.152)]                                                                     Get:3 http://th.archive.ubuntu.com/ubuntu xenial/universe amd64 python-bson-ext amd64 3.2-1build1 [20.2 kB]
+3% [3 python-bson-ext 18.6 kB/20.2 kB 92%] [Connecting to ubuntu-cloud.archive.canonical.com (91.189.92.152)]                                                                                                             4% [Waiting for headers] [Connecting to ubuntu-cloud.archive.canonical.com (91.189.92.152)]                                                                                           Get:4 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 python-csscompressor all 0.9.4-2 [56.5 kB]
+                                                                                           4% [4 python-csscompressor 2,651 B/56.5 kB 5%] [Waiting for headers]                                                                    5% [Waiting for headers] [Waiting for headers]                                              Get:5 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 python-django-common all 1.8.7-1ubuntu5.6 [1,182 kB]
+5% [5 python-django-common 26.9 kB/1,182 kB 2%] [Waiting for headers]                                                                     Get:6 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-heatclient all 1.14.0-0ubuntu1~cloud0 [111 kB]
+12% [5 python-django-common 1,125 kB/1,182 kB 95%] [6 python-heatclient 1,181 B/111 kB 1%]13% [5 python-django-common 1,181 kB/1,182 kB 100%] [6 python-heatclient 37.4 kB/111 kB 34%]                                                                                            Get:7 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 python-django all 1.8.7-1ubuntu5.6 [864 kB]
+                                                                                            15% [7 python-django 131 kB/864 kB 15%] [6 python-heatclient 37.4 kB/111 kB 34%]                                                                                21% [Waiting for headers] [6 python-heatclient 72.1 kB/111 kB 65%]                                                                  Get:8 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 python-django-appconf all 1.0.1-4 [7,126 B]
+                                                                  22% [6 python-heatclient 72.1 kB/111 kB 65%]                                            Get:9 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 python-rjsmin amd64 1.0.12+dfsg1-2ubuntu1 [17.0 kB]
+22% [9 python-rjsmin 17.0 kB/17.0 kB 100%] [6 python-heatclient 72.1 kB/111 kB 65%]                                                                                   23% [6 python-heatclient 72.1 kB/111 kB 65%]                                            Get:10 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 python-rcssmin amd64 1.0.6-1ubuntu1 [17.8 kB]
+23% [10 python-rcssmin 0 B/17.8 kB 0%] [6 python-heatclient 72.1 kB/111 kB 65%]                                                                               24% [Waiting for headers] [6 python-heatclient 72.1 kB/111 kB 65%]                                                                  Get:11 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 python-django-compressor all 2.0-1ubuntu1 [60.0 kB]
+24% [11 python-django-compressor 15.7 kB/60.0 kB 26%] [6 python-heatclient 72.1 kB/111 kB 65%]                                                                                              25% [6 python-heatclient 72.1 kB/111 kB 65%]                                            Get:12 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 python-pathlib all 1.0.1-2 [25.1 kB]
+25% [12 python-pathlib 6,995 B/25.1 kB 28%] [6 python-heatclient 72.1 kB/111 kB 65%]                                                                                    26% [Waiting for headers] [6 python-heatclient 72.1 kB/111 kB 65%]                                                                  Get:13 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 python-pyscss amd64 1.3.4-5 [102 kB]
+26% [13 python-pyscss 0 B/102 kB 0%] [6 python-heatclient 72.1 kB/111 kB 65%]                                                                             28% [Waiting for headers] [6 python-heatclient 110 kB/111 kB 99%]                                                                 Get:14 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 python-django-pyscss all 2.0.2-4 [8,504 B]
+28% [14 python-django-pyscss 8,504 B/8,504 B 100%] [6 python-heatclient 110 kB/111 kB 99%]                                                                                          29% [6 python-heatclient 110 kB/111 kB 99%]                                           Get:15 http://th.archive.ubuntu.com/ubuntu xenial/universe amd64 python-pymongo amd64 3.2-1build1 [101 kB]
+29% [15 python-pymongo 2,651 B/101 kB 3%] [6 python-heatclient 110 kB/111 kB 99%]                                                                                 31% [15 python-pymongo 54.8 kB/101 kB 54%]32% [Waiting for headers] [Waiting for headers]                                               Get:16 http://th.archive.ubuntu.com/ubuntu xenial/universe amd64 python-gridfs all 3.2-1build1 [13.4 kB]
+32% [16 python-gridfs 13.4 kB/13.4 kB 100%] [Waiting for headers]                                                                 33% [Waiting for headers]                         Get:17 http://th.archive.ubuntu.com/ubuntu xenial/universe amd64 python-pymongo-ext amd64 3.2-1build1 [11.2 kB]
+33% [17 python-pymongo-ext 11.2 kB/11.2 kB 100%] [Waiting for headers]                                                                      34% [Waiting for headers]                         Get:18 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-django-openstack-auth all 3:13.0.0-0ubuntu1.1~cloud1 [42.5 kB]
+34% [18 python-django-openstack-auth 12.8 kB/42.5 kB 30%]                                                         35% [Waiting for headers]                         Get:19 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-django-horizon all 3:13.0.0-0ubuntu1.1~cloud1 [7,524 kB]
+35% [19 python-django-horizon 6,971 B/7,524 kB 0%]36% [19 python-django-horizon 57.7 kB/7,524 kB 1%]                                                  36% [19 python-django-horizon 158 kB/7,524 kB 2%]37% [19 python-django-horizon 260 kB/7,524 kB 3%]38% [19 python-django-horizon 378 kB/7,524 kB 5%]38% [19 python-django-horizon 470 kB/7,524 kB 6%]39% [19 python-django-horizon 554 kB/7,524 kB 7%]40% [19 python-django-horizon 705 kB/7,524 kB 9%]41% [19 python-django-horizon 886 kB/7,524 kB 12%]42% [19 python-django-horizon 1,050 kB/7,524 kB 14%]                                                     603 kB/s 14s43% [19 python-django-horizon 1,232 kB/7,524 kB 16%]                                                     603 kB/s 14s44% [19 python-django-horizon 1,440 kB/7,524 kB 19%]                                                     603 kB/s 14s46% [19 python-django-horizon 1,682 kB/7,524 kB 22%]                                                     603 kB/s 13s47% [19 python-django-horizon 1,897 kB/7,524 kB 25%]                                                     603 kB/s 13s50% [19 python-django-horizon 2,314 kB/7,524 kB 31%]                                                     603 kB/s 12s53% [19 python-django-horizon 2,809 kB/7,524 kB 37%]                                                     603 kB/s 11s57% [19 python-django-horizon 3,365 kB/7,524 kB 45%]                                                     603 kB/s 10s61% [19 python-django-horizon 4,032 kB/7,524 kB 54%]                                                      603 kB/s 9s66% [19 python-django-horizon 4,774 kB/7,524 kB 63%]                                                      603 kB/s 8s70% [19 python-django-horizon 5,415 kB/7,524 kB 72%]                                                      603 kB/s 7s76% [19 python-django-horizon 6,393 kB/7,524 kB 85%]                                                      603 kB/s 5s83% [19 python-django-horizon 7,524 kB/7,524 kB 100%]                                                   1,077 kB/s 2s83% [19 python-django-horizon 7,524 kB/7,524 kB 100%]                                                   1,077 kB/s 2s83% [19 python-django-horizon 7,524 kB/7,524 kB 100%]                                                   1,077 kB/s 2s83% [19 python-django-horizon 7,524 kB/7,524 kB 100%]                                                   1,077 kB/s 2s                                                                                                                     Get:20 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 openstack-dashboard all 3:13.0.0-0ubuntu1.1~cloud1 [2,359 kB]
+84% [20 openstack-dashboard 54.4 kB/2,359 kB 2%]                                                        1,077 kB/s 2s89% [20 openstack-dashboard 733 kB/2,359 kB 31%]                                                        1,077 kB/s 1s89% [20 openstack-dashboard 743 kB/2,359 kB 31%]                                                        1,077 kB/s 1s89% [20 openstack-dashboard 763 kB/2,359 kB 32%]                                                        1,077 kB/s 1s89% [20 openstack-dashboard 794 kB/2,359 kB 34%]                                                        1,077 kB/s 1s89% [20 openstack-dashboard 844 kB/2,359 kB 36%]                                                        1,077 kB/s 1s90% [20 openstack-dashboard 888 kB/2,359 kB 38%]                                                        1,077 kB/s 1s90% [20 openstack-dashboard 976 kB/2,359 kB 41%]                                                        1,077 kB/s 1s91% [20 openstack-dashboard 1,083 kB/2,359 kB 46%]                                                      1,077 kB/s 1s92% [20 openstack-dashboard 1,260 kB/2,359 kB 53%]                                                        202 kB/s 5s94% [20 openstack-dashboard 1,539 kB/2,359 kB 65%]                                                        202 kB/s 4s95% [20 openstack-dashboard 1,741 kB/2,359 kB 74%]                                                        202 kB/s 3s97% [20 openstack-dashboard 2,006 kB/2,359 kB 85%]                                                        202 kB/s 1s99% [20 openstack-dashboard 2,327 kB/2,359 kB 99%]                                                        202 kB/s 0s99% [20 openstack-dashboard 2,359 kB/2,359 kB 100%]                                                       202 kB/s 0s100% [Working]                                                                                            202 kB/s 0s                                                                                                                     Fetched 12.6 MB in 21s (587 kB/s)
+Selecting previously unselected package python-pint.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 151903 files and directories currently installed.)
+Preparing to unpack .../python-pint_0.6-1ubuntu1_all.deb ...
+Unpacking python-pint (0.6-1ubuntu1) ...
+Selecting previously unselected package python-bson.
+Preparing to unpack .../python-bson_3.2-1build1_amd64.deb ...
+Unpacking python-bson (3.2-1build1) ...
+Selecting previously unselected package python-bson-ext.
+Preparing to unpack .../python-bson-ext_3.2-1build1_amd64.deb ...
+Unpacking python-bson-ext (3.2-1build1) ...
+Selecting previously unselected package python-csscompressor.
+Preparing to unpack .../python-csscompressor_0.9.4-2_all.deb ...
+Unpacking python-csscompressor (0.9.4-2) ...
+Selecting previously unselected package python-django-common.
+Preparing to unpack .../python-django-common_1.8.7-1ubuntu5.6_all.deb ...
+Unpacking python-django-common (1.8.7-1ubuntu5.6) ...
+Selecting previously unselected package python-django.
+Preparing to unpack .../python-django_1.8.7-1ubuntu5.6_all.deb ...
+Unpacking python-django (1.8.7-1ubuntu5.6) ...
+Selecting previously unselected package python-django-appconf.
+Preparing to unpack .../python-django-appconf_1.0.1-4_all.deb ...
+Unpacking python-django-appconf (1.0.1-4) ...
+Selecting previously unselected package python-rjsmin.
+Preparing to unpack .../python-rjsmin_1.0.12+dfsg1-2ubuntu1_amd64.deb ...
+Unpacking python-rjsmin (1.0.12+dfsg1-2ubuntu1) ...
+Selecting previously unselected package python-rcssmin.
+Preparing to unpack .../python-rcssmin_1.0.6-1ubuntu1_amd64.deb ...
+Unpacking python-rcssmin (1.0.6-1ubuntu1) ...
+Selecting previously unselected package python-django-compressor.
+Preparing to unpack .../python-django-compressor_2.0-1ubuntu1_all.deb ...
+Unpacking python-django-compressor (2.0-1ubuntu1) ...
+Selecting previously unselected package python-pathlib.
+Preparing to unpack .../python-pathlib_1.0.1-2_all.deb ...
+Unpacking python-pathlib (1.0.1-2) ...
+Selecting previously unselected package python-pyscss.
+Preparing to unpack .../python-pyscss_1.3.4-5_amd64.deb ...
+Unpacking python-pyscss (1.3.4-5) ...
+Selecting previously unselected package python-django-pyscss.
+Preparing to unpack .../python-django-pyscss_2.0.2-4_all.deb ...
+Unpacking python-django-pyscss (2.0.2-4) ...
+Selecting previously unselected package python-pymongo.
+Preparing to unpack .../python-pymongo_3.2-1build1_amd64.deb ...
+Unpacking python-pymongo (3.2-1build1) ...
+Selecting previously unselected package python-gridfs.
+Preparing to unpack .../python-gridfs_3.2-1build1_all.deb ...
+Unpacking python-gridfs (3.2-1build1) ...
+Selecting previously unselected package python-heatclient.
+Preparing to unpack .../python-heatclient_1.14.0-0ubuntu1~cloud0_all.deb ...
+Unpacking python-heatclient (1.14.0-0ubuntu1~cloud0) ...
+Selecting previously unselected package python-pymongo-ext.
+Preparing to unpack .../python-pymongo-ext_3.2-1build1_amd64.deb ...
+Unpacking python-pymongo-ext (3.2-1build1) ...
+Selecting previously unselected package python-django-openstack-auth.
+Preparing to unpack .../python-django-openstack-auth_3%3a13.0.0-0ubuntu1.1~cloud1_all.deb ...
+Unpacking python-django-openstack-auth (3:13.0.0-0ubuntu1.1~cloud1) ...
+Selecting previously unselected package python-django-horizon.
+Preparing to unpack .../python-django-horizon_3%3a13.0.0-0ubuntu1.1~cloud1_all.deb ...
+Unpacking python-django-horizon (3:13.0.0-0ubuntu1.1~cloud1) ...
+Selecting previously unselected package openstack-dashboard.
+Preparing to unpack .../openstack-dashboard_3%3a13.0.0-0ubuntu1.1~cloud1_all.deb ...
+Unpacking openstack-dashboard (3:13.0.0-0ubuntu1.1~cloud1) ...
+Processing triggers for man-db (2.7.5-1) ...
+Setting up python-pint (0.6-1ubuntu1) ...
+Setting up python-bson (3.2-1build1) ...
+Setting up python-bson-ext (3.2-1build1) ...
+Setting up python-csscompressor (0.9.4-2) ...
+Setting up python-django-common (1.8.7-1ubuntu5.6) ...
+Setting up python-django (1.8.7-1ubuntu5.6) ...
+Setting up python-django-appconf (1.0.1-4) ...
+Setting up python-rjsmin (1.0.12+dfsg1-2ubuntu1) ...
+Setting up python-rcssmin (1.0.6-1ubuntu1) ...
+Setting up python-django-compressor (2.0-1ubuntu1) ...
+Setting up python-pathlib (1.0.1-2) ...
+Setting up python-pyscss (1.3.4-5) ...
+update-alternatives: using /usr/bin/python2-pyscss to provide /usr/bin/pyscss (pyscss) in auto mode
+Setting up python-django-pyscss (2.0.2-4) ...
+Setting up python-pymongo (3.2-1build1) ...
+Setting up python-gridfs (3.2-1build1) ...
+Setting up python-heatclient (1.14.0-0ubuntu1~cloud0) ...
+update-alternatives: using /usr/bin/python2-heat to provide /usr/bin/heat (heat) in auto mode
+Setting up python-pymongo-ext (3.2-1build1) ...
+Setting up python-django-openstack-auth (3:13.0.0-0ubuntu1.1~cloud1) ...
+Setting up python-django-horizon (3:13.0.0-0ubuntu1.1~cloud1) ...
+Setting up openstack-dashboard (3:13.0.0-0ubuntu1.1~cloud1) ...
+Adding system user `horizon' (UID 119) ...
+Adding new user `horizon' (UID 119) with group `horizon' ...
+Not creating home directory `/var/lib/openstack-dashboard'.
+Collecting and compressing static assets...
+apache2_invoke: Enable configuration openstack-dashboard.conf
++ cp files/local_settings.py /etc/openstack-dashboard/local_settings.py
++ cp files/openstack-dashboard.conf /etc/apache2/conf-available/openstack-dashboard.conf
++ service apache2 reload
