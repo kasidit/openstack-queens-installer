@@ -568,7 +568,9 @@ export NTP_SERVER_LOCAL=10.0.10.126
 <details>
 <summary><b>[กดเพื่อดูรายละเอียด] ภาพที่ 3 แสดงการ mapping ของค่าตัวแปรใน install-paramrc.sh กับค่า network configuration ในภาพที่ 1</b></summary> 
   <p>
-  <img src="documents/architecturevariables.png"> <br>
+  <img src="documents/OPS-queens-architecture.png"> <br>
+  <p>
+  <img src="documents/OPS-queens-architecture-vars.png"> <br>
    ภาพที่ 3 <br>
 </details>
 <p>
@@ -576,56 +578,55 @@ export NTP_SERVER_LOCAL=10.0.10.126
 จากภาพ ตัวแปรต่อไปนี้ใช้กำหนดค่าของ management network 
 <pre>
 export MANAGEMENT_NETWORK_NETMASK=255.255.255.0
-export MANAGEMENT_NETWORK=10.0.10.0
-export MANAGEMENT_BROADCAST_ADDRESS=10.0.10.255 
+export MANAGEMENT_NETWORK=10.0.0.0
+export MANAGEMENT_BROADCAST_ADDRESS=10.0.0.255 
 export DNS_IP=8.8.8.8
 </pre>
-ถัดจากนั้นเป็นตัวแปร GATEWAY_IP_NIC ซึ่งจะใช้สำหรับการติดตั้งด้วย vbox (ซึ่งจะใช้ controller เป็น virtual gateway) เท่านั้น เนื่องจากเราไม่ได้ใช้ vbox นศ จึงไม่ต้องกำหนดค่าให้ตัวแปรนี้ <b>ขอให้ละตัวแปรนี้ไว้ไม่ต้อง comment ออก</b>
 <p><p>
-ตัวแปร CONTROLLER_IP และ CONTROLLER_IP_NIC ใช้ระบุค่า IP address และ NIC แรกของเครื่อง controller และตัวแปร GATEWAY_IP ใช้ระบุค่า IP address ของ gateway router ของ management network ซึ่งในที่นี้จะหมายถึง IP address ของ gateway router ของ external network ด้วย เพราะเราจะใช้ management network เป็น external network ในการติดตั้งของเรา
+ตัวแปร CONTROLLER_IP และ CONTROLLER_IP_NIC ใช้ระบุค่า IP address และ NIC แรกของเครื่อง controller และตัวแปร GATEWAY_IP ใช้ระบุค่า IP address ของ gateway router ของ management network (ซึ่งในที่นี้จะหมายถึง IP address ของ gateway router ของ external network ด้วย เพราะเราจะใช้ management network เป็น external network ในกรณีศึกษานี้)
 <pre>
-export CONTROLLER_IP=10.0.10.11
+export CONTROLLER_IP=10.0.0.11
 export CONTROLLER_IP_NIC=ens3
 #
-export GATEWAY_IP=10.0.10.1
+export GATEWAY_IP=10.0.0.1
 </pre>
 <p>
 ต่อไปเป็นการกำหนดค่า IP address ของ network node (ตัวแปร NETWORK_IP) และค่า NIC ของ network node ที่เชื่อมกับ management network (NETWORK_NODE_IP_NIC) ถัดจากนั้นจะเป็นการกำหนดค่าตัวแปรสำหรับ NIC ที่เชื่อมต่อ Data tunnel network ของ network node ได้แก่ DATA_TUNNEL_NETWORK_NODE_IP และ DATA_TUNNEL_NETWORK_NODE_IP_NIC และ DATA_TUNNEL_NETWORK_ADDRESS และ DATA_TUNNEL_NETWORK_NETMASK 
 <pre>
-export NETWORK_IP=10.0.10.21
+export NETWORK_IP=10.0.0.21
 export NETWORK_IP_NIC=ens3
 #
-export DATA_TUNNEL_NETWORK_NODE_IP=10.0.11.21
+export DATA_TUNNEL_NETWORK_NODE_IP=10.0.1.21
 export DATA_TUNNEL_NETWORK_NODE_IP_NIC=ens4
-export DATA_TUNNEL_NETWORK_ADDRESS=10.0.11.0
+export DATA_TUNNEL_NETWORK_ADDRESS=10.0.1.0
 export DATA_TUNNEL_NETWORK_NETMASK=255.255.255.0
 </pre>
-นอกจากเชื่อมต่อกับ management และ data tunnel network แล้ว network node ยังต่อกับ Vlan network และ External network ด้วยซึ่ง นศ จะกำหนดค่าของทั้งสอง network ดังนี้
+นอกจากเชื่อมต่อกับ management และ data tunnel network แล้ว network node ยังต่อกับ Vlan network และ External network ด้วยซึ่ง เราจะกำหนดค่าของทั้งสอง network ดังนี้
 <pre>
 export VLAN_NETWORK_NODE_IP_NIC=ens5
 #
-export EXTERNAL_CIDR=10.0.10.0\\/24
+export EXTERNAL_CIDR=10.0.0.0\\/24
 export EXTERNAL_CIDR_NIC=ens6
 export EXTERNAL_GATEWAY_IP=10.0.0.1
 #
-export START_FLOATING_IP=10.0.10.100
-export END_FLOATING_IP=10.0.10.200
+export START_FLOATING_IP=10.0.0.100
+export END_FLOATING_IP=10.0.0.200
 </pre>
 <p>
-จะเห็นได้ว่า การกำหนดค่าของ vlan network นั้นไม่ต้องทำอะไรมาก แค่กำหนดค่าตัวแปร VLAN_NETWORK_NODE_IP_NIC เพื่อระบุว่า NIC ไหนบน network node เชื่อมต่อกับ Vlan network (openstack จะมี CLI ให้ผู้ใช้ๆกำหนดค่าของ vlan network ได้หลังจากการติดตั้ง)  
+จะเห็นว่า การกำหนดค่าของ vlan network นั้นไม่ต้องทำอะไรมาก แค่กำหนดค่าตัวแปร VLAN_NETWORK_NODE_IP_NIC เพื่อระบุว่า NIC ไหนบน network node เชื่อมต่อกับ Vlan network (openstack จะมี CLI ให้ผู้ใช้ๆกำหนดค่าของ vlan network เองหลังจากการติดตั้ง)  
 <p><p>
 ส่วนตัวแปร EXTERNAL_CIDR_NIC คือการบอก OpenStack ว่า NIC ไหนบน network node ที่จะใช้ติดต่อกับ network ที่ติดต่อกับ Internet ได้ (หรือ External network) 
-และเนื่องจากเครื่อง compute และ compute1 ก็มี NIC ต่อกับ External network เช่นกัน ผมจะใช้ค่าของตัวแปร EXTERNAL_CIDR_NIC ตัวแปรเดียวเพื่อกำหนดค่า NIC ดังกล่าวสำหรับ network compute และ compute1 node 
+และเนื่องจากเครื่อง compute และ compute1 ก็มี NIC ต่อกับ External network เช่นกันในกรณีของระบบ network แบบ DVR เราจะใช้ค่าของตัวแปร EXTERNAL_CIDR_NIC ตัวแปรเดียวกันนี้เพื่อกำหนดค่า NIC ดังกล่าวสำหรับ network compute และ compute1 node ไปด้วยเลย
 <p><p>
-ถัดจากนั้น นศ จะต้องระบุ CIDR ของ External network (ด้วยตัวแปร EXTERNAL_CIDR) ซึ่งในการติดตั้งนี้เราจะใช้ CIDR ของ management network 
+ท่านจะต้องระบุ CIDR ของ External network (ด้วยตัวแปร EXTERNAL_CIDR) ซึ่งในการติดตั้งนี้เราจะใช้ CIDR ของ management network 
 <p><p>
-หลังจากนั้น นศ ต้องกำหนดค่า range ของ Floating IP โดยให้ตัวแปร START_FLOATING_IP เป็นค่า IP address เริ่มต้น และตัวแปร END_FLOATING_IP เป็นค่า IP address สุดท้าย  
+หลังจากนั้น ท่านต้องกำหนดค่า range ของ Floating IP โดยให้ตัวแปร START_FLOATING_IP เป็นค่า IP address เริ่มต้น และตัวแปร END_FLOATING_IP เป็นค่า IP address สุดท้ายซึ่งเรากำหนดค่าให้เป็น 10.0.0.100 และ 10.0.0.200 ตามลำดับ ใน script จะเรียกใช้ openstack CLI เพื่อสร้าง network และกำหนดค่าหล่านี้ให้  
 <p><p>
-นศ ต้องระบุค่าตัวแปร COMPUTE_NODE_IP เพื่อกำหนดค่า IP address บน management network ของ compute node และกำหนดค่า COMPUTE_NODE_IP_NIC เพื่อระบุว่า NIC ไหนของ compute node ที่ใช้ต่อกับ management network ตัวแปร DATA_TUNNEL_COMPUTE_NODE_IP และ DATA_TUNNEL_COMPUTE_NODE_IP_NIC ใช้กำหนดค่า IP address และ NIC ที่เชื่อมต่อกับ data tunnel network ส่วน VLAN_COMPUTE_NODE_IP_NIC ใช้ระบุค่า NIC ที่เชื่อมต่อกับ Vlan network
+ท่านต้องระบุค่าตัวแปร COMPUTE_NODE_IP เพื่อกำหนดค่า IP address บน management network ของ compute node และกำหนดค่า COMPUTE_NODE_IP_NIC เพื่อระบุว่า NIC ไหนของ compute node ที่ใช้ต่อกับ management network ตัวแปร DATA_TUNNEL_COMPUTE_NODE_IP และ DATA_TUNNEL_COMPUTE_NODE_IP_NIC ใช้กำหนดค่า IP address และ NIC ที่เชื่อมต่อกับ data tunnel network ส่วน VLAN_COMPUTE_NODE_IP_NIC ใช้ระบุค่า NIC ที่เชื่อมต่อกับ Vlan network
 <pre>
-export COMPUTE_IP=10.0.10.31
+export COMPUTE_IP=10.0.0.31
 export COMPUTE_IP_NIC=ens3
-export DATA_TUNNEL_COMPUTE_NODE_IP=10.0.11.31
+export DATA_TUNNEL_COMPUTE_NODE_IP=10.0.1.31
 export DATA_TUNNEL_COMPUTE_NODE_IP_NIC=ens4
 export VLAN_COMPUTE_NODE_IP_NIC=ens5
 </pre>
