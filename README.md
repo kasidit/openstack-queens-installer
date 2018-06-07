@@ -560,8 +560,6 @@ export NTP_SERVER1=1.th.pool.ntp.org
 export NTP_SERVER2=2.th.pool.ntp.org
 export NTP_SERVER3=3.th.pool.ntp.org
 #
-# Deprecate
-export NTP_SERVER_LOCAL=10.0.10.126 
 </pre>
 <p>
 อันดับถัดไปจะเป็นการกำหนดค่า network configuration ในกรณีที่ ท่านจะติดตั้งด้วย script และต้องการกำหนดค่าตัวแปรที่แตกต่างจากที่ระบุในส่วนที่ 1 ท่านควรทราบความหมายของตัวแปรเหล่านี้ 
