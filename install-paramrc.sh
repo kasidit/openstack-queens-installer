@@ -47,33 +47,23 @@ export NTP_SERVER1=1.th.pool.ntp.org
 export NTP_SERVER2=2.th.pool.ntp.org
 export NTP_SERVER3=3.th.pool.ntp.org
 #
-# Deprecate
-export NTP_SERVER_LOCAL=10.0.0.126 
-#
 # Management Network
 #
-export MANAGEMENT_NETWORK_NETMASK=255.255.255.0
 export MANAGEMENT_NETWORK=10.0.0.0
+export MANAGEMENT_NETWORK_NETMASK=255.255.255.0
 export MANAGEMENT_BROADCAST_ADDRESS=10.0.0.255 
 export DNS_IP=8.8.8.8
-#
-# ---- gateway host ----
-#
-# (Deprecated) The GATEWAY_IP_NIC is only used when you use the controller 
-# to simulate a network gateway.
-#
-export GATEWAY_IP_NIC=ens3
-#
-# ---- controller host ----
-#
-export CONTROLLER_IP=10.0.0.11
-export CONTROLLER_IP_NIC=ens3
 #
 # This GATEWAY_IP define the IP addr of the gateway of 
 # the management network on every node.
 #
 export GATEWAY_IP=10.0.0.1
 #
+#
+# ---- controller host ----
+#
+export CONTROLLER_IP=10.0.0.11
+export CONTROLLER_IP_NIC=ens3
 #
 # ---- network host ----
 #
@@ -90,6 +80,8 @@ export EXTERNAL_CIDR=10.0.0.0\\/24
 export EXTERNAL_CIDR_NIC=ens6
 export EXTERNAL_GATEWAY_IP=10.0.0.1
 #
+# For DVR, the EXTERNAL_CIDR* of network node is the same for every compute node.
+#
 export START_FLOATING_IP=10.0.0.100
 export END_FLOATING_IP=10.0.0.200
 #
@@ -100,8 +92,6 @@ export COMPUTE_IP_NIC=ens3
 export DATA_TUNNEL_COMPUTE_NODE_IP=10.0.1.31
 export DATA_TUNNEL_COMPUTE_NODE_IP_NIC=ens4
 export VLAN_COMPUTE_NODE_IP_NIC=ens5
-#
-# For DVR, the EXTERNAL_CIDR* of network node is used on every compute node.
 #
 # ---- compute1 host ----
 #

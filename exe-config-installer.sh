@@ -19,7 +19,6 @@ export ORINTP_SERVER0=vasabi-1234-ntp-pool-server0-4321-ibasav
 export ORINTP_SERVER1=vasabi-1234-ntp-pool-server1-4321-ibasav
 export ORINTP_SERVER2=vasabi-1234-ntp-pool-server2-4321-ibasav
 export ORINTP_SERVER3=vasabi-1234-ntp-pool-server3-4321-ibasav
-export ORINTP_SERVER_LOCAL=vasabi-1234-ntp-local-org-server-4321-ibasav
 #
 export ORIHYPERVISOR=vasabi-1234hypervisor4321-ibasav
 export ORIINIT_IMAGE_LOCATION=vasabi-1234init_image_location4321-ibasav
@@ -51,7 +50,6 @@ export ORIDATA_TUNNEL_NETWORK_NETMASK=vasabi-1234data_network_netmask4321-ibasav
 export ORIDNS_IP=vasabi-1234dns_ip4321-ibasav
 export ORIKEYSTONE_PY_URL=vasabi-1234keystone-py-url4321-ibasav
 #
-export ORIGATEWAY_IP_NIC=vasabi-1234gateway_ip_nic4321-ibasav
 export ORICONTROLLER_IP_NIC=vasabi-1234controller_ip_nic4321-ibasav
 export ORINETWORK_IP_NIC=vasabi-1234network_ip_nic4321-ibasav
 export ORIDATA_TUNNEL_NETWORK_NODE_IP_NIC=vasabi-1234data_tunnel_network_node_ip_nic4321-ibasav
@@ -114,22 +112,6 @@ printf "\nsubstitution\n"
 printf "\n----------\n"
 printf "\n\n${CHANGETOPIC} changed to\n\n"
 sed -i "s/${ORINETWORK_TYPE}/${NETWORK_TYPE}/g" ${SCRIPT_FILES}
-#
-# Change GATEWAY_IP_NIC 
-#
-CHANGETOPIC=GATEWAY_IP_NIC
-#
-printf "\nsubstitution\n"
-#
-printf "\n----------\n"
-printf "\n\n${CHANGETOPIC} (in etc files) changed to\n\n"
-sed -i "s/${ORIGATEWAY_IP_NIC}/${GATEWAY_IP_NIC}/g" ${ETC_FILES}
-#
-printf "\nsubstitution\n"
-#
-printf "\n----------\n"
-printf "\n\n${CHANGETOPIC} changed to\n\n"
-sed -i "s/${ORIGATEWAY_IP_NIC}/${GATEWAY_IP_NIC}/g" ${SCRIPT_FILES}
 #
 # Change CONTROLLER_IP_NIC 
 #
@@ -412,22 +394,6 @@ printf "\nsubstitution\n"
 printf "\n----------\n"
 printf "\n\n${CHANGETOPIC} changed to\n\n"
 sed -i "s/${ORINTP_SERVER3}/${NTP_SERVER3}/g" ${SCRIPT_FILES}
-#
-# Change NTP_SERVER_LOCAL 
-#
-CHANGETOPIC=NTP_SERVER_LOCAL
-#
-printf "\nsubstitution\n"
-
-printf "\n----------\n"
-printf "\n\n${CHANGETOPIC} (in etc files) changed to\n\n"
-sed -i "s/${ORINTP_SERVER_LOCAL}/${NTP_SERVER_LOCAL}/g" ${ETC_FILES}
-#
-printf "\nsubstitution\n"
-
-printf "\n----------\n"
-printf "\n\n${CHANGETOPIC} changed to\n\n"
-sed -i "s/${ORINTP_SERVER_LOCAL}/${NTP_SERVER_LOCAL}/g" ${SCRIPT_FILES}
 #
 # Change HYPERVISOR 
 #
