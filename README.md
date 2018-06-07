@@ -516,23 +516,23 @@ $
 <p>
 <i><a id="paramrc"><h4>2.2 กำหนดค่าพารามีเตอร์สำหรับการติดตั้ง </h4></a></i>
 <p>
-ต่อไป ท่านจะกำหนด configuration สำหรับการติดตั้งโดยกำหนดค่าในไฟล์ <a href="https://github.com/kasidit/openstack-queens-installer/blob/master/install-paramrc.sh">install-paramrc.sh</a> ซึ่งถ้า ท่านกำหนดค่า vm และเนตตามที่ระบุใน ส่วนที่ 1.1 และติดตั้งบน kvm (ที่ใช้รหัส ens เป็นชื่อ NIC) นศ ก็สามารถใช้ไฟล์ install-paramrc.sh นี้ได้เลย 
+ต่อไป ท่านจะกำหนด configuration สำหรับการติดตั้งโดยกำหนดค่าในไฟล์ <a href="https://github.com/kasidit/openstack-queens-installer/blob/master/install-paramrc.sh">install-paramrc.sh</a> ซึ่งถ้า ท่านกำหนดค่า vm และเนตตามที่ระบุใน ส่วนที่ 1.1 และติดตั้งบน kvm (ที่ใช้รหัส ens เป็นชื่อ NIC) ท่านก็สามารถใช้ไฟล์ install-paramrc.sh นี้ได้เลย 
 <p><p>
-แต่อย่างไรก็ตาม หาก นศ ติดตั้งบนเครื่องจริง ชื่อ NICs และค่าอื่นๆก็อาจเปลี่ยนไป ดังนั้นผมจะอธิบายความหมายของตัวแปรต่างๆในไฟล์ install-paramrc.sh เพื่อที่จะได้กำหนดค่าอย่างถูกต้อง อันดับแรก environment variables สามตัวแรกในไฟล์นี้ได้แก่
+แต่อย่างไรก็ตาม หาก ท่านติดตั้งบนเครื่องจริง ชื่อ NICs และค่าอื่นๆก็อาจเปลี่ยนไป ดังนั้นผมจะอธิบายความหมายของตัวแปรต่างๆในไฟล์ install-paramrc.sh เพื่อที่จะได้กำหนดค่าอย่างถูกต้อง อันดับแรก environment variables สามตัวแรกในไฟล์นี้ได้แก่
 <pre>
 export INSTALL_TYPE=full
 export NETWORK_TYPE=dvr_ovs
 export PASSWD_TYPE=studypass
 </pre>
-มีความหมายดังนี้ INSTALL_TYPE เป็นแบบ "full" คือเป็นการติดั้งแบบ 4 nodes ถ้าเปลี่ยนค่าเป็น "compact" จะหมายถึงติดตั้งแบบ 3 nodes ได้แก่ controller network และ compute ส่วน NETWORK_TYPE เป็นตัวแปรที่ระบุชนิดของ network deployment ถ้ากำหนดค่าเป็น "dvr_ovs" หมายถึงใช้ neutron ที่สร้างด้วย openvswitch และปฏิบัติงานแบบ Distributed Virtual Router (DVR) ซึ่งเป็น default configuration ถ้าเปลี่ยนค่าเป็น "classic_ovs" จะหมายถีง neutron ที่สร้างด้วย openvswitch แต่ปฏิบัติงานแบบธรรมดา ไม่มี DVR high availabiility feature สำหรับตัวแปร PASSWD_TYPE เป็นตัวแปรที่ระบุชนิดของ password ที่จะถูกกำหนดสำหรับการติดตั้ง component ต่างๆของ openstack ถ้า่าเป็น "studypass" หมายถึงการกำหนดค่า password ที่เป็น string ธรรมดาที่สื่อความหมายว่าเป็น password ของ component ใด ในทางตรงกันข้าม ถ้ากำหนดค่าเป็น "randompass" จะหมายถึงการกำหนดค่า password สำหรับการติดตั้ง component เหล่านั้นให้เป็นตัวเลข random
+มีความหมายดังนี้ INSTALL_TYPE เป็นแบบ "full" คือเป็นการติดั้งแบบ 4 nodes ถ้าเปลี่ยนค่าเป็น "compact" จะหมายถึงติดตั้งแบบ 3 nodes ได้แก่ controller network และ compute ส่วน NETWORK_TYPE เป็นตัวแปรที่ระบุชนิดของ network deployment ถ้ากำหนดค่าเป็น "dvr_ovs" หมายถึงใช้ neutron ที่สร้างด้วย openvswitch และปฏิบัติงานแบบ Distributed Virtual Router (DVR) ซึ่งเป็น default configuration ถ้าเปลี่ยนค่าเป็น "classic_ovs" จะหมายถีง neutron ที่สร้างด้วย openvswitch ซึ่งจะปฏิบัติงานแบบธรรมดา ไม่มี DVR high availabiility feature สำหรับตัวแปร PASSWD_TYPE เป็นตัวแปรที่ระบุชนิดของ password ที่จะถูกกำหนดสำหรับการติดตั้ง component ต่างๆของ openstack ถ้า่าเป็น "studypass" หมายถึงการกำหนดค่า password ที่เป็น string ธรรมดาที่สื่อความหมายว่าเป็น password ของ component ใด (เหมือนที่ใช้เป็นตัวอย่างในคู่มือการติดตั้ง official) ในทางตรงกันข้าม ถ้ากำหนดค่าเป็น "randompass" จะหมายถึงการกำหนดค่า password สำหรับการติดตั้ง component เหล่านั้นให้เป็นตัวเลข random ซึ่งเหมาะสมสำหรับ production deployment
 <pre>
 export OPS_LOGIN_NAME=openstack
 export OPS_LOGIN_PASS=openstack
 export OPS_TIMEZONE=Asia\\/Bangkok
 </pre>
-ตัวแปร OPS_LOGIN_NAME และ OPS_LOGIN_PASS ในที่นี้เรากำหนดให้เป็น "openstack" ทั้งคู่ ค่า OPS_LOGIN_NAME และ OPS_LOGIN_PASS นี้ต้องตรงกับชื่อ login name และค่า password ของ Linux account ที่ นศ จะใช้ติดตั้ง OpenStack บนทุก node ส่วน OPS_TIMEZONE นั้นใช้กำหนดค่ว TIMEZONE ซึ่งในทีนี้คือ Asia/Bangkok
+ตัวแปร OPS_LOGIN_NAME และ OPS_LOGIN_PASS ในที่นี้เรากำหนดให้เป็น "openstack" ทั้งคู่ ค่า OPS_LOGIN_NAME และ OPS_LOGIN_PASS นี้ต้องตรงกับชื่อ login name และค่า password ของ Linux account ที่ ท่านจะใช้ติดตั้ง OpenStack บนทุก node ส่วน OPS_TIMEZONE นั้นใช้กำหนดค่ว TIMEZONE ซึ่งในทีนี้คือ Asia/Bangkok
 <p><p>
-อันดับถัดไปคือการกำหนดค่า root password ของ mysql ซึ่ง นศ ต้องจำด้วยว่ากำหนดค่าตัวแปรนี้ว่าอะไร เพราะในระหว่างการติดตั้ง นศ ต้องป้อนค่านี้ด้วยตนเองอีกครั้งหนึ่ง สำหนับ DEMO_PASS และ ADMIN_PASS คือค่า password ของ "demo" user และ "admin" user หลังจากเสร็จสิ้นการติดตั้ง OpenStack 
+อันดับถัดไปคือการกำหนดค่า root password ของ mysql <b>ซึ่งท่านจะต้องจำด้วยว่ากำหนดค่าตัวแปรนี้</b> เพราะในระหว่างการติดตั้ง ท่านจะต้องป้อนค่านี้ด้วยตนเองอีกครั้งหนึ่ง สำหนับ DEMO_PASS และ ADMIN_PASS คือค่า password ของ "demo" user และ "admin" user ที่เราจะสร้างขึ้นเพื่อทดสอบระบบในระหว่างการติดตั้งและหลังจากการติดตั้งเสร็จสิ้น 
 <pre>
 export OPS_MYSQL_PASS=mysqlpassword
 export DEMO_PASS=demopassword
@@ -540,7 +540,9 @@ export ADMIN_PASS=adminpassword
 #
 export HYPERVISOR=qemu
 </pre>
-ถัดจจากนั้นจะเป็นการกำหนดค่า HYPERVISOR ให้เป็น "qemu" ในกรณีที่ นศ ติดตั้งบนเครื่องจริง ให้เปลี่ยนค่าของตัวแปรนี้เป็น "kvm" แทน สำหรับตัวแปรถัดไปต่อไปนี้ นศ ไม่ต้องไปยุ่งกับมันก็ได้ มันเป็นการกำหนดค่า url ของ cirros OS image ที่ script จะไป download มา ตัวแปร LOCAL_REPO เป็นการกำหนดค่า apt repository และตัวแปร NTP_SERVER เป็นตัวแปรกำหนดค่า NTP server ซึ่งถ้าติดตั้งในเมืองไทยคงไม่ต้องเปลี่ยนอะไร
+ถัดจจากนั้นจะเป็นการกำหนดค่า HYPERVISOR ให้เป็น "qemu" ในกรณีที่ ท่านติดตั้งบนเครื่องจริง หรือบน vm ที่ทำ nested virtualization ได้ให้เปลี่ยนค่าของตัวแปรนี้เป็น "kvm" แทน 
+<p><p>
+สำหรับตัวแปรถัดไปต่อไปนี้ ท่านอาจไม่ต้องไปยุ่งกับมันก็ได้ มันเป็นการกำหนดค่า url ของ cirros OS image ที่ script จะไป download มา ตัวแปร LOCAL_REPO เป็นการกำหนดค่า apt repository และตัวแปร NTP_SERVER เป็นตัวแปรกำหนดค่า NTP server ซึ่งถ้าติดตั้งในเมืองไทยคงไม่ต้องเปลี่ยนอะไร
 <pre>
 export INIT_IMAGE_LOCATION=http:\\/\\/download.cirros-cloud.net\\/0.3.5\\/cirros-0.3.5-x86_64-disk.img
 export INIT_IMAGE_NAME=cirros
@@ -562,7 +564,7 @@ export NTP_SERVER3=3.th.pool.ntp.org
 export NTP_SERVER_LOCAL=10.0.10.126 
 </pre>
 <p>
-อันดับถัดไปจะเป็นการกำหนดค่า network configuration ในกรณีที่ นศ จะติดตั้งด้วย script และต้องการกำหนดค่าตัวแปรที่แตกต่างจากที่ระบุในส่วนที่ 1 นศ ควรทราบความหมายของตัวแปรเหล่านี้ 
+อันดับถัดไปจะเป็นการกำหนดค่า network configuration ในกรณีที่ ท่านจะติดตั้งด้วย script และต้องการกำหนดค่าตัวแปรที่แตกต่างจากที่ระบุในส่วนที่ 1 ท่านควรทราบความหมายของตัวแปรเหล่านี้ 
 <details>
 <summary><b>[กดเพื่อดูรายละเอียด] ภาพที่ 3 แสดงการ mapping ของค่าตัวแปรใน install-paramrc.sh กับค่า network configuration ในภาพที่ 1</b></summary> 
   <p>
