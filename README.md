@@ -10,11 +10,11 @@ Contact: kasiditchanchio@gmail.com <br>
 <p>
 <h2>Tutorial: การติดตั้งระบบ OpenStack Queens แบบ Multi-node & DVR ด้วย installation scripts บน ubuntu 16.04 </h2> <br>
 <p>
-ให้ นศ เตรียมเครื่องตามส่วนที่ 1 และหลังจากนั้นเลือกเอาอันใดอันหนึ่งว่าจะติดตั้งด้วย scripts(ส่วนที่ 2) หรือด้วยมือ (ส่วนที่ 3)  
+ให้ท่านเตรียมเครื่องตามส่วนที่ 1 และหลังจากนั้นเลือกเอาว่าจะติดตั้งด้วย scripts(ส่วนที่ 2) หรือด้วยมือ (ส่วนที่ 3)  
 <ul>
  <li> 1. <a href="#part1">เตรียมเครื่องและเนตสำหรับติตดั้ง</a>
       <ul>
-       <li> <a href="#kvmhost">1.1 การเตรียมเครื่องเพื่อติดตั้งบน kvm vm หรือเครื่องจริง</a>
+       <li> <a href="#kvmhost">1.1 การเตรียมเครื่องเพื่อติดตั้งบน KVM VM </a>
        <li> <a href="#btrfssnapshot">1.2 การสร้าง snapshot บน btrfs บน ubuntu 16.04 host</a>
       </ul>
  <li> 2. <a href="#part2">ติดตั้งด้วย scripts</a> 
@@ -48,36 +48,33 @@ Contact: kasiditchanchio@gmail.com <br>
 <p>
 <a id="part1"><h3>ส่วนที่ 1: เตรียมเครื่องและเนตสำหรับติดตั้ง</h3></a>
 <p><p>
- เราจะมีการเตรียมการสองแบบคือ การเตรียมการสำหรับการติดตั้งโดยใช้ kvm vm หรือโดยใช้ virtual box vm (vbox)
 <p>
- <i><a id="kvmhost"><h4>1.1 การเตรียมเครื่องเพื่อติดตั้งบน kvm vm หรือเครื่องจริง</h4></a></i>
+ <i><a id="kvmhost"><h4>1.1 การเตรียมเครื่องเพื่อติดตั้งบน KVM Virtual Machine (VM)</h4></a></i>
 <p> 
-  นศ จะเตรียมเครื่อง ubuntu 16.04.x จำนวน 4 เครื่องเชื่อมต่อกันบนเนตดังภาพที่ 1 ได้แก่เครื่องชื่อ controller network compute และ compute1 (ชื่อเครื่องต้องตรงกับผลจากคำสั่ง hostname) จากภาพกำหนดให้เครื่องที่ controller มี spec แนะนำคือ cpu 4 cores RAM 6 ถึง 8 GB Disk 16-20 GB เครื่อง network มี cpu 1-2 cores RAM 512MB-1GB Disk 8-10 GB เครื่อง compute และ compute1 มี cpu 4 cores RAM 2-4 GB Disk 16-20 GB (เป็น spec ใช้สำหรับการศึกษา ถ้าจะ deploy ขอให้ดู official OpenStck doc) 
+  ขอให้เตรียมเครื่อง ubuntu 16.04.x จำนวน 4 เครื่องเชื่อมต่อกันบนเนตดังภาพที่ 1 ได้แก่เครื่องชื่อ controller network compute และ compute1 (ชื่อเครื่องต้องตรงกับผลจากคำสั่ง hostname) จากภาพกำหนดให้เครื่องที่ controller มี spec แนะนำคือ cpu 4 cores RAM 6 ถึง 8 GB Disk 16-20 GB เครื่อง network มี cpu 1-2 cores RAM 512MB-1GB Disk 8-10 GB เครื่อง compute และ compute1 มี cpu 4 cores RAM 2-4 GB Disk 16-20 GB (เป็น spec ใช้สำหรับการศึกษา ถ้าจะ deploy ขอให้ดู official OpenStck document) 
   <p>
-  <img src="documents/architecture.png"> <br>
+  <img src="documents/OPS-queens-architecture.png"> <br>
    ภาพที่ 1 <br>
-กำหนดให้ทุกเครื่องมี username คือ opensatck และ password คือ openstack และเพื่อความสะดวกแนะนำว่าให้ทำให้ทุกเครื่องใช้ sudo โดยไม่ต้องป้อน password อีกอย่างที่สำคัญคือเครื่องเหล่านี้ควรมีเวลาใกล้เคียงกัน
+กำหนดให้ทุกเครื่องมี username คือ opensatck และ password คือ openstack และเพื่อความสะดวกแนะนำว่าให้ทำให้ทุกเครื่องใช้ sudo โดยไม่ต้องป้อน password และอีกอย่างที่สำคัญคือเครื่องเหล่านี้ควรมีเวลาใกล้เคียงกัน
 <p><p>
-สำหรับเนต (network) ที่จะใช้ในการติดตั้ง เรา <b>ASSUME</b> ว่ามี  management network รวมทั้ง network gateway ที่ใช้งานได้แอยู่เรียบร้อยแล้ว และมี data tunnel network และ vlan network ที่พร้อมจะใช้เชื่อมต่อกับเครื่องที่จะติดตั้งเรียบร้อยแล้ว 
-<p><p> 
-network ที่ใช้ในการติดตั้งได้แก่ 
+สำหรับเนต (network) ที่จะใช้ในการติดตั้ง เรา <b>ASSUME</b> เครื่อง VM ทั้ง 4 ในภาพมี  management network รวมทั้ง network gateway ที่ใช้งานได้แอยู่เรียบร้อยแล้ว และมี data tunnel network และ vlan network ที่พร้อมจะใช้เชื่อมต่อกับเครื่องที่จะติดตั้งเรียบร้อยแล้ว 
  <ul>
- <li> management network: มี cidr 10.201.0.0/24 และ gateway คือ 10.201.0.1  openstack ใช้เนตนี้เป็นเนตหลักเพื่อออกอินเตอเนตและส่งคำสั่งระหว่างโหนด(หรือเครื่องทั้ง 4)ต่างๆของมัน  
- <li> data tunnel network: ใช้สร้าง tunnel สำหรับส่งข้อมูลของ vm ที่จะถูกสร้างขึ้นภายใน openstack เนตนี้ใช้สำหรับส่งข้อมูลระว่าง vm กันเอง (east-west) และระหว่าง vm กับ internet (north-south)
- <li> vlan network: ใช้ส่งข้อมูลระหว่าง vm ภายใน openstack กับ vlan network ภายนอก openstack 
+ <li> management network: มี cidr 10.0.0.0/24 และ gateway คือ 10.0.0.1 OpenStack ใช้เนตนี้เป็นเนตหลักเพื่อส่งคำสั่งระหว่างโหนดทั้ง 4 เครื่องของมัน  
+ <li> data tunnel network: ใช้สร้าง VXLAN หรือ GRE tunneling networks  สำหรับส่งข้อมูลระหว่าง VMs ที่จะถูกสร้างขึ้นภายในระบบ openstack (east-west) และระหว่าง VMs กับ Virtual Rounters เพื่อออก internet 
+ <li> vlan network: ใช้ส่งข้อมูลระหว่าง vm ภายใน openstack กับ VM หรือเครื่องจริงบน vlan network ภายนอก openstack 
  <li> external network: คือเนตที่เป็น internet service provider ของ openstack ซึ่งในที่นี้เราจะใช้ management network 
  </ul>
-จากภาพที่ 1 สมมุตว่า NIC ที่ 1 คือ ens3 NIC ที่ 2 คือ ens4 NIC ที่ 3 คือ ens5 NIC ที่ 4 คือ ens6 จะเห็นว่าเครื่อง conroller มี ens3 อันเดียว เครื่อง network compute แบะ compute1 ทั้งหมด มี ens3 ถึง ens6 
+จากภาพที่ 1 สมมุตว่า NIC ที่ 1 คือ ens3 NIC ที่ 2 คือ ens4 NIC ที่ 3 คือ ens5 NIC ที่ 4 คือ ens6 จะเห็นว่าเครื่อง conroller มี ens3 อันเดียว เครื่อง network compute และ compute1 ทั้งหมด มี ens3 ถึง ens6 
 <p><p>
 <table>
 <tr><td>
 <details>
  <summary><b>[กดเพื่อดูรายละเอียด] คำอธิบายการจำลองการติดตั้งโดยใช้ KVM virtual machines และ openvswitch network bridges</b></summary> 
-เราจะจำลองการติดตั้งโดยใช้ kvm vm 4 เครื่องเชื่อมต่อกับ openvswitch network bridges บนเครื่อง server ใน lab ดังภาพที่ 2 
+เราจะจำลองการติดตั้งโดยใช้ kvm vm 4 เครื่องเชื่อมต่อกับ openvswitch network bridges บนเครื่อง server ดังภาพที่ 2 
   <p>
   <img src="documents/architecturetunnel.png"> <br>
    ภาพที่ 2 <br>
-จากภาพ สมมุติว่า server มี IP address คือ 10.100.13.13 เราจะใช้ openvswitch bridge จำลอง management network data tunnel network และ vlan network และใช้ KVM จำลอง openstack nodes บนเครื่องนั้น ผู้ใช้สามารถเข้าถึง vm ได้สองวิธี ได้แก่ 
+จากภาพ สมมุติว่า server ที่ใช้รัน vm ทั้งหมดเป็น ubuntu 16.04 vm ที่มี IP address คือ 10.100.13.13 เราจะใช้ openvswitch bridge จำลอง management network data tunnel network และ vlan network และใช้ KVM สร้าง vms เพื่อจำลอง openstack nodes ทั้ง 4 ผู้ใช้สามารถเข้าถึง vm ได้สองวิธี ได้แก่ 
  <ul>
     <li>การเข้าถึงโดยใช้ ssh tunneling ผ่าน putty โดยใช้เครื่อง server 10.100.13.13 เป็นตัวกลาง 
         <details>
@@ -134,7 +131,7 @@ network ที่ใช้ในการติดตั้งได้แก่
  </td></tr> 
 </table> 
 <p><p>
-เพื่อให้การติดตั้งเร็วขึ้นให้ นศ กำหนดค่า apt configuration ของเครื่องต่างๆให้ใช้ ubuntu repository ในประเทศไทย โดยกำหนดค่าใน /etc/apt/sources.list ด้วยมือ หรือใช้คำสั่ง sed ข้างล่าง บน openstack node ทุกเครื่อง 
+เพื่อให้การติดตั้งเร็วขึ้น ให้กำหนดค่า apt configuration ของเครื่องต่างๆให้ใช้ ubuntu repository ในประเทศไทย โดยกำหนดค่าใน /etc/apt/sources.list ด้วยมือ หรือใช้คำสั่ง sed ข้างล่าง บน openstack node ทุกเครื่อง 
 <pre>
  $ sudo sed -i "s/us.arch/th.arch/g" /etc/apt/sources.list
  $ sudo apt-get update
@@ -143,7 +140,7 @@ network ที่ใช้ในการติดตั้งได้แก่
 <pre>
 $ sudo dist-upgrade 
 </pre>
-ให้กำหนด network configuration ของทุกเครื่องบน management network ดังตัวอย่างข้างล่าง (เรา ASSUME ว่าทุก interface มี MTU คือ 1500 bytes) 
+ให้กำหนด network configuration ของทุกเครื่องบน management network ดังตัวอย่างข้างล่าง (<b>เรา ASSUME ว่าทุก interface มี MTU คือ 1500 bytes</b>) 
 <p>
  <p>
  <b>เครื่อง controller </b> 
@@ -155,10 +152,10 @@ iface lo inet loopback
 ...
 auto ens3
 iface ens3 inet static
-address 10.0.10.11
+address 10.0.0.11
 netmask 255.255.255.0
-network 10.0.10.0
-gateway 10.0.10.1
+network 10.0.0.0
+gateway 10.0.0.1
 dns-nameservers 8.8.8.8
 
 openstack@controller:~$
@@ -166,7 +163,7 @@ openstack@controller:~$
 <pre>
 openstack@controller:~$ ifconfig
 ens3      Link encap:Ethernet  HWaddr 00:54:09:25:20:17
-          inet addr:10.0.10.11  Bcast:10.0.10.255  Mask:255.255.255.0
+          inet addr:10.0.0.11  Bcast:10.0.0.255  Mask:255.255.255.0
           inet6 addr: fe80::254:9ff:fe25:2017/64 Scope:Link
           UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
           RX packets:17777 errors:0 dropped:0 overruns:0 frame:0
@@ -202,10 +199,10 @@ iface lo inet loopback
 ...
 auto ens3
 iface ens3 inet static
-address 10.0.10.21
+address 10.0.0.21
 netmask 255.255.255.0
-network 10.0.10.0
-gateway 10.0.10.1
+network 10.0.0.0
+gateway 10.0.0.1
 dns-nameservers 8.8.8.8
 openstack@network:~$
 </pre>
@@ -213,7 +210,7 @@ openstack@network:~$
 <pre>
 openstack@network:~$ ifconfig
 ens3      Link encap:Ethernet  HWaddr 00:54:09:25:21:17
-          inet addr:10.0.10.21  Bcast:10.0.10.255  Mask:255.255.255.0
+          inet addr:10.0.0.21  Bcast:10.0.0.255  Mask:255.255.255.0
           inet6 addr: fe80::254:9ff:fe25:2117/64 Scope:Link
           UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
           RX packets:4053 errors:0 dropped:0 overruns:0 frame:0
@@ -257,17 +254,17 @@ iface lo inet loopback
 ...
 auto ens3
 iface ens3 inet static
-address 10.0.10.31
+address 10.0.0.31
 netmask 255.255.255.0
-network 10.0.10.0
-gateway 10.0.10.1
+network 10.0.0.0
+gateway 10.0.0.1
 dns-nameservers 8.8.8.8
 openstack@compute:~$
 </pre>
 <pre>
 openstack@compute:~$ ifconfig
 ens3      Link encap:Ethernet  HWaddr 00:54:09:25:31:17
-          inet addr:10.0.10.31  Bcast:10.0.10.255  Mask:255.255.255.0
+          inet addr:10.0.0.31  Bcast:10.0.0.255  Mask:255.255.255.0
           inet6 addr: fe80::254:9ff:fe25:3117/64 Scope:Link
           UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
           RX packets:16953 errors:0 dropped:0 overruns:0 frame:0
@@ -308,10 +305,10 @@ iface lo inet loopback
 ...
 auto ens3
 iface ens3 inet static
-address 10.0.10.32
+address 10.0.0.32
 netmask 255.255.255.0
-network 10.0.10.0
-gateway 10.0.10.1
+network 10.0.0.0
+gateway 10.0.0.1
 dns-nameservers 8.8.8.8
 openstack@compute1:~$
 
@@ -319,7 +316,7 @@ openstack@compute1:~$
 <pre>
 openstack@compute1:~$ ifconfig
 ens3      Link encap:Ethernet  HWaddr 00:54:09:25:32:17
-          inet addr:10.0.10.32  Bcast:10.0.10.255  Mask:255.255.255.0
+          inet addr:10.0.0.32  Bcast:10.0.0.255  Mask:255.255.255.0
           inet6 addr: fe80::254:9ff:fe25:3217/64 Scope:Link
           UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
           RX packets:16827 errors:0 dropped:0 overruns:0 frame:0
@@ -351,19 +348,19 @@ openstack@compute1:~$ ip link
 openstack@compute1:~$
 </pre>
 <p><p>
-ขอให้ นศ make sure ว่า นศ สามารถใช้ NIC ทุกอันส่งข้อมูลได้ นศ อาจใช้วิธี ping IP address ใน management network โดยเช็คว่าสามารถ ping จาก controller ผ่าน ens3 ไปยัง IP ของ ens3 บนเครื่องอื่นทุกๆเครื่องได้ 
+ขอให้ make sure ว่าท่านสามารถใช้ NIC ทุกอันส่งข้อมูลได้ ท่านอาจใช้วิธี ping IP address ใน management network โดยเช็คว่าสามารถ ping จาก controller ผ่าน ens3 ไปยัง IP ของ ens3 บนเครื่องอื่นทุกๆเครื่องได้ 
 <p><p>
-สำหรับ ens4 ens5 ens6 ให้<b>แอบกำหนดค่า IP</b> (หมายถึงกำหนดแล้วลบทิ้ง คือกำหนดเพื่อเช็คต่อไปนี้เฉยๆ แล้วลบทิ้ง ifdown หรือ ifconfig down ก่อนติดตั้งในส่วนที่ 2 หรือ 3) ให้กับ ensx interface ทุกๆอันที่เหลือและให้เช็คว่า ens4 IP ของทุกเครื่องสามารถ ping กันได้ และ ens5 IP ของทุกเครื่องสามารถ ping กันได้ และ ens6 IP ของทุกเครื่อง ping กันและกันได้ 
+สำหรับการเช็คความถูกต้องของ networks ที่ต่อกับ ens4 ens5 ens6 <b>ท่านอาจแอบกำหนดค่า IP</b> (หมายถึงกำหนดแล้วลบทิ้ง คือกำหนดเพื่อเช็คต่อไปนี้เฉยๆ แล้วลบทิ้ง ifdown หรือ ifconfig down ก่อนติดตั้งในส่วนที่ 2 หรือ 3) ให้กับ ensx interface ทุกๆอันที่เหลือและให้เช็คว่า ens4 IP ของทุกเครื่องสามารถ ping กันได้ และ ens5 IP ของทุกเครื่องสามารถ ping กันได้ และ ens6 IP ของทุกเครื่อง ping กันและกันได้ 
 <p><p>
-<b>หมายเหตุ</b> ขอให้ระวังว่า ens4 IP ไม่ควร ping ens3 IP หรือ ens5 IP หรือ ens6 IP ได้ พูดอีกอย่างคือ  data tunnel network subnet และ vlan network subnet และ management network subnet ต้อง isolate จากกัน 
+<b>หมายเหตุ</b> ขอให้ระวังว่า ens4 IP ไม่ควร ping ens3 IP หรือ ens5 IP หรือ ens6 IP ได้ พูดอีกอย่างคือ  data tunnel network subnet และ vlan network subnet และ management network subnet ต้องแยก (isolate) จากกัน 
 <p><p>
 เมื่อเช็คเสร็จแล้วให้ ลบ และ ifdown หรือ ifconfig down IP address ของ ens4 ens5 ens6 บนทุกเครื่องออก เราจะใช้ installation scripts กำหนดค่า หรือกำหนดค่าเองด้วยมือภายหลัง   
 <p><p>
 <i><a id="btrfssnapshot"><h4>1.2 การสร้าง snapshot บน btrfs บน ubuntu 16.04 host</h4></a></i>
 <p>
-เนื้อหาในส่วนนี้ใช้สำหรับผู้ที่ประสงค์ใช้ btrfs เป๋น file system ของ host computers ที่จะใช้ติดตั้ง openstack และต้องการทำ snapshot ของ partition ที่ใช้ในการติดตั้งบนแต่ละเครื่องเป็นระยะๆ ถ้า นศ ไม่ได้ใช้ btrfs ก็ให้ข้ามส่วนนี้ไป
+เนื้อหาในส่วนนี้ใช้สำหรับผู้ที่ประสงค์ใช้ btrfs เป๋น file system ของ host computers ที่จะใช้ติดตั้ง openstack และต้องการทำ snapshot ของ partition ที่ใช้ในการติดตั้งบนแต่ละเครื่องเป็นระยะๆ ถ้าท่านไม่ได้ใช้ btrfs ก็ให้ข้ามส่วนนี้ไป
 <p><p>
-นศ สามารถติดตั้ง btrfs บน ubuntu 16.04 บนเครื่อง controller network compute compute1 hosts ระหว่างการติดตั้ง OS เมื่อกำหนด disk partitioning
+ท่านสามารถติดตั้ง btrfs บน ubuntu 16.04 บนเครื่อง controller network compute compute1 hosts ระหว่างการติดตั้ง OS เมื่อกำหนด disk partitioning
 <ul>
 <li>
 <details>
@@ -414,9 +411,9 @@ openstack@compute1:~$
   <img src="documents/btrfssetup8.png"> <br>
 </details>
 </ul>
-หลังจากนั้นให้ นศ ติดตั้ง ubuntu ต่อตามปกติ 
+หลังจากนั้นให้ติดตั้ง ubuntu ต่อตามปกติ 
 <p><p>
-เมื่อติดตั้งเสร็จแล้ว ให้ นศ login เข้าสู่เครื่องนั้นและดู btrfs subvolume ที่มีอยู่ในเครื่อง host ซึ่งหลังจากการติดตั้งข้างต้น ubuntu 16.04 จะสร้าง btrfs subvolmes สำหรับ / และ /home directory ให้ตั้งแต่เริ่มต้น
+เมื่อติดตั้งเสร็จแล้ว ให้ท่าน login เข้าสู่เครื่องนั้นและดู btrfs subvolume ที่มีอยู่ในเครื่อง host ซึ่งหลังจากการติดตั้งข้างต้น ubuntu 16.04 จะสร้าง btrfs subvolmes สำหรับ / และ /home directory ให้ตั้งแต่เริ่มต้น
 <pre>
 $ sudo su
 # df -h
@@ -433,7 +430,7 @@ tmpfs           396M     0  396M   0% /run/user/1000
 # mount /dev/sda1 /mnt 
 #
 </pre>
-นศ ควร modify ไฟล์ /etc/fstab ด้วยการเพิ่มบรรทัดข้างล่าง เพื่อให้มีการสร้าง /mnt directory และ mount เข้ากับ /dev/sda1 device โดยอัตโนมัติเมื่อมีการ reboot
+ท่านต้อง modify ไฟล์ /etc/fstab ด้วยการเพิ่มบรรทัดข้างล่าง เพื่อให้มีการสร้าง /mnt directory และ mount เข้ากับ /dev/sda1 device โดยอัตโนมัติเมื่อมีการ reboot
 <p><p>
 <pre>
 # vi /etc/fstab
@@ -443,7 +440,7 @@ tmpfs           396M     0  396M   0% /run/user/1000
 (ให้เซฟไฟล์ และออกจาก vi)
 #
 </pre>
-ในอันดับถัดไป นศ list btrfs subvolume ซึ่ง ubuntu จะสร้าง subvolume /mnt/@ สำหรับ / directory และ /mnt/@home สำหรับ /home directory
+ในอันดับถัดไปให้ list btrfs subvolume ซึ่ง ubuntu จะสร้าง subvolume /mnt/@ สำหรับ / directory และ /mnt/@home สำหรับ /home directory
 <p><p>
 <pre>
 # btrfs subvolume list /mnt
@@ -451,12 +448,12 @@ ID 261 gen 7810 top level 5 path @
 ID 262 gen 7702 top level 5 path @home
 #
 </pre>
-นศ สามารถทำ defragmentation ด้วยคำสั่งต่อไปนี้
+ท่านสามารถทำ defragmentation ด้วยคำสั่งต่อไปนี้
 <p><p>
 <pre>
 # btrfs filesystem defrag /mnt
 </pre>
-นศ สามารถทำ snapshot ของ /mnt/@ และ /mnt/@home ดังนี้
+ท่านสามารถทำ snapshot ของ /mnt/@ และ /mnt/@home ดังนี้
 <p><p>
 <pre>
 # <b>btrfs subvolume snapshot /mnt/@ /mnt/@_snapshot1</b>
@@ -470,7 +467,7 @@ ID 264 gen 7812 top level 5 path @_snapshot1
 ID 265 gen 7813 top level 5 path @home_snapshot1
 #
 </pre>
-หลังจากนั้น ถ้า นศ ติดตั้ง openstack แล้วเกิดความผืดพลาดขึ้น นศ สามารถกู้คืน / และ /home ด้วยคำสั่งต่อไปนี้ 
+หลังจากนั้น ถ้าท่านติดตั้ง openstack แล้วเกิดความผืดพลาดขึ้น ท่านสามารถกู้คืน / และ /home ด้วยคำสั่งต่อไปนี้ 
 <p><p>
 <pre>
 # mv /mnt/@ /mnt/@_badroot
@@ -480,7 +477,7 @@ ID 265 gen 7813 top level 5 path @home_snapshot1
 #
 # reboot
 </pre>
-เมื่อ reboot เสร็จ ให้ login เข้าเครื่อง sudo เป็น root แล้ว ลบ /mnt/@_badroot และ /mnt/@_badhome
+เมื่อ reboot เสร็จแล้ว ให้ login เข้าเครื่อง sudo เป็น root แล้ว ลบ /mnt/@_badroot และ /mnt/@_badhome
 <p><p>
 <pre>
 # btrfs subvolume delete /mnt/@_badroot
@@ -493,7 +490,7 @@ ID 265 gen 7813 top level 5 path @home_snapshot1
 # btrfs subvolume snapshot /mnt/@home /mnt/@home_snapshot1
 # btrfs filesystem defrag /mnt
 </pre>
-ผม recommend ให้ นศ ทำ snapshot ของ /mnt/@ และ /mnt/@home เมื่อผ่านการติดตั้งที่สำคัญๆ เผื่อว่าการติดตั้งในอนาคตผิดพลาด นศ จะได้ recover snapshot ล่าสุดได้
+ผม recommend ให้ทุกท่านทำ snapshot ของ /mnt/@ และ /mnt/@home เมื่อผ่านการติดตั้งที่สำคัญๆ เผื่อว่าการติดตั้งในอนาคตผิดพลาด นศ จะได้ recover snapshot ล่าสุดได้
 <a id="part2"> 
 <h3>ส่วนที่ 2: ติดตั้งด้วย scripts</h3>
 </a>
