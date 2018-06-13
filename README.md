@@ -653,13 +653,66 @@ $ ./OS-installer-00-1-update-ubuntu.sh
 <pre>
 $ ./OS-installer-00-2-update-ubuntu.sh 
 </pre>
-script นี้จะ remote ssh เข้าไปที่เครื่อง controller network compute และ compute1 และในระหว่างที่ update ubuntu ของแต่ละเครื่อง และ<b>มันจะถามให้ท่าน กด [ENTER] เครื่องละครั้ง</b> ท่านต้องคอยกด enter ด้วยตนเอง หลังจาก script update ubuntu บนแต่ละเครื่องเสร็จมันจะ reboot เครื่องเหล่านั้น โดยจะ reboot เครื่อง controller เป็นเครื่องสุดท้าย (เพราะท่านต้องใช้เครื่องไป update และ reboot เครื่องอื่นๆก่อน)
+script นี้จะ remote ssh เข้าไปที่เครื่อง controller network compute และ compute1 และในระหว่างที่ update ubuntu ของแต่ละเครื่อง และ<b>มันจะถามให้ท่าน กด [ENTER] เครื่องละครั้ง</b> ท่านต้องคอยกด enter ด้วยตนเอง หลังจาก script update ubuntu บนแต่ละเครื่องเสร็จมันจะ reboot เครื่องเหล่านั้น โดยจะ reboot เครื่อง controller เป็นเครื่องสุดท้าย (เพราะเราใช้เครื่อง controller ไป update และ reboot เครื่องอื่นๆก่อน)
+<p><p>
+หลังจากนั้น เราจะ login เข้าสู่เครื่อง controller แต่ก่อนที่จะรัน script ถัดไป ขอให้ท่าน make sure ว่าทุกเครื่อง reboot เสร็จและสามารถ ssh ได้
+<pre>
+host$ ssh openstack@10.0.0.11
+openstack@10.0.0.11's password:
+$
+$ cd openstack-queens-installer/OPSInstaller/installer/
+$ 
+</pre>
+<p><p>
+<table>
+<tr><td>
+<details>
+<summary><b>[กดเพื่อดูรายละเอียด] ในกรณีที่ท่านใช้ btrfs: ท่านสามารถใช้ script ทำ snapshot ของทั้ง cluster ได้</b></summary>
+ท่านจะใช้ ./OS-cluster-btrfs-snapshot.sh script ด้วย option snapshot ตามด้วยชื่อ "OSi-00" เพื่อสร้าง snapshots สำหรับ / และ /home file systems และให้ชื่อว่า /mnt/@_snap_OSi-00 และ /mnt/@home_snap_OSi-00 ตามลำดับ ผม recommend ให้ท่านทำ snapshot ทุกครั้งหลังจากรัน installer script ในแต่ละขั้นเสร็จ
+<pre>
+$  ./OS-cluster-btrfs-snapshot.sh snapshot OSi-00
+On controller:
++ btrfs subvolume snapshot /mnt/@ /mnt/@_snap_OSi-00
+Create a snapshot of '/mnt/@' in '/mnt/@_snap_OSi-00'
++ btrfs subvolume snapshot /mnt/@home /mnt/@home_snap_OSi-00
+Create a snapshot of '/mnt/@home' in '/mnt/@home_snap_OSi-00'
+Connection to controller closed.
+On network:
++ btrfs subvolume snapshot /mnt/@ /mnt/@_snap_OSi-00
+Create a snapshot of '/mnt/@' in '/mnt/@_snap_OSi-00'
++ btrfs subvolume snapshot /mnt/@home /mnt/@home_snap_OSi-00
+Create a snapshot of '/mnt/@home' in '/mnt/@home_snap_OSi-00'
+Connection to network closed.
+On compute:
++ btrfs subvolume snapshot /mnt/@ /mnt/@_snap_OSi-00
+Create a snapshot of '/mnt/@' in '/mnt/@_snap_OSi-00'
++ btrfs subvolume snapshot /mnt/@home /mnt/@home_snap_OSi-00
+Create a snapshot of '/mnt/@home' in '/mnt/@home_snap_OSi-00'
+Connection to compute closed.
+On compute1:
++ btrfs subvolume snapshot /mnt/@ /mnt/@_snap_OSi-00
+Create a snapshot of '/mnt/@' in '/mnt/@_snap_OSi-00'
++ btrfs subvolume snapshot /mnt/@home /mnt/@home_snap_OSi-00
+Create a snapshot of '/mnt/@home' in '/mnt/@home_snap_OSi-00'
+Connection to compute1 closed.
+Done!
+$
+</pre>
+</details>
+</td></tr>
+</table>
 <p><p>
 ในอันดับถัดไป เราจะเริ่มต้นด้วยการกำหนดค่า network configurations ที่จำเป็นสำหรับการติดตั้ง openstack ด้วย OS-installer-01-node-setups.sh ซึ่งจะกำหนดค่าและ ifup interfaces ต่างๆบนทุกๆเครื่องในภาพที่ 1 และติดตั้ง chrony เพื่อ sync เวลาระหว่าง NTP server กับ controller และระหว่าง controller กับทุกๆ node (ดู <a href="https://www.youtube.com/watch?v=ii7Ty4cW6mQ&index=5&list=PLmUxMbTCUhr4vYsaeEKVkvAGF5K1Tw8oJ">youtube video</a>)
 <pre>
 $ ./OS-installer-01-node-setups.sh
 </pre>
-หลังจากนั้น นศ จะติดตั้ง mysql ด้วย script OS-installer-02-mysql.sh (ดู <a href="https://www.youtube.com/watch?v=pYuxnxX_WZw&index=6&list=PLmUxMbTCUhr4vYsaeEKVkvAGF5K1Tw8oJ">youtube video</a>)
+Recommend ให้ท่านทำ snapshot ของทั้ง cluster ถ้าท่านใช้ btrfs ผมจะใช้ตัวอย่างกำหนดชื่อของ snapshot หลังจากแต่ละขั้นว่า OSi-XX หมายถึง OpenStack installation ขั้นที่ XX เช่น
+<p><p>
+<pre>
+$ ./OS-cluster-btrfs-snapshot.sh snapshot OSi-01
+</pre>
+<p><p>
+ในขั้นถัดไป นศ จะติดตั้ง mysql ด้วย script OS-installer-02-mysql.sh (ดู <a href="https://www.youtube.com/watch?v=pYuxnxX_WZw&index=6&list=PLmUxMbTCUhr4vYsaeEKVkvAGF5K1Tw8oJ">youtube video</a>)
 <pre>
 $ ./OS-installer-02-mysql.sh
 </pre>
