@@ -738,7 +738,7 @@ Reload privilege tables now? [Y/n] y
 </pre>
 </ul>
 <p><p>
-ในขั้นถัดไปท่านจะติดตั้ง rabbitmq ซึ่งเป็น message queue software ที่ components ของ openstack ใช้สื่อสารกัน 
+ในขั้นถัดไปท่านจะติดตั้ง rabbitmq ซึ่งเป็น AMQP message queue software ที่ components ของ openstack ใช้สื่อสารกัน 
 <pre>
 $ ./OS-installer-03-rabbitmq.sh
 </pre>
@@ -758,18 +758,19 @@ $ ./OS-installer-06-nova.sh
 <pre>
 $ ./OS-installer-07-neutron.sh
 </pre>
-ติดตั้ง horizon web gui (ถ้าเครื่อง cpu หรือ memory น้อย ผมแนะนำให้ใช้ CLI แทน web interface) 
+ทำให้ neutron network service ปฏิบัติการแบบ Distributed Virtual Router (DVR) (ดู <a href="https://www.youtube.com/watch?v=A-NkW1xYylY&list=PLmUxMbTCUhr4vYsaeEKVkvAGF5K1Tw8oJ&index=9">youtube video</a>)
 <pre>
-$ ./OS-installer-08-horizon.sh
-</pre>
-กำหนดค่า network ให้เป็น Distributed Virtual Router (DVR) (ดู <a href="https://www.youtube.com/watch?v=A-NkW1xYylY&list=PLmUxMbTCUhr4vYsaeEKVkvAGF5K1Tw8oJ&index=9">youtube video</a>)
-<pre>
-$ ./OS-installer-09-set-dvr.sh
+$ ./OS-installer-08-set-dvr.sh
 </pre>
 ใช้ script สร้าง network เริ่มต้นและทดสอบ network
 <pre>
-$ ./OS-installer-10-initial-user-network.sh
+$ ./OS-installer-09-initial-user-network.sh
 </pre>
+ติดตั้ง horizon web gui (ถ้าเครื่อง cpu หรือ memory น้อย ผมแนะนำให้ใช้ CLI แทน web interface คือไม่ต้องติดตั้ง horizon ดังคำสั่งข้างล่าง) 
+<pre>
+$ ./OS-installer-10-horizon.sh
+</pre>
+เตือนความจำอีกครั้งว่า ถ้าท่านใช้ btrfs ท่านควรทำ cluster snapshot ของทุกเครื่อง โดยใช้ script ที่กล่างถึงไปก่อนหน้านี้
 <p>
 <p>
 <i><a id="testhorizon"><h4>2.4 ใช้งาน OpenStack Horizon</h4></a></i>
