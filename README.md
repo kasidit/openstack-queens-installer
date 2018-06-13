@@ -706,24 +706,39 @@ $
 <pre>
 $ ./OS-installer-01-node-setups.sh
 </pre>
-Recommend ให้ท่านทำ snapshot ของทั้ง cluster ถ้าท่านใช้ btrfs ผมจะใช้ตัวอย่างกำหนดชื่อของ snapshot หลังจากแต่ละขั้นว่า OSi-XX หมายถึง OpenStack installation ขั้นที่ XX เช่น
+Recommend ให้ท่านทำ snapshot ของทั้ง cluster (ถ้าท่านใช้ btrfs) ผมจะใช้ตัวอย่างกำหนดชื่อของ snapshot หลังจากแต่ละขั้นว่า OSi-XX หมายถึง OpenStack installation ขั้นที่ XX เช่น
 <p><p>
 <pre>
 $ ./OS-cluster-btrfs-snapshot.sh snapshot OSi-01
 </pre>
 <p><p>
-ในขั้นถัดไป นศ จะติดตั้ง mysql ด้วย script OS-installer-02-mysql.sh (ดู <a href="https://www.youtube.com/watch?v=pYuxnxX_WZw&index=6&list=PLmUxMbTCUhr4vYsaeEKVkvAGF5K1Tw8oJ">youtube video</a>)
+ในขั้นถัดไป ท่านจะติดตั้ง mysql ด้วย script OS-installer-02-mysql.sh (ดู <a href="https://www.youtube.com/watch?v=pYuxnxX_WZw&index=6&list=PLmUxMbTCUhr4vYsaeEKVkvAGF5K1Tw8oJ">youtube video</a>)
 <pre>
 $ ./OS-installer-02-mysql.sh
 </pre>
-ขอให้ นศ จำรหัสผ่านสำหรับ root ของ mysql ที่กำหนดไว้ใน install-paramrc.sh ด้วย (ในที่นี้คือ "mysqlpassword") ระหว่างที่รัน script นี้ นศ จะต้องระวังและป้อนค่าตามที่ script ต้องการดังนี้
+ที่สำคัญคือ ขอให้ท่านจำรหัสผ่านสำหรับ root ของ mysql ที่กำหนดไว้ใน install-paramrc.sh (ในที่นี้คือ "mysqlpassword") เพื่อใช้ระหว่างที่รัน script นี้ <b>และท่านจะต้องระวังและป้อนค่าตามที่ script ต้องการตามอันดับ</b>ดังนี้
 <ul>
-<li> หลังจากติดตั้ง mysql แล้ว script จะให้ป้อนค่า root password ซึ่งไม่มีเพราะเป็นการติดตั้งใหม่ ดังนั้น นศ ต้อง กด <b>ENTER</b>
-<li> ถัดจากนั้นมันจะให้ป้อน password (<b>mysqlpassword</b>) สองครั้ง
-<li> คำถามที่เหลือตอบ y ให้หมด 
+<li> หลังจากติดตั้ง mysql แล้ว script จะถามว่าให้ป้อนค่า root password ดังนี้ "Enter current password for root (enter for none):" ซึ่งไม่มีเพราะเป็นการติดตั้งใหม่ ดังนั้น ท่านต้อง กด <b>ENTER</b>
+<li> ถัดจากนั้นมันจะถามว่าจะใส่พาสเวิดไหม ให้ป้อน password (<b>mysqlpassword</b>) สองครั้ง
+<pre>
+Set root password? [Y/n] y
+New password:
+Re-enter new password:
+</pre>
+<li> คำถามที่เหลือ เขาถามอะไรมาก็ตอบ y ให้หมด 
+<pre>
+Remove anonymous users? [Y/n] y
+...
+Disallow root login remotely? [Y/n] y
+...
+Remove test database and access to it? [Y/n] y
+...
+Reload privilege tables now? [Y/n] y
+...
+</pre>
 </ul>
 <p><p>
-นศ จะติดตั้ง rabbitmq ซึ่งเป็น message queue software ที่ components ของ openstack ใช้สื่อสารกัน 
+ในขั้นถัดไปท่านจะติดตั้ง rabbitmq ซึ่งเป็น message queue software ที่ components ของ openstack ใช้สื่อสารกัน 
 <pre>
 $ ./OS-installer-03-rabbitmq.sh
 </pre>
