@@ -634,30 +634,26 @@ export VLAN_COMPUTE_NODE_IP_NIC=ens5
 <i><a id="usescript"><h4>2.3 การติดตั้ง OpenStack queens ด้วย scripts </h4></a></i>
 <p>
 <p>
-เริ่มต้นการติดตั้งด้วยคำสั่งต่อไปนี้ (หมายเหตุ นศ ต้องออกคำสั่งใน user mode คือเป็น openstack user ห้ามใช้ sudo จนจบ script เหล่านี้)
+เริ่มต้นการติดตั้งด้วยคำสั่งต่อไปนี้ (หมายเหตุ ท่านผู้อ่านต้องออกคำสั่งใน user mode คือเป็น openstack user ห้ามใช้ sudo จนจบ script เหล่านี้) 
 <pre>
 $ cd $HOME/openstack-queens-installer
 $ ./exe-config-installer.sh
 </pre>
 คำสั่ง ./exe-config-installer.sh จะนำค่าที่กำหนดใน install-paramrc.sh ไปแทนค่า template ของ scripts สำหรับติดตั้ง openstack ในไฟล์ OPSInstaller-init.tar และสร้าง directory ใหม่ชือ OPSInstaller ขึ้น (ดู <a href="https://www.youtube.com/watch?v=zIVLVEvaDgs&list=PLmUxMbTCUhr4vYsaeEKVkvAGF5K1Tw8oJ&index=4">youtube video</a>)
 <p><p>
-ให้ นศ cd เข้า directory ดังกล่าวดังนี้ 
+จาก directory $HOME/openstack-queens-installer ที่ท่านอยู่ในปัจจุบัน ให้ cd เข้าสู่ directory installer ดังนี้ 
 <pre>
 $ cd OPSInstaller/installer
 </pre>
- ในกรณีที่ นศ ติดตั้งบน vbox นศ จะต้อง script OS-installer-00-0-set-gateway.sh ข้างล่างนี้เพื่อทำให้เครื่อง controller เป็น virtual gateway สำหรับ management network <b>ถ้าไม่ได้ใช้ vbox ให้ข้ามไปรัน script ถัดไปเลย</b>
+เริ่มต้นการติดตั้ง ท่านจะรัน OS-installer-00-1-update-ubuntu.sh script เพื่อทำให้ scripts ที่ขะใช้ในอันดับถัดไปสามารถ remote exeution ด้วย ssh จากเครื่อง controller ไปยังเครื่องอื่นๆได้โดยไม่ต้องใส่ password (<b>หมายเหตุ:</b> ในกรณีที่ท่านผู้อ่านจะใช้ script ติดตั้งเพื่อใช้งานจริง หลังจากติดตั้งเสร็จเรียบร้อยแล้ว ท่านต้องทำสองอย่างได้แก่ (1) เปลี่ยน password ของ openstack user บนทุกเครื่องและ (2) ลบไฟล์ $HOME/.ssh/id_rsa บนเครื่อง controller และไฟล์ $HOME/.ssh/authorized_keys ของ openstack user บนทุกๆเครื่อง) (ดู <a href="https://www.youtube.com/watch?v=zIVLVEvaDgs&list=PLmUxMbTCUhr4vYsaeEKVkvAGF5K1Tw8oJ&index=4">youtube video</a>)
 <pre>
-$ ./OS-installer-00-0-set-gateway.sh 
+$ ./OS-installer-00-1-update-ubuntu.sh
 </pre>
-ถัดจากนั้นรัน script แรกเพื่อทำให้สามารถ remote ssh จาก controller ไปยังเครื่องอื่นๆได้โดยไม่ต้องใส่ password (<b>หมายเหตุ:</b> ในกรณีที่ นศ จะใช้ script ติดตั้งเพื่อใช้งานจริง หลังจากติดตั้งเสร็จเรียบร้อยแล้ว นศ ต้องทำสองอย่างได้แก่ (1) เปลี่ยน password ของ openstack user บนทุกเครื่องและ (2) ลบเนื้อหาของไฟล์ $HOME/.ssh/id_rsa และไฟล์ $HOME/.ssh/authorized_keys ใน openstack user บนทุกเครื่อง) (ดู <a href="https://www.youtube.com/watch?v=zIVLVEvaDgs&list=PLmUxMbTCUhr4vYsaeEKVkvAGF5K1Tw8oJ&index=4">youtube video</a>)
-<pre>
-$ ./OS-installer-00-1-set-remote-access.sh
-</pre>
-script ที่สองจะ update ubuntu 16.04 บนโหนดต่างๆให้เป็นเวอรชันล่าสุดและกำหนด cloud repository สำหรับ openstack queens installation
+หลังจากนั้นให้รัน OS-installer-00-2-update-ubuntu.sh script เพื่อ update ubuntu 16.04 บนโหนดต่างๆให้เป็นเวอรชันล่าสุดและกำหนด cloud repository สำหรับ openstack queens installation
 <pre>
 $ ./OS-installer-00-2-update-ubuntu.sh 
 </pre>
-script จะ remote ssh เข้าไปที่เครื่อง controller network compute และ compute1 และในระหว่างที่ update ubuntu ของแต่ละเครื่อง มันจะถามให้ นศ กด [ENTER] เครื่องละครั้ง หลังจาก update ubuntu บนแต่ละเครื่องเสร็จมันจะ reboot เครื่องเหล่านั้น โดยจะ reboot เครื่อง controller หลังสุด
+script นี้จะ remote ssh เข้าไปที่เครื่อง controller network compute และ compute1 และในระหว่างที่ update ubuntu ของแต่ละเครื่อง และ<b>มันจะถามให้ท่าน กด [ENTER] เครื่องละครั้ง</b> ท่านต้องคอยกด enter ด้วยตนเอง หลังจาก script update ubuntu บนแต่ละเครื่องเสร็จมันจะ reboot เครื่องเหล่านั้น โดยจะ reboot เครื่อง controller เป็นเครื่องสุดท้าย (เพราะท่านต้องใช้เครื่องไป update และ reboot เครื่องอื่นๆก่อน)
 <p><p>
 ในอันดับถัดไป เราจะเริ่มต้นด้วยการกำหนดค่า network configurations ที่จำเป็นสำหรับการติดตั้ง openstack ด้วย OS-installer-01-node-setups.sh ซึ่งจะกำหนดค่าและ ifup interfaces ต่างๆบนทุกๆเครื่องในภาพที่ 1 และติดตั้ง chrony เพื่อ sync เวลาระหว่าง NTP server กับ controller และระหว่าง controller กับทุกๆ node (ดู <a href="https://www.youtube.com/watch?v=ii7Ty4cW6mQ&index=5&list=PLmUxMbTCUhr4vYsaeEKVkvAGF5K1Tw8oJ">youtube video</a>)
 <pre>
