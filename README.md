@@ -698,6 +698,11 @@ Connection to compute1 closed.
 Done!
 $
 </pre>
+Recommend ให้ท่านทำ snapshot ของทั้ง cluster (ถ้าท่านใช้ btrfs) สมมุติว่าผมต้องการตั้งชื่อของ snapshot หลังจากทำการติดตั้งแต่ละขั้นเสร็จว่า OSi-XX หมายถึง OpenStack installation หลังจากขั้นที่ XX เสร็จ เช่นเมื่อทำ ./OS-installer-01-node-setups.sh เสร็จ ผมก็จะป้อนคำสั่งเพื่อสร้าง snapshot คือ
+<p><p>
+<pre>
+$ ./OS-cluster-btrfs-snapshot.sh snapshot OSi-01
+</pre>
 </details>
 </td></tr>
 </table>
@@ -705,11 +710,6 @@ $
 ในอันดับถัดไป เราจะเริ่มต้นด้วยการกำหนดค่า network configurations ที่จำเป็นสำหรับการติดตั้ง openstack ด้วย OS-installer-01-node-setups.sh ซึ่งจะกำหนดค่าและ ifup interfaces ต่างๆบนทุกๆเครื่องในภาพที่ 1 และติดตั้ง chrony เพื่อ sync เวลาระหว่าง NTP server กับ controller และระหว่าง controller กับทุกๆ node (ดู <a href="https://www.youtube.com/watch?v=ii7Ty4cW6mQ&index=5&list=PLmUxMbTCUhr4vYsaeEKVkvAGF5K1Tw8oJ">youtube video</a>)
 <pre>
 $ ./OS-installer-01-node-setups.sh
-</pre>
-Recommend ให้ท่านทำ snapshot ของทั้ง cluster (ถ้าท่านใช้ btrfs) ผมจะใช้ตัวอย่างกำหนดชื่อของ snapshot หลังจากแต่ละขั้นว่า OSi-XX หมายถึง OpenStack installation ขั้นที่ XX เช่น
-<p><p>
-<pre>
-$ ./OS-cluster-btrfs-snapshot.sh snapshot OSi-01
 </pre>
 <p><p>
 ในขั้นถัดไป ท่านจะติดตั้ง mysql ด้วย script OS-installer-02-mysql.sh (ดู <a href="https://www.youtube.com/watch?v=pYuxnxX_WZw&index=6&list=PLmUxMbTCUhr4vYsaeEKVkvAGF5K1Tw8oJ">youtube video</a>)
@@ -742,11 +742,11 @@ Reload privilege tables now? [Y/n] y
 <pre>
 $ ./OS-installer-03-rabbitmq.sh
 </pre>
-ถัดจากนั้นจะติดตั้ง keystone 
+ถัดจากนั้นจะติดตั้ง keystone ซึ่งเป็น component ที่รับผิดชอบเรื่องการทำ Authentication และ Authorization 
 <pre>
 $ ./OS-installer-04-keystone.sh
 </pre>
-ตามด้วย glance
+ตามด้วย glance เพื่อจัดการ vm images โดยที่ glance จะสร้าง repository สำหรับเก็บ Disk images ของ vm ซึ่งจะมี Guest OS แบบต่างๆเช่น ubuntu และ centOS ติดตั้งอยู่เป็นต้น เบื้องแรกหลังจากติดตั้ง glance software เสร็จแล้ว script จะ download cirros image มาจาก internet และ upload เข้าระบบ glance ให้เป็น image เริ่มต้นสำหรับการติดตั้งนี้ 
 <pre>
 $ ./OS-installer-05-glance.sh
 </pre>
