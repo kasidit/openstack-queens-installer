@@ -2,8 +2,6 @@
 
 Copyright 2018 Kasidit Chanchio 
 
-# script ใช้ได้แล้ว แต่ คำแนะนำการใช้งานอยู่ในระหว่างเปลี่ยนแปลง 
-
 Author: กษิดิศ ชาญเชี่ยว <br>
 Contact: kasiditchanchio@gmail.com <br>
 
@@ -736,6 +734,7 @@ Remove test database and access to it? [Y/n] y
 Reload privilege tables now? [Y/n] y
 ...
 </pre>
+เตือนความจำอีกครั้งว่า ถ้าท่านใช้ btrfs ท่านควรทำ cluster snapshot ของทุกเครื่อง โดยใช้ script ที่กล่าวถึงไปก่อนหน้านี้
 </ul>
 <p><p>
 ในขั้นถัดไปท่านจะติดตั้ง rabbitmq ซึ่งเป็น AMQP message queue software ที่ components ของ openstack ใช้สื่อสารกัน 
@@ -750,11 +749,11 @@ $ ./OS-installer-04-keystone.sh
 <pre>
 $ ./OS-installer-05-glance.sh
 </pre>
-และ nova (ดู <a href="https://www.youtube.com/watch?v=dRQ9GPtPCZs&list=PLmUxMbTCUhr4vYsaeEKVkvAGF5K1Tw8oJ&index=7">youtube video</a>)
+ขั้นตอนถัดไปเป็นการติดตั้ง component ที่สำคัญที่สุดของ openstack คือ nova ซึ่งเป็นระบบบริหารจัดการ vms บน cluster computer ทั้ง cluster ที่ใช้รัน openstack (ดู <a href="https://www.youtube.com/watch?v=dRQ9GPtPCZs&list=PLmUxMbTCUhr4vYsaeEKVkvAGF5K1Tw8oJ&index=7">youtube video</a>)
 <pre>
 $ ./OS-installer-06-nova.sh
 </pre>
-และ neutron (ดู <a href="https://www.youtube.com/watch?v=5gC8dntxaE8&list=PLmUxMbTCUhr4vYsaeEKVkvAGF5K1Tw8oJ&index=8">youtube video</a>)
+และถัดจากนั้นคือ neutron ที่จะจัดการ virtual networks ทั้งหมด รวมทั้งการสื่อสารระหว่าง vms ภายใน OpenStack และระหว่าง vms เหล่านั้นกับ internet (ดู <a href="https://www.youtube.com/watch?v=5gC8dntxaE8&list=PLmUxMbTCUhr4vYsaeEKVkvAGF5K1Tw8oJ&index=8">youtube video</a>)
 <pre>
 $ ./OS-installer-07-neutron.sh
 </pre>
@@ -770,9 +769,12 @@ $ ./OS-installer-09-initial-user-network.sh
 <pre>
 $ ./OS-installer-10-horizon.sh
 </pre>
-เตือนความจำอีกครั้งว่า ถ้าท่านใช้ btrfs ท่านควรทำ cluster snapshot ของทุกเครื่อง โดยใช้ script ที่กล่างถึงไปก่อนหน้านี้
+
 <p>
 <p>
+
+# script ใช้ได้แล้ว แต่ คำอธิบายถัดจากนี้ไปอยู่ในระหว่างเปลี่ยนแปลงจาก ocata เป็น queens
+
 <i><a id="testhorizon"><h4>2.4 ใช้งาน OpenStack Horizon</h4></a></i>
 <p>
 <p>
