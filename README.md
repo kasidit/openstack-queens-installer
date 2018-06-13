@@ -753,17 +753,20 @@ $ ./OS-installer-05-glance.sh
 <pre>
 $ ./OS-installer-06-nova.sh
 </pre>
-และถัดจากนั้นคือ neutron ที่จะจัดการ virtual networks ทั้งหมด รวมทั้งการสื่อสารระหว่าง vms ภายใน OpenStack และระหว่าง vms เหล่านั้นกับ internet (ดู <a href="https://www.youtube.com/watch?v=5gC8dntxaE8&list=PLmUxMbTCUhr4vYsaeEKVkvAGF5K1Tw8oJ&index=8">youtube video</a>)
+และถัดจากนั้นคือ neutron ที่จะจัดการ virtual networks ทั้งหมด รวมทั้งการสื่อสารระหว่าง vms ภายใน OpenStack และระหว่าง vms เหล่านั้นกับ internet หลังจากรัน script เสร็จ ท่านจะได้ neutron network service แบบ multi-node ที่มี network node หนึ่ง network node ที่ให้บริการ network virtualization แบบ provider network และ self-service network ระบบ network ในการติดตั้งของเราปฏิบัติงานบน openvswitch และ VXLAN technology (ดู <a href="https://www.youtube.com/watch?v=5gC8dntxaE8&list=PLmUxMbTCUhr4vYsaeEKVkvAGF5K1Tw8oJ&index=8">youtube video</a>)
 <pre>
 $ ./OS-installer-07-neutron.sh
 </pre>
-ทำให้ neutron network service ปฏิบัติการแบบ Distributed Virtual Router (DVR) (ดู <a href="https://www.youtube.com/watch?v=A-NkW1xYylY&list=PLmUxMbTCUhr4vYsaeEKVkvAGF5K1Tw8oJ&index=9">youtube video</a>)
+script ถัดไปจะทำให้ neutron network service ที่เพิ่งติดตั้งปฏิบัติการแบบ Distributed Virtual Router (DVR) ซึ่งเป็น High Availability network service ของ nuetron ที่เป็นประโยชน์มากสำหรับ datacenters ที่ให้บริการ web servers แก่ลูกค้า DVR ทำให้ web servers ที่รันอยู่บน compute nodes สามารถปฏิบัติงานต่อได้แม้ว่าเครื่อง controller หรือเครื่อง network เกืด offline (ดู <a href="https://www.youtube.com/watch?v=A-NkW1xYylY&list=PLmUxMbTCUhr4vYsaeEKVkvAGF5K1Tw8oJ&index=9">youtube video</a>)
 <pre>
 $ ./OS-installer-08-set-dvr.sh
 </pre>
-ใช้ script สร้าง network เริ่มต้นและทดสอบ network
+เนื่องจากความซับซ้อนของ neutron หลังจากการติดตั้งข้างต้น เราจะใช้ script ถัดไปเพื่อสร้าง network เริ่มต้นและเริ่มทดสอบความถูกต้องของ network ที่สร้างขึ้น
 <pre>
 $ ./OS-installer-09-initial-user-network.sh
+</pre>
+หลังจากรัน script นี้ขอให้สังเกตุข้อความ ping ต่อไปนี้ว่าทำได้หรือไม่ การติดตั้ง neutron ที่ถูกต้อง ท่านจะต้องเห็นข้อความผลของการ ping เช่นนี้
+<pre>
 </pre>
 ติดตั้ง horizon web gui (ถ้าเครื่อง cpu หรือ memory น้อย ผมแนะนำให้ใช้ CLI แทน web interface คือไม่ต้องติดตั้ง horizon ดังคำสั่งข้างล่าง) 
 <pre>
