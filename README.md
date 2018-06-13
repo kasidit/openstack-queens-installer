@@ -757,9 +757,42 @@ $ ./OS-installer-06-nova.sh
 <pre>
 $ ./OS-installer-07-neutron.sh
 </pre>
-script ถัดไปจะทำให้ neutron network service ที่เพิ่งติดตั้งปฏิบัติการแบบ Distributed Virtual Router (DVR) ซึ่งเป็น High Availability network service ของ nuetron ที่เป็นประโยชน์มากสำหรับ datacenters ที่ให้บริการ web servers แก่ลูกค้า DVR ทำให้ web servers ที่รันอยู่บน compute nodes สามารถปฏิบัติงานต่อได้แม้ว่าเครื่อง controller หรือเครื่อง network เกืด offline (ดู <a href="https://www.youtube.com/watch?v=A-NkW1xYylY&list=PLmUxMbTCUhr4vYsaeEKVkvAGF5K1Tw8oJ&index=9">youtube video</a>)
+script ถัดไปจะทำให้ neutron network service ที่เพิ่งติดตั้งปฏิบัติการแบบ Distributed Virtual Router (DVR) ซึ่งเป็น High Availability network service ของ nuetron ที่เป็นประโยชน์มากสำหรับ datacenters ที่ให้บริการ web servers แก่ลูกค้า DVR ทำให้ web servers ที่รันอยู่บน compute nodes สามารถปฏิบัติงานต่อได้แม้ว่าเครื่อง controller หรือเครื่อง network เกิดปัญหา offline (ดู <a href="https://www.youtube.com/watch?v=A-NkW1xYylY&list=PLmUxMbTCUhr4vYsaeEKVkvAGF5K1Tw8oJ&index=9">youtube video</a>)
 <pre>
 $ ./OS-installer-08-set-dvr.sh
+</pre>
+หลังจากรัน script ท่านควรจะเห็นข้อความต่อไปนี้ 
+<pre>
+...snip...
+...
++ openstack compute service list
++----+------------------+------------+----------+---------+-------+----------------------------+
+| ID | Binary           | Host       | Zone     | Status  | State | Updated At                 |
++----+------------------+------------+----------+---------+-------+----------------------------+
+|  1 | nova-scheduler   | controller | internal | enabled | up    | 2018-06-13T11:16:44.000000 |
+|  2 | nova-consoleauth | controller | internal | enabled | up    | 2018-06-13T11:16:41.000000 |
+|  3 | nova-conductor   | controller | internal | enabled | up    | 2018-06-13T11:16:44.000000 |
+|  7 | nova-compute     | compute    | nova     | enabled | up    | 2018-06-13T11:16:40.000000 |
+|  8 | nova-compute     | compute1   | nova     | enabled | up    | 2018-06-13T11:16:44.000000 |
++----+------------------+------------+----------+---------+-------+----------------------------+
++ openstack network agent list
++--------------------------------------+--------------------+----------+-------------------+-------+-------+---------------------------+
+| ID                                   | Agent Type         | Host     | Availability Zone | Alive | State | Binary                    |
++--------------------------------------+--------------------+----------+-------------------+-------+-------+---------------------------+
+| 0ee141ee-939e-4a1b-8a0c-6a9abc727d31 | L3 agent           | compute1 | nova              | :-)   | UP    | neutron-l3-agent          |
+| 165d635f-8daf-4cd4-ae10-25fa70bf9048 | Metadata agent     | compute  | None              | :-)   | UP    | neutron-metadata-agent    |
+| 179399e3-80a8-4cbb-85a0-d49a9574b64e | L3 agent           | compute  | nova              | :-)   | UP    | neutron-l3-agent          |
+| 196f111e-dd92-4a55-a94c-85d22f6af2a6 | L3 agent           | network  | nova              | :-)   | UP    | neutron-l3-agent          |
+| 2121c8d1-4f54-4568-838a-91f13894f366 | Open vSwitch agent | compute1 | None              | :-)   | UP    | neutron-openvswitch-agent |
+| 4e9c6f13-0182-4c94-bf3e-19fc43a68e22 | Open vSwitch agent | compute  | None              | :-)   | UP    | neutron-openvswitch-agent |
+| 5460a660-dd90-47c7-8751-c256ae01c50f | DHCP agent         | compute1 | nova              | :-)   | UP    | neutron-dhcp-agent        |
+| 9c930864-52d4-4e18-a873-a2889584e3e4 | Open vSwitch agent | network  | None              | :-)   | UP    | neutron-openvswitch-agent |
+| adf02c5e-1ab3-476b-9acc-4e85baf7efcf | DHCP agent         | compute  | nova              | :-)   | UP    | neutron-dhcp-agent        |
+| ca2babe5-9d4a-4daf-b544-60e0efcaccaa | Metadata agent     | compute1 | None              | :-)   | UP    | neutron-metadata-agent    |
++--------------------------------------+--------------------+----------+-------------------+-------+-------+---------------------------+
+Connection to controller closed.
+next run ./OS-installer-09-initial-user-network.sh
+$
 </pre>
 เนื่องจากความซับซ้อนของ neutron หลังจากการติดตั้งข้างต้น เราจะใช้ script ถัดไปเพื่อสร้าง network เริ่มต้นและเริ่มทดสอบความถูกต้องของ network ที่สร้างขึ้น
 <pre>
@@ -768,11 +801,11 @@ $ ./OS-installer-09-initial-user-network.sh
 หลังจากรัน script นี้ขอให้สังเกตุข้อความ ping ต่อไปนี้ว่าทำได้หรือไม่ การติดตั้ง neutron ที่ถูกต้อง ท่านจะต้องเห็นข้อความผลของการ ping เช่นนี้
 <pre>
 </pre>
-ติดตั้ง horizon web gui (ถ้าเครื่อง cpu หรือ memory น้อย ผมแนะนำให้ใช้ CLI แทน web interface คือไม่ต้องติดตั้ง horizon ดังคำสั่งข้างล่าง) 
+หลังจากนั้นเราจะใช้ script ถัดไปติดตั้ง horizon web gui (ถ้าเครื่อง cpu หรือ memory น้อย ผมแนะนำให้ใช้ CLI แทน web interface คือไม่ต้องติดตั้ง horizon ดังคำสั่งข้างล่าง) 
 <pre>
 $ ./OS-installer-10-horizon.sh
 </pre>
-
+ท่านจะได้ ubuntu openstack dashbord โดย default
 <p>
 <p>
 
