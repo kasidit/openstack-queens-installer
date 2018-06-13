@@ -800,6 +800,20 @@ $ ./OS-installer-09-initial-user-network.sh
 </pre>
 หลังจากรัน script นี้ขอให้สังเกตุข้อความ ping ต่อไปนี้ว่าทำได้หรือไม่ การติดตั้ง neutron ที่ถูกต้อง ท่านจะต้องเห็นข้อความผลของการ ping เช่นนี้
 <pre>
+...snip...
+...
+Ping 10.0.0.100
++ ping -c 4 10.0.0.100
+PING 10.0.0.100 (10.0.0.100) 56(84) bytes of data.
+64 bytes from 10.0.0.100: icmp_seq=1 ttl=64 time=2.20 ms
+64 bytes from 10.0.0.100: icmp_seq=2 ttl=64 time=0.916 ms
+64 bytes from 10.0.0.100: icmp_seq=3 ttl=64 time=0.792 ms
+64 bytes from 10.0.0.100: icmp_seq=4 ttl=64 time=0.901 ms
+
+--- 10.0.0.100 ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 2999ms
+rtt min/avg/max/mdev = 0.792/1.203/2.204/0.580 ms
+...
 </pre>
 หลังจากนั้นเราจะใช้ script ถัดไปติดตั้ง horizon web gui (ถ้าเครื่อง cpu หรือ memory น้อย ผมแนะนำให้ใช้ CLI แทน web interface คือไม่ต้องติดตั้ง horizon ดังคำสั่งข้างล่าง) 
 <pre>
