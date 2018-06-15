@@ -1,0 +1,17 @@
+# This file describes the network interfaces available on your system
+# and how to activate them. For more information, see interfaces(5).
+
+# The loopback network interface
+auto lo
+iface lo inet loopback
+
+auto vasabi-1234controller_ip_nic4321-ibasav
+iface vasabi-1234controller_ip_nic4321-ibasav inet static
+	address vasabi-1234controller_ip4321-ibasav
+	netmask vasabi-1234management_network_netmask4321-ibasav
+	network vasabi-1234management_network4321-ibasav
+	broadcast vasabi-1234broadcast_address4321-ibasav
+	#gateway vasabi-1234gateway_ip4321-ibasav
+	# dns-* options are implemented by the resolvconf package, if installed
+	dns-nameservers vasabi-1234dns_ip4321-ibasav
+	dns-search vasabi-1234domainname4321-ibasav

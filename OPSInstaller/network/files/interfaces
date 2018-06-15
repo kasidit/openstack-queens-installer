@@ -1,0 +1,31 @@
+# This file describes the network interfaces available on your system
+# and how to activate them. For more information, see interfaces(5).
+
+# The loopback network interface
+auto lo
+iface lo inet loopback
+
+# The primary network interface
+auto ens3
+iface ens3 inet static
+	address 10.0.0.21
+	netmask 255.255.255.0
+	network 10.0.0.0
+	broadcast 10.0.0.255
+	gateway 10.0.0.1
+	# dns-* options are implemented by the resolvconf package, if installed
+	dns-nameservers 8.8.8.8
+	dns-search cs.tu.ac.th
+auto ens4
+iface ens4 inet static
+	address 10.0.1.21
+	netmask 255.255.255.0
+	network 10.0.1.0
+auto ens5
+iface ens5 inet manual
+	up ip link set dev $IFACE up
+	down ip link set dev $IFACE down
+auto ens6
+iface ens6 inet manual
+	up ip link set dev $IFACE up
+	down ip link set dev $IFACE down

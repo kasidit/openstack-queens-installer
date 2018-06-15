@@ -1,0 +1,99 @@
++ cd /home/openstack/OPSInstaller/controller
++ pwd
+/home/openstack/OPSInstaller/controller
++ echo 'Run this script as a user.'
+Run this script as a user.
++ echo -n 'Create Identity service and endpoint...'
+Create Identity service and endpoint...+ export OS_USERNAME=admin
++ OS_USERNAME=admin
++ export OS_PASSWORD=adminpassword
++ OS_PASSWORD=adminpassword
++ export OS_PROJECT_NAME=admin
++ OS_PROJECT_NAME=admin
++ export OS_USER_DOMAIN_NAME=Default
++ OS_USER_DOMAIN_NAME=Default
++ export OS_PROJECT_DOMAIN_NAME=Default
++ OS_PROJECT_DOMAIN_NAME=Default
++ export OS_AUTH_URL=http://controller:5000/v3
++ OS_AUTH_URL=http://controller:5000/v3
++ export OS_IDENTITY_API_VERSION=3
++ OS_IDENTITY_API_VERSION=3
++ echo -n 'Create Admin projects, users, and roles...'
+Create Admin projects, users, and roles...+ openstack domain create --description 'An Example Domain' example
++-------------+----------------------------------+
+| Field       | Value                            |
++-------------+----------------------------------+
+| description | An Example Domain                |
+| enabled     | True                             |
+| id          | 15d328c73eea425e8f89194b24a068cd |
+| name        | example                          |
+| tags        | []                               |
++-------------+----------------------------------+
++ openstack project create --domain default --description 'Service Project' service
++-------------+----------------------------------+
+| Field       | Value                            |
++-------------+----------------------------------+
+| description | Service Project                  |
+| domain_id   | default                          |
+| enabled     | True                             |
+| id          | 134503f2daaf43308a741c35d92c2a83 |
+| is_domain   | False                            |
+| name        | service                          |
+| parent_id   | default                          |
+| tags        | []                               |
++-------------+----------------------------------+
++ openstack project create --domain default --description 'Demo Project' demo
++-------------+----------------------------------+
+| Field       | Value                            |
++-------------+----------------------------------+
+| description | Demo Project                     |
+| domain_id   | default                          |
+| enabled     | True                             |
+| id          | bf2681f321144e7a8b517996e8737c8b |
+| is_domain   | False                            |
+| name        | demo                             |
+| parent_id   | default                          |
+| tags        | []                               |
++-------------+----------------------------------+
++ openstack user create --domain default --password demopassword demo
++---------------------+----------------------------------+
+| Field               | Value                            |
++---------------------+----------------------------------+
+| domain_id           | default                          |
+| enabled             | True                             |
+| id                  | 03a491ad55e54b678404d80bd116d14a |
+| name                | demo                             |
+| options             | {}                               |
+| password_expires_at | None                             |
++---------------------+----------------------------------+
++ openstack role create user
++-----------+----------------------------------+
+| Field     | Value                            |
++-----------+----------------------------------+
+| domain_id | None                             |
+| id        | 1b2d75b6cf78498a8dc666cb51634fcd |
+| name      | user                             |
++-----------+----------------------------------+
++ openstack role add --project demo --user demo user
++ printf '\nVerify keystone Id Service...get a token by user id...\n'
+
+Verify keystone Id Service...get a token by user id...
++ unset OS_AUTH_URL OS_PASSWORD
++ openstack --os-auth-url http://controller:5000/v3 --os-project-domain-name default --os-user-domain-name default --os-project-name admin --os-username admin --os-password adminpassword token issue
++------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Field      | Value                                                                                                                                                                                   |
++------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| expires    | 2018-06-13T11:20:31+0000                                                                                                                                                                |
+| id         | gAAAAABbIO_v9H76QHiXhljmtPrnJhSypwN_DlFfFLkDPRtcltboyD1bqLJAoxS9OCaIZ75rzoGtV3oZs3DCHlh6fXbF1pr3NKsRib9TT1w2-lQM0Bp6aj7KJikRjhSUoRmuX31DOxWUoCtVhS4VxSLjPkvbYSmg426_thn6ZISyU2YephMOYJY |
+| project_id | ce3616868ec94ef6b491eaf8e99d8530                                                                                                                                                        |
+| user_id    | 436a714a69ef4609a0086b10292b8339                                                                                                                                                        |
++------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
++ openstack --os-auth-url http://controller:5000/v3 --os-project-domain-name default --os-user-domain-name default --os-project-name demo --os-username demo --os-password demopassword token issue
++------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Field      | Value                                                                                                                                                                                   |
++------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| expires    | 2018-06-13T11:20:33+0000                                                                                                                                                                |
+| id         | gAAAAABbIO_xSYQF2slGcgoCT9s6WZK20mXDinZiSJ-hUgxR4NHxj_Wt-AQWpRoyC1RbdORgwc-Xis33Gi3_Xs4UXuaJu4iItKp57Mgo-JohVhgDg0Na7mVoee36oV23x7RKPzGXJ6YA48fqskqF67wHQrdI12_fjbH0CLOgsBHbygbORlseBy0 |
+| project_id | bf2681f321144e7a8b517996e8737c8b                                                                                                                                                        |
+| user_id    | 03a491ad55e54b678404d80bd116d14a                                                                                                                                                        |
++------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
