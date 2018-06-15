@@ -1,71 +1,0 @@
-+ cd /home/openstack/OPSInstaller/controller
-+ pwd
-/home/openstack/OPSInstaller/controller
-+ printf '1. inspect controller'\''s  interface/hosts files..\n'
-1. inspect controller's  interface/hosts files..
-+ cat /etc/network/interfaces
-# This file describes the network interfaces available on your system
-# and how to activate them. For more information, see interfaces(5).
-
-source /etc/network/interfaces.d/*
-
-# The loopback network interface
-auto lo
-iface lo inet loopback
-
-# The primary network interface
-auto ens3
-iface ens3 inet static
-address 10.0.0.11
-netmask 255.255.255.0
-network 10.0.0.0
-gateway 10.0.0.1
-dns-nameservers 8.8.8.8
-+ cat /etc/network/hosts
-cat: /etc/network/hosts: No such file or directory
-+ printf '2. set ntp server usig chrony\n'
-2. set ntp server usig chrony
-+ apt-get -y install chrony
-Reading package lists... 0%Reading package lists... 100%Reading package lists... Done
-Building dependency tree... 0%Building dependency tree... 0%Building dependency tree... 50%Building dependency tree... 50%Building dependency tree       
-Reading state information... 0%Reading state information... 0%Reading state information... Done
-The following additional packages will be installed:
-  libtomcrypt0 libtommath0 timelimit
-The following NEW packages will be installed:
-  chrony libtomcrypt0 libtommath0 timelimit
-0 upgraded, 4 newly installed, 0 to remove and 0 not upgraded.
-Need to get 581 kB of archives.
-After this operation, 1,700 kB of additional disk space will be used.
-0% [Working]            Get:1 http://th.archive.ubuntu.com/ubuntu xenial/universe amd64 timelimit amd64 1.8-1 [12.2 kB]
-2% [1 timelimit 11.3 kB/12.2 kB 93%]                                    7% [Working]            Get:2 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 libtommath0 amd64 0.42.0-1.2 [41.8 kB]
-9% [2 libtommath0 17.1 kB/41.8 kB 41%]                                      17% [Waiting for headers]                         Get:3 http://th.archive.ubuntu.com/ubuntu xenial/universe amd64 libtomcrypt0 amd64 1.17-7 [282 kB]
-19% [3 libtomcrypt0 10.8 kB/282 kB 4%]                                      61% [Waiting for headers]                         Get:4 http://th.archive.ubuntu.com/ubuntu xenial/universe amd64 chrony amd64 2.1.1-1 [245 kB]
-69% [4 chrony 56.4 kB/245 kB 23%]                                 100% [Working]              Fetched 581 kB in 0s (1,427 kB/s)
-Selecting previously unselected package timelimit.
-(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 100736 files and directories currently installed.)
-Preparing to unpack .../timelimit_1.8-1_amd64.deb ...
-Unpacking timelimit (1.8-1) ...
-Selecting previously unselected package libtommath0.
-Preparing to unpack .../libtommath0_0.42.0-1.2_amd64.deb ...
-Unpacking libtommath0 (0.42.0-1.2) ...
-Selecting previously unselected package libtomcrypt0:amd64.
-Preparing to unpack .../libtomcrypt0_1.17-7_amd64.deb ...
-Unpacking libtomcrypt0:amd64 (1.17-7) ...
-Selecting previously unselected package chrony.
-Preparing to unpack .../chrony_2.1.1-1_amd64.deb ...
-Unpacking chrony (2.1.1-1) ...
-Processing triggers for man-db (2.7.5-1) ...
-Processing triggers for systemd (229-4ubuntu21.2) ...
-Processing triggers for ureadahead (0.100.0-19) ...
-Setting up timelimit (1.8-1) ...
-Setting up libtommath0 (0.42.0-1.2) ...
-Setting up libtomcrypt0:amd64 (1.17-7) ...
-Setting up chrony (2.1.1-1) ...
-Creating '_chrony' system user/group for the chronyd daemon…
-
-Creating config file /etc/chrony/chrony.conf with new version
-Processing triggers for libc-bin (2.23-0ubuntu10) ...
-Processing triggers for systemd (229-4ubuntu21.2) ...
-Processing triggers for ureadahead (0.100.0-19) ...
-+ cp files/chrony.conf /etc/chrony/chrony.conf
-+ service chrony restart

@@ -8,7 +8,7 @@ iface lo inet loopback
 # The primary network interface
 auto vasabi-1234compute1_ip_nic4321-ibasav
 iface vasabi-1234network_ip_nic4321-ibasav inet static
-	address vasabi-1234compute1_ip4321-ibasav
+	address vasabi-1234GenericComputeHostname_ip4321-ibasav
 	netmask vasabi-1234management_network_netmask4321-ibasav
 	network vasabi-1234management_network4321-ibasav
 	broadcast vasabi-1234broadcast_address4321-ibasav
@@ -18,7 +18,7 @@ iface vasabi-1234network_ip_nic4321-ibasav inet static
 	dns-search vasabi-1234domainname4321-ibasav
 auto vasabi-1234data_tunnel_compute1_node_ip_nic4321-ibasav
 iface vasabi-1234data_tunnel_compute1_node_ip_nic4321-ibasav inet static
-	address vasabi-1234data_tunnel_compute1_node_ip4321-ibasav
+	address vasabi-1234data_tunnel_GenericComputeHostname_node_ip4321-ibasav
 	netmask vasabi-1234data_network_netmask4321-ibasav
 	network vasabi-1234data_tunnel_network_address4321-ibasav
 auto vasabi-1234vlan_compute1_node_ip_nic4321-ibasav

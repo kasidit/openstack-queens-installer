@@ -6,7 +6,7 @@
 # run with sudo or as root.
 #
 #!/bin/bash -x
-cd $HOME/newComputeInstaller/compute1
+cd $HOME/newComputeInstaller/newcompute
 pwd
 printf "1. set interface/hosts files.. press\n"
 #read varkey
@@ -30,13 +30,7 @@ ifup vasabi-1234vlan_compute1_node_ip_nic4321-ibasav
 ifdown vasabi-1234external_cidr_nic4321-ibasav
 ifup vasabi-1234external_cidr_nic4321-ibasav
 #
-# prevent fragmentation
-#
-#ifconfig vasabi-1234compute1_ip_nic4321-ibasav mtu 1700
-#ifconfig vasabi-1234data_tunnel_compute1_node_ip_nic4321-ibasav mtu 1700
-#
 # restore later 
 #cp /etc/sudoers files/sudoers.save
-#echo "vasabi ALL=NOPASSWD: ALL" >> /etc/sudoers
 #
 ifconfig

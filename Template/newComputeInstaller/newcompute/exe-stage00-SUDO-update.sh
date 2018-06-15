@@ -10,7 +10,7 @@
 #
 #!/bin/bash 
 #
-cd $HOME/newComputeInstaller/compute1
+cd $HOME/newComputeInstaller/newcompute
 pwd
 
 cp files/hosts /etc/hosts

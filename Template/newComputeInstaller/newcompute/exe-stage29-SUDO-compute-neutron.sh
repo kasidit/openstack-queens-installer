@@ -6,7 +6,7 @@
 # run with sudo or as root.
 #
 #!/bin/bash -x
-cd $HOME/newComputeInstaller/compute1
+cd $HOME/newComputeInstaller/newcompute
 pwd
 
 printf "\n2. install neutron..  \n"

@@ -9,6 +9,6 @@
 #
 # restore  sudoers
 #!/bin/bash -x
-cd $HOME/newComputeInstaller/compute1
+cd $HOME/newComputeInstaller/newcompute
 pwd
 cp files/sudoers.save /etc/sudoers

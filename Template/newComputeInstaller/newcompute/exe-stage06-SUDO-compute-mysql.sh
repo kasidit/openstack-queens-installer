@@ -6,7 +6,7 @@
 # run with sudo or as root.
 #
 #!/bin/bash -x
-cd $HOME/newComputeInstaller/compute1
+cd $HOME/newComputeInstaller/newcompute
 pwd
 printf "check chrony\n"
 chronyc sources

@@ -1,382 +1,0 @@
-+ cd /home/openstack/OPSInstaller/controller
-+ pwd
-/home/openstack/OPSInstaller/controller
-+ echo -n '* install rabbitmq.. press'
-* install rabbitmq.. press+ apt-get -y install rabbitmq-server
-Reading package lists... 0%Reading package lists... 100%Reading package lists... Done
-Building dependency tree... 0%Building dependency tree... 0%Building dependency tree... 50%Building dependency tree... 50%Building dependency tree       
-Reading state information... 0%Reading state information... 0%Reading state information... Done
-The following additional packages will be installed:
-  erlang-asn1 erlang-base erlang-corba erlang-crypto erlang-diameter erlang-edoc erlang-eldap
-  erlang-erl-docgen erlang-eunit erlang-ic erlang-inets erlang-mnesia erlang-nox erlang-odbc erlang-os-mon
-  erlang-parsetools erlang-percept erlang-public-key erlang-runtime-tools erlang-snmp erlang-ssh
-  erlang-ssl erlang-syntax-tools erlang-tools erlang-webtool erlang-xmerl libltdl7 libodbc1 libsctp1
-Suggested packages:
-  erlang erlang-manpages erlang-doc xsltproc fop erlang-ic-java erlang-observer libmyodbc odbc-postgresql
-  tdsodbc unixodbc-bin lksctp-tools
-The following NEW packages will be installed:
-  erlang-asn1 erlang-base erlang-corba erlang-crypto erlang-diameter erlang-edoc erlang-eldap
-  erlang-erl-docgen erlang-eunit erlang-ic erlang-inets erlang-mnesia erlang-nox erlang-odbc erlang-os-mon
-  erlang-parsetools erlang-percept erlang-public-key erlang-runtime-tools erlang-snmp erlang-ssh
-  erlang-ssl erlang-syntax-tools erlang-tools erlang-webtool erlang-xmerl libltdl7 libodbc1 libsctp1
-  rabbitmq-server
-0 upgraded, 30 newly installed, 0 to remove and 0 not upgraded.
-Need to get 24.0 MB of archives.
-After this operation, 41.8 MB of additional disk space will be used.
-0% [Working]            Get:1 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 erlang-base amd64 1:18.3-dfsg-1ubuntu3.1 [7,002 kB]
-0% [1 erlang-base 14.2 kB/7,002 kB 0%] [Connecting to ubuntu-cloud.archive.canonical.com (91.189.92.152)]                                                                                                         Get:2 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 rabbitmq-server all 3.6.10-1~cloud0 [4,687 kB]
-                                                                                                         13% [1 erlang-base 3,846 kB/7,002 kB 55%] [2 rabbitmq-server 6,971 B/4,687 kB 0%]23% [1 erlang-base 7,001 kB/7,002 kB 100%] [2 rabbitmq-server 35.9 kB/4,687 kB 1%]                                                                                  24% [1 erlang-base 7,001 kB/7,002 kB 100%] [2 rabbitmq-server 116 kB/4,687 kB 2%]                                                                                 25% [2 rabbitmq-server 188 kB/4,687 kB 4%]                                          Get:3 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 erlang-asn1 amd64 1:18.3-dfsg-1ubuntu3.1 [709 kB]
-25% [3 erlang-asn1 36.0 kB/709 kB 5%] [2 rabbitmq-server 188 kB/4,687 kB 4%]                                                                            28% [2 rabbitmq-server 227 kB/4,687 kB 5%]                                          Get:4 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 erlang-mnesia amd64 1:18.3-dfsg-1ubuntu3.1 [664 kB]
-28% [4 erlang-mnesia 0 B/664 kB 0%] [2 rabbitmq-server 231 kB/4,687 kB 5%]                                                                          31% [2 rabbitmq-server 260 kB/4,687 kB 6%]                                          Get:5 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 erlang-runtime-tools amd64 1:18.3-dfsg-1ubuntu3.1 [164 kB]
-31% [5 erlang-runtime-tools 0 B/164 kB 0%] [2 rabbitmq-server 260 kB/4,687 kB 6%]                                                                                 32% [2 rabbitmq-server 260 kB/4,687 kB 6%]                                          Get:6 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 erlang-crypto amd64 1:18.3-dfsg-1ubuntu3.1 [106 kB]
-32% [6 erlang-crypto 0 B/106 kB 0%] [2 rabbitmq-server 260 kB/4,687 kB 6%]                                                                          33% [2 rabbitmq-server 260 kB/4,687 kB 6%]                                          Get:7 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 erlang-public-key amd64 1:18.3-dfsg-1ubuntu3.1 [524 kB]
-33% [7 erlang-public-key 0 B/524 kB 0%] [2 rabbitmq-server 260 kB/4,687 kB 6%]                                                                              35% [2 rabbitmq-server 260 kB/4,687 kB 6%]                                          Get:8 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 erlang-ssl amd64 1:18.3-dfsg-1ubuntu3.1 [658 kB]
-35% [8 erlang-ssl 0 B/658 kB 0%] [2 rabbitmq-server 260 kB/4,687 kB 6%]                                                                       38% [2 rabbitmq-server 260 kB/4,687 kB 6%]                                          Get:9 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 erlang-inets amd64 1:18.3-dfsg-1ubuntu3.1 [714 kB]
-38% [9 erlang-inets 0 B/714 kB 0%] [2 rabbitmq-server 260 kB/4,687 kB 6%]                                                                         41% [2 rabbitmq-server 260 kB/4,687 kB 6%]                                          Get:10 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 erlang-corba amd64 1:18.3-dfsg-1ubuntu3.1 [2,233 kB]
-41% [10 erlang-corba 0 B/2,233 kB 0%] [2 rabbitmq-server 260 kB/4,687 kB 6%]                                                                            49% [2 rabbitmq-server 260 kB/4,687 kB 6%]                                          Get:11 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 erlang-syntax-tools amd64 1:18.3-dfsg-1ubuntu3.1 [322 kB]
-49% [11 erlang-syntax-tools 0 B/322 kB 0%] [2 rabbitmq-server 260 kB/4,687 kB 6%]                                                                                 51% [2 rabbitmq-server 260 kB/4,687 kB 6%]                                          Get:12 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 erlang-diameter amd64 1:18.3-dfsg-1ubuntu3.1 [642 kB]
-51% [12 erlang-diameter 0 B/642 kB 0%] [2 rabbitmq-server 260 kB/4,687 kB 6%]                                                                             54% [2 rabbitmq-server 281 kB/4,687 kB 6%]                                          Get:13 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 erlang-xmerl amd64 1:18.3-dfsg-1ubuntu3.1 [958 kB]
-54% [13 erlang-xmerl 0 B/958 kB 0%] [2 rabbitmq-server 284 kB/4,687 kB 6%]                                                                          58% [2 rabbitmq-server 333 kB/4,687 kB 7%]                                          Get:14 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 erlang-edoc amd64 1:18.3-dfsg-1ubuntu3.1 [292 kB]
-58% [14 erlang-edoc 0 B/292 kB 0%] [2 rabbitmq-server 333 kB/4,687 kB 7%]                                                                         60% [2 rabbitmq-server 333 kB/4,687 kB 7%]                                          Get:15 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 erlang-eldap amd64 1:18.3-dfsg-1ubuntu3.1 [99.3 kB]
-60% [15 erlang-eldap 0 B/99.3 kB 0%] [2 rabbitmq-server 333 kB/4,687 kB 7%]                                                                           61% [2 rabbitmq-server 333 kB/4,687 kB 7%]                                          Get:16 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 erlang-erl-docgen amd64 1:18.3-dfsg-1ubuntu3.1 [132 kB]
-61% [16 erlang-erl-docgen 0 B/132 kB 0%] [2 rabbitmq-server 333 kB/4,687 kB 7%]                                                                               62% [2 rabbitmq-server 333 kB/4,687 kB 7%]                                          Get:17 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 erlang-eunit amd64 1:18.3-dfsg-1ubuntu3.1 [134 kB]
-62% [17 erlang-eunit 0 B/134 kB 0%] [2 rabbitmq-server 333 kB/4,687 kB 7%]                                                                          63% [2 rabbitmq-server 333 kB/4,687 kB 7%]                                          Get:18 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 erlang-ic amd64 1:18.3-dfsg-1ubuntu3.1 [816 kB]
-63% [18 erlang-ic 0 B/816 kB 0%] [2 rabbitmq-server 333 kB/4,687 kB 7%]                                                                       66% [2 rabbitmq-server 333 kB/4,687 kB 7%]                                          Get:19 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 libltdl7 amd64 2.4.6-0.1 [38.3 kB]
-66% [19 libltdl7 0 B/38.3 kB 0%] [2 rabbitmq-server 333 kB/4,687 kB 7%]                                                                       67% [2 rabbitmq-server 333 kB/4,687 kB 7%]                                          Get:20 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 libodbc1 amd64 2.3.1-4.1 [180 kB]
-67% [20 libodbc1 0 B/180 kB 0%] [2 rabbitmq-server 333 kB/4,687 kB 7%]                                                                      68% [2 rabbitmq-server 333 kB/4,687 kB 7%]                                          Get:21 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 erlang-odbc amd64 1:18.3-dfsg-1ubuntu3.1 [47.3 kB]
-68% [21 erlang-odbc 0 B/47.3 kB 0%] [2 rabbitmq-server 333 kB/4,687 kB 7%]                                                                          69% [2 rabbitmq-server 333 kB/4,687 kB 7%]                                          Get:22 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 erlang-snmp amd64 1:18.3-dfsg-1ubuntu3.1 [1,525 kB]
-69% [22 erlang-snmp 0 B/1,525 kB 0%] [2 rabbitmq-server 333 kB/4,687 kB 7%]                                                                           75% [2 rabbitmq-server 333 kB/4,687 kB 7%]                                          Get:23 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 erlang-os-mon amd64 1:18.3-dfsg-1ubuntu3.1 [89.7 kB]
-75% [23 erlang-os-mon 0 B/89.7 kB 0%] [2 rabbitmq-server 333 kB/4,687 kB 7%]                                                                            76% [2 rabbitmq-server 333 kB/4,687 kB 7%]                                          Get:24 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 erlang-parsetools amd64 1:18.3-dfsg-1ubuntu3.1 [153 kB]
-76% [24 erlang-parsetools 0 B/153 kB 0%] [2 rabbitmq-server 333 kB/4,687 kB 7%]                                                                               77% [2 rabbitmq-server 333 kB/4,687 kB 7%]                                          Get:25 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 erlang-percept amd64 1:18.3-dfsg-1ubuntu3.1 [132 kB]
-77% [25 erlang-percept 0 B/132 kB 0%] [2 rabbitmq-server 333 kB/4,687 kB 7%]                                                                            78% [2 rabbitmq-server 333 kB/4,687 kB 7%]                                          Get:26 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 erlang-ssh amd64 1:18.3-dfsg-1ubuntu3.1 [430 kB]
-78% [26 erlang-ssh 0 B/430 kB 0%] [2 rabbitmq-server 333 kB/4,687 kB 7%]                                                                        80% [2 rabbitmq-server 333 kB/4,687 kB 7%]                                          Get:27 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 erlang-webtool amd64 1:18.3-dfsg-1ubuntu3.1 [35.6 kB]
-80% [27 erlang-webtool 0 B/35.6 kB 0%] [2 rabbitmq-server 333 kB/4,687 kB 7%]                                                                             81% [2 rabbitmq-server 333 kB/4,687 kB 7%]                                          Get:28 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 erlang-tools amd64 1:18.3-dfsg-1ubuntu3.1 [518 kB]
-81% [28 erlang-tools 0 B/518 kB 0%] [2 rabbitmq-server 333 kB/4,687 kB 7%]                                                                          83% [2 rabbitmq-server 333 kB/4,687 kB 7%]                                          Get:29 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 erlang-nox all 1:18.3-dfsg-1ubuntu3.1 [14.2 kB]
-83% [29 erlang-nox 0 B/14.2 kB 0%] [2 rabbitmq-server 333 kB/4,687 kB 7%]                                                                         84% [2 rabbitmq-server 333 kB/4,687 kB 7%]                                          Get:30 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 libsctp1 amd64 1.0.16+dfsg-3 [8,088 B]
-84% [30 libsctp1 0 B/8,088 B 0%] [2 rabbitmq-server 333 kB/4,687 kB 7%]                                                                       85% [2 rabbitmq-server 333 kB/4,687 kB 7%]86% [2 rabbitmq-server 569 kB/4,687 kB 12%]87% [2 rabbitmq-server 838 kB/4,687 kB 18%]87% [2 rabbitmq-server 1,063 kB/4,687 kB 23%]88% [2 rabbitmq-server 1,329 kB/4,687 kB 28%]89% [2 rabbitmq-server 1,600 kB/4,687 kB 34%]90% [2 rabbitmq-server 1,865 kB/4,687 kB 40%]91% [2 rabbitmq-server 2,120 kB/4,687 kB 45%]92% [2 rabbitmq-server 2,361 kB/4,687 kB 50%]                                                 3,364 kB/s 0s93% [2 rabbitmq-server 2,679 kB/4,687 kB 57%]                                                 3,364 kB/s 0s94% [2 rabbitmq-server 3,026 kB/4,687 kB 65%]                                                 3,364 kB/s 0s95% [2 rabbitmq-server 3,418 kB/4,687 kB 73%]                                                 3,364 kB/s 0s97% [2 rabbitmq-server 3,851 kB/4,687 kB 82%]                                                 3,364 kB/s 0s98% [2 rabbitmq-server 4,345 kB/4,687 kB 93%]                                                 3,364 kB/s 0s99% [2 rabbitmq-server 4,685 kB/4,687 kB 100%]                                                3,364 kB/s 0s100% [Working]                                                                                3,364 kB/s 0s                                                                                                           Fetched 24.0 MB in 9s (2,422 kB/s)
-Selecting previously unselected package erlang-base.
-(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 101554 files and directories currently installed.)
-Preparing to unpack .../erlang-base_1%3a18.3-dfsg-1ubuntu3.1_amd64.deb ...
-Unpacking erlang-base (1:18.3-dfsg-1ubuntu3.1) ...
-Selecting previously unselected package erlang-asn1.
-Preparing to unpack .../erlang-asn1_1%3a18.3-dfsg-1ubuntu3.1_amd64.deb ...
-Unpacking erlang-asn1 (1:18.3-dfsg-1ubuntu3.1) ...
-Selecting previously unselected package erlang-mnesia.
-Preparing to unpack .../erlang-mnesia_1%3a18.3-dfsg-1ubuntu3.1_amd64.deb ...
-Unpacking erlang-mnesia (1:18.3-dfsg-1ubuntu3.1) ...
-Selecting previously unselected package erlang-runtime-tools.
-Preparing to unpack .../erlang-runtime-tools_1%3a18.3-dfsg-1ubuntu3.1_amd64.deb ...
-Unpacking erlang-runtime-tools (1:18.3-dfsg-1ubuntu3.1) ...
-Selecting previously unselected package erlang-crypto.
-Preparing to unpack .../erlang-crypto_1%3a18.3-dfsg-1ubuntu3.1_amd64.deb ...
-Unpacking erlang-crypto (1:18.3-dfsg-1ubuntu3.1) ...
-Selecting previously unselected package erlang-public-key.
-Preparing to unpack .../erlang-public-key_1%3a18.3-dfsg-1ubuntu3.1_amd64.deb ...
-Unpacking erlang-public-key (1:18.3-dfsg-1ubuntu3.1) ...
-Selecting previously unselected package erlang-ssl.
-Preparing to unpack .../erlang-ssl_1%3a18.3-dfsg-1ubuntu3.1_amd64.deb ...
-Unpacking erlang-ssl (1:18.3-dfsg-1ubuntu3.1) ...
-Selecting previously unselected package erlang-inets.
-Preparing to unpack .../erlang-inets_1%3a18.3-dfsg-1ubuntu3.1_amd64.deb ...
-Unpacking erlang-inets (1:18.3-dfsg-1ubuntu3.1) ...
-Selecting previously unselected package erlang-corba.
-Preparing to unpack .../erlang-corba_1%3a18.3-dfsg-1ubuntu3.1_amd64.deb ...
-Unpacking erlang-corba (1:18.3-dfsg-1ubuntu3.1) ...
-Selecting previously unselected package erlang-syntax-tools.
-Preparing to unpack .../erlang-syntax-tools_1%3a18.3-dfsg-1ubuntu3.1_amd64.deb ...
-Unpacking erlang-syntax-tools (1:18.3-dfsg-1ubuntu3.1) ...
-Selecting previously unselected package erlang-diameter.
-Preparing to unpack .../erlang-diameter_1%3a18.3-dfsg-1ubuntu3.1_amd64.deb ...
-Unpacking erlang-diameter (1:18.3-dfsg-1ubuntu3.1) ...
-Selecting previously unselected package erlang-xmerl.
-Preparing to unpack .../erlang-xmerl_1%3a18.3-dfsg-1ubuntu3.1_amd64.deb ...
-Unpacking erlang-xmerl (1:18.3-dfsg-1ubuntu3.1) ...
-Selecting previously unselected package erlang-edoc.
-Preparing to unpack .../erlang-edoc_1%3a18.3-dfsg-1ubuntu3.1_amd64.deb ...
-Unpacking erlang-edoc (1:18.3-dfsg-1ubuntu3.1) ...
-Selecting previously unselected package erlang-eldap.
-Preparing to unpack .../erlang-eldap_1%3a18.3-dfsg-1ubuntu3.1_amd64.deb ...
-Unpacking erlang-eldap (1:18.3-dfsg-1ubuntu3.1) ...
-Selecting previously unselected package erlang-erl-docgen.
-Preparing to unpack .../erlang-erl-docgen_1%3a18.3-dfsg-1ubuntu3.1_amd64.deb ...
-Unpacking erlang-erl-docgen (1:18.3-dfsg-1ubuntu3.1) ...
-Selecting previously unselected package erlang-eunit.
-Preparing to unpack .../erlang-eunit_1%3a18.3-dfsg-1ubuntu3.1_amd64.deb ...
-Unpacking erlang-eunit (1:18.3-dfsg-1ubuntu3.1) ...
-Selecting previously unselected package erlang-ic.
-Preparing to unpack .../erlang-ic_1%3a18.3-dfsg-1ubuntu3.1_amd64.deb ...
-Unpacking erlang-ic (1:18.3-dfsg-1ubuntu3.1) ...
-Selecting previously unselected package libltdl7:amd64.
-Preparing to unpack .../libltdl7_2.4.6-0.1_amd64.deb ...
-Unpacking libltdl7:amd64 (2.4.6-0.1) ...
-Selecting previously unselected package libodbc1:amd64.
-Preparing to unpack .../libodbc1_2.3.1-4.1_amd64.deb ...
-Unpacking libodbc1:amd64 (2.3.1-4.1) ...
-Selecting previously unselected package erlang-odbc.
-Preparing to unpack .../erlang-odbc_1%3a18.3-dfsg-1ubuntu3.1_amd64.deb ...
-Unpacking erlang-odbc (1:18.3-dfsg-1ubuntu3.1) ...
-Selecting previously unselected package erlang-snmp.
-Preparing to unpack .../erlang-snmp_1%3a18.3-dfsg-1ubuntu3.1_amd64.deb ...
-Unpacking erlang-snmp (1:18.3-dfsg-1ubuntu3.1) ...
-Selecting previously unselected package erlang-os-mon.
-Preparing to unpack .../erlang-os-mon_1%3a18.3-dfsg-1ubuntu3.1_amd64.deb ...
-Unpacking erlang-os-mon (1:18.3-dfsg-1ubuntu3.1) ...
-Selecting previously unselected package erlang-parsetools.
-Preparing to unpack .../erlang-parsetools_1%3a18.3-dfsg-1ubuntu3.1_amd64.deb ...
-Unpacking erlang-parsetools (1:18.3-dfsg-1ubuntu3.1) ...
-Selecting previously unselected package erlang-percept.
-Preparing to unpack .../erlang-percept_1%3a18.3-dfsg-1ubuntu3.1_amd64.deb ...
-Unpacking erlang-percept (1:18.3-dfsg-1ubuntu3.1) ...
-Selecting previously unselected package erlang-ssh.
-Preparing to unpack .../erlang-ssh_1%3a18.3-dfsg-1ubuntu3.1_amd64.deb ...
-Unpacking erlang-ssh (1:18.3-dfsg-1ubuntu3.1) ...
-Selecting previously unselected package erlang-webtool.
-Preparing to unpack .../erlang-webtool_1%3a18.3-dfsg-1ubuntu3.1_amd64.deb ...
-Unpacking erlang-webtool (1:18.3-dfsg-1ubuntu3.1) ...
-Selecting previously unselected package erlang-tools.
-Preparing to unpack .../erlang-tools_1%3a18.3-dfsg-1ubuntu3.1_amd64.deb ...
-Unpacking erlang-tools (1:18.3-dfsg-1ubuntu3.1) ...
-Selecting previously unselected package erlang-nox.
-Preparing to unpack .../erlang-nox_1%3a18.3-dfsg-1ubuntu3.1_all.deb ...
-Unpacking erlang-nox (1:18.3-dfsg-1ubuntu3.1) ...
-Selecting previously unselected package libsctp1:amd64.
-Preparing to unpack .../libsctp1_1.0.16+dfsg-3_amd64.deb ...
-Unpacking libsctp1:amd64 (1.0.16+dfsg-3) ...
-Selecting previously unselected package rabbitmq-server.
-Preparing to unpack .../rabbitmq-server_3.6.10-1~cloud0_all.deb ...
-Unpacking rabbitmq-server (3.6.10-1~cloud0) ...
-Processing triggers for man-db (2.7.5-1) ...
-Processing triggers for libc-bin (2.23-0ubuntu10) ...
-Processing triggers for systemd (229-4ubuntu21.2) ...
-Processing triggers for ureadahead (0.100.0-19) ...
-Setting up erlang-base (1:18.3-dfsg-1ubuntu3.1) ...
-Searching for services which depend on erlang and should be started...none found.
-Setting up erlang-asn1 (1:18.3-dfsg-1ubuntu3.1) ...
-Setting up erlang-mnesia (1:18.3-dfsg-1ubuntu3.1) ...
-Setting up erlang-runtime-tools (1:18.3-dfsg-1ubuntu3.1) ...
-Setting up erlang-crypto (1:18.3-dfsg-1ubuntu3.1) ...
-Setting up erlang-public-key (1:18.3-dfsg-1ubuntu3.1) ...
-Setting up erlang-ssl (1:18.3-dfsg-1ubuntu3.1) ...
-Setting up erlang-inets (1:18.3-dfsg-1ubuntu3.1) ...
-Setting up erlang-corba (1:18.3-dfsg-1ubuntu3.1) ...
-Setting up erlang-syntax-tools (1:18.3-dfsg-1ubuntu3.1) ...
-Setting up erlang-diameter (1:18.3-dfsg-1ubuntu3.1) ...
-Setting up erlang-xmerl (1:18.3-dfsg-1ubuntu3.1) ...
-Setting up erlang-edoc (1:18.3-dfsg-1ubuntu3.1) ...
-Setting up erlang-eldap (1:18.3-dfsg-1ubuntu3.1) ...
-Setting up erlang-erl-docgen (1:18.3-dfsg-1ubuntu3.1) ...
-Setting up erlang-eunit (1:18.3-dfsg-1ubuntu3.1) ...
-Setting up erlang-ic (1:18.3-dfsg-1ubuntu3.1) ...
-Setting up libltdl7:amd64 (2.4.6-0.1) ...
-Setting up libodbc1:amd64 (2.3.1-4.1) ...
-Setting up erlang-odbc (1:18.3-dfsg-1ubuntu3.1) ...
-Setting up erlang-snmp (1:18.3-dfsg-1ubuntu3.1) ...
-Setting up erlang-os-mon (1:18.3-dfsg-1ubuntu3.1) ...
-Setting up erlang-parsetools (1:18.3-dfsg-1ubuntu3.1) ...
-Setting up erlang-percept (1:18.3-dfsg-1ubuntu3.1) ...
-Setting up erlang-ssh (1:18.3-dfsg-1ubuntu3.1) ...
-Setting up erlang-webtool (1:18.3-dfsg-1ubuntu3.1) ...
-Setting up erlang-tools (1:18.3-dfsg-1ubuntu3.1) ...
-Setting up erlang-nox (1:18.3-dfsg-1ubuntu3.1) ...
-Setting up libsctp1:amd64 (1.0.16+dfsg-3) ...
-Setting up rabbitmq-server (3.6.10-1~cloud0) ...
-Adding group `rabbitmq' (GID 120) ...
-Done.
-Adding system user `rabbitmq' (UID 114) ...
-Adding new user `rabbitmq' (UID 114) with group `rabbitmq' ...
-Not creating home directory `/var/lib/rabbitmq'.
-Processing triggers for libc-bin (2.23-0ubuntu10) ...
-Processing triggers for systemd (229-4ubuntu21.2) ...
-Processing triggers for ureadahead (0.100.0-19) ...
-+ echo -n '* set rabbitmq password for guest...press'
-* set rabbitmq password for guest...press+ rabbitmqctl add_user openstack RABBIT_PASS
-Creating user "openstack"
-+ rabbitmqctl set_permissions openstack '.*' '.*' '.*'
-Setting permissions for user "openstack" in vhost "/"
-+ printf '* install memcache..press\n'
-* install memcache..press
-+ apt-get -y install memcached python-memcache
-Reading package lists... 0%Reading package lists... 100%Reading package lists... Done
-Building dependency tree... 0%Building dependency tree... 0%Building dependency tree... 50%Building dependency tree... 50%Building dependency tree       
-Reading state information... 0%Reading state information... 0%Reading state information... Done
-Suggested packages:
-  libcache-memcached-perl libmemcached libanyevent-perl libyaml-perl
-The following NEW packages will be installed:
-  memcached python-memcache
-0 upgraded, 2 newly installed, 0 to remove and 0 not upgraded.
-Need to get 107 kB of archives.
-After this operation, 325 kB of additional disk space will be used.
-0% [Working]            Get:1 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 memcached amd64 1.4.25-2ubuntu1.4 [89.6 kB]
-11% [1 memcached 14.2 kB/89.6 kB 16%]                                     77% [Waiting for headers]                         Get:2 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 python-memcache all 1.57-1 [17.1 kB]
-88% [2 python-memcache 14.2 kB/17.1 kB 83%]                                           100% [Working]              Fetched 107 kB in 0s (378 kB/s)
-Selecting previously unselected package memcached.
-(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 103611 files and directories currently installed.)
-Preparing to unpack .../memcached_1.4.25-2ubuntu1.4_amd64.deb ...
-Unpacking memcached (1.4.25-2ubuntu1.4) ...
-Selecting previously unselected package python-memcache.
-Preparing to unpack .../python-memcache_1.57-1_all.deb ...
-Unpacking python-memcache (1.57-1) ...
-Processing triggers for systemd (229-4ubuntu21.2) ...
-Processing triggers for ureadahead (0.100.0-19) ...
-Processing triggers for man-db (2.7.5-1) ...
-Setting up memcached (1.4.25-2ubuntu1.4) ...
-Setting up python-memcache (1.57-1) ...
-Processing triggers for systemd (229-4ubuntu21.2) ...
-Processing triggers for ureadahead (0.100.0-19) ...
-+ cp files/memcached.conf /etc/memcached.conf
-+ service memcached restart
-+ groupadd --system etcd
-+ useradd --home-dir /var/lib/etcd --system --shell /bin/false -g etcd etcd
-+ mkdir -p /etc/etcd
-+ chown etcd:etcd /etc/etcd
-+ mkdir -p /var/lib/etcd
-+ chown etcd:etcd /var/lib/etcd
-+ ETCD_VER=v3.2.7
-+ rm -rf /tmp/etcd
-+ mkdir -p /tmp/etcd
-+ curl -L https://github.com/coreos/etcd/releases/download/v3.2.7/etcd-v3.2.7-linux-amd64.tar.gz -o /tmp/etcd-v3.2.7-linux-amd64.tar.gz
-  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
-  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   620    0   620    0     0    793      0 --:--:-- --:--:-- --:--:--   792
-  0     0    0     0    0     0      0      0 --:--:--  0:00:01 --:--:--     0  0 9939k    0     0    0     0      0      0 --:--:--  0:00:02 --:--:--     0  0 9939k    0 34366    0     0   9628      0  0:17:37  0:00:03  0:17:34 16879  0 9939k    0 86590    0     0  18690      0  0:09:04  0:00:04  0:09:00 27932  1 9939k    1  152k    0     0  28402      0  0:05:58  0:00:05  0:05:53 39370  2 9939k    2  237k    0     0  34169      0  0:04:57  0:00:07  0:04:50 43548  3 9939k    3  305k    0     0  40698      0  0:04:10  0:00:07  0:04:03 60345  4 9939k    4  492k    0     0  59200      0  0:02:51  0:00:08  0:02:43 94933  8 9939k    8  883k    0     0  94557      0  0:01:47  0:00:09  0:01:38  161k 16 9939k   16 1631k    0     0   153k      0  0:01:04  0:00:10  0:00:54  288k 28 9939k   28 2872k    0     0   249k      0  0:00:39  0:00:11  0:00:28  601k 42 9939k   42 4215k    0     0   337k      0  0:00:29  0:00:12  0:00:17  813k 60 9939k   60 6000k    0     0   443k      0  0:00:22  0:00:13  0:00:09 1099k 77 9939k   77 7717k    0     0   531k      0  0:00:18  0:00:14  0:00:04 1381k 93 9939k   93 9264k    0     0   597k      0  0:00:16  0:00:15  0:00:01 1566k100 9939k  100 9939k    0     0   623k      0  0:00:15  0:00:15 --:--:-- 1588k
-+ tar xzvf /tmp/etcd-v3.2.7-linux-amd64.tar.gz -C /tmp/etcd --strip-components=1
-etcd-v3.2.7-linux-amd64/Documentation/
-etcd-v3.2.7-linux-amd64/Documentation/tuning.md
-etcd-v3.2.7-linux-amd64/Documentation/rfc/
-etcd-v3.2.7-linux-amd64/Documentation/rfc/v3api.md
-etcd-v3.2.7-linux-amd64/Documentation/dl_build.md
-etcd-v3.2.7-linux-amd64/Documentation/metrics.md
-etcd-v3.2.7-linux-amd64/Documentation/v2/
-etcd-v3.2.7-linux-amd64/Documentation/v2/runtime-configuration.md
-etcd-v3.2.7-linux-amd64/Documentation/v2/admin_guide.md
-etcd-v3.2.7-linux-amd64/Documentation/v2/tuning.md
-etcd-v3.2.7-linux-amd64/Documentation/v2/glossary.md
-etcd-v3.2.7-linux-amd64/Documentation/v2/rfc/
-etcd-v3.2.7-linux-amd64/Documentation/v2/rfc/v3api.md
-etcd-v3.2.7-linux-amd64/Documentation/v2/discovery_protocol.md
-etcd-v3.2.7-linux-amd64/Documentation/v2/errorcode.md
-etcd-v3.2.7-linux-amd64/Documentation/v2/metrics.md
-etcd-v3.2.7-linux-amd64/Documentation/v2/security.md
-etcd-v3.2.7-linux-amd64/Documentation/v2/configuration.md
-etcd-v3.2.7-linux-amd64/Documentation/v2/docker_guide.md
-etcd-v3.2.7-linux-amd64/Documentation/v2/dev/
-etcd-v3.2.7-linux-amd64/Documentation/v2/dev/release.md
-etcd-v3.2.7-linux-amd64/Documentation/v2/members_api.md
-etcd-v3.2.7-linux-amd64/Documentation/v2/auth_api.md
-etcd-v3.2.7-linux-amd64/Documentation/v2/backward_compatibility.md
-etcd-v3.2.7-linux-amd64/Documentation/v2/etcd_alert.rules
-etcd-v3.2.7-linux-amd64/Documentation/v2/platforms/
-etcd-v3.2.7-linux-amd64/Documentation/v2/platforms/freebsd.md
-etcd-v3.2.7-linux-amd64/Documentation/v2/libraries-and-tools.md
-etcd-v3.2.7-linux-amd64/Documentation/v2/implementation-faq.md
-etcd-v3.2.7-linux-amd64/Documentation/v2/reporting_bugs.md
-etcd-v3.2.7-linux-amd64/Documentation/v2/upgrade_2_2.md
-etcd-v3.2.7-linux-amd64/Documentation/v2/internal-protocol-versioning.md
-etcd-v3.2.7-linux-amd64/Documentation/v2/README.md
-etcd-v3.2.7-linux-amd64/Documentation/v2/upgrade_2_1.md
-etcd-v3.2.7-linux-amd64/Documentation/v2/faq.md
-etcd-v3.2.7-linux-amd64/Documentation/v2/api_v3.md
-etcd-v3.2.7-linux-amd64/Documentation/v2/runtime-reconf-design.md
-etcd-v3.2.7-linux-amd64/Documentation/v2/clustering.md
-etcd-v3.2.7-linux-amd64/Documentation/v2/proxy.md
-etcd-v3.2.7-linux-amd64/Documentation/v2/branch_management.md
-etcd-v3.2.7-linux-amd64/Documentation/v2/other_apis.md
-etcd-v3.2.7-linux-amd64/Documentation/v2/benchmarks/
-etcd-v3.2.7-linux-amd64/Documentation/v2/benchmarks/etcd-2-2-0-rc-memory-benchmarks.md
-etcd-v3.2.7-linux-amd64/Documentation/v2/benchmarks/etcd-3-demo-benchmarks.md
-etcd-v3.2.7-linux-amd64/Documentation/v2/benchmarks/etcd-2-2-0-benchmarks.md
-etcd-v3.2.7-linux-amd64/Documentation/v2/benchmarks/etcd-2-1-0-alpha-benchmarks.md
-etcd-v3.2.7-linux-amd64/Documentation/v2/benchmarks/etcd-storage-memory-benchmark.md
-etcd-v3.2.7-linux-amd64/Documentation/v2/benchmarks/README.md
-etcd-v3.2.7-linux-amd64/Documentation/v2/benchmarks/etcd-2-2-0-rc-benchmarks.md
-etcd-v3.2.7-linux-amd64/Documentation/v2/benchmarks/etcd-3-watch-memory-benchmark.md
-etcd-v3.2.7-linux-amd64/Documentation/v2/api.md
-etcd-v3.2.7-linux-amd64/Documentation/v2/authentication.md
-etcd-v3.2.7-linux-amd64/Documentation/v2/04_to_2_snapshot_migration.md
-etcd-v3.2.7-linux-amd64/Documentation/v2/upgrade_2_3.md
-etcd-v3.2.7-linux-amd64/Documentation/v2/production-users.md
-etcd-v3.2.7-linux-amd64/Documentation/dev-guide/
-etcd-v3.2.7-linux-amd64/Documentation/dev-guide/grpc_naming.md
-etcd-v3.2.7-linux-amd64/Documentation/dev-guide/interacting_v3.md
-etcd-v3.2.7-linux-amd64/Documentation/dev-guide/api_reference_v3.md
-etcd-v3.2.7-linux-amd64/Documentation/dev-guide/local_cluster.md
-etcd-v3.2.7-linux-amd64/Documentation/dev-guide/limit.md
-etcd-v3.2.7-linux-amd64/Documentation/dev-guide/experimental_apis.md
-etcd-v3.2.7-linux-amd64/Documentation/dev-guide/apispec/
-etcd-v3.2.7-linux-amd64/Documentation/dev-guide/apispec/swagger/
-etcd-v3.2.7-linux-amd64/Documentation/dev-guide/apispec/swagger/rpc.swagger.json
-etcd-v3.2.7-linux-amd64/Documentation/dev-guide/apispec/swagger/v3election.swagger.json
-etcd-v3.2.7-linux-amd64/Documentation/dev-guide/apispec/swagger/v3lock.swagger.json
-etcd-v3.2.7-linux-amd64/Documentation/dev-guide/api_concurrency_reference_v3.md
-etcd-v3.2.7-linux-amd64/Documentation/dev-guide/api_grpc_gateway.md
-etcd-v3.2.7-linux-amd64/Documentation/docs.md
-etcd-v3.2.7-linux-amd64/Documentation/op-guide/
-etcd-v3.2.7-linux-amd64/Documentation/op-guide/runtime-configuration.md
-etcd-v3.2.7-linux-amd64/Documentation/op-guide/failures.md
-etcd-v3.2.7-linux-amd64/Documentation/op-guide/grpc_proxy.md
-etcd-v3.2.7-linux-amd64/Documentation/op-guide/gateway.md
-etcd-v3.2.7-linux-amd64/Documentation/op-guide/maintenance.md
-etcd-v3.2.7-linux-amd64/Documentation/op-guide/recovery.md
-etcd-v3.2.7-linux-amd64/Documentation/op-guide/performance.md
-etcd-v3.2.7-linux-amd64/Documentation/op-guide/security.md
-etcd-v3.2.7-linux-amd64/Documentation/op-guide/configuration.md
-etcd-v3.2.7-linux-amd64/Documentation/op-guide/supported-platform.md
-etcd-v3.2.7-linux-amd64/Documentation/op-guide/etcd-sample-grafana.png
-etcd-v3.2.7-linux-amd64/Documentation/op-guide/grafana.json
-etcd-v3.2.7-linux-amd64/Documentation/op-guide/v2-migration.md
-etcd-v3.2.7-linux-amd64/Documentation/op-guide/hardware.md
-etcd-v3.2.7-linux-amd64/Documentation/op-guide/etcd3_alert.rules
-etcd-v3.2.7-linux-amd64/Documentation/op-guide/runtime-reconf-design.md
-etcd-v3.2.7-linux-amd64/Documentation/op-guide/clustering.md
-etcd-v3.2.7-linux-amd64/Documentation/op-guide/container.md
-etcd-v3.2.7-linux-amd64/Documentation/op-guide/versioning.md
-etcd-v3.2.7-linux-amd64/Documentation/op-guide/monitoring.md
-etcd-v3.2.7-linux-amd64/Documentation/op-guide/authentication.md
-etcd-v3.2.7-linux-amd64/Documentation/dev-internal/
-etcd-v3.2.7-linux-amd64/Documentation/dev-internal/discovery_protocol.md
-etcd-v3.2.7-linux-amd64/Documentation/dev-internal/release.md
-etcd-v3.2.7-linux-amd64/Documentation/dev-internal/logging.md
-etcd-v3.2.7-linux-amd64/Documentation/platforms/
-etcd-v3.2.7-linux-amd64/Documentation/platforms/freebsd.md
-etcd-v3.2.7-linux-amd64/Documentation/platforms/container-linux-systemd.md
-etcd-v3.2.7-linux-amd64/Documentation/platforms/aws.md
-etcd-v3.2.7-linux-amd64/Documentation/reporting_bugs.md
-etcd-v3.2.7-linux-amd64/Documentation/integrations.md
-etcd-v3.2.7-linux-amd64/Documentation/README.md
-etcd-v3.2.7-linux-amd64/Documentation/demo.md
-etcd-v3.2.7-linux-amd64/Documentation/faq.md
-etcd-v3.2.7-linux-amd64/Documentation/branch_management.md
-etcd-v3.2.7-linux-amd64/Documentation/upgrades/
-etcd-v3.2.7-linux-amd64/Documentation/upgrades/upgrade_3_1.md
-etcd-v3.2.7-linux-amd64/Documentation/upgrades/upgrade_3_2.md
-etcd-v3.2.7-linux-amd64/Documentation/upgrades/upgrade_3_0.md
-etcd-v3.2.7-linux-amd64/Documentation/upgrades/upgrading-etcd.md
-etcd-v3.2.7-linux-amd64/Documentation/benchmarks/
-etcd-v3.2.7-linux-amd64/Documentation/benchmarks/etcd-2-2-0-rc-memory-benchmarks.md
-etcd-v3.2.7-linux-amd64/Documentation/benchmarks/etcd-3-demo-benchmarks.md
-etcd-v3.2.7-linux-amd64/Documentation/benchmarks/etcd-2-2-0-benchmarks.md
-etcd-v3.2.7-linux-amd64/Documentation/benchmarks/etcd-2-1-0-alpha-benchmarks.md
-etcd-v3.2.7-linux-amd64/Documentation/benchmarks/etcd-storage-memory-benchmark.md
-etcd-v3.2.7-linux-amd64/Documentation/benchmarks/README.md
-etcd-v3.2.7-linux-amd64/Documentation/benchmarks/etcd-2-2-0-rc-benchmarks.md
-etcd-v3.2.7-linux-amd64/Documentation/benchmarks/etcd-3-watch-memory-benchmark.md
-etcd-v3.2.7-linux-amd64/Documentation/production-users.md
-etcd-v3.2.7-linux-amd64/Documentation/learning/
-etcd-v3.2.7-linux-amd64/Documentation/learning/why.md
-etcd-v3.2.7-linux-amd64/Documentation/learning/glossary.md
-etcd-v3.2.7-linux-amd64/Documentation/learning/data_model.md
-etcd-v3.2.7-linux-amd64/Documentation/learning/auth_design.md
-etcd-v3.2.7-linux-amd64/Documentation/learning/api_guarantees.md
-etcd-v3.2.7-linux-amd64/Documentation/learning/api.md
-etcd-v3.2.7-linux-amd64/README-etcdctl.md
-etcd-v3.2.7-linux-amd64/etcdctl
-etcd-v3.2.7-linux-amd64/etcd
-etcd-v3.2.7-linux-amd64/README.md
-etcd-v3.2.7-linux-amd64/READMEv2-etcdctl.md
-+ cp /tmp/etcd/etcd /usr/bin/etcd
-+ cp /tmp/etcd/etcdctl /usr/bin/etcdctl
-+ cp files/etcd.conf.yml /etc/etcd/etcd.conf.yml
-+ cp files/etcd.service /lib/systemd/system/etcd.service
-+ systemctl enable etcd
-Created symlink from /etc/systemd/system/multi-user.target.wants/etcd.service to /lib/systemd/system/etcd.service.
-+ systemctl start etcd
