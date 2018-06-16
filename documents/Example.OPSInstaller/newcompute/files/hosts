@@ -1,0 +1,10 @@
+127.0.0.1	localhost
+vasabi-1234GenericComputeHostname_ip4321-ibasav	vasabi-1234GenericComputeHostname_hostname4321-ibasav.cs.tu.ac.th	 vasabi-1234GenericComputeHostname_hostname4321-ibasav
+10.0.0.11	controller
+10.0.0.21	network
+#
+
+# The following lines are desirable for IPv6 capable hosts
+::1     localhost ip6-localhost ip6-loopback
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters

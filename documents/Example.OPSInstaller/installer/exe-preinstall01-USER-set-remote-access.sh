@@ -69,12 +69,12 @@ then
 fi
 
 echo "set timezone of controller network compute"
-ssh -t openstack@controller sudo timedatectl set-timezone Asia/Bangkok
-ssh -t openstack@network sudo timedatectl set-timezone Asia/Bangkok
-ssh -t openstack@compute sudo timedatectl set-timezone Asia/Bangkok
+ssh -t openstack@controller sudo timedatectl set-timezone vasabi-1234timezone4321-ibasav
+ssh -t openstack@network sudo timedatectl set-timezone vasabi-1234timezone4321-ibasav
+ssh -t openstack@compute sudo timedatectl set-timezone vasabi-1234timezone4321-ibasav
 if [ "$intype" == "$full" ]
 then 
-ssh -t openstack@compute1 sudo timedatectl set-timezone Asia/Bangkok
+ssh -t openstack@compute1 sudo timedatectl set-timezone vasabi-1234timezone4321-ibasav
 fi
 
 echo "set date of controller network compute"

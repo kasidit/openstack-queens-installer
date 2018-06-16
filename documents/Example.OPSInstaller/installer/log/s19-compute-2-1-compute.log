@@ -1,0 +1,1061 @@
++ cd /home/openstack/OPSInstaller/newcompute
++ pwd
+/home/openstack/OPSInstaller/newcompute
++ printf '\nRun as root\n1. install nova.. press\n'
+
+Run as root
+1. install nova.. press
++ apt-get -y install nova-compute
+Reading package lists... 0%Reading package lists... 100%Reading package lists... Done
+Building dependency tree... 0%Building dependency tree... 0%Building dependency tree... 50%Building dependency tree... 50%Building dependency tree       
+Reading state information... 0%Reading state information... 0%Reading state information... Done
+The following packages were automatically installed and are no longer required:
+  linux-headers-4.4.0-116 linux-headers-4.4.0-116-generic linux-image-4.4.0-116-generic
+  linux-image-extra-4.4.0-116-generic
+Use 'sudo apt autoremove' to remove them.
+The following additional packages will be installed:
+  alembic augeas-lenses bridge-utils cpu-checker ebtables formencode-i18n genisoimage ipxe-qemu
+  ipxe-qemu-256k-compat-efi-roms kpartx libaio1 libasound2 libasound2-data libasyncns0 libaugeas0 libavahi-client3
+  libavahi-common-data libavahi-common3 libblas-common libblas3 libbluetooth3 libbrlapi0.6 libcaca0 libcacard0 libfdt1
+  libflac8 libgfortran3 libibverbs1 libiscsi2 liblapack3 libnetcf1 libnl-route-3-200 libnspr4 libnss3 libnss3-nssdb
+  libogg0 libopus0 libpciaccess0 libpixman-1-0 libpq5 libpulse0 libquadmath0 librados2 librbd1 librdmacm1 libsdl1.2debian
+  libsndfile1 libspice-server1 libusbredirparser1 libvirt-clients libvirt-daemon libvirt-daemon-driver-storage-rbd
+  libvirt-daemon-system libvirt0 libvorbis0a libvorbisenc2 libxen-4.6 libxenstore3.0 libxml2-utils libyajl2 msr-tools
+  nova-common nova-compute-kvm nova-compute-libvirt os-brick-common pycadf-common python-alembic python-amqp
+  python-anyjson python-automaton python-barbicanclient python-bcrypt python-cachetools python-castellan
+  python-ceilometerclient python-cffi python-contextlib2 python-cursive python-dateutil python-defusedxml python-dnspython
+  python-egenix-mxdatetime python-egenix-mxtools python-eventlet python-extras python-fasteners python-fixtures
+  python-formencode python-futurist python-greenlet python-jinja2 python-kazoo python-keystone python-keystonemiddleware
+  python-kombu python-libvirt python-linecache2 python-mako python-markupsafe python-memcache python-microversion-parse
+  python-migrate python-mimeparse python-networkx python-nova python-numpy python-openid python-os-brick python-os-traits
+  python-os-vif python-os-win python-os-xenapi python-oslo.cache python-oslo.concurrency python-oslo.context
+  python-oslo.db python-oslo.log python-oslo.messaging python-oslo.middleware python-oslo.policy python-oslo.privsep
+  python-oslo.reports python-oslo.rootwrap python-oslo.service python-oslo.versionedobjects python-osprofiler
+  python-paramiko python-passlib python-paste python-pastedeploy python-pastedeploy-tpl python-pastescript python-pika
+  python-pika-pool python-ply python-posix-ipc python-psutil python-psycopg2 python-pyasn1 python-pyasn1-modules
+  python-pycadf python-pycparser python-pyinotify python-pymemcache python-pymysql python-pypowervm python-pyroute2
+  python-pysaml2 python-redis python-repoze.lru python-retrying python-routes python-scgi python-scrypt python-setuptools
+  python-sqlalchemy python-sqlalchemy-ext python-sqlparse python-statsd python-taskflow python-tempita python-tenacity
+  python-testtools python-tooz python-traceback2 python-unittest2 python-vine python-voluptuous python-webob python-zake
+  python-zope.interface python3-alembic python3-dateutil python3-mako python3-markupsafe python3-sqlalchemy
+  qemu-block-extra qemu-kvm qemu-system-common qemu-system-x86 qemu-utils seabios sharutils xmlsec1
+Suggested packages:
+  augeas-doc wodim cdrkit-doc libasound2-plugins alsa-utils augeas-tools opus-tools pulseaudio
+  libvirt-daemon-driver-storage-gluster libvirt-daemon-driver-storage-sheepdog libvirt-daemon-driver-storage-zfs numad
+  radvd auditd systemtap nfs-common zfsutils pm-utils guestmount multipath-tools sg3-utils sysfsutils python-editor
+  python-amqp-doc python-automaton-doc python-castellan-doc python-ceilometerclient-doc python-dev python-cursive-doc
+  python-egenix-mxdatetime-dbg python-egenix-mxdatetime-doc python-egenix-mxtools-dbg python-egenix-mxtools-doc
+  python-futurist-doc python-greenlet-doc python-greenlet-dev python-greenlet-dbg python-jinja2-doc python-kazoo-doc
+  python-ldappool python-pyldap python-beanstalkc python-boto python-couchdb python-django python-kombu-doc python-pymongo
+  python-beaker python-mako-doc memcached python-microversion-parse-doc python-migrate-doc python-matplotlib python-scipy
+  python-pygraphviz | python-pydot python-ldap gcc gfortran python-nose python-numpy-dbg python-numpy-doc
+  python-os-brick-doc python-os-vif-doc python-os-win-doc python-os-xenapi-doc python-oslo.cache-doc
+  python-oslo.concurrency-doc python-oslo.log-doc python-kafka python-zmq python-oslo.middleware-doc
+  python-oslo.policy-doc python-oslo.privsep-doc python-oslo.reports-doc python-oslo.service-doc
+  python-oslo.versionedobjects-doc python-gssapi httpd-wsgi libapache2-mod-python libapache2-mod-scgi libjs-mochikit
+  python-pastewebkit python-flup python-cherrypy python-cheetah python-pika-doc python-ply-doc python-psutil-doc
+  python-psycopg2-doc doc-base cpp python-pyinotify-doc python-pymysql-doc python-pyroute2-doc python-repoze.who
+  python-hiredis python-setuptools-doc python-sqlalchemy-doc python-fdb python-pymssql python-sqlparse-doc
+  python-pydotplus python-tenacity-doc python-testtools-doc python-twisted python-sysv-ipc python-webob-doc python3-editor
+  python3-beaker python3-psycopg2 python3-pymysql python3-fdb samba vde2 sgabios ovmf debootstrap bsd-mailx | mailx
+The following NEW packages will be installed:
+  alembic augeas-lenses bridge-utils cpu-checker ebtables formencode-i18n genisoimage ipxe-qemu
+  ipxe-qemu-256k-compat-efi-roms kpartx libaio1 libasound2 libasound2-data libasyncns0 libaugeas0 libavahi-client3
+  libavahi-common-data libavahi-common3 libblas-common libblas3 libbluetooth3 libbrlapi0.6 libcaca0 libcacard0 libfdt1
+  libflac8 libgfortran3 libibverbs1 libiscsi2 liblapack3 libnetcf1 libnl-route-3-200 libnspr4 libnss3 libnss3-nssdb
+  libogg0 libopus0 libpciaccess0 libpixman-1-0 libpq5 libpulse0 libquadmath0 librados2 librbd1 librdmacm1 libsdl1.2debian
+  libsndfile1 libspice-server1 libusbredirparser1 libvirt-clients libvirt-daemon libvirt-daemon-driver-storage-rbd
+  libvirt-daemon-system libvirt0 libvorbis0a libvorbisenc2 libxen-4.6 libxenstore3.0 libxml2-utils libyajl2 msr-tools
+  nova-common nova-compute nova-compute-kvm nova-compute-libvirt os-brick-common pycadf-common python-alembic python-amqp
+  python-anyjson python-automaton python-barbicanclient python-bcrypt python-cachetools python-castellan
+  python-ceilometerclient python-cffi python-contextlib2 python-cursive python-dateutil python-defusedxml python-dnspython
+  python-egenix-mxdatetime python-egenix-mxtools python-eventlet python-extras python-fasteners python-fixtures
+  python-formencode python-futurist python-greenlet python-jinja2 python-kazoo python-keystone python-keystonemiddleware
+  python-kombu python-libvirt python-linecache2 python-mako python-markupsafe python-memcache python-microversion-parse
+  python-migrate python-mimeparse python-networkx python-nova python-numpy python-openid python-os-brick python-os-traits
+  python-os-vif python-os-win python-os-xenapi python-oslo.cache python-oslo.concurrency python-oslo.context
+  python-oslo.db python-oslo.log python-oslo.messaging python-oslo.middleware python-oslo.policy python-oslo.privsep
+  python-oslo.reports python-oslo.rootwrap python-oslo.service python-oslo.versionedobjects python-osprofiler
+  python-paramiko python-passlib python-paste python-pastedeploy python-pastedeploy-tpl python-pastescript python-pika
+  python-pika-pool python-ply python-posix-ipc python-psutil python-psycopg2 python-pyasn1 python-pyasn1-modules
+  python-pycadf python-pycparser python-pyinotify python-pymemcache python-pymysql python-pypowervm python-pyroute2
+  python-pysaml2 python-redis python-repoze.lru python-retrying python-routes python-scgi python-scrypt python-setuptools
+  python-sqlalchemy python-sqlalchemy-ext python-sqlparse python-statsd python-taskflow python-tempita python-tenacity
+  python-testtools python-tooz python-traceback2 python-unittest2 python-vine python-voluptuous python-webob python-zake
+  python-zope.interface python3-alembic python3-dateutil python3-mako python3-markupsafe python3-sqlalchemy
+  qemu-block-extra qemu-kvm qemu-system-common qemu-system-x86 qemu-utils seabios sharutils xmlsec1
+0 upgraded, 185 newly installed, 0 to remove and 0 not upgraded.
+Need to get 40.9 MB of archives.
+After this operation, 207 MB of additional disk space will be used.
+0% [Working]            Get:1 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 libasyncns0 amd64 0.8-5build1 [12.3 kB]
+0% [1 libasyncns0 0 B/12.3 kB 0%] [Connecting to ubuntu-cloud.archive.canonical.com (91.189.92.152)]                                                                                                    0% [Connecting to ubuntu-cloud.archive.canonical.com (91.189.92.152)]                                                                     Get:2 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 libiscsi2 amd64 1.12.0-2 [51.5 kB]
+0% [2 libiscsi2 0 B/51.5 kB 0%] [Connecting to ubuntu-cloud.archive.canonical.com (91.189.92.152)]                                                                                                  0% [Connecting to ubuntu-cloud.archive.canonical.com (91.189.92.152)]                                                                     Get:3 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 libogg0 amd64 1.3.2-1 [17.2 kB]
+0% [3 libogg0 0 B/17.2 kB 0%] [Connecting to ubuntu-cloud.archive.canonical.com (91.189.92.152)]                                                                                                0% [Connecting to ubuntu-cloud.archive.canonical.com (91.189.92.152)]                                                                     Get:4 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 libavahi-common-data amd64 0.6.32~rc+dfsg-1ubuntu2.2 [21.5 kB]
+0% [4 libavahi-common-data 0 B/21.5 kB 0%] [Connecting to ubuntu-cloud.archive.canonical.com (91.189.92.152)]                                                                                                             1% [Connecting to ubuntu-cloud.archive.canonical.com (91.189.92.152)]                                                                     Get:5 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 libavahi-common3 amd64 0.6.32~rc+dfsg-1ubuntu2.2 [21.6 kB]
+1% [5 libavahi-common3 0 B/21.6 kB 0%] [Connecting to ubuntu-cloud.archive.canonical.com (91.189.92.152)]                                                                                                         1% [Connecting to ubuntu-cloud.archive.canonical.com (91.189.92.152)]                                                                     Get:6 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 libavahi-client3 amd64 0.6.32~rc+dfsg-1ubuntu2.2 [25.2 kB]
+1% [6 libavahi-client3 0 B/25.2 kB 0%] [Connecting to ubuntu-cloud.archive.canonical.com (91.189.92.152)]                                                                                                         1% [Connecting to ubuntu-cloud.archive.canonical.com (91.189.92.152)]                                                                     Get:7 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 libyajl2 amd64 2.1.0-2 [19.6 kB]
+1% [7 libyajl2 0 B/19.6 kB 0%] [Connecting to ubuntu-cloud.archive.canonical.com (91.189.92.152)]                                                                                                 1% [Connecting to ubuntu-cloud.archive.canonical.com (91.189.92.152)]                                                                     Get:8 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 augeas-lenses all 1.4.0-0ubuntu1.1 [263 kB]
+1% [8 augeas-lenses 0 B/263 kB 0%] [Connecting to ubuntu-cloud.archive.canonical.com (91.189.92.152)]                                                                                                     2% [Waiting for headers]                        Get:9 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 libaugeas0 amd64 1.4.0-0ubuntu1.1 [154 kB]
+2% [9 libaugeas0 0 B/154 kB 0%] [Waiting for headers]                                                     2% [Waiting for headers]                        Get:10 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 libnl-route-3-200 amd64 3.2.27-1ubuntu0.16.04.1 [124 kB]
+2% [10 libnl-route-3-200 0 B/124 kB 0%] [Waiting for headers]                                                             2% [Waiting for headers]                        Get:11 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 libnetcf1 amd64 1:0.2.8-1ubuntu1 [46.3 kB]
+2% [11 libnetcf1 0 B/46.3 kB 0%] [Waiting for headers]                                                      3% [Waiting for headers]                        Get:12 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 libpciaccess0 amd64 0.13.4-1 [18.1 kB]
+3% [12 libpciaccess0 0 B/18.1 kB 0%] [Waiting for headers]                                                          3% [Waiting for headers]                        Get:13 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 libxenstore3.0 amd64 4.6.5-0ubuntu1.4 [21.9 kB]
+3% [13 libxenstore3.0 0 B/21.9 kB 0%] [Waiting for headers]                                                           3% [Waiting for headers]                        Get:14 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 libxen-4.6 amd64 4.6.5-0ubuntu1.4 [345 kB]
+3% [14 libxen-4.6 0 B/345 kB 0%] [Waiting for headers]                                                      4% [Waiting for headers]                        Get:15 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 python-posix-ipc amd64 0.9.8-2build2 [14.7 kB]
+4% [15 python-posix-ipc 0 B/14.7 kB 0%] [Waiting for headers]                                                             4% [Waiting for headers]                        Get:16 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 python-kazoo all 2.2.1-1ubuntu1 [79.9 kB]
+4% [16 python-kazoo 0 B/79.9 kB 0%] [Waiting for headers]                                                         4% [Waiting for headers]                        Get:17 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 python-zope.interface amd64 4.1.3-1build1 [81.0 kB]
+4% [17 python-zope.interface 0 B/81.0 kB 0%] [Waiting for headers]                                                                  4% [Waiting for headers]                        Get:18 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 python-linecache2 all 1.0.0-2 [12.3 kB]
+4% [18 python-linecache2 0 B/12.3 kB 0%] [Waiting for headers]                                                              Get:19 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 libvirt0 amd64 4.0.0-1ubuntu7~cloud0 [1,245 kB]
+4% [18 python-linecache2 6,996 B/12.3 kB 57%] [19 libvirt0 9,867 B/1,245 kB 1%]                                                                               5% [19 libvirt0 14.2 kB/1,245 kB 1%]                                    Get:20 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 python-mimeparse all 0.1.4-1build1 [5,916 B]
+5% [20 python-mimeparse 0 B/5,916 B 0%] [19 libvirt0 14.2 kB/1,245 kB 1%]                                                                         5% [19 libvirt0 14.2 kB/1,245 kB 1%]                                    Get:21 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 python-traceback2 all 1.4.0-3 [15.9 kB]
+5% [21 python-traceback2 0 B/15.9 kB 0%] [19 libvirt0 14.2 kB/1,245 kB 1%]                                                                          5% [19 libvirt0 14.2 kB/1,245 kB 1%]                                    Get:22 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 python-unittest2 all 1.1.0-6.1 [75.5 kB]
+5% [22 python-unittest2 0 B/75.5 kB 0%] [19 libvirt0 14.2 kB/1,245 kB 1%]                                                                         5% [19 libvirt0 14.2 kB/1,245 kB 1%]                                    Get:23 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 python-zake all 0.1.6-1 [13.9 kB]
+5% [23 python-zake 0 B/13.9 kB 0%] [19 libvirt0 14.2 kB/1,245 kB 1%]                                                                    5% [19 libvirt0 14.2 kB/1,245 kB 1%]                                    Get:24 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 libibverbs1 amd64 1.1.8-1.1ubuntu2 [25.0 kB]
+5% [24 libibverbs1 0 B/25.0 kB 0%] [19 libvirt0 14.2 kB/1,245 kB 1%]                                                                    5% [19 libvirt0 14.2 kB/1,245 kB 1%]                                    Get:25 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 libnspr4 amd64 2:4.13.1-0ubuntu0.16.04.1 [112 kB]
+5% [25 libnspr4 0 B/112 kB 0%] [19 libvirt0 14.2 kB/1,245 kB 1%]                                                                6% [19 libvirt0 14.2 kB/1,245 kB 1%]                                    Get:26 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 libnss3-nssdb all 2:3.28.4-0ubuntu0.16.04.3 [10.6 kB]
+6% [26 libnss3-nssdb 0 B/10.6 kB 0%] [19 libvirt0 14.2 kB/1,245 kB 1%]                                                                      6% [19 libvirt0 14.2 kB/1,245 kB 1%]                                    Get:27 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 libnss3 amd64 2:3.28.4-0ubuntu0.16.04.3 [1,148 kB]
+6% [27 libnss3 0 B/1,148 kB 0%] [19 libvirt0 14.2 kB/1,245 kB 1%]                                                                 8% [19 libvirt0 37.4 kB/1,245 kB 3%]                                    Get:28 http://th.archive.ubuntu.com/ubuntu xenial/universe amd64 python3-dateutil all 2.4.2-1 [39.1 kB]
+8% [28 python3-dateutil 0 B/39.1 kB 0%] [19 libvirt0 37.4 kB/1,245 kB 3%]                                                                         8% [19 libvirt0 37.4 kB/1,245 kB 3%]                                    Get:29 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 python3-markupsafe amd64 0.23-2build2 [16.1 kB]
+8% [29 python3-markupsafe 0 B/16.1 kB 0%] [19 libvirt0 37.4 kB/1,245 kB 3%]                                                                           9% [19 libvirt0 37.4 kB/1,245 kB 3%]                                    Get:30 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 python3-mako all 1.0.3+ds1-1ubuntu1 [58.9 kB]
+9% [30 python3-mako 0 B/58.9 kB 0%] [19 libvirt0 37.4 kB/1,245 kB 3%]                                                                     9% [19 libvirt0 37.4 kB/1,245 kB 3%]                                    Get:31 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 bridge-utils amd64 1.5-9ubuntu1 [28.6 kB]
+9% [31 bridge-utils 0 B/28.6 kB 0%] [19 libvirt0 37.4 kB/1,245 kB 3%]                                                                     9% [19 libvirt0 37.4 kB/1,245 kB 3%]                                    Get:32 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 msr-tools amd64 1.3-2 [10.6 kB]
+9% [32 msr-tools 0 B/10.6 kB 0%] [19 libvirt0 37.4 kB/1,245 kB 3%]                                                                  9% [19 libvirt0 37.4 kB/1,245 kB 3%]                                    Get:33 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 cpu-checker amd64 0.7-0ubuntu7 [6,862 B]
+9% [33 cpu-checker 0 B/6,862 B 0%] [19 libvirt0 72.1 kB/1,245 kB 6%]                                                                    9% [19 libvirt0 72.1 kB/1,245 kB 6%]                                    Get:34 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 ebtables amd64 2.0.10.4-3.4ubuntu2.16.04.1 [79.6 kB]
+9% [34 ebtables 0 B/79.6 kB 0%] [19 libvirt0 72.1 kB/1,245 kB 6%]                                                                 10% [19 libvirt0 72.1 kB/1,245 kB 6%]                                     Get:35 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 formencode-i18n all 1.3.0-0ubuntu5 [3,382 B]
+10% [35 formencode-i18n 0 B/3,382 B 0%] [19 libvirt0 72.1 kB/1,245 kB 6%]                                                                         10% [19 libvirt0 72.1 kB/1,245 kB 6%]                                     Get:36 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 genisoimage amd64 9:1.1.11-3ubuntu1 [316 kB]
+10% [36 genisoimage 0 B/316 kB 0%] [19 libvirt0 72.1 kB/1,245 kB 6%]                                                                    10% [19 libvirt0 72.1 kB/1,245 kB 6%]                                     Get:37 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 libaio1 amd64 0.3.110-2 [6,356 B]
+10% [37 libaio1 0 B/6,356 B 0%] [19 libvirt0 72.1 kB/1,245 kB 6%]                                                                 10% [19 libvirt0 72.1 kB/1,245 kB 6%]                                     Get:38 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 libasound2-data all 1.1.0-0ubuntu1 [29.4 kB]
+10% [38 libasound2-data 0 B/29.4 kB 0%] [19 libvirt0 72.1 kB/1,245 kB 6%]                                                                         11% [19 libvirt0 72.1 kB/1,245 kB 6%]                                     Get:39 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 libasound2 amd64 1.1.0-0ubuntu1 [350 kB]
+11% [39 libasound2 0 B/350 kB 0%] [19 libvirt0 72.1 kB/1,245 kB 6%]                                                                   12% [19 libvirt0 116 kB/1,245 kB 9%]                                    Get:40 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 libblas-common amd64 3.6.0-2ubuntu2 [5,342 B]
+12% [40 libblas-common 0 B/5,342 B 0%] [19 libvirt0 116 kB/1,245 kB 9%]                                                                       12% [19 libvirt0 116 kB/1,245 kB 9%]                                    Get:41 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 libblas3 amd64 3.6.0-2ubuntu2 [147 kB]
+12% [41 libblas3 0 B/147 kB 0%] [19 libvirt0 116 kB/1,245 kB 9%]                                                                12% [19 libvirt0 116 kB/1,245 kB 9%]                                    Get:42 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 libbluetooth3 amd64 5.37-0ubuntu5.1 [61.4 kB]
+12% [42 libbluetooth3 0 B/61.4 kB 0%] [19 libvirt0 116 kB/1,245 kB 9%]                                                                      12% [19 libvirt0 116 kB/1,245 kB 9%]                                    Get:43 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 libcaca0 amd64 0.99.beta19-2build2~gcc5.2 [202 kB]
+12% [43 libcaca0 0 B/202 kB 0%] [19 libvirt0 116 kB/1,245 kB 9%]                                                                13% [19 libvirt0 116 kB/1,245 kB 9%]                                    Get:44 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 libcacard0 amd64 1:2.5.0-2 [19.7 kB]
+13% [44 libcacard0 0 B/19.7 kB 0%] [19 libvirt0 116 kB/1,245 kB 9%]                                                                   13% [19 libvirt0 116 kB/1,245 kB 9%]                                    Get:45 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 libflac8 amd64 1.3.1-4 [210 kB]
+13% [45 libflac8 0 B/210 kB 0%] [19 libvirt0 116 kB/1,245 kB 9%]                                                                13% [19 libvirt0 116 kB/1,245 kB 9%]                                    Get:46 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 libquadmath0 amd64 5.4.0-6ubuntu1~16.04.9 [131 kB]
+13% [46 libquadmath0 0 B/131 kB 0%] [19 libvirt0 116 kB/1,245 kB 9%]                                                                    14% [19 libvirt0 116 kB/1,245 kB 9%]                                    Get:47 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 libgfortran3 amd64 5.4.0-6ubuntu1~16.04.9 [260 kB]
+14% [47 libgfortran3 0 B/260 kB 0%] [19 libvirt0 116 kB/1,245 kB 9%]                                                                    14% [19 libvirt0 116 kB/1,245 kB 9%]                                    Get:48 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 liblapack3 amd64 3.6.0-2ubuntu2 [1,938 kB]
+14% [48 liblapack3 0 B/1,938 kB 0%] [19 libvirt0 116 kB/1,245 kB 9%]                                                                    19% [19 libvirt0 289 kB/1,245 kB 23%]                                     Get:49 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 libopus0 amd64 1.1.2-1ubuntu1 [159 kB]
+19% [49 libopus0 0 B/159 kB 0%] [19 libvirt0 289 kB/1,245 kB 23%]                                                                 19% [19 libvirt0 289 kB/1,245 kB 23%]                                     Get:50 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 libpixman-1-0 amd64 0.33.6-1 [231 kB]
+19% [50 libpixman-1-0 0 B/231 kB 0%] [19 libvirt0 289 kB/1,245 kB 23%]                                                                      20% [19 libvirt0 289 kB/1,245 kB 23%]                                     Get:51 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 libpq5 amd64 9.5.13-0ubuntu0.16.04 [78.7 kB]
+20% [51 libpq5 0 B/78.7 kB 0%] [19 libvirt0 289 kB/1,245 kB 23%]                                                                20% [19 libvirt0 289 kB/1,245 kB 23%]                                     Get:52 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 libvorbis0a amd64 1.3.5-3ubuntu0.2 [86.0 kB]
+20% [52 libvorbis0a 0 B/86.0 kB 0%] [19 libvirt0 289 kB/1,245 kB 23%]                                                                     20% [19 libvirt0 289 kB/1,245 kB 23%]                                     Get:53 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 libvorbisenc2 amd64 1.3.5-3ubuntu0.2 [70.6 kB]
+20% [53 libvorbisenc2 0 B/70.6 kB 0%] [19 libvirt0 289 kB/1,245 kB 23%]                                                                       20% [19 libvirt0 289 kB/1,245 kB 23%]                                     Get:54 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 libsndfile1 amd64 1.0.25-10ubuntu0.16.04.1 [138 kB]
+20% [54 libsndfile1 0 B/138 kB 0%] [19 libvirt0 289 kB/1,245 kB 23%]                                                                    21% [19 libvirt0 289 kB/1,245 kB 23%]                                     Get:55 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 libpulse0 amd64 1:8.0-0ubuntu3.10 [249 kB]
+21% [55 libpulse0 0 B/249 kB 0%] [19 libvirt0 289 kB/1,245 kB 23%]                                                                  21% [19 libvirt0 289 kB/1,245 kB 23%]                                     Get:56 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 libsdl1.2debian amd64 1.2.15+dfsg1-3 [168 kB]
+21% [56 libsdl1.2debian 0 B/168 kB 0%] [19 libvirt0 289 kB/1,245 kB 23%]                                                                        22% [19 libvirt0 292 kB/1,245 kB 23%]                                     Get:57 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 libspice-server1 amd64 0.12.6-4ubuntu0.3 [338 kB]
+22% [57 libspice-server1 0 B/338 kB 0%] [19 libvirt0 297 kB/1,245 kB 24%]                                                                         23% [19 libvirt0 434 kB/1,245 kB 35%]                                     Get:58 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 libusbredirparser1 amd64 0.7.1-1 [13.6 kB]
+23% [58 libusbredirparser1 0 B/13.6 kB 0%] [19 libvirt0 434 kB/1,245 kB 35%]                                                                            23% [19 libvirt0 434 kB/1,245 kB 35%]                                     Get:59 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 libxml2-utils amd64 2.9.3+dfsg1-1ubuntu0.5 [35.0 kB]
+23% [59 libxml2-utils 0 B/35.0 kB 0%] [19 libvirt0 434 kB/1,245 kB 35%]                                                                       23% [19 libvirt0 434 kB/1,245 kB 35%]                                     Get:60 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 python-dateutil all 2.4.2-1 [42.5 kB]
+23% [60 python-dateutil 0 B/42.5 kB 0%] [19 libvirt0 434 kB/1,245 kB 35%]                                                                         23% [19 libvirt0 434 kB/1,245 kB 35%]                                     Get:61 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 python-markupsafe amd64 0.23-2build2 [15.5 kB]
+23% [61 python-markupsafe 0 B/15.5 kB 0%] [19 libvirt0 434 kB/1,245 kB 35%]                                                                           24% [19 libvirt0 434 kB/1,245 kB 35%]                                     Get:62 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 python-mako all 1.0.3+ds1-1ubuntu1 [59.6 kB]
+24% [62 python-mako 0 B/59.6 kB 0%] [19 libvirt0 434 kB/1,245 kB 35%]                                                                     24% [19 libvirt0 434 kB/1,245 kB 35%]                                     Get:63 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 python-anyjson all 0.3.3-1build1 [7,096 B]
+24% [63 python-anyjson 0 B/7,096 B 0%] [19 libvirt0 434 kB/1,245 kB 35%]                                                                        24% [19 libvirt0 434 kB/1,245 kB 35%]                                     Get:64 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 python-pyinotify all 0.9.6-0fakesync1 [24.6 kB]
+24% [64 python-pyinotify 0 B/24.6 kB 0%] [19 libvirt0 434 kB/1,245 kB 35%]                                                                          24% [19 libvirt0 434 kB/1,245 kB 35%]                                     Get:65 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 python-ply all 3.7-1 [46.9 kB]
+24% [65 python-ply 0 B/46.9 kB 0%] [19 libvirt0 434 kB/1,245 kB 35%]                                                                    24% [19 libvirt0 434 kB/1,245 kB 35%]                                     Get:66 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 python-pycparser all 2.14+dfsg-2build1 [57.9 kB]
+24% [66 python-pycparser 0 B/57.9 kB 0%] [19 libvirt0 434 kB/1,245 kB 35%]                                                                          24% [19 libvirt0 434 kB/1,245 kB 35%]                                     Get:67 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 python-contextlib2 all 0.5.1-1 [9,614 B]
+24% [67 python-contextlib2 8,444 B/9,614 B 88%] [19 libvirt0 434 kB/1,245 kB 35%]                                                                                 25% [Waiting for headers] [19 libvirt0 434 kB/1,245 kB 35%]                                                           Get:68 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 python-egenix-mxtools amd64 3.2.9-1 [75.3 kB]
+25% [68 python-egenix-mxtools 0 B/75.3 kB 0%] [19 libvirt0 434 kB/1,245 kB 35%]                                                                               25% [Waiting for headers] [19 libvirt0 456 kB/1,245 kB 37%]                                                           Get:69 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 python-egenix-mxdatetime amd64 3.2.9-1 [68.3 kB]
+25% [69 python-egenix-mxdatetime 2,652 B/68.3 kB 4%] [19 libvirt0 465 kB/1,245 kB 37%]                                                                                      25% [Waiting for headers] [19 libvirt0 631 kB/1,245 kB 51%]                                                           Get:70 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 python-eventlet all 0.18.4-1ubuntu1 [101 kB]
+26% [70 python-eventlet 41.7 kB/101 kB 42%] [19 libvirt0 638 kB/1,245 kB 51%]                                                                             26% [19 libvirt0 638 kB/1,245 kB 51%]                                     Get:71 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 python-fasteners all 0.12.0-2ubuntu1 [13.5 kB]
+26% [71 python-fasteners 13.5 kB/13.5 kB 100%] [19 libvirt0 638 kB/1,245 kB 51%]                                                                                26% [19 libvirt0 638 kB/1,245 kB 51%]                                     Get:72 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 python-formencode all 1.3.0-0ubuntu5 [69.1 kB]
+26% [72 python-formencode 20.3 kB/69.1 kB 29%] [19 libvirt0 638 kB/1,245 kB 51%]                                                                                26% [Waiting for headers] [19 libvirt0 638 kB/1,245 kB 51%]                                                           Get:73 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 python-jinja2 all 2.8-1 [109 kB]
+26% [73 python-jinja2 16.4 kB/109 kB 15%] [19 libvirt0 638 kB/1,245 kB 51%]                                                                           27% [Waiting for headers] [19 libvirt0 638 kB/1,245 kB 51%]                                                           Get:74 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 python-memcache all 1.57-1 [17.1 kB]
+27% [74 python-memcache 0 B/17.1 kB 0%] [19 libvirt0 638 kB/1,245 kB 51%]                                                                         27% [Waiting for headers] [19 libvirt0 638 kB/1,245 kB 51%]                                                           Get:75 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 python-tempita all 0.5.2-1build1 [13.8 kB]
+27% [75 python-tempita 13.8 kB/13.8 kB 100%] [19 libvirt0 638 kB/1,245 kB 51%]                                                                              27% [Waiting for headers] [19 libvirt0 638 kB/1,245 kB 51%]                                                           Get:76 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 python-pastedeploy-tpl all 1.5.2-1 [4,518 B]
+27% [76 python-pastedeploy-tpl 1,204 B/4,518 B 27%] [19 libvirt0 648 kB/1,245 kB 52%]                                                                                     27% [19 libvirt0 659 kB/1,245 kB 53%]                                     Get:77 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 python-pastedeploy all 1.5.2-1 [25.5 kB]
+27% [77 python-pastedeploy 15.7 kB/25.5 kB 61%] [19 libvirt0 680 kB/1,245 kB 55%]                                                                                 27% [Waiting for headers] [19 libvirt0 702 kB/1,245 kB 56%]                                                           Get:78 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 python-repoze.lru all 0.6-6 [11.7 kB]
+27% [78 python-repoze.lru 2,651 B/11.7 kB 23%] [19 libvirt0 798 kB/1,245 kB 64%]                                                                                28% [Waiting for headers] [19 libvirt0 852 kB/1,245 kB 68%]                                                           Get:79 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 python-pika all 0.10.0-1 [73.0 kB]
+28% [79 python-pika 30.3 kB/73.0 kB 42%] [19 libvirt0 919 kB/1,245 kB 74%]                                                                          28% [Waiting for headers] [19 libvirt0 919 kB/1,245 kB 74%]                                                           Get:80 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 python-pika-pool all 0.1.3-1ubuntu1 [6,074 B]
+28% [80 python-pika-pool 2,652 B/6,074 B 44%] [19 libvirt0 919 kB/1,245 kB 74%]                                                                               28% [Waiting for headers] [19 libvirt0 919 kB/1,245 kB 74%]                                                           Get:81 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 python-retrying all 1.3.3-1 [7,654 B]
+28% [81 python-retrying 1,204 B/7,654 B 16%] [19 libvirt0 919 kB/1,245 kB 74%]                                                                              28% [Waiting for headers] [19 libvirt0 919 kB/1,245 kB 74%]                                                           Get:82 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 python-networkx all 1.11-1ubuntu1 [806 kB]
+28% [82 python-networkx 25.8 kB/806 kB 3%] [19 libvirt0 919 kB/1,245 kB 74%]                                                                            31% [Waiting for headers] [19 libvirt0 1,244 kB/1,245 kB 100%]                                                              Get:83 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 python-numpy amd64 1:1.11.0-1ubuntu1 [1,763 kB]
+31% [83 python-numpy 14.4 kB/1,763 kB 1%] [19 libvirt0 1,244 kB/1,245 kB 100%]                                                                              32% [83 python-numpy 644 kB/1,763 kB 37%]34% [Waiting for headers] [Waiting for headers]                                               Get:84 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 python-openid all 2.2.5-6 [97.8 kB]
+34% [84 python-openid 60.5 kB/97.8 kB 62%] [Waiting for headers]                                                                35% [Waiting for headers] [Waiting for headers]                                               Get:85 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 python-psutil amd64 3.4.2-1 [55.2 kB]
+35% [85 python-psutil 1,535 B/55.2 kB 3%] [Waiting for headers]                                                               35% [Waiting for headers] [Waiting for headers]                                               Get:86 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 python-pyasn1 all 0.1.9-1 [45.1 kB]
+35% [86 python-pyasn1 6,932 B/45.1 kB 15%] [Waiting for headers]                                                                35% [Waiting for headers] [Waiting for headers]                                               Get:87 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 python-pastescript all 1.7.5-3build1 [117 kB]
+35% [87 python-pastescript 0 B/117 kB 0%] [Waiting for headers]                                                               Get:88 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 libvirt-clients amd64 4.0.0-1ubuntu7~cloud0 [597 kB]
+35% [87 python-pastescript 104 kB/117 kB 89%] [88 libvirt-clients 6,973 B/597 kB 1%]                                                                                    35% [Waiting for headers] [88 libvirt-clients 28.7 kB/597 kB 5%]                                                                Get:89 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 python-pyasn1-modules all 0.0.7-0.1 [20.5 kB]
+35% [89 python-pyasn1-modules 6,497 B/20.5 kB 32%] [88 libvirt-clients 28.7 kB/597 kB 5%]                                                                                         35% [Waiting for headers] [88 libvirt-clients 28.7 kB/597 kB 5%]                                                                Get:90 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 python-pymemcache all 1.3.2-2ubuntu1 [23.1 kB]
+36% [90 python-pymemcache 23.1 kB/23.1 kB 100%] [88 libvirt-clients 28.7 kB/597 kB 5%]                                                                                      36% [Waiting for headers] [88 libvirt-clients 28.7 kB/597 kB 5%]                                                                Get:91 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 xmlsec1 amd64 1.2.20-2ubuntu4 [22.4 kB]
+36% [91 xmlsec1 22.4 kB/22.4 kB 100%] [88 libvirt-clients 28.7 kB/597 kB 5%]                                                                            36% [Waiting for headers] [88 libvirt-clients 28.7 kB/597 kB 5%]                                                                Get:92 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 python-redis all 2.10.5-1ubuntu1 [43.9 kB]
+36% [92 python-redis 5,240 B/43.9 kB 12%] [88 libvirt-clients 28.7 kB/597 kB 5%]                                                                                36% [Waiting for headers] [88 libvirt-clients 28.7 kB/597 kB 5%]                                                                Get:93 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 python-scgi amd64 1.13-1.1build1 [18.4 kB]
+36% [93 python-scgi 11.3 kB/18.4 kB 62%] [88 libvirt-clients 28.7 kB/597 kB 5%]                                                                               36% [Waiting for headers] [88 libvirt-clients 28.7 kB/597 kB 5%]                                                                Get:94 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 libbrlapi0.6 amd64 5.3.1-2ubuntu2.1 [20.7 kB]
+36% [94 libbrlapi0.6 7,984 B/20.7 kB 39%] [88 libvirt-clients 28.7 kB/597 kB 5%]                                                                                36% [Waiting for headers] [88 libvirt-clients 28.7 kB/597 kB 5%]                                                                Get:95 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 librdmacm1 amd64 1.0.21-1 [49.1 kB]
+36% [95 librdmacm1 49.1 kB/49.1 kB 100%] [88 libvirt-clients 28.7 kB/597 kB 5%]                                                                               36% [Waiting for headers] [88 libvirt-clients 28.7 kB/597 kB 5%]                                                                Get:96 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 sharutils amd64 1:4.15.2-1ubuntu0.1 [148 kB]
+36% [96 sharutils 3,183 B/148 kB 2%] [88 libvirt-clients 28.7 kB/597 kB 5%]                                                                           37% [Waiting for headers] [88 libvirt-clients 28.7 kB/597 kB 5%]                                                                Get:97 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 kpartx amd64 0.5.0+git1.656f8865-5ubuntu2.5 [24.7 kB]
+37% [97 kpartx 0 B/24.7 kB 0%] [88 libvirt-clients 28.7 kB/597 kB 5%]                                                                     37% [88 libvirt-clients 43.2 kB/597 kB 7%]37% [88 libvirt-clients 93.9 kB/597 kB 16%]                                           37% [88 libvirt-clients 224 kB/597 kB 38%]38% [88 libvirt-clients 485 kB/597 kB 81%]                                          38% [Waiting for headers]                         Get:98 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 libvirt-daemon amd64 4.0.0-1ubuntu7~cloud0 [2,168 kB]
+38% [98 libvirt-daemon 4,672 B/2,168 kB 0%]39% [98 libvirt-daemon 344 kB/2,168 kB 16%]41% [98 libvirt-daemon 1,191 kB/2,168 kB 55%]                                                                2,382 kB/s 10s43% [Waiting for headers]                                                                                    2,382 kB/s 10s                                                                                                                           Get:99 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 libvirt-daemon-system amd64 4.0.0-1ubuntu7~cloud0 [81.0 kB]
+43% [99 libvirt-daemon-system 4,344 B/81.0 kB 5%]                                                            2,382 kB/s 10s43% [Working]                                                                                                2,382 kB/s 10s                                                                                                                           Get:100 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-extras all 1.0.0-3~cloud0 [7,416 B]
+43% [100 python-extras 7,022 B/7,416 B 95%]                                                                  2,382 kB/s 10s43% [Working]                                                                                                2,382 kB/s 10s                                                                                                                           Get:101 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-fixtures all 3.0.0-2~cloud0 [32.4 kB]
+43% [101 python-fixtures 13.8 kB/32.4 kB 43%]                                                                2,382 kB/s 10s43% [Waiting for headers]                                                                                    2,382 kB/s 10s                                                                                                                           Get:102 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-testtools all 2.3.0-3ubuntu2~cloud1 [124 kB]
+43% [102 python-testtools 7,240 B/124 kB 6%]                                                                 2,382 kB/s 10s44% [Waiting for headers]                                                                                    2,382 kB/s 10s                                                                                                                           Get:103 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 librados2 amd64 12.2.4-0ubuntu1~cloud1 [2,754 kB]
+44% [103 librados2 9,888 B/2,754 kB 0%]                                                                      2,382 kB/s 10s48% [103 librados2 2,066 kB/2,754 kB 75%]                                                                     2,382 kB/s 9s49% [Working]                                                                                                 2,382 kB/s 9s                                                                                                                           Get:104 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 librbd1 amd64 12.2.4-0ubuntu1~cloud1 [917 kB]
+49% [104 librbd1 33.1 kB/917 kB 4%]                                                                           2,382 kB/s 9s51% [Waiting for headers]                                                                                     2,382 kB/s 8s                                                                                                                           Get:105 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 qemu-block-extra amd64 1:2.11+dfsg-1ubuntu7~cloud0 [40.4 kB]
+51% [105 qemu-block-extra 16.1 kB/40.4 kB 40%]                                                                2,382 kB/s 8s51% [Waiting for headers]                                                                                     2,382 kB/s 8s                                                                                                                           Get:106 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 qemu-system-common amd64 1:2.11+dfsg-1ubuntu7~cloud0 [662 kB]
+51% [106 qemu-system-common 91.9 kB/662 kB 14%]                                                               2,382 kB/s 8s53% [Waiting for headers]                                                                                     2,382 kB/s 8s                                                                                                                           Get:107 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python3-sqlalchemy all 1.1.11+ds1-1ubuntu1~cloud0 [681 kB]
+53% [107 python3-sqlalchemy 42.8 kB/681 kB 6%]                                                                2,382 kB/s 8s54% [Working]                                                                                                 2,382 kB/s 8s                                                                                                                           Get:108 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python3-alembic all 0.9.3-2ubuntu1~cloud0 [105 kB]
+54% [108 python3-alembic 28.7 kB/105 kB 27%]                                                                  2,382 kB/s 8s54% [Waiting for headers]                                                                                     2,382 kB/s 8s                                                                                                                           Get:109 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 alembic all 0.9.3-2ubuntu1~cloud0 [239 kB]
+54% [109 alembic 37.4 kB/239 kB 16%]                                                                          2,382 kB/s 8s55% [Working]                                                                                                 2,382 kB/s 7s                                                                                                                           Get:110 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 ipxe-qemu all 1.0.0+git-20180124.fbe8c52d-0ubuntu2~cloud0 [918 kB]
+55% [110 ipxe-qemu 8,192 B/918 kB 1%]                                                                         2,382 kB/s 7s57% [Waiting for headers]                                                                                     2,382 kB/s 7s                                                                                                                           Get:111 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 ipxe-qemu-256k-compat-efi-roms all 1.0.0+git-20150424.a25a16d-0ubuntu2~cloud0 [546 kB]
+57% [111 ipxe-qemu-256k-compat-efi-roms 14.3 kB/546 kB 3%]                                                    2,382 kB/s 7s58% [Waiting for headers]                                                                                     2,382 kB/s 7s                                                                                                                           Get:112 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 libfdt1 amd64 1.4.5-3~cloud0 [15.6 kB]
+58% [112 libfdt1 15.6 kB/15.6 kB 100%]                                                                        2,382 kB/s 7s                                                                                                                           Get:113 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 libvirt-daemon-driver-storage-rbd amd64 4.0.0-1ubuntu7~cloud0 [14.9 kB]
+58% [113 libvirt-daemon-driver-storage-rbd 14.9 kB/14.9 kB 100%]                                              2,382 kB/s 7s58% [Waiting for headers]                                                                                     2,382 kB/s 7s                                                                                                                           Get:114 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 os-brick-common all 2.3.0-0ubuntu1~cloud0 [3,082 B]
+58% [Waiting for headers]                                                                                     2,382 kB/s 7s                                                                                                                           Get:115 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 pycadf-common all 2.7.0-0ubuntu1~cloud0 [4,390 B]
+58% [115 pycadf-common 4,390 B/4,390 B 100%]                                                                  2,382 kB/s 7s58% [Working]                                                                                                 2,382 kB/s 7s                                                                                                                           Get:116 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-sqlalchemy all 1.1.11+ds1-1ubuntu1~cloud0 [682 kB]
+58% [116 python-sqlalchemy 685 B/682 kB 0%]                                                                   2,382 kB/s 7s60% [Waiting for headers]                                                                                     2,382 kB/s 7s                                                                                                                           Get:117 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-alembic all 0.9.3-2ubuntu1~cloud0 [105 kB]
+60% [117 python-alembic 0 B/105 kB 0%]                                                                        2,382 kB/s 7s60% [Waiting for headers]                                                                                     2,382 kB/s 6s                                                                                                                           Get:118 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-vine all 1.1.4+dfsg-2~cloud0 [15.6 kB]
+60% [118 python-vine 15.6 kB/15.6 kB 100%]                                                                    2,382 kB/s 6s                                                                                                                           Get:119 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-amqp all 2.2.2-1~cloud0 [39.0 kB]
+60% [119 python-amqp 28.7 kB/39.0 kB 74%]                                                                     2,382 kB/s 6s61% [Working]                                                                                                 2,382 kB/s 6s                                                                                                                           Get:120 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-automaton all 1.14.0-0ubuntu1~cloud0 [14.9 kB]
+61% [120 python-automaton 5,527 B/14.9 kB 37%]                                                                2,382 kB/s 6s61% [Waiting for headers]                                                                                     2,382 kB/s 6s                                                                                                                           Get:121 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-barbicanclient all 4.6.0-0ubuntu1~cloud0 [961 kB]
+61% [121 python-barbicanclient 6,308 B/961 kB 1%]                                                             2,382 kB/s 6s62% [121 python-barbicanclient 633 kB/961 kB 66%]                                                             2,382 kB/s 6s63% [Waiting for headers]                                                                                     2,382 kB/s 6s                                                                                                                           Get:122 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-bcrypt amd64 3.1.4-2~cloud0 [29.8 kB]
+63% [122 python-bcrypt 1,448 B/29.8 kB 5%]                                                                    2,382 kB/s 6s63% [Waiting for headers]                                                                                     2,382 kB/s 6s                                                                                                                           Get:123 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-cachetools all 2.0.0-2~cloud0 [9,080 B]
+63% [123 python-cachetools 7,540 B/9,080 B 83%]                                                               2,382 kB/s 6s63% [Waiting for headers]                                                                                     2,382 kB/s 6s                                                                                                                           Get:124 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-oslo.context all 1:2.20.0-0ubuntu1~cloud0 [12.6 kB]
+63% [124 python-oslo.context 3,987 B/12.6 kB 32%]                                                             2,382 kB/s 6s63% [Waiting for headers]                                                                                     2,382 kB/s 6s                                                                                                                           Get:125 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-oslo.log all 3.36.0-0ubuntu1~cloud0 [40.8 kB]
+63% [125 python-oslo.log 11.6 kB/40.8 kB 28%]                                                                 2,382 kB/s 6s63% [Working]                                                                                                 2,382 kB/s 6s                                                                                                                           Get:126 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-oslo.policy all 1.33.1-0ubuntu1~cloud0 [42.3 kB]
+63% [126 python-oslo.policy 8,165 B/42.3 kB 19%]                                                              2,382 kB/s 6s63% [Waiting for headers]                                                                                     2,382 kB/s 6s                                                                                                                           Get:127 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-castellan all 0.17.0-0ubuntu1~cloud0 [36.6 kB]
+63% [127 python-castellan 7,580 B/36.6 kB 21%]                                                                2,382 kB/s 6s64% [Waiting for headers]                                                                                     2,382 kB/s 6s                                                                                                                           Get:128 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-cffi all 1.11.5-1~cloud0 [67.7 kB]
+64% [128 python-cffi 2,616 B/67.7 kB 4%]                                                                      2,382 kB/s 6s64% [Waiting for headers]                                                                                     2,382 kB/s 6s                                                                                                                           Get:129 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-cursive all 0.2.1-0ubuntu1~cloud0 [14.3 kB]
+64% [129 python-cursive 1,295 B/14.3 kB 9%]                                                                   2,382 kB/s 6s64% [Waiting for headers]                                                                                     2,382 kB/s 6s                                                                                                                           Get:130 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-defusedxml all 0.5.0-1ubuntu1~cloud0 [35.2 kB]
+64% [130 python-defusedxml 5,584 B/35.2 kB 16%]                                                               2,382 kB/s 6s64% [Waiting for headers]                                                                                     2,382 kB/s 6s                                                                                                                           Get:131 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-dnspython all 1.15.0-1~cloud0 [85.2 kB]
+64% [131 python-dnspython 6,974 B/85.2 kB 8%]                                                                 2,382 kB/s 6s64% [Waiting for headers]                                                                                     2,382 kB/s 6s                                                                                                                           Get:132 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-greenlet amd64 0.4.12-2~cloud0 [18.3 kB]
+64% [132 python-greenlet 8,423 B/18.3 kB 46%]                                                                 2,382 kB/s 6s65% [Waiting for headers]                                                                                     2,382 kB/s 6s                                                                                                                           Get:133 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-futurist all 1.6.0-0ubuntu1~cloud0 [24.1 kB]
+65% [133 python-futurist 2,631 B/24.1 kB 11%]                                                                 2,382 kB/s 6s65% [Waiting for headers]                                                                                     2,382 kB/s 6s                                                                                                                           Get:134 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-oslo.cache all 1.28.0-0ubuntu1~cloud0 [31.8 kB]
+65% [134 python-oslo.cache 5,527 B/31.8 kB 17%]                                                               2,382 kB/s 6s65% [Waiting for headers]                                                                                     2,382 kB/s 6s                                                                                                                           Get:135 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-kombu all 4.1.0-1~cloud0 [126 kB]
+65% [135 python-kombu 8,421 B/126 kB 7%]                                                                      2,382 kB/s 6s65% [Working]                                                                                                 2,382 kB/s 6s                                                                                                                           Get:136 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-statsd all 3.2.1-2~cloud0 [10.6 kB]
+65% [136 python-statsd 6,975 B/10.6 kB 66%]                                                                   2,382 kB/s 6s65% [Waiting for headers]                                                                                     2,382 kB/s 6s                                                                                                                           Get:137 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-webob all 1:1.7.3-2fakesync1~cloud0 [64.2 kB]
+65% [137 python-webob 4,079 B/64.2 kB 6%]                                                                     2,382 kB/s 6s66% [Waiting for headers]                                                                                     2,382 kB/s 6s                                                                                                                           Get:138 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-oslo.middleware all 3.34.0-0ubuntu1~cloud0 [30.7 kB]
+66% [138 python-oslo.middleware 6,975 B/30.7 kB 23%]                                                          2,382 kB/s 6s66% [Waiting for headers]                                                                                     2,382 kB/s 6s                                                                                                                           Get:139 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-oslo.concurrency all 3.25.0-0ubuntu1~cloud0 [28.4 kB]
+66% [139 python-oslo.concurrency 28.4 kB/28.4 kB 100%]                                                        2,382 kB/s 6s66% [Working]                                                                                                 2,382 kB/s 6s                                                                                                                           Get:140 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-paste all 2.0.3+dfsg-4ubuntu1~cloud0 [456 kB]
+66% [140 python-paste 50.4 kB/456 kB 11%]                                                                     2,382 kB/s 6s67% [Working]                                                                                                 2,382 kB/s 6s                                                                                                                           Get:141 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-routes all 2.4.1-1~cloud0 [88.8 kB]
+67% [141 python-routes 11.3 kB/88.8 kB 13%]                                                                   2,382 kB/s 6s67% [Waiting for headers]                                                                                     2,382 kB/s 5s                                                                                                                           Get:142 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-oslo.service all 1.29.0-0ubuntu1~cloud0 [47.0 kB]
+67% [142 python-oslo.service 11.3 kB/47.0 kB 24%]                                                             2,382 kB/s 5s67% [Working]                                                                                                 2,382 kB/s 5s                                                                                                                           Get:143 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-tenacity all 4.8.0-0ubuntu1~cloud0 [12.8 kB]
+67% [143 python-tenacity 8,423 B/12.8 kB 66%]                                                                 2,382 kB/s 5s68% [Working]                                                                                                 2,382 kB/s 5s                                                                                                                           Get:144 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-oslo.messaging all 5.35.0-0ubuntu1~cloud0 [1,150 kB]
+68% [144 python-oslo.messaging 2,627 B/1,150 kB 0%]                                                           2,382 kB/s 5s70% [144 python-oslo.messaging 1,057 kB/1,150 kB 92%]                                                         2,382 kB/s 5s70% [Waiting for headers]                                                                                     2,382 kB/s 5s                                                                                                                           Get:145 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-pycadf all 2.7.0-0ubuntu1~cloud0 [17.4 kB]
+70% [145 python-pycadf 11.0 kB/17.4 kB 63%]                                                                   2,382 kB/s 5s70% [Working]                                                                                                 2,382 kB/s 5s                                                                                                                           Get:146 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-keystonemiddleware all 4.21.0-0ubuntu1~cloud0 [72.2 kB]
+70% [146 python-keystonemiddleware 10.7 kB/72.2 kB 15%]                                                       2,382 kB/s 5s70% [Working]                                                                                                 2,382 kB/s 5s                                                                                                                           Get:147 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-libvirt amd64 4.0.0-1~cloud0 [122 kB]
+70% [147 python-libvirt 4,959 B/122 kB 4%]                                                                    2,382 kB/s 5s71% [Waiting for headers]                                                                                     2,382 kB/s 5s                                                                                                                           Get:148 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-microversion-parse all 0.1.4-2~cloud0 [5,828 B]
+71% [148 python-microversion-parse 5,828 B/5,828 B 100%]                                                      2,382 kB/s 5s71% [Working]                                                                                                 2,382 kB/s 5s                                                                                                                           Get:149 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-sqlparse all 0.2.4-0.1~cloud0 [28.0 kB]
+71% [149 python-sqlparse 4,096 B/28.0 kB 15%]                                                                 2,382 kB/s 5s71% [Working]                                                                                                 2,382 kB/s 5s                                                                                                                           Get:150 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-migrate all 0.11.0-2~cloud0 [70.0 kB]
+71% [150 python-migrate 12.1 kB/70.0 kB 17%]                                                                  2,382 kB/s 5s71% [Working]                                                                                                 2,382 kB/s 5s                                                                                                                           Get:151 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-os-win all 3.0.0-0ubuntu1~cloud0 [145 kB]
+71% [151 python-os-win 2,597 B/145 kB 2%]                                                                     2,382 kB/s 5s72% [Waiting for headers]                                                                                     2,382 kB/s 5s                                                                                                                           Get:152 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-oslo.privsep all 1.27.0-0ubuntu3~cloud0 [19.8 kB]
+72% [152 python-oslo.privsep 13.8 kB/19.8 kB 69%]                                                             2,382 kB/s 5s72% [Waiting for headers]                                                                                     2,382 kB/s 5s                                                                                                                           Get:153 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-os-brick all 2.3.0-0ubuntu1~cloud0 [114 kB]
+72% [153 python-os-brick 15.7 kB/114 kB 14%]                                                                  2,382 kB/s 5s72% [Waiting for headers]                                                                                     2,382 kB/s 5s                                                                                                                           Get:154 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-os-traits all 0.5.0-0ubuntu1~cloud0 [8,350 B]
+72% [154 python-os-traits 8,350 B/8,350 B 100%]                                                               2,382 kB/s 5s72% [Waiting for headers]                                                                                     2,382 kB/s 5s                                                                                                                           Get:155 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-oslo.versionedobjects all 1.31.2-0ubuntu3~cloud0 [56.1 kB]
+72% [155 python-oslo.versionedobjects 5,527 B/56.1 kB 10%]                                                    2,382 kB/s 5s72% [Waiting for headers]                                                                                     2,382 kB/s 5s                                                                                                                           Get:156 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-pyroute2 all 0.4.21-0.1ubuntu2~cloud0 [155 kB]
+72% [156 python-pyroute2 12.1 kB/155 kB 8%]                                                                   2,382 kB/s 5s73% [Waiting for headers]                                                                                     2,382 kB/s 5s                                                                                                                           Get:157 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-os-vif all 1.9.0-0ubuntu1~cloud0 [38.3 kB]
+73% [157 python-os-vif 38.3 kB/38.3 kB 100%]                                                                  2,382 kB/s 5s73% [Working]                                                                                                 2,382 kB/s 5s                                                                                                                           Get:158 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-os-xenapi all 0.3.1-0ubuntu1~cloud0 [61.3 kB]
+73% [158 python-os-xenapi 14.6 kB/61.3 kB 24%]                                                                2,382 kB/s 5s73% [Working]                                                                                                 2,382 kB/s 5s                                                                                                                           Get:159 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-oslo.db all 4.33.0-0ubuntu1~cloud0 [110 kB]
+73% [159 python-oslo.db 18.5 kB/110 kB 17%]                                                                   2,382 kB/s 5s74% [Waiting for headers]                                                                                     2,382 kB/s 5s                                                                                                                           Get:160 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-oslo.reports all 1.26.0-0ubuntu1~cloud0 [25.4 kB]
+74% [160 python-oslo.reports 25.4 kB/25.4 kB 100%]                                                            2,382 kB/s 5s74% [Waiting for headers]                                                                                     2,382 kB/s 5s                                                                                                                           Get:161 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-oslo.rootwrap all 5.13.0-0ubuntu1~cloud0 [22.8 kB]
+74% [161 python-oslo.rootwrap 13.3 kB/22.8 kB 58%]                                                            2,382 kB/s 5s74% [Working]                                                                                                 2,382 kB/s 5s                                                                                                                           Get:162 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-ceilometerclient all 2.9.0-0ubuntu1~cloud0 [64.6 kB]
+74% [162 python-ceilometerclient 55.8 kB/64.6 kB 86%]                                                         2,382 kB/s 5s74% [Working]                                                                                                 2,382 kB/s 5s                                                                                                                           Get:163 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-osprofiler all 1.15.2-0ubuntu1~cloud0 [46.0 kB]
+74% [163 python-osprofiler 46.0 kB/46.0 kB 100%]                                                              2,382 kB/s 4s74% [Waiting for headers]                                                                                     2,382 kB/s 4s                                                                                                                           Get:164 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-paramiko all 2.0.0-1ubuntu1~cloud0 [110 kB]
+74% [164 python-paramiko 6,973 B/110 kB 6%]                                                                   2,382 kB/s 4s75% [Waiting for headers]                                                                                     2,382 kB/s 4s                                                                                                                           Get:165 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-setuptools all 39.0.1-2~cloud0 [330 kB]
+75% [165 python-setuptools 30.8 kB/330 kB 9%]                                                                 2,382 kB/s 4s75% [165 python-setuptools 328 kB/330 kB 100%]                                                                2,382 kB/s 4s75% [165 python-setuptools 328 kB/330 kB 100%]                                                                2,382 kB/s 4s75% [Waiting for headers]                                                                                     2,261 kB/s 5s                                                                                                                           Get:166 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-psycopg2 amd64 2.7.4-1~cloud0 [156 kB]
+75% [166 python-psycopg2 28.4 kB/156 kB 18%]                                                                  2,261 kB/s 5s76% [Waiting for headers]                                                                                     2,261 kB/s 4s                                                                                                                           Get:167 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-pymysql all 0.8.0-1~cloud0 [60.4 kB]
+76% [167 python-pymysql 60.4 kB/60.4 kB 100%]                                                                 2,261 kB/s 4s76% [Working]                                                                                                 2,261 kB/s 4s                                                                                                                           Get:168 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-taskflow all 3.1.0-0ubuntu2~cloud0 [249 kB]
+76% [168 python-taskflow 7,844 B/249 kB 3%]                                                                   2,261 kB/s 4s77% [Waiting for headers]                                                                                     2,261 kB/s 4s                                                                                                                           Get:169 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-pypowervm all 1.1.10-0ubuntu1~cloud0 [527 kB]
+77% [169 python-pypowervm 20.4 kB/527 kB 4%]                                                                  2,261 kB/s 4s78% [Waiting for headers]                                                                                     2,261 kB/s 4s                                                                                                                           Get:170 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-pysaml2 all 4.0.2-0ubuntu3~cloud0 [200 kB]
+78% [170 python-pysaml2 17.0 kB/200 kB 8%]                                                                    2,261 kB/s 4s78% [Waiting for headers]                                                                                     2,261 kB/s 4s                                                                                                                           Get:171 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-scrypt amd64 0.8.0-0ubuntu3~cloud0 [23.9 kB]
+78% [171 python-scrypt 23.9 kB/23.9 kB 100%]                                                                  2,261 kB/s 4s78% [Working]                                                                                                 2,261 kB/s 4s                                                                                                                           Get:172 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-sqlalchemy-ext amd64 1.1.11+ds1-1ubuntu1~cloud0 [13.5 kB]
+78% [172 python-sqlalchemy-ext 13.5 kB/13.5 kB 100%]                                                          2,261 kB/s 4s79% [Working]                                                                                                 2,261 kB/s 4s                                                                                                                           Get:173 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-voluptuous all 0.9.3-1~cloud0 [29.1 kB]
+79% [173 python-voluptuous 29.1 kB/29.1 kB 100%]                                                              2,261 kB/s 4s79% [Working]                                                                                                 2,261 kB/s 4s                                                                                                                           Get:174 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-tooz all 1.59.0-0ubuntu1~cloud0 [47.2 kB]
+79% [174 python-tooz 47.2 kB/47.2 kB 100%]                                                                    2,261 kB/s 4s79% [Working]                                                                                                 2,261 kB/s 4s                                                                                                                           Get:175 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 seabios all 1.10.2-1ubuntu1~cloud0 [129 kB]
+79% [175 seabios 2,629 B/129 kB 2%]                                                                           2,261 kB/s 4s79% [175 seabios 6,973 B/129 kB 5%]                                                                           2,261 kB/s 4s79% [175 seabios 25.8 kB/129 kB 20%]                                                                          2,261 kB/s 4s79% [175 seabios 60.5 kB/129 kB 47%]                                                                          2,261 kB/s 4s79% [Waiting for headers]                                                                                     2,261 kB/s 4s                                                                                                                           Get:176 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 qemu-system-x86 amd64 1:2.11+dfsg-1ubuntu7~cloud0 [5,161 kB]
+79% [176 qemu-system-x86 1,048 B/5,161 kB 0%]                                                                 2,261 kB/s 4s79% [176 qemu-system-x86 69.1 kB/5,161 kB 1%]                                                                 2,261 kB/s 4s80% [176 qemu-system-x86 199 kB/5,161 kB 4%]                                                                  2,261 kB/s 4s80% [176 qemu-system-x86 512 kB/5,161 kB 10%]                                                                 2,261 kB/s 4s81% [176 qemu-system-x86 1,112 kB/5,161 kB 22%]                                                               2,261 kB/s 3s83% [176 qemu-system-x86 1,766 kB/5,161 kB 34%]                                                               2,261 kB/s 3s84% [176 qemu-system-x86 2,464 kB/5,161 kB 48%]                                                               2,261 kB/s 3s85% [176 qemu-system-x86 3,149 kB/5,161 kB 61%]                                                               2,261 kB/s 3s87% [176 qemu-system-x86 3,919 kB/5,161 kB 76%]                                                                 864 kB/s 7s89% [176 qemu-system-x86 4,836 kB/5,161 kB 94%]                                                                 864 kB/s 5s90% [Waiting for headers]                                                                                       864 kB/s 5s                                                                                                                           Get:177 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 qemu-kvm amd64 1:2.11+dfsg-1ubuntu7~cloud0 [13.1 kB]
+90% [177 qemu-kvm 13.1 kB/13.1 kB 100%]                                                                         864 kB/s 5s90% [Waiting for headers]                                                                                       864 kB/s 5s                                                                                                                           Get:178 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 qemu-utils amd64 1:2.11+dfsg-1ubuntu7~cloud0 [864 kB]
+90% [178 qemu-utils 5,522 B/864 kB 1%]                                                                          864 kB/s 5s91% [Working]                                                                                                   864 kB/s 4s                                                                                                                           Get:179 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-nova all 2:17.0.4-0ubuntu1~cloud0 [2,860 kB]
+91% [179 python-nova 11.5 kB/2,860 kB 0%]                                                                       864 kB/s 4s93% [179 python-nova 928 kB/2,860 kB 32%]                                                                       864 kB/s 3s95% [179 python-nova 2,017 kB/2,860 kB 71%]                                                                     864 kB/s 2s97% [Waiting for headers]                                                                                       864 kB/s 1s                                                                                                                           Get:180 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 nova-common all 2:17.0.4-0ubuntu1~cloud0 [92.0 kB]
+97% [180 nova-common 7,803 B/92.0 kB 8%]                                                                        864 kB/s 1s97% [Waiting for headers]                                                                                       864 kB/s 1s                                                                                                                           Get:181 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 nova-compute-libvirt all 2:17.0.4-0ubuntu1~cloud0 [2,922 B]
+98% [Waiting for headers]                                                                                       864 kB/s 1s                                                                                                                           Get:182 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 nova-compute-kvm all 2:17.0.4-0ubuntu1~cloud0 [2,872 B]
+98% [Waiting for headers]                                                                                       864 kB/s 1s                                                                                                                           Get:183 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 nova-compute all 2:17.0.4-0ubuntu1~cloud0 [8,106 B]
+98% [Waiting for headers]                                                                                       864 kB/s 1s                                                                                                                           Get:184 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-passlib all 1.7.1-1~cloud0 [349 kB]
+98% [184 python-passlib 4,729 B/349 kB 1%]                                                                      864 kB/s 1s                                                                                                                           Get:185 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-keystone all 2:13.0.0-0ubuntu1~cloud0 [667 kB]
+99% [185 python-keystone 4,096 B/667 kB 1%]                                                                     864 kB/s 0s100% [Working]                                                                                                  864 kB/s 0s                                                                                                                           Fetched 40.9 MB in 22s (1,844 kB/s)
+Extracting templates from packages: 16%Extracting templates from packages: 32%Extracting templates from packages: 48%Extracting templates from packages: 64%Extracting templates from packages: 81%Extracting templates from packages: 97%Extracting templates from packages: 100%
+Preconfiguring packages ...
+Selecting previously unselected package libasyncns0:amd64.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 132193 files and directories currently installed.)
+Preparing to unpack .../libasyncns0_0.8-5build1_amd64.deb ...
+Unpacking libasyncns0:amd64 (0.8-5build1) ...
+Selecting previously unselected package libiscsi2:amd64.
+Preparing to unpack .../libiscsi2_1.12.0-2_amd64.deb ...
+Unpacking libiscsi2:amd64 (1.12.0-2) ...
+Selecting previously unselected package libogg0:amd64.
+Preparing to unpack .../libogg0_1.3.2-1_amd64.deb ...
+Unpacking libogg0:amd64 (1.3.2-1) ...
+Selecting previously unselected package libavahi-common-data:amd64.
+Preparing to unpack .../libavahi-common-data_0.6.32~rc+dfsg-1ubuntu2.2_amd64.deb ...
+Unpacking libavahi-common-data:amd64 (0.6.32~rc+dfsg-1ubuntu2.2) ...
+Selecting previously unselected package libavahi-common3:amd64.
+Preparing to unpack .../libavahi-common3_0.6.32~rc+dfsg-1ubuntu2.2_amd64.deb ...
+Unpacking libavahi-common3:amd64 (0.6.32~rc+dfsg-1ubuntu2.2) ...
+Selecting previously unselected package libavahi-client3:amd64.
+Preparing to unpack .../libavahi-client3_0.6.32~rc+dfsg-1ubuntu2.2_amd64.deb ...
+Unpacking libavahi-client3:amd64 (0.6.32~rc+dfsg-1ubuntu2.2) ...
+Selecting previously unselected package libyajl2:amd64.
+Preparing to unpack .../libyajl2_2.1.0-2_amd64.deb ...
+Unpacking libyajl2:amd64 (2.1.0-2) ...
+Selecting previously unselected package libvirt0:amd64.
+Preparing to unpack .../libvirt0_4.0.0-1ubuntu7~cloud0_amd64.deb ...
+Unpacking libvirt0:amd64 (4.0.0-1ubuntu7~cloud0) ...
+Selecting previously unselected package libvirt-clients.
+Preparing to unpack .../libvirt-clients_4.0.0-1ubuntu7~cloud0_amd64.deb ...
+Unpacking libvirt-clients (4.0.0-1ubuntu7~cloud0) ...
+Selecting previously unselected package augeas-lenses.
+Preparing to unpack .../augeas-lenses_1.4.0-0ubuntu1.1_all.deb ...
+Unpacking augeas-lenses (1.4.0-0ubuntu1.1) ...
+Selecting previously unselected package libaugeas0.
+Preparing to unpack .../libaugeas0_1.4.0-0ubuntu1.1_amd64.deb ...
+Unpacking libaugeas0 (1.4.0-0ubuntu1.1) ...
+Selecting previously unselected package libnl-route-3-200:amd64.
+Preparing to unpack .../libnl-route-3-200_3.2.27-1ubuntu0.16.04.1_amd64.deb ...
+Unpacking libnl-route-3-200:amd64 (3.2.27-1ubuntu0.16.04.1) ...
+Selecting previously unselected package libnetcf1:amd64.
+Preparing to unpack .../libnetcf1_1%3a0.2.8-1ubuntu1_amd64.deb ...
+Unpacking libnetcf1:amd64 (1:0.2.8-1ubuntu1) ...
+Selecting previously unselected package libpciaccess0:amd64.
+Preparing to unpack .../libpciaccess0_0.13.4-1_amd64.deb ...
+Unpacking libpciaccess0:amd64 (0.13.4-1) ...
+Selecting previously unselected package libxenstore3.0:amd64.
+Preparing to unpack .../libxenstore3.0_4.6.5-0ubuntu1.4_amd64.deb ...
+Unpacking libxenstore3.0:amd64 (4.6.5-0ubuntu1.4) ...
+Selecting previously unselected package libxen-4.6:amd64.
+Preparing to unpack .../libxen-4.6_4.6.5-0ubuntu1.4_amd64.deb ...
+Unpacking libxen-4.6:amd64 (4.6.5-0ubuntu1.4) ...
+Selecting previously unselected package libvirt-daemon.
+Preparing to unpack .../libvirt-daemon_4.0.0-1ubuntu7~cloud0_amd64.deb ...
+Unpacking libvirt-daemon (4.0.0-1ubuntu7~cloud0) ...
+Selecting previously unselected package libvirt-daemon-system.
+Preparing to unpack .../libvirt-daemon-system_4.0.0-1ubuntu7~cloud0_amd64.deb ...
+Unpacking libvirt-daemon-system (4.0.0-1ubuntu7~cloud0) ...
+Selecting previously unselected package python-posix-ipc.
+Preparing to unpack .../python-posix-ipc_0.9.8-2build2_amd64.deb ...
+Unpacking python-posix-ipc (0.9.8-2build2) ...
+Selecting previously unselected package python-kazoo.
+Preparing to unpack .../python-kazoo_2.2.1-1ubuntu1_all.deb ...
+Unpacking python-kazoo (2.2.1-1ubuntu1) ...
+Selecting previously unselected package python-zope.interface.
+Preparing to unpack .../python-zope.interface_4.1.3-1build1_amd64.deb ...
+Unpacking python-zope.interface (4.1.3-1build1) ...
+Selecting previously unselected package python-extras.
+Preparing to unpack .../python-extras_1.0.0-3~cloud0_all.deb ...
+Unpacking python-extras (1.0.0-3~cloud0) ...
+Selecting previously unselected package python-fixtures.
+Preparing to unpack .../python-fixtures_3.0.0-2~cloud0_all.deb ...
+Unpacking python-fixtures (3.0.0-2~cloud0) ...
+Selecting previously unselected package python-linecache2.
+Preparing to unpack .../python-linecache2_1.0.0-2_all.deb ...
+Unpacking python-linecache2 (1.0.0-2) ...
+Selecting previously unselected package python-mimeparse.
+Preparing to unpack .../python-mimeparse_0.1.4-1build1_all.deb ...
+Unpacking python-mimeparse (0.1.4-1build1) ...
+Selecting previously unselected package python-traceback2.
+Preparing to unpack .../python-traceback2_1.4.0-3_all.deb ...
+Unpacking python-traceback2 (1.4.0-3) ...
+Selecting previously unselected package python-unittest2.
+Preparing to unpack .../python-unittest2_1.1.0-6.1_all.deb ...
+Unpacking python-unittest2 (1.1.0-6.1) ...
+Selecting previously unselected package python-testtools.
+Preparing to unpack .../python-testtools_2.3.0-3ubuntu2~cloud1_all.deb ...
+Unpacking python-testtools (2.3.0-3ubuntu2~cloud1) ...
+Selecting previously unselected package python-zake.
+Preparing to unpack .../python-zake_0.1.6-1_all.deb ...
+Unpacking python-zake (0.1.6-1) ...
+Selecting previously unselected package libibverbs1.
+Preparing to unpack .../libibverbs1_1.1.8-1.1ubuntu2_amd64.deb ...
+Unpacking libibverbs1 (1.1.8-1.1ubuntu2) ...
+Selecting previously unselected package libnspr4:amd64.
+Preparing to unpack .../libnspr4_2%3a4.13.1-0ubuntu0.16.04.1_amd64.deb ...
+Unpacking libnspr4:amd64 (2:4.13.1-0ubuntu0.16.04.1) ...
+Selecting previously unselected package libnss3-nssdb.
+Preparing to unpack .../libnss3-nssdb_2%3a3.28.4-0ubuntu0.16.04.3_all.deb ...
+Unpacking libnss3-nssdb (2:3.28.4-0ubuntu0.16.04.3) ...
+Selecting previously unselected package libnss3:amd64.
+Preparing to unpack .../libnss3_2%3a3.28.4-0ubuntu0.16.04.3_amd64.deb ...
+Unpacking libnss3:amd64 (2:3.28.4-0ubuntu0.16.04.3) ...
+Selecting previously unselected package librados2.
+Preparing to unpack .../librados2_12.2.4-0ubuntu1~cloud1_amd64.deb ...
+Unpacking librados2 (12.2.4-0ubuntu1~cloud1) ...
+Selecting previously unselected package librbd1.
+Preparing to unpack .../librbd1_12.2.4-0ubuntu1~cloud1_amd64.deb ...
+Unpacking librbd1 (12.2.4-0ubuntu1~cloud1) ...
+Selecting previously unselected package qemu-block-extra:amd64.
+Preparing to unpack .../qemu-block-extra_1%3a2.11+dfsg-1ubuntu7~cloud0_amd64.deb ...
+Unpacking qemu-block-extra:amd64 (1:2.11+dfsg-1ubuntu7~cloud0) ...
+Selecting previously unselected package qemu-system-common.
+Preparing to unpack .../qemu-system-common_1%3a2.11+dfsg-1ubuntu7~cloud0_amd64.deb ...
+Unpacking qemu-system-common (1:2.11+dfsg-1ubuntu7~cloud0) ...
+Selecting previously unselected package python3-dateutil.
+Preparing to unpack .../python3-dateutil_2.4.2-1_all.deb ...
+Unpacking python3-dateutil (2.4.2-1) ...
+Selecting previously unselected package python3-markupsafe.
+Preparing to unpack .../python3-markupsafe_0.23-2build2_amd64.deb ...
+Unpacking python3-markupsafe (0.23-2build2) ...
+Selecting previously unselected package python3-mako.
+Preparing to unpack .../python3-mako_1.0.3+ds1-1ubuntu1_all.deb ...
+Unpacking python3-mako (1.0.3+ds1-1ubuntu1) ...
+Selecting previously unselected package python3-sqlalchemy.
+Preparing to unpack .../python3-sqlalchemy_1.1.11+ds1-1ubuntu1~cloud0_all.deb ...
+Unpacking python3-sqlalchemy (1.1.11+ds1-1ubuntu1~cloud0) ...
+Selecting previously unselected package python3-alembic.
+Preparing to unpack .../python3-alembic_0.9.3-2ubuntu1~cloud0_all.deb ...
+Unpacking python3-alembic (0.9.3-2ubuntu1~cloud0) ...
+Selecting previously unselected package alembic.
+Preparing to unpack .../alembic_0.9.3-2ubuntu1~cloud0_all.deb ...
+Unpacking alembic (0.9.3-2ubuntu1~cloud0) ...
+Selecting previously unselected package bridge-utils.
+Preparing to unpack .../bridge-utils_1.5-9ubuntu1_amd64.deb ...
+Unpacking bridge-utils (1.5-9ubuntu1) ...
+Selecting previously unselected package msr-tools.
+Preparing to unpack .../msr-tools_1.3-2_amd64.deb ...
+Unpacking msr-tools (1.3-2) ...
+Selecting previously unselected package cpu-checker.
+Preparing to unpack .../cpu-checker_0.7-0ubuntu7_amd64.deb ...
+Unpacking cpu-checker (0.7-0ubuntu7) ...
+Selecting previously unselected package ebtables.
+Preparing to unpack .../ebtables_2.0.10.4-3.4ubuntu2.16.04.1_amd64.deb ...
+Unpacking ebtables (2.0.10.4-3.4ubuntu2.16.04.1) ...
+Selecting previously unselected package formencode-i18n.
+Preparing to unpack .../formencode-i18n_1.3.0-0ubuntu5_all.deb ...
+Unpacking formencode-i18n (1.3.0-0ubuntu5) ...
+Selecting previously unselected package genisoimage.
+Preparing to unpack .../genisoimage_9%3a1.1.11-3ubuntu1_amd64.deb ...
+Unpacking genisoimage (9:1.1.11-3ubuntu1) ...
+Selecting previously unselected package ipxe-qemu.
+Preparing to unpack .../ipxe-qemu_1.0.0+git-20180124.fbe8c52d-0ubuntu2~cloud0_all.deb ...
+Unpacking ipxe-qemu (1.0.0+git-20180124.fbe8c52d-0ubuntu2~cloud0) ...
+Selecting previously unselected package ipxe-qemu-256k-compat-efi-roms.
+Preparing to unpack .../ipxe-qemu-256k-compat-efi-roms_1.0.0+git-20150424.a25a16d-0ubuntu2~cloud0_all.deb ...
+Unpacking ipxe-qemu-256k-compat-efi-roms (1.0.0+git-20150424.a25a16d-0ubuntu2~cloud0) ...
+Selecting previously unselected package libaio1:amd64.
+Preparing to unpack .../libaio1_0.3.110-2_amd64.deb ...
+Unpacking libaio1:amd64 (0.3.110-2) ...
+Selecting previously unselected package libasound2-data.
+Preparing to unpack .../libasound2-data_1.1.0-0ubuntu1_all.deb ...
+Unpacking libasound2-data (1.1.0-0ubuntu1) ...
+Selecting previously unselected package libasound2:amd64.
+Preparing to unpack .../libasound2_1.1.0-0ubuntu1_amd64.deb ...
+Unpacking libasound2:amd64 (1.1.0-0ubuntu1) ...
+Selecting previously unselected package libblas-common.
+Preparing to unpack .../libblas-common_3.6.0-2ubuntu2_amd64.deb ...
+Unpacking libblas-common (3.6.0-2ubuntu2) ...
+Selecting previously unselected package libblas3.
+Preparing to unpack .../libblas3_3.6.0-2ubuntu2_amd64.deb ...
+Unpacking libblas3 (3.6.0-2ubuntu2) ...
+Selecting previously unselected package libbluetooth3:amd64.
+Preparing to unpack .../libbluetooth3_5.37-0ubuntu5.1_amd64.deb ...
+Unpacking libbluetooth3:amd64 (5.37-0ubuntu5.1) ...
+Selecting previously unselected package libcaca0:amd64.
+Preparing to unpack .../libcaca0_0.99.beta19-2build2~gcc5.2_amd64.deb ...
+Unpacking libcaca0:amd64 (0.99.beta19-2build2~gcc5.2) ...
+Selecting previously unselected package libcacard0:amd64.
+Preparing to unpack .../libcacard0_1%3a2.5.0-2_amd64.deb ...
+Unpacking libcacard0:amd64 (1:2.5.0-2) ...
+Selecting previously unselected package libfdt1:amd64.
+Preparing to unpack .../libfdt1_1.4.5-3~cloud0_amd64.deb ...
+Unpacking libfdt1:amd64 (1.4.5-3~cloud0) ...
+Selecting previously unselected package libflac8:amd64.
+Preparing to unpack .../libflac8_1.3.1-4_amd64.deb ...
+Unpacking libflac8:amd64 (1.3.1-4) ...
+Selecting previously unselected package libquadmath0:amd64.
+Preparing to unpack .../libquadmath0_5.4.0-6ubuntu1~16.04.9_amd64.deb ...
+Unpacking libquadmath0:amd64 (5.4.0-6ubuntu1~16.04.9) ...
+Selecting previously unselected package libgfortran3:amd64.
+Preparing to unpack .../libgfortran3_5.4.0-6ubuntu1~16.04.9_amd64.deb ...
+Unpacking libgfortran3:amd64 (5.4.0-6ubuntu1~16.04.9) ...
+Selecting previously unselected package liblapack3.
+Preparing to unpack .../liblapack3_3.6.0-2ubuntu2_amd64.deb ...
+Unpacking liblapack3 (3.6.0-2ubuntu2) ...
+Selecting previously unselected package libopus0:amd64.
+Preparing to unpack .../libopus0_1.1.2-1ubuntu1_amd64.deb ...
+Unpacking libopus0:amd64 (1.1.2-1ubuntu1) ...
+Selecting previously unselected package libpixman-1-0:amd64.
+Preparing to unpack .../libpixman-1-0_0.33.6-1_amd64.deb ...
+Unpacking libpixman-1-0:amd64 (0.33.6-1) ...
+Selecting previously unselected package libpq5:amd64.
+Preparing to unpack .../libpq5_9.5.13-0ubuntu0.16.04_amd64.deb ...
+Unpacking libpq5:amd64 (9.5.13-0ubuntu0.16.04) ...
+Selecting previously unselected package libvorbis0a:amd64.
+Preparing to unpack .../libvorbis0a_1.3.5-3ubuntu0.2_amd64.deb ...
+Unpacking libvorbis0a:amd64 (1.3.5-3ubuntu0.2) ...
+Selecting previously unselected package libvorbisenc2:amd64.
+Preparing to unpack .../libvorbisenc2_1.3.5-3ubuntu0.2_amd64.deb ...
+Unpacking libvorbisenc2:amd64 (1.3.5-3ubuntu0.2) ...
+Selecting previously unselected package libsndfile1:amd64.
+Preparing to unpack .../libsndfile1_1.0.25-10ubuntu0.16.04.1_amd64.deb ...
+Unpacking libsndfile1:amd64 (1.0.25-10ubuntu0.16.04.1) ...
+Selecting previously unselected package libpulse0:amd64.
+Preparing to unpack .../libpulse0_1%3a8.0-0ubuntu3.10_amd64.deb ...
+Unpacking libpulse0:amd64 (1:8.0-0ubuntu3.10) ...
+Selecting previously unselected package libsdl1.2debian:amd64.
+Preparing to unpack .../libsdl1.2debian_1.2.15+dfsg1-3_amd64.deb ...
+Unpacking libsdl1.2debian:amd64 (1.2.15+dfsg1-3) ...
+Selecting previously unselected package libspice-server1:amd64.
+Preparing to unpack .../libspice-server1_0.12.6-4ubuntu0.3_amd64.deb ...
+Unpacking libspice-server1:amd64 (0.12.6-4ubuntu0.3) ...
+Selecting previously unselected package libusbredirparser1:amd64.
+Preparing to unpack .../libusbredirparser1_0.7.1-1_amd64.deb ...
+Unpacking libusbredirparser1:amd64 (0.7.1-1) ...
+Selecting previously unselected package libvirt-daemon-driver-storage-rbd.
+Preparing to unpack .../libvirt-daemon-driver-storage-rbd_4.0.0-1ubuntu7~cloud0_amd64.deb ...
+Unpacking libvirt-daemon-driver-storage-rbd (4.0.0-1ubuntu7~cloud0) ...
+Selecting previously unselected package libxml2-utils.
+Preparing to unpack .../libxml2-utils_2.9.3+dfsg1-1ubuntu0.5_amd64.deb ...
+Unpacking libxml2-utils (2.9.3+dfsg1-1ubuntu0.5) ...
+Selecting previously unselected package os-brick-common.
+Preparing to unpack .../os-brick-common_2.3.0-0ubuntu1~cloud0_all.deb ...
+Unpacking os-brick-common (2.3.0-0ubuntu1~cloud0) ...
+Selecting previously unselected package pycadf-common.
+Preparing to unpack .../pycadf-common_2.7.0-0ubuntu1~cloud0_all.deb ...
+Unpacking pycadf-common (2.7.0-0ubuntu1~cloud0) ...
+Selecting previously unselected package python-dateutil.
+Preparing to unpack .../python-dateutil_2.4.2-1_all.deb ...
+Unpacking python-dateutil (2.4.2-1) ...
+Selecting previously unselected package python-markupsafe.
+Preparing to unpack .../python-markupsafe_0.23-2build2_amd64.deb ...
+Unpacking python-markupsafe (0.23-2build2) ...
+Selecting previously unselected package python-mako.
+Preparing to unpack .../python-mako_1.0.3+ds1-1ubuntu1_all.deb ...
+Unpacking python-mako (1.0.3+ds1-1ubuntu1) ...
+Selecting previously unselected package python-sqlalchemy.
+Preparing to unpack .../python-sqlalchemy_1.1.11+ds1-1ubuntu1~cloud0_all.deb ...
+Unpacking python-sqlalchemy (1.1.11+ds1-1ubuntu1~cloud0) ...
+Selecting previously unselected package python-alembic.
+Preparing to unpack .../python-alembic_0.9.3-2ubuntu1~cloud0_all.deb ...
+Unpacking python-alembic (0.9.3-2ubuntu1~cloud0) ...
+Selecting previously unselected package python-vine.
+Preparing to unpack .../python-vine_1.1.4+dfsg-2~cloud0_all.deb ...
+Unpacking python-vine (1.1.4+dfsg-2~cloud0) ...
+Selecting previously unselected package python-amqp.
+Preparing to unpack .../python-amqp_2.2.2-1~cloud0_all.deb ...
+Unpacking python-amqp (2.2.2-1~cloud0) ...
+Selecting previously unselected package python-anyjson.
+Preparing to unpack .../python-anyjson_0.3.3-1build1_all.deb ...
+Unpacking python-anyjson (0.3.3-1build1) ...
+Selecting previously unselected package python-automaton.
+Preparing to unpack .../python-automaton_1.14.0-0ubuntu1~cloud0_all.deb ...
+Unpacking python-automaton (1.14.0-0ubuntu1~cloud0) ...
+Selecting previously unselected package python-barbicanclient.
+Preparing to unpack .../python-barbicanclient_4.6.0-0ubuntu1~cloud0_all.deb ...
+Unpacking python-barbicanclient (4.6.0-0ubuntu1~cloud0) ...
+Selecting previously unselected package python-bcrypt.
+Preparing to unpack .../python-bcrypt_3.1.4-2~cloud0_amd64.deb ...
+Unpacking python-bcrypt (3.1.4-2~cloud0) ...
+Selecting previously unselected package python-cachetools.
+Preparing to unpack .../python-cachetools_2.0.0-2~cloud0_all.deb ...
+Unpacking python-cachetools (2.0.0-2~cloud0) ...
+Selecting previously unselected package python-oslo.context.
+Preparing to unpack .../python-oslo.context_1%3a2.20.0-0ubuntu1~cloud0_all.deb ...
+Unpacking python-oslo.context (1:2.20.0-0ubuntu1~cloud0) ...
+Selecting previously unselected package python-pyinotify.
+Preparing to unpack .../python-pyinotify_0.9.6-0fakesync1_all.deb ...
+Unpacking python-pyinotify (0.9.6-0fakesync1) ...
+Selecting previously unselected package python-oslo.log.
+Preparing to unpack .../python-oslo.log_3.36.0-0ubuntu1~cloud0_all.deb ...
+Unpacking python-oslo.log (3.36.0-0ubuntu1~cloud0) ...
+Selecting previously unselected package python-oslo.policy.
+Preparing to unpack .../python-oslo.policy_1.33.1-0ubuntu1~cloud0_all.deb ...
+Unpacking python-oslo.policy (1.33.1-0ubuntu1~cloud0) ...
+Selecting previously unselected package python-castellan.
+Preparing to unpack .../python-castellan_0.17.0-0ubuntu1~cloud0_all.deb ...
+Unpacking python-castellan (0.17.0-0ubuntu1~cloud0) ...
+Selecting previously unselected package python-ply.
+Preparing to unpack .../python-ply_3.7-1_all.deb ...
+Unpacking python-ply (3.7-1) ...
+Selecting previously unselected package python-pycparser.
+Preparing to unpack .../python-pycparser_2.14+dfsg-2build1_all.deb ...
+Unpacking python-pycparser (2.14+dfsg-2build1) ...
+Selecting previously unselected package python-cffi.
+Preparing to unpack .../python-cffi_1.11.5-1~cloud0_all.deb ...
+Unpacking python-cffi (1.11.5-1~cloud0) ...
+Selecting previously unselected package python-contextlib2.
+Preparing to unpack .../python-contextlib2_0.5.1-1_all.deb ...
+Unpacking python-contextlib2 (0.5.1-1) ...
+Selecting previously unselected package python-cursive.
+Preparing to unpack .../python-cursive_0.2.1-0ubuntu1~cloud0_all.deb ...
+Unpacking python-cursive (0.2.1-0ubuntu1~cloud0) ...
+Selecting previously unselected package python-defusedxml.
+Preparing to unpack .../python-defusedxml_0.5.0-1ubuntu1~cloud0_all.deb ...
+Unpacking python-defusedxml (0.5.0-1ubuntu1~cloud0) ...
+Selecting previously unselected package python-dnspython.
+Preparing to unpack .../python-dnspython_1.15.0-1~cloud0_all.deb ...
+Unpacking python-dnspython (1.15.0-1~cloud0) ...
+Selecting previously unselected package python-egenix-mxtools.
+Preparing to unpack .../python-egenix-mxtools_3.2.9-1_amd64.deb ...
+Unpacking python-egenix-mxtools (3.2.9-1) ...
+Selecting previously unselected package python-egenix-mxdatetime.
+Preparing to unpack .../python-egenix-mxdatetime_3.2.9-1_amd64.deb ...
+Unpacking python-egenix-mxdatetime (3.2.9-1) ...
+Selecting previously unselected package python-greenlet.
+Preparing to unpack .../python-greenlet_0.4.12-2~cloud0_amd64.deb ...
+Unpacking python-greenlet (0.4.12-2~cloud0) ...
+Selecting previously unselected package python-eventlet.
+Preparing to unpack .../python-eventlet_0.18.4-1ubuntu1_all.deb ...
+Unpacking python-eventlet (0.18.4-1ubuntu1) ...
+Selecting previously unselected package python-fasteners.
+Preparing to unpack .../python-fasteners_0.12.0-2ubuntu1_all.deb ...
+Unpacking python-fasteners (0.12.0-2ubuntu1) ...
+Selecting previously unselected package python-formencode.
+Preparing to unpack .../python-formencode_1.3.0-0ubuntu5_all.deb ...
+Unpacking python-formencode (1.3.0-0ubuntu5) ...
+Selecting previously unselected package python-futurist.
+Preparing to unpack .../python-futurist_1.6.0-0ubuntu1~cloud0_all.deb ...
+Unpacking python-futurist (1.6.0-0ubuntu1~cloud0) ...
+Selecting previously unselected package python-jinja2.
+Preparing to unpack .../python-jinja2_2.8-1_all.deb ...
+Unpacking python-jinja2 (2.8-1) ...
+Selecting previously unselected package python-memcache.
+Preparing to unpack .../python-memcache_1.57-1_all.deb ...
+Unpacking python-memcache (1.57-1) ...
+Selecting previously unselected package python-oslo.cache.
+Preparing to unpack .../python-oslo.cache_1.28.0-0ubuntu1~cloud0_all.deb ...
+Unpacking python-oslo.cache (1.28.0-0ubuntu1~cloud0) ...
+Selecting previously unselected package python-kombu.
+Preparing to unpack .../python-kombu_4.1.0-1~cloud0_all.deb ...
+Unpacking python-kombu (4.1.0-1~cloud0) ...
+Selecting previously unselected package python-statsd.
+Preparing to unpack .../python-statsd_3.2.1-2~cloud0_all.deb ...
+Unpacking python-statsd (3.2.1-2~cloud0) ...
+Selecting previously unselected package python-webob.
+Preparing to unpack .../python-webob_1%3a1.7.3-2fakesync1~cloud0_all.deb ...
+Unpacking python-webob (1:1.7.3-2fakesync1~cloud0) ...
+Selecting previously unselected package python-oslo.middleware.
+Preparing to unpack .../python-oslo.middleware_3.34.0-0ubuntu1~cloud0_all.deb ...
+Unpacking python-oslo.middleware (3.34.0-0ubuntu1~cloud0) ...
+Selecting previously unselected package python-oslo.concurrency.
+Preparing to unpack .../python-oslo.concurrency_3.25.0-0ubuntu1~cloud0_all.deb ...
+Unpacking python-oslo.concurrency (3.25.0-0ubuntu1~cloud0) ...
+Selecting previously unselected package python-tempita.
+Preparing to unpack .../python-tempita_0.5.2-1build1_all.deb ...
+Unpacking python-tempita (0.5.2-1build1) ...
+Selecting previously unselected package python-paste.
+Preparing to unpack .../python-paste_2.0.3+dfsg-4ubuntu1~cloud0_all.deb ...
+Unpacking python-paste (2.0.3+dfsg-4ubuntu1~cloud0) ...
+Selecting previously unselected package python-pastedeploy-tpl.
+Preparing to unpack .../python-pastedeploy-tpl_1.5.2-1_all.deb ...
+Unpacking python-pastedeploy-tpl (1.5.2-1) ...
+Selecting previously unselected package python-pastedeploy.
+Preparing to unpack .../python-pastedeploy_1.5.2-1_all.deb ...
+Unpacking python-pastedeploy (1.5.2-1) ...
+Selecting previously unselected package python-repoze.lru.
+Preparing to unpack .../python-repoze.lru_0.6-6_all.deb ...
+Unpacking python-repoze.lru (0.6-6) ...
+Selecting previously unselected package python-routes.
+Preparing to unpack .../python-routes_2.4.1-1~cloud0_all.deb ...
+Unpacking python-routes (2.4.1-1~cloud0) ...
+Selecting previously unselected package python-oslo.service.
+Preparing to unpack .../python-oslo.service_1.29.0-0ubuntu1~cloud0_all.deb ...
+Unpacking python-oslo.service (1.29.0-0ubuntu1~cloud0) ...
+Selecting previously unselected package python-pika.
+Preparing to unpack .../python-pika_0.10.0-1_all.deb ...
+Unpacking python-pika (0.10.0-1) ...
+Selecting previously unselected package python-pika-pool.
+Preparing to unpack .../python-pika-pool_0.1.3-1ubuntu1_all.deb ...
+Unpacking python-pika-pool (0.1.3-1ubuntu1) ...
+Selecting previously unselected package python-retrying.
+Preparing to unpack .../python-retrying_1.3.3-1_all.deb ...
+Unpacking python-retrying (1.3.3-1) ...
+Selecting previously unselected package python-tenacity.
+Preparing to unpack .../python-tenacity_4.8.0-0ubuntu1~cloud0_all.deb ...
+Unpacking python-tenacity (4.8.0-0ubuntu1~cloud0) ...
+Selecting previously unselected package python-oslo.messaging.
+Preparing to unpack .../python-oslo.messaging_5.35.0-0ubuntu1~cloud0_all.deb ...
+Unpacking python-oslo.messaging (5.35.0-0ubuntu1~cloud0) ...
+Selecting previously unselected package python-pycadf.
+Preparing to unpack .../python-pycadf_2.7.0-0ubuntu1~cloud0_all.deb ...
+Unpacking python-pycadf (2.7.0-0ubuntu1~cloud0) ...
+Selecting previously unselected package python-keystonemiddleware.
+Preparing to unpack .../python-keystonemiddleware_4.21.0-0ubuntu1~cloud0_all.deb ...
+Unpacking python-keystonemiddleware (4.21.0-0ubuntu1~cloud0) ...
+Selecting previously unselected package python-libvirt.
+Preparing to unpack .../python-libvirt_4.0.0-1~cloud0_amd64.deb ...
+Unpacking python-libvirt (4.0.0-1~cloud0) ...
+Selecting previously unselected package python-microversion-parse.
+Preparing to unpack .../python-microversion-parse_0.1.4-2~cloud0_all.deb ...
+Unpacking python-microversion-parse (0.1.4-2~cloud0) ...
+Selecting previously unselected package python-sqlparse.
+Preparing to unpack .../python-sqlparse_0.2.4-0.1~cloud0_all.deb ...
+Unpacking python-sqlparse (0.2.4-0.1~cloud0) ...
+Selecting previously unselected package python-migrate.
+Preparing to unpack .../python-migrate_0.11.0-2~cloud0_all.deb ...
+Unpacking python-migrate (0.11.0-2~cloud0) ...
+Selecting previously unselected package python-networkx.
+Preparing to unpack .../python-networkx_1.11-1ubuntu1_all.deb ...
+Unpacking python-networkx (1.11-1ubuntu1) ...
+Selecting previously unselected package python-numpy.
+Preparing to unpack .../python-numpy_1%3a1.11.0-1ubuntu1_amd64.deb ...
+Unpacking python-numpy (1:1.11.0-1ubuntu1) ...
+Selecting previously unselected package python-openid.
+Preparing to unpack .../python-openid_2.2.5-6_all.deb ...
+Unpacking python-openid (2.2.5-6) ...
+Selecting previously unselected package python-os-win.
+Preparing to unpack .../python-os-win_3.0.0-0ubuntu1~cloud0_all.deb ...
+Unpacking python-os-win (3.0.0-0ubuntu1~cloud0) ...
+Selecting previously unselected package python-oslo.privsep.
+Preparing to unpack .../python-oslo.privsep_1.27.0-0ubuntu3~cloud0_all.deb ...
+Unpacking python-oslo.privsep (1.27.0-0ubuntu3~cloud0) ...
+Selecting previously unselected package python-os-brick.
+Preparing to unpack .../python-os-brick_2.3.0-0ubuntu1~cloud0_all.deb ...
+Unpacking python-os-brick (2.3.0-0ubuntu1~cloud0) ...
+Selecting previously unselected package python-os-traits.
+Preparing to unpack .../python-os-traits_0.5.0-0ubuntu1~cloud0_all.deb ...
+Unpacking python-os-traits (0.5.0-0ubuntu1~cloud0) ...
+Selecting previously unselected package python-oslo.versionedobjects.
+Preparing to unpack .../python-oslo.versionedobjects_1.31.2-0ubuntu3~cloud0_all.deb ...
+Unpacking python-oslo.versionedobjects (1.31.2-0ubuntu3~cloud0) ...
+Selecting previously unselected package python-pyroute2.
+Preparing to unpack .../python-pyroute2_0.4.21-0.1ubuntu2~cloud0_all.deb ...
+Unpacking python-pyroute2 (0.4.21-0.1ubuntu2~cloud0) ...
+Selecting previously unselected package python-os-vif.
+Preparing to unpack .../python-os-vif_1.9.0-0ubuntu1~cloud0_all.deb ...
+Unpacking python-os-vif (1.9.0-0ubuntu1~cloud0) ...
+Selecting previously unselected package python-os-xenapi.
+Preparing to unpack .../python-os-xenapi_0.3.1-0ubuntu1~cloud0_all.deb ...
+Unpacking python-os-xenapi (0.3.1-0ubuntu1~cloud0) ...
+Selecting previously unselected package python-oslo.db.
+Preparing to unpack .../python-oslo.db_4.33.0-0ubuntu1~cloud0_all.deb ...
+Unpacking python-oslo.db (4.33.0-0ubuntu1~cloud0) ...
+Selecting previously unselected package python-psutil.
+Preparing to unpack .../python-psutil_3.4.2-1_amd64.deb ...
+Unpacking python-psutil (3.4.2-1) ...
+Selecting previously unselected package python-oslo.reports.
+Preparing to unpack .../python-oslo.reports_1.26.0-0ubuntu1~cloud0_all.deb ...
+Unpacking python-oslo.reports (1.26.0-0ubuntu1~cloud0) ...
+Selecting previously unselected package python-oslo.rootwrap.
+Preparing to unpack .../python-oslo.rootwrap_5.13.0-0ubuntu1~cloud0_all.deb ...
+Unpacking python-oslo.rootwrap (5.13.0-0ubuntu1~cloud0) ...
+Selecting previously unselected package python-ceilometerclient.
+Preparing to unpack .../python-ceilometerclient_2.9.0-0ubuntu1~cloud0_all.deb ...
+Unpacking python-ceilometerclient (2.9.0-0ubuntu1~cloud0) ...
+Selecting previously unselected package python-osprofiler.
+Preparing to unpack .../python-osprofiler_1.15.2-0ubuntu1~cloud0_all.deb ...
+Unpacking python-osprofiler (1.15.2-0ubuntu1~cloud0) ...
+Selecting previously unselected package python-pyasn1.
+Preparing to unpack .../python-pyasn1_0.1.9-1_all.deb ...
+Unpacking python-pyasn1 (0.1.9-1) ...
+Selecting previously unselected package python-paramiko.
+Preparing to unpack .../python-paramiko_2.0.0-1ubuntu1~cloud0_all.deb ...
+Unpacking python-paramiko (2.0.0-1ubuntu1~cloud0) ...
+Selecting previously unselected package python-setuptools.
+Preparing to unpack .../python-setuptools_39.0.1-2~cloud0_all.deb ...
+Unpacking python-setuptools (39.0.1-2~cloud0) ...
+Selecting previously unselected package python-pastescript.
+Preparing to unpack .../python-pastescript_1.7.5-3build1_all.deb ...
+Unpacking python-pastescript (1.7.5-3build1) ...
+Selecting previously unselected package python-psycopg2.
+Preparing to unpack .../python-psycopg2_2.7.4-1~cloud0_amd64.deb ...
+Unpacking python-psycopg2 (2.7.4-1~cloud0) ...
+Selecting previously unselected package python-pyasn1-modules.
+Preparing to unpack .../python-pyasn1-modules_0.0.7-0.1_all.deb ...
+Unpacking python-pyasn1-modules (0.0.7-0.1) ...
+Selecting previously unselected package python-pymemcache.
+Preparing to unpack .../python-pymemcache_1.3.2-2ubuntu1_all.deb ...
+Unpacking python-pymemcache (1.3.2-2ubuntu1) ...
+Selecting previously unselected package python-pymysql.
+Preparing to unpack .../python-pymysql_0.8.0-1~cloud0_all.deb ...
+Unpacking python-pymysql (0.8.0-1~cloud0) ...
+Selecting previously unselected package python-taskflow.
+Preparing to unpack .../python-taskflow_3.1.0-0ubuntu2~cloud0_all.deb ...
+Unpacking python-taskflow (3.1.0-0ubuntu2~cloud0) ...
+Selecting previously unselected package python-pypowervm.
+Preparing to unpack .../python-pypowervm_1.1.10-0ubuntu1~cloud0_all.deb ...
+Unpacking python-pypowervm (1.1.10-0ubuntu1~cloud0) ...
+Selecting previously unselected package xmlsec1.
+Preparing to unpack .../xmlsec1_1.2.20-2ubuntu4_amd64.deb ...
+Unpacking xmlsec1 (1.2.20-2ubuntu4) ...
+Selecting previously unselected package python-pysaml2.
+Preparing to unpack .../python-pysaml2_4.0.2-0ubuntu3~cloud0_all.deb ...
+Unpacking python-pysaml2 (4.0.2-0ubuntu3~cloud0) ...
+Selecting previously unselected package python-redis.
+Preparing to unpack .../python-redis_2.10.5-1ubuntu1_all.deb ...
+Unpacking python-redis (2.10.5-1ubuntu1) ...
+Selecting previously unselected package python-scgi.
+Preparing to unpack .../python-scgi_1.13-1.1build1_amd64.deb ...
+Unpacking python-scgi (1.13-1.1build1) ...
+Selecting previously unselected package python-scrypt.
+Preparing to unpack .../python-scrypt_0.8.0-0ubuntu3~cloud0_amd64.deb ...
+Unpacking python-scrypt (0.8.0-0ubuntu3~cloud0) ...
+Selecting previously unselected package python-sqlalchemy-ext.
+Preparing to unpack .../python-sqlalchemy-ext_1.1.11+ds1-1ubuntu1~cloud0_amd64.deb ...
+Unpacking python-sqlalchemy-ext (1.1.11+ds1-1ubuntu1~cloud0) ...
+Selecting previously unselected package python-voluptuous.
+Preparing to unpack .../python-voluptuous_0.9.3-1~cloud0_all.deb ...
+Unpacking python-voluptuous (0.9.3-1~cloud0) ...
+Selecting previously unselected package python-tooz.
+Preparing to unpack .../python-tooz_1.59.0-0ubuntu1~cloud0_all.deb ...
+Unpacking python-tooz (1.59.0-0ubuntu1~cloud0) ...
+Selecting previously unselected package libbrlapi0.6:amd64.
+Preparing to unpack .../libbrlapi0.6_5.3.1-2ubuntu2.1_amd64.deb ...
+Unpacking libbrlapi0.6:amd64 (5.3.1-2ubuntu2.1) ...
+Selecting previously unselected package librdmacm1.
+Preparing to unpack .../librdmacm1_1.0.21-1_amd64.deb ...
+Unpacking librdmacm1 (1.0.21-1) ...
+Selecting previously unselected package seabios.
+Preparing to unpack .../seabios_1.10.2-1ubuntu1~cloud0_all.deb ...
+Unpacking seabios (1.10.2-1ubuntu1~cloud0) ...
+Selecting previously unselected package qemu-system-x86.
+Preparing to unpack .../qemu-system-x86_1%3a2.11+dfsg-1ubuntu7~cloud0_amd64.deb ...
+Unpacking qemu-system-x86 (1:2.11+dfsg-1ubuntu7~cloud0) ...
+Selecting previously unselected package qemu-kvm.
+Preparing to unpack .../qemu-kvm_1%3a2.11+dfsg-1ubuntu7~cloud0_amd64.deb ...
+Unpacking qemu-kvm (1:2.11+dfsg-1ubuntu7~cloud0) ...
+Selecting previously unselected package qemu-utils.
+Preparing to unpack .../qemu-utils_1%3a2.11+dfsg-1ubuntu7~cloud0_amd64.deb ...
+Unpacking qemu-utils (1:2.11+dfsg-1ubuntu7~cloud0) ...
+Selecting previously unselected package sharutils.
+Preparing to unpack .../sharutils_1%3a4.15.2-1ubuntu0.1_amd64.deb ...
+Unpacking sharutils (1:4.15.2-1ubuntu0.1) ...
+Selecting previously unselected package kpartx.
+Preparing to unpack .../kpartx_0.5.0+git1.656f8865-5ubuntu2.5_amd64.deb ...
+Unpacking kpartx (0.5.0+git1.656f8865-5ubuntu2.5) ...
+Selecting previously unselected package python-nova.
+Preparing to unpack .../python-nova_2%3a17.0.4-0ubuntu1~cloud0_all.deb ...
+Unpacking python-nova (2:17.0.4-0ubuntu1~cloud0) ...
+Selecting previously unselected package nova-common.
+Preparing to unpack .../nova-common_2%3a17.0.4-0ubuntu1~cloud0_all.deb ...
+Unpacking nova-common (2:17.0.4-0ubuntu1~cloud0) ...
+Selecting previously unselected package nova-compute-libvirt.
+Preparing to unpack .../nova-compute-libvirt_2%3a17.0.4-0ubuntu1~cloud0_all.deb ...
+Unpacking nova-compute-libvirt (2:17.0.4-0ubuntu1~cloud0) ...
+Selecting previously unselected package nova-compute-kvm.
+Preparing to unpack .../nova-compute-kvm_2%3a17.0.4-0ubuntu1~cloud0_all.deb ...
+Unpacking nova-compute-kvm (2:17.0.4-0ubuntu1~cloud0) ...
+Selecting previously unselected package nova-compute.
+Preparing to unpack .../nova-compute_2%3a17.0.4-0ubuntu1~cloud0_all.deb ...
+Unpacking nova-compute (2:17.0.4-0ubuntu1~cloud0) ...
+Selecting previously unselected package python-passlib.
+Preparing to unpack .../python-passlib_1.7.1-1~cloud0_all.deb ...
+Unpacking python-passlib (1.7.1-1~cloud0) ...
+Selecting previously unselected package python-keystone.
+Preparing to unpack .../python-keystone_2%3a13.0.0-0ubuntu1~cloud0_all.deb ...
+Unpacking python-keystone (2:13.0.0-0ubuntu1~cloud0) ...
+Processing triggers for libc-bin (2.23-0ubuntu10) ...
+Processing triggers for man-db (2.7.5-1) ...
+Processing triggers for systemd (229-4ubuntu21.2) ...
+Processing triggers for ureadahead (0.100.0-19) ...
+Processing triggers for install-info (6.1.0.dfsg.1-5) ...
+Setting up libasyncns0:amd64 (0.8-5build1) ...
+Setting up libiscsi2:amd64 (1.12.0-2) ...
+Setting up libogg0:amd64 (1.3.2-1) ...
+Setting up libavahi-common-data:amd64 (0.6.32~rc+dfsg-1ubuntu2.2) ...
+Setting up libavahi-common3:amd64 (0.6.32~rc+dfsg-1ubuntu2.2) ...
+Setting up libavahi-client3:amd64 (0.6.32~rc+dfsg-1ubuntu2.2) ...
+Setting up libyajl2:amd64 (2.1.0-2) ...
+Setting up libvirt0:amd64 (4.0.0-1ubuntu7~cloud0) ...
+Setting up libvirt-clients (4.0.0-1ubuntu7~cloud0) ...
+Setting up augeas-lenses (1.4.0-0ubuntu1.1) ...
+Setting up libaugeas0 (1.4.0-0ubuntu1.1) ...
+Setting up libnl-route-3-200:amd64 (3.2.27-1ubuntu0.16.04.1) ...
+Setting up libnetcf1:amd64 (1:0.2.8-1ubuntu1) ...
+Setting up libpciaccess0:amd64 (0.13.4-1) ...
+Setting up libxenstore3.0:amd64 (4.6.5-0ubuntu1.4) ...
+Setting up libxen-4.6:amd64 (4.6.5-0ubuntu1.4) ...
+Setting up libvirt-daemon (4.0.0-1ubuntu7~cloud0) ...
+Setting up libvirt-daemon-system (4.0.0-1ubuntu7~cloud0) ...
+Adding user libvirt-qemu to group libvirt-qemu
+Enabling libvirt default network
+virtlockd.service is a disabled or a static unit, not starting it.
+Setting up libvirt-daemon dnsmasq configuration.
+Setting up python-posix-ipc (0.9.8-2build2) ...
+Setting up python-kazoo (2.2.1-1ubuntu1) ...
+Setting up python-zope.interface (4.1.3-1build1) ...
+Setting up python-extras (1.0.0-3~cloud0) ...
+Setting up python-linecache2 (1.0.0-2) ...
+Setting up python-mimeparse (0.1.4-1build1) ...
+Setting up python-traceback2 (1.4.0-3) ...
+Setting up python-unittest2 (1.1.0-6.1) ...
+update-alternatives: using /usr/bin/python2-unit2 to provide /usr/bin/unit2 (unit2) in auto mode
+Setting up libibverbs1 (1.1.8-1.1ubuntu2) ...
+Setting up libnspr4:amd64 (2:4.13.1-0ubuntu0.16.04.1) ...
+Setting up python3-dateutil (2.4.2-1) ...
+Setting up python3-markupsafe (0.23-2build2) ...
+Setting up python3-mako (1.0.3+ds1-1ubuntu1) ...
+Setting up python3-sqlalchemy (1.1.11+ds1-1ubuntu1~cloud0) ...
+Setting up python3-alembic (0.9.3-2ubuntu1~cloud0) ...
+Setting up alembic (0.9.3-2ubuntu1~cloud0) ...
+Setting up bridge-utils (1.5-9ubuntu1) ...
+Setting up msr-tools (1.3-2) ...
+Setting up cpu-checker (0.7-0ubuntu7) ...
+Setting up ebtables (2.0.10.4-3.4ubuntu2.16.04.1) ...
+update-rc.d: warning: start and stop actions are no longer supported; falling back to defaults
+Setting up formencode-i18n (1.3.0-0ubuntu5) ...
+Setting up genisoimage (9:1.1.11-3ubuntu1) ...
+Setting up ipxe-qemu (1.0.0+git-20180124.fbe8c52d-0ubuntu2~cloud0) ...
+Setting up ipxe-qemu-256k-compat-efi-roms (1.0.0+git-20150424.a25a16d-0ubuntu2~cloud0) ...
+Setting up libaio1:amd64 (0.3.110-2) ...
+Setting up libasound2-data (1.1.0-0ubuntu1) ...
+Setting up libasound2:amd64 (1.1.0-0ubuntu1) ...
+Setting up libblas-common (3.6.0-2ubuntu2) ...
+Setting up libblas3 (3.6.0-2ubuntu2) ...
+update-alternatives: using /usr/lib/libblas/libblas.so.3 to provide /usr/lib/libblas.so.3 (libblas.so.3) in auto mode
+Setting up libbluetooth3:amd64 (5.37-0ubuntu5.1) ...
+Setting up libcaca0:amd64 (0.99.beta19-2build2~gcc5.2) ...
+Setting up libfdt1:amd64 (1.4.5-3~cloud0) ...
+Setting up libflac8:amd64 (1.3.1-4) ...
+Setting up libquadmath0:amd64 (5.4.0-6ubuntu1~16.04.9) ...
+Setting up libgfortran3:amd64 (5.4.0-6ubuntu1~16.04.9) ...
+Setting up liblapack3 (3.6.0-2ubuntu2) ...
+update-alternatives: using /usr/lib/lapack/liblapack.so.3 to provide /usr/lib/liblapack.so.3 (liblapack.so.3) in auto mode
+Setting up libopus0:amd64 (1.1.2-1ubuntu1) ...
+Setting up libpixman-1-0:amd64 (0.33.6-1) ...
+Setting up libpq5:amd64 (9.5.13-0ubuntu0.16.04) ...
+Setting up libvorbis0a:amd64 (1.3.5-3ubuntu0.2) ...
+Setting up libvorbisenc2:amd64 (1.3.5-3ubuntu0.2) ...
+Setting up libsndfile1:amd64 (1.0.25-10ubuntu0.16.04.1) ...
+Setting up libpulse0:amd64 (1:8.0-0ubuntu3.10) ...
+Setting up libsdl1.2debian:amd64 (1.2.15+dfsg1-3) ...
+Setting up libspice-server1:amd64 (0.12.6-4ubuntu0.3) ...
+Setting up libusbredirparser1:amd64 (0.7.1-1) ...
+Setting up libxml2-utils (2.9.3+dfsg1-1ubuntu0.5) ...
+Setting up os-brick-common (2.3.0-0ubuntu1~cloud0) ...
+Setting up pycadf-common (2.7.0-0ubuntu1~cloud0) ...
+Setting up python-dateutil (2.4.2-1) ...
+Setting up python-markupsafe (0.23-2build2) ...
+Setting up python-mako (1.0.3+ds1-1ubuntu1) ...
+Setting up python-sqlalchemy (1.1.11+ds1-1ubuntu1~cloud0) ...
+Setting up python-alembic (0.9.3-2ubuntu1~cloud0) ...
+Setting up python-vine (1.1.4+dfsg-2~cloud0) ...
+Setting up python-amqp (2.2.2-1~cloud0) ...
+Setting up python-anyjson (0.3.3-1build1) ...
+Setting up python-automaton (1.14.0-0ubuntu1~cloud0) ...
+Setting up python-barbicanclient (4.6.0-0ubuntu1~cloud0) ...
+update-alternatives: using /usr/bin/python2-barbican to provide /usr/bin/barbican (barbican) in auto mode
+Setting up python-bcrypt (3.1.4-2~cloud0) ...
+Setting up python-cachetools (2.0.0-2~cloud0) ...
+Setting up python-oslo.context (1:2.20.0-0ubuntu1~cloud0) ...
+Setting up python-pyinotify (0.9.6-0fakesync1) ...
+Setting up python-oslo.log (3.36.0-0ubuntu1~cloud0) ...
+Setting up python-oslo.policy (1.33.1-0ubuntu1~cloud0) ...
+update-alternatives: using /usr/bin/python2-oslopolicy-sample-generator to provide /usr/bin/oslopolicy-sample-generator (oslopolicy-sample-generator) in auto mode
+update-alternatives: using /usr/bin/python2-oslopolicy-checker to provide /usr/bin/oslopolicy-checker (oslopolicy-checker) in auto mode
+update-alternatives: using /usr/bin/python2-oslopolicy-policy-generator to provide /usr/bin/oslopolicy-policy-generator (oslopolicy-policy-generator) in auto mode
+update-alternatives: using /usr/bin/python2-oslopolicy-list-redundant to provide /usr/bin/oslopolicy-list-redundant (oslopolicy-list-redundant) in auto mode
+Setting up python-castellan (0.17.0-0ubuntu1~cloud0) ...
+Setting up python-ply (3.7-1) ...
+Setting up python-pycparser (2.14+dfsg-2build1) ...
+Setting up python-cffi (1.11.5-1~cloud0) ...
+Setting up python-contextlib2 (0.5.1-1) ...
+Setting up python-cursive (0.2.1-0ubuntu1~cloud0) ...
+Setting up python-defusedxml (0.5.0-1ubuntu1~cloud0) ...
+Setting up python-dnspython (1.15.0-1~cloud0) ...
+Setting up python-egenix-mxtools (3.2.9-1) ...
+Setting up python-egenix-mxdatetime (3.2.9-1) ...
+Setting up python-greenlet (0.4.12-2~cloud0) ...
+Setting up python-eventlet (0.18.4-1ubuntu1) ...
+Setting up python-fasteners (0.12.0-2ubuntu1) ...
+Setting up python-formencode (1.3.0-0ubuntu5) ...
+Setting up python-futurist (1.6.0-0ubuntu1~cloud0) ...
+Setting up python-jinja2 (2.8-1) ...
+Setting up python-memcache (1.57-1) ...
+Setting up python-oslo.cache (1.28.0-0ubuntu1~cloud0) ...
+Setting up python-kombu (4.1.0-1~cloud0) ...
+Setting up python-statsd (3.2.1-2~cloud0) ...
+Setting up python-webob (1:1.7.3-2fakesync1~cloud0) ...
+Setting up python-oslo.middleware (3.34.0-0ubuntu1~cloud0) ...
+Setting up python-tempita (0.5.2-1build1) ...
+Setting up python-paste (2.0.3+dfsg-4ubuntu1~cloud0) ...
+Setting up python-pastedeploy-tpl (1.5.2-1) ...
+Setting up python-pastedeploy (1.5.2-1) ...
+Setting up python-repoze.lru (0.6-6) ...
+Setting up python-routes (2.4.1-1~cloud0) ...
+Setting up python-pika (0.10.0-1) ...
+Setting up python-pika-pool (0.1.3-1ubuntu1) ...
+Setting up python-retrying (1.3.3-1) ...
+Setting up python-tenacity (4.8.0-0ubuntu1~cloud0) ...
+Setting up python-pycadf (2.7.0-0ubuntu1~cloud0) ...
+Setting up python-libvirt (4.0.0-1~cloud0) ...
+Setting up python-microversion-parse (0.1.4-2~cloud0) ...
+Setting up python-sqlparse (0.2.4-0.1~cloud0) ...
+Setting up python-migrate (0.11.0-2~cloud0) ...
+update-alternatives: using /usr/bin/python2-migrate to provide /usr/bin/migrate (migrate) in auto mode
+update-alternatives: using /usr/bin/python2-migrate-repository to provide /usr/bin/migrate-repository (migrate-repository) in auto mode
+Setting up python-networkx (1.11-1ubuntu1) ...
+Setting up python-numpy (1:1.11.0-1ubuntu1) ...
+Setting up python-openid (2.2.5-6) ...
+Setting up python-oslo.privsep (1.27.0-0ubuntu3~cloud0) ...
+update-alternatives: using /usr/bin/python2-privsep-helper to provide /usr/bin/privsep-helper (privsep-helper) in auto mode
+Setting up python-os-traits (0.5.0-0ubuntu1~cloud0) ...
+Setting up python-pyroute2 (0.4.21-0.1ubuntu2~cloud0) ...
+Setting up python-oslo.db (4.33.0-0ubuntu1~cloud0) ...
+Setting up python-psutil (3.4.2-1) ...
+Setting up python-oslo.reports (1.26.0-0ubuntu1~cloud0) ...
+Setting up python-oslo.rootwrap (5.13.0-0ubuntu1~cloud0) ...
+update-alternatives: using /usr/bin/python2-oslo-rootwrap to provide /usr/bin/oslo-rootwrap (oslo-rootwrap) in auto mode
+update-alternatives: using /usr/bin/python2-oslo-rootwrap-daemon to provide /usr/bin/oslo-rootwrap-daemon (oslo-rootwrap-daemon) in auto mode
+Setting up python-ceilometerclient (2.9.0-0ubuntu1~cloud0) ...
+update-alternatives: using /usr/bin/python2-ceilometer to provide /usr/bin/ceilometer (ceilometer) in auto mode
+Setting up python-pyasn1 (0.1.9-1) ...
+Setting up python-paramiko (2.0.0-1ubuntu1~cloud0) ...
+Setting up python-setuptools (39.0.1-2~cloud0) ...
+Setting up python-pastescript (1.7.5-3build1) ...
+Setting up python-psycopg2 (2.7.4-1~cloud0) ...
+Setting up python-pyasn1-modules (0.0.7-0.1) ...
+Setting up python-pymemcache (1.3.2-2ubuntu1) ...
+Setting up python-pymysql (0.8.0-1~cloud0) ...
+Setting up python-taskflow (3.1.0-0ubuntu2~cloud0) ...
+Setting up xmlsec1 (1.2.20-2ubuntu4) ...
+Setting up python-pysaml2 (4.0.2-0ubuntu3~cloud0) ...
+update-alternatives: using /usr/bin/python2-make_metadata to provide /usr/bin/make_metadata (make_metadata) in auto mode
+update-alternatives: using /usr/bin/python2-mdexport to provide /usr/bin/mdexport (mdexport) in auto mode
+update-alternatives: using /usr/bin/python2-parse_xsd2 to provide /usr/bin/parse_xsd2 (parse_xsd2) in auto mode
+update-alternatives: using /usr/bin/python2-merge_metadata to provide /usr/bin/merge_metadata (merge_metadata) in auto mode
+Setting up python-redis (2.10.5-1ubuntu1) ...
+Setting up python-scgi (1.13-1.1build1) ...
+Setting up python-scrypt (0.8.0-0ubuntu3~cloud0) ...
+Setting up python-sqlalchemy-ext (1.1.11+ds1-1ubuntu1~cloud0) ...
+Setting up python-voluptuous (0.9.3-1~cloud0) ...
+Setting up libbrlapi0.6:amd64 (5.3.1-2ubuntu2.1) ...
+Setting up librdmacm1 (1.0.21-1) ...
+Setting up seabios (1.10.2-1ubuntu1~cloud0) ...
+Setting up sharutils (1:4.15.2-1ubuntu0.1) ...
+Setting up kpartx (0.5.0+git1.656f8865-5ubuntu2.5) ...
+Setting up python-passlib (1.7.1-1~cloud0) ...
+Setting up python-fixtures (3.0.0-2~cloud0) ...
+Setting up python-testtools (2.3.0-3ubuntu2~cloud1) ...
+Setting up python-zake (0.1.6-1) ...
+Setting up libnss3-nssdb (2:3.28.4-0ubuntu0.16.04.3) ...
+Setting up libnss3:amd64 (2:3.28.4-0ubuntu0.16.04.3) ...
+Setting up librados2 (12.2.4-0ubuntu1~cloud1) ...
+Setting up librbd1 (12.2.4-0ubuntu1~cloud1) ...
+Setting up qemu-block-extra:amd64 (1:2.11+dfsg-1ubuntu7~cloud0) ...
+Setting up qemu-system-common (1:2.11+dfsg-1ubuntu7~cloud0) ...
+Setting up libcacard0:amd64 (1:2.5.0-2) ...
+Setting up libvirt-daemon-driver-storage-rbd (4.0.0-1ubuntu7~cloud0) ...
+Setting up python-oslo.concurrency (3.25.0-0ubuntu1~cloud0) ...
+update-alternatives: using /usr/bin/python2-lockutils-wrapper to provide /usr/bin/lockutils-wrapper (lockutils-wrapper) in auto mode
+Setting up python-oslo.service (1.29.0-0ubuntu1~cloud0) ...
+Setting up python-oslo.messaging (5.35.0-0ubuntu1~cloud0) ...
+update-alternatives: using /usr/bin/python2-oslo-messaging-zmq-broker to provide /usr/bin/oslo-messaging-zmq-broker (oslo-messaging-zmq-broker) in auto mode
+update-alternatives: using /usr/bin/python2-oslo-messaging-zmq-proxy to provide /usr/bin/oslo-messaging-zmq-proxy (oslo-messaging-zmq-proxy) in auto mode
+Setting up python-keystonemiddleware (4.21.0-0ubuntu1~cloud0) ...
+Setting up python-os-win (3.0.0-0ubuntu1~cloud0) ...
+Setting up python-os-brick (2.3.0-0ubuntu1~cloud0) ...
+Setting up python-oslo.versionedobjects (1.31.2-0ubuntu3~cloud0) ...
+Setting up python-os-vif (1.9.0-0ubuntu1~cloud0) ...
+Setting up python-os-xenapi (0.3.1-0ubuntu1~cloud0) ...
+Setting up python-osprofiler (1.15.2-0ubuntu1~cloud0) ...
+update-alternatives: using /usr/bin/python2-osprofiler to provide /usr/bin/osprofiler (osprofiler) in auto mode
+Setting up python-pypowervm (1.1.10-0ubuntu1~cloud0) ...
+Setting up python-tooz (1.59.0-0ubuntu1~cloud0) ...
+Setting up qemu-system-x86 (1:2.11+dfsg-1ubuntu7~cloud0) ...
+Setting up qemu-kvm (1:2.11+dfsg-1ubuntu7~cloud0) ...
+Setting up qemu-utils (1:2.11+dfsg-1ubuntu7~cloud0) ...
+Setting up python-nova (2:17.0.4-0ubuntu1~cloud0) ...
+Setting up nova-common (2:17.0.4-0ubuntu1~cloud0) ...
+Setting up nova-compute (2:17.0.4-0ubuntu1~cloud0) ...
+Setting up nova-compute-libvirt (2:17.0.4-0ubuntu1~cloud0) ...
+Adding user `nova' to group `libvirt' ...
+Adding user nova to group libvirt
+Done.
+Setting up nova-compute-kvm (2:17.0.4-0ubuntu1~cloud0) ...
+Setting up python-keystone (2:13.0.0-0ubuntu1~cloud0) ...
+Processing triggers for libc-bin (2.23-0ubuntu10) ...
+Processing triggers for systemd (229-4ubuntu21.2) ...
+Processing triggers for ureadahead (0.100.0-19) ...
++ cp files/nova.conf /etc/nova/nova.conf
++ cp files/nova-compute.conf /etc/nova/nova-compute.conf
++ service nova-compute restart
++ echo 'DO NOT FORGET TO RUN HOST CELL PLACEMENT DISCOVERY COMMAND ON THE CONTROLLER!'
+DO NOT FORGET TO RUN HOST CELL PLACEMENT DISCOVERY COMMAND ON THE CONTROLLER!

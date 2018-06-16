@@ -1,0 +1,1060 @@
++ cd /home/openstack/OPSInstaller/newcompute
++ pwd
+/home/openstack/OPSInstaller/newcompute
++ cp files/hosts /etc/hosts
++ cp /etc/apt/sources.list /etc/apt/sources.list.saved
++ cp files/local-sources.list /etc/apt/sources.list
++ apt-get update
+0% [Working]            Hit:1 http://th.archive.ubuntu.com/ubuntu xenial InRelease
+0% [Connecting to security.ubuntu.com (91.189.91.26)]0% [1 InRelease gpgv 247 kB] [Connecting to th.archive.ubuntu.com (192.100.77.186)] [Connecting to security.ubuntu.                                                                                                                   Get:2 http://th.archive.ubuntu.com/ubuntu xenial-updates InRelease [109 kB]
+                                                                                                                   0% [1 InRelease gpgv 247 kB] [2 InRelease 14.2 kB/109 kB 13%] [Connecting to security.ubuntu.com (91.189.91.26)]                                                                                                                0% [1 InRelease gpgv 247 kB] [Waiting for headers] [Connecting to security.ubuntu.com (91.189.91.26)]                                                                                                     Get:3 http://th.archive.ubuntu.com/ubuntu xenial-backports InRelease [107 kB]
+0% [1 InRelease gpgv 247 kB] [3 InRelease 82.7 kB/107 kB 77%] [Connecting to security.ubuntu.com (91.189.91.26)]                                                                                                                0% [1 InRelease gpgv 247 kB] [Connecting to security.ubuntu.com (91.189.91.26)]                                                                               0% [Connecting to security.ubuntu.com (91.189.91.26)]0% [2 InRelease gpgv 109 kB] [Connecting to security.ubuntu.com (91.189.91.26)]                                                                               0% [Waiting for headers]0% [3 InRelease gpgv 107 kB] [Waiting for headers] [Waiting for headers]                                                                        Get:4 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 Packages [793 kB]
+0% [3 InRelease gpgv 107 kB] [4 Packages 40.3 kB/793 kB 5%] [Waiting for headers]                                                                                 Get:5 http://security.ubuntu.com/ubuntu xenial-security InRelease [107 kB]
+0% [3 InRelease gpgv 107 kB] [4 Packages 773 kB/793 kB 97%] [5 InRelease 6,929 B/107 kB 6%]                                                                                           0% [4 Packages 790 kB/793 kB 100%] [5 InRelease 14.2 kB/107 kB 13%]                                                                   0% [5 InRelease 14.2 kB/107 kB 13%]0% [4 Packages store 0 B] [Waiting for headers] [5 InRelease 14.2 kB/107 kB 13%]                                                                                Get:6 http://th.archive.ubuntu.com/ubuntu xenial-updates/main i386 Packages [725 kB]
+0% [4 Packages store 0 B] [6 Packages 117 kB/725 kB 16%] [5 InRelease 14.2 kB/107 kB 13%]                                                                                         0% [4 Packages store 0 B] [5 InRelease 37.3 kB/107 kB 35%]                                                          Get:7 http://th.archive.ubuntu.com/ubuntu xenial-updates/main Translation-en [328 kB]
+0% [4 Packages store 0 B] [7 Translation-en 0 B/328 kB 0%] [5 InRelease 37.3 kB/107 kB 35%]                                                                                           0% [7 Translation-en 281 kB/328 kB 86%] [5 InRelease 40.2 kB/107 kB 38%]0% [6 Packages store 0 B] [7 Translation-en 296 kB/328 kB 90%] [5 InRelease 40.2 kB/107 kB 38%]                                                                                               0% [6 Packages store 0 B] [5 InRelease 40.2 kB/107 kB 38%]                                                          Get:8 http://th.archive.ubuntu.com/ubuntu xenial-updates/restricted amd64 Packages [7,560 B]
+0% [6 Packages store 0 B] [8 Packages 0 B/7,560 B 0%] [5 InRelease 40.2 kB/107 kB 38%]                                                                                      0% [6 Packages store 0 B] [5 InRelease 40.2 kB/107 kB 38%]                                                          Get:9 http://th.archive.ubuntu.com/ubuntu xenial-updates/restricted i386 Packages [7,520 B]
+0% [6 Packages store 0 B] [9 Packages 0 B/7,520 B 0%] [5 InRelease 40.2 kB/107 kB 38%]                                                                                      0% [6 Packages store 0 B] [5 InRelease 40.2 kB/107 kB 38%]                                                          Get:10 http://th.archive.ubuntu.com/ubuntu xenial-updates/restricted Translation-en [2,272 B]
+0% [6 Packages store 0 B] [10 Translation-en 0 B/2,272 B 0%] [5 InRelease 40.2 kB/107 kB 38%]                                                                                             0% [6 Packages store 0 B] [5 InRelease 40.2 kB/107 kB 38%]                                                          Get:11 http://th.archive.ubuntu.com/ubuntu xenial-updates/universe amd64 Packages [634 kB]
+0% [6 Packages store 0 B] [11 Packages 0 B/634 kB 0%] [5 InRelease 40.2 kB/107 kB 38%]                                                                                      0% [6 Packages store 0 B] [5 InRelease 54.7 kB/107 kB 51%]                                                          Get:12 http://th.archive.ubuntu.com/ubuntu xenial-updates/universe i386 Packages [579 kB]
+0% [6 Packages store 0 B] [12 Packages 0 B/579 kB 0%] [5 InRelease 54.7 kB/107 kB 51%]                                                                                      0% [12 Packages 379 kB/579 kB 65%] [5 InRelease 69.2 kB/107 kB 65%]0% [7 Translation-en store 0 B] [12 Packages 379 kB/579 kB 65%] [5 InRelease 69.2 kB/107 kB 65%]                                                                                                0% [7 Translation-en store 0 B] [5 InRelease 75.0 kB/107 kB 70%]                                                                Get:13 http://th.archive.ubuntu.com/ubuntu xenial-updates/universe Translation-en [255 kB]
+0% [7 Translation-en store 0 B] [13 Translation-en 0 B/255 kB 0%] [5 InRelease 75.0 kB/107 kB 70%]                                                                                                  0% [7 Translation-en store 0 B] [5 InRelease 83.7 kB/107 kB 78%]                                                                Get:14 http://th.archive.ubuntu.com/ubuntu xenial-updates/multiverse amd64 Packages [16.4 kB]
+0% [7 Translation-en store 0 B] [14 Packages 0 B/16.4 kB 0%] [5 InRelease 83.7 kB/107 kB 78%]                                                                                             0% [7 Translation-en store 0 B] [5 InRelease 86.6 kB/107 kB 81%]                                                                Get:15 http://th.archive.ubuntu.com/ubuntu xenial-updates/multiverse i386 Packages [15.5 kB]
+0% [7 Translation-en store 0 B] [15 Packages 0 B/15.5 kB 0%] [5 InRelease 86.6 kB/107 kB 81%]                                                                                             0% [7 Translation-en store 0 B] [5 InRelease 86.6 kB/107 kB 81%]                                                                Get:16 http://th.archive.ubuntu.com/ubuntu xenial-backports/universe amd64 Packages [7,400 B]
+0% [7 Translation-en store 0 B] [16 Packages 0 B/7,400 B 0%] [5 InRelease 86.6 kB/107 kB 81%]                                                                                             0% [7 Translation-en store 0 B] [5 InRelease 86.6 kB/107 kB 81%]                                                                Get:17 http://th.archive.ubuntu.com/ubuntu xenial-backports/universe i386 Packages [7,080 B]
+0% [7 Translation-en store 0 B] [17 Packages 0 B/7,080 B 0%] [5 InRelease 86.6 kB/107 kB 81%]                                                                                             0% [7 Translation-en store 0 B] [5 InRelease 86.6 kB/107 kB 81%]                                                                0% [5 InRelease 101 kB/107 kB 95%]0% [8 Packages store 0 B] [5 InRelease 104 kB/107 kB 97%]                                                         0% [5 InRelease 104 kB/107 kB 97%]0% [9 Packages store 0 B] [5 InRelease 104 kB/107 kB 97%]                                                         0% [9 Packages store 104 kB]                            0% [Working]0% [5 InRelease gpgv 107 kB]0% [10 Translation-en store 0 B] [5 InRelease gpgv 107 kB]                                                          0% [5 InRelease gpgv 107 kB]0% [11 Packages store 0 B] [5 InRelease gpgv 107 kB]                                                    68% [11 Packages store 0 B]                           68% [Waiting for headers]68% [12 Packages store 0 B] [Waiting for headers]                                                 68% [Waiting for headers]68% [13 Translation-en store 0 B] [Waiting for headers]                                                       68% [Waiting for headers]68% [14 Packages store 0 B] [Waiting for headers]                                                 69% [Waiting for headers]69% [15 Packages store 0 B] [Waiting for headers]                                                 69% [Waiting for headers]69% [16 Packages store 0 B] [Waiting for headers]                                                 69% [Waiting for headers]69% [17 Packages store 0 B] [Waiting for headers]                                                 69% [Waiting for headers]                         Get:18 http://security.ubuntu.com/ubuntu xenial-security/main amd64 Packages [511 kB]
+69% [18 Packages 2,687 B/511 kB 1%]73% [18 Packages 247 kB/511 kB 48%]                                   77% [Working]77% [18 Packages store 0 B]                           77% [Waiting for headers]                         Get:19 http://security.ubuntu.com/ubuntu xenial-security/main i386 Packages [452 kB]
+77% [19 Packages 2,687 B/452 kB 1%]                                   83% [Waiting for headers]                         Get:20 http://security.ubuntu.com/ubuntu xenial-security/main Translation-en [219 kB]
+83% [20 Translation-en 0 B/219 kB 0%]83% [19 Packages store 0 B] [20 Translation-en 0 B/219 kB 0%]                                                             86% [19 Packages store 0 B]                           Get:21 http://security.ubuntu.com/ubuntu xenial-security/restricted amd64 Packages [7,204 B]
+86% [19 Packages store 0 B] [21 Packages 7,204 B/7,204 B 100%]                                                              86% [19 Packages store 0 B]                           Get:22 http://security.ubuntu.com/ubuntu xenial-security/restricted i386 Packages [7,224 B]
+86% [19 Packages store 0 B] [22 Packages 0 B/7,224 B 0%]                                                        86% [19 Packages store 0 B]                           Get:23 http://security.ubuntu.com/ubuntu xenial-security/restricted Translation-en [2,152 B]
+86% [19 Packages store 0 B] [23 Translation-en 2,152 B/2,152 B 100%]                                                                    86% [19 Packages store 0 B]                           Get:24 http://security.ubuntu.com/ubuntu xenial-security/universe amd64 Packages [355 kB]
+86% [19 Packages store 0 B] [24 Packages 3,170 B/355 kB 1%]                                                           91% [24 Packages 284 kB/355 kB 80%]91% [20 Translation-en store 0 B] [24 Packages 287 kB/355 kB 81%]                                                                 92% [20 Translation-en store 0 B]                                 Get:25 http://security.ubuntu.com/ubuntu xenial-security/universe i386 Packages [303 kB]
+92% [20 Translation-en store 0 B] [25 Packages 41.3 kB/303 kB 14%]                                                                  93% [25 Packages 63.7 kB/303 kB 21%]93% [21 Packages store 0 B] [25 Packages 63.7 kB/303 kB 21%]                                                            93% [25 Packages 63.7 kB/303 kB 21%]93% [22 Packages store 0 B] [25 Packages 63.7 kB/303 kB 21%]                                                            93% [25 Packages 63.7 kB/303 kB 21%]93% [23 Translation-en store 0 B] [25 Packages 63.7 kB/303 kB 21%]                                                                  93% [25 Packages 63.7 kB/303 kB 21%]93% [24 Packages store 0 B] [25 Packages 63.7 kB/303 kB 21%]                                                            97% [25 Packages 303 kB/303 kB 100%]                                    97% [Waiting for headers]                         Get:26 http://security.ubuntu.com/ubuntu xenial-security/universe Translation-en [132 kB]
+98% [26 Translation-en 65.4 kB/132 kB 49%]98% [25 Packages store 0 B] [26 Translation-en 65.4 kB/132 kB 49%]                                                                  99% [25 Packages store 0 B]                           Get:27 http://security.ubuntu.com/ubuntu xenial-security/multiverse amd64 Packages [3,456 B]
+99% [25 Packages store 0 B] [27 Packages 3,456 B/3,456 B 100%]                                                              99% [25 Packages store 0 B]                           Get:28 http://security.ubuntu.com/ubuntu xenial-security/multiverse i386 Packages [3,620 B]
+99% [25 Packages store 0 B] [28 Packages 3,620 B/3,620 B 100%]                                                              99% [25 Packages store 0 B]                           99% [Working]99% [26 Translation-en store 0 B]                                 100% [Working]100% [27 Packages store 0 B]                            100% [Working]100% [28 Packages store 0 B]                            100% [Working]              Fetched 5,698 kB in 3s (1,447 kB/s)
+Reading package lists... 0%Reading package lists... 0%Reading package lists... 1%Reading package lists... 4%Reading package lists... 4%Reading package lists... 8%Reading package lists... 8%Reading package lists... 10%Reading package lists... 10%Reading package lists... 10%Reading package lists... 10%Reading package lists... 10%Reading package lists... 10%Reading package lists... 10%Reading package lists... 10%Reading package lists... 25%Reading package lists... 35%Reading package lists... 35%Reading package lists... 52%Reading package lists... 60%Reading package lists... 60%Reading package lists... 74%Reading package lists... 74%Reading package lists... 74%Reading package lists... 74%Reading package lists... 74%Reading package lists... 74%Reading package lists... 75%Reading package lists... 75%Reading package lists... 78%Reading package lists... 78%Reading package lists... 81%Reading package lists... 81%Reading package lists... 83%Reading package lists... 83%Reading package lists... 83%Reading package lists... 83%Reading package lists... 83%Reading package lists... 83%Reading package lists... 83%Reading package lists... 83%Reading package lists... 86%Reading package lists... 86%Reading package lists... 88%Reading package lists... 88%Reading package lists... 89%Reading package lists... 89%Reading package lists... 89%Reading package lists... 89%Reading package lists... 89%Reading package lists... 89%Reading package lists... 89%Reading package lists... 89%Reading package lists... 89%Reading package lists... 90%Reading package lists... 90%Reading package lists... 90%Reading package lists... 90%Reading package lists... 90%Reading package lists... 90%Reading package lists... 90%Reading package lists... 90%Reading package lists... 90%Reading package lists... 90%Reading package lists... 90%Reading package lists... 90%Reading package lists... 92%Reading package lists... 92%Reading package lists... 93%Reading package lists... 93%Reading package lists... 96%Reading package lists... 96%Reading package lists... 96%Reading package lists... 96%Reading package lists... 96%Reading package lists... 96%Reading package lists... 96%Reading package lists... 96%Reading package lists... 97%Reading package lists... 97%Reading package lists... 98%Reading package lists... 98%Reading package lists... 99%Reading package lists... 99%Reading package lists... 99%Reading package lists... 99%Reading package lists... 99%Reading package lists... 99%Reading package lists... 99%Reading package lists... 99%Reading package lists... Done
++ apt-get -y install software-properties-common
+Reading package lists... 0%Reading package lists... 100%Reading package lists... Done
+Building dependency tree... 0%Building dependency tree... 0%Building dependency tree... 50%Building dependency tree... 50%Building dependency tree       
+Reading state information... 0%Reading state information... 1%Reading state information... Done
+software-properties-common is already the newest version (0.96.20.7).
+0 upgraded, 0 newly installed, 0 to remove and 34 not upgraded.
++ add-apt-repository cloud-archive:queens
+ Ubuntu Cloud Archive for OpenStack Queens
+ More info: https://wiki.ubuntu.com/ServerTeam/CloudArchive
+Press [ENTER] to continue or ctrl-c to cancel adding it
+
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following NEW packages will be installed:
+  ubuntu-cloud-keyring
+0 upgraded, 1 newly installed, 0 to remove and 34 not upgraded.
+Need to get 5,086 B of archives.
+After this operation, 34.8 kB of additional disk space will be used.
+Get:1 http://th.archive.ubuntu.com/ubuntu xenial/universe amd64 ubuntu-cloud-keyring all 2012.08.14 [5,086 B]
+Fetched 5,086 B in 0s (19.9 kB/s)
+Selecting previously unselected package ubuntu-cloud-keyring.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 92590 files and directories currently installed.)
+Preparing to unpack .../ubuntu-cloud-keyring_2012.08.14_all.deb ...
+Unpacking ubuntu-cloud-keyring (2012.08.14) ...
+Setting up ubuntu-cloud-keyring (2012.08.14) ...
+Importing ubuntu-cloud.archive.canonical.com keyring
+OK
+Processing ubuntu-cloud.archive.canonical.com removal keyring
+gpg: /etc/apt/trustdb.gpg: trustdb created
+OK
++ apt-get update
+0% [Working]            Hit:1 http://th.archive.ubuntu.com/ubuntu xenial InRelease
+0% [Connecting to th.archive.ubuntu.com (192.100.77.186)] [Connecting to security.ubuntu.com (91.189.88.161)] [Conn0% [1 InRelease gpgv 247 kB] [Connecting to th.archive.ubuntu.com (192.100.77.186)] [Connecting to security.ubuntu.                                                                                                                   Hit:2 http://th.archive.ubuntu.com/ubuntu xenial-updates InRelease
+0% [1 InRelease gpgv 247 kB] [Connecting to security.ubuntu.com (91.189.88.161)] [Connecting to ubuntu-cloud.archiv                                                                                                                   Hit:3 http://th.archive.ubuntu.com/ubuntu xenial-backports InRelease
+0% [1 InRelease gpgv 247 kB] [Connecting to security.ubuntu.com (91.189.88.161)] [Connecting to ubuntu-cloud.archiv0% [Connecting to security.ubuntu.com (91.189.88.161)] [Connecting to ubuntu-cloud.archive.canonical.com (91.189.920% [2 InRelease gpgv 109 kB] [Connecting to security.ubuntu.com (91.189.88.161)] [Connecting to ubuntu-cloud.archiv                                                                                                                   0% [Waiting for headers] [Waiting for headers]0% [3 InRelease gpgv 107 kB] [Waiting for headers] [Waiting for headers]                                                                        Hit:4 http://security.ubuntu.com/ubuntu xenial-security InRelease
+                                                                        0% [3 InRelease gpgv 107 kB] [Waiting for headers]                                                  Ign:5 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens InRelease
+                                                  0% [3 InRelease gpgv 107 kB]                            0% [Waiting for headers]0% [4 InRelease gpgv 107 kB] [Waiting for headers]                                                  0% [Waiting for headers]                        Get:6 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens Release [7,887 B]
+0% [6 Release 6,966 B/7,887 B 88%]                                  99% [Working]             Get:7 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens Release.gpg [543 B]
+99% [Working]99% [7 Release.gpg gpgv 7,887 B]                                21% [Working]             Get:8 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 Packages [228 kB]
+22% [8 Packages 6,929 B/228 kB 3%]26% [8 Packages 31.5 kB/228 kB 14%]                                   39% [8 Packages 105 kB/228 kB 46%]                                  60% [Working]60% [8 Packages store 0 B] [Waiting for headers]                                                61% [Waiting for headers]                         Get:9 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main i386 Packages [227 kB]
+61% [9 Packages 0 B/227 kB 0%]87% [9 Packages 153 kB/227 kB 68%]                                  100% [Working]100% [9 Packages store 0 B]                           100% [Working]              Fetched 464 kB in 3s (121 kB/s)
+Reading package lists... 0%Reading package lists... 0%Reading package lists... 1%Reading package lists... 4%Reading package lists... 4%Reading package lists... 8%Reading package lists... 8%Reading package lists... 10%Reading package lists... 10%Reading package lists... 10%Reading package lists... 10%Reading package lists... 10%Reading package lists... 10%Reading package lists... 10%Reading package lists... 10%Reading package lists... 25%Reading package lists... 35%Reading package lists... 35%Reading package lists... 51%Reading package lists... 59%Reading package lists... 59%Reading package lists... 73%Reading package lists... 73%Reading package lists... 73%Reading package lists... 73%Reading package lists... 74%Reading package lists... 74%Reading package lists... 74%Reading package lists... 74%Reading package lists... 77%Reading package lists... 77%Reading package lists... 80%Reading package lists... 80%Reading package lists... 82%Reading package lists... 82%Reading package lists... 82%Reading package lists... 82%Reading package lists... 82%Reading package lists... 82%Reading package lists... 82%Reading package lists... 82%Reading package lists... 85%Reading package lists... 85%Reading package lists... 87%Reading package lists... 87%Reading package lists... 88%Reading package lists... 88%Reading package lists... 88%Reading package lists... 88%Reading package lists... 88%Reading package lists... 88%Reading package lists... 88%Reading package lists... 88%Reading package lists... 88%Reading package lists... 88%Reading package lists... 88%Reading package lists... 88%Reading package lists... 88%Reading package lists... 88%Reading package lists... 88%Reading package lists... 88%Reading package lists... 89%Reading package lists... 89%Reading package lists... 89%Reading package lists... 89%Reading package lists... 90%Reading package lists... 91%Reading package lists... 91%Reading package lists... 92%Reading package lists... 92%Reading package lists... 94%Reading package lists... 94%Reading package lists... 94%Reading package lists... 94%Reading package lists... 94%Reading package lists... 94%Reading package lists... 95%Reading package lists... 95%Reading package lists... 96%Reading package lists... 96%Reading package lists... 97%Reading package lists... 97%Reading package lists... 98%Reading package lists... 98%Reading package lists... 98%Reading package lists... 98%Reading package lists... 98%Reading package lists... 98%Reading package lists... 98%Reading package lists... 98%Reading package lists... 99%Reading package lists... 99%Reading package lists... 99%Reading package lists... 99%Reading package lists... Done
++ apt-get -y dist-upgrade
+Reading package lists... 0%Reading package lists... 100%Reading package lists... Done
+Building dependency tree... 0%Building dependency tree... 0%Building dependency tree... 50%Building dependency tree... 50%Building dependency tree       
+Reading state information... 0%Reading state information... 1%Reading state information... Done
+Calculating upgrade... 0%Calculating upgrade... 10%Calculating upgrade... Done
+The following NEW packages will be installed:
+  amd64-microcode intel-microcode iucode-tool linux-headers-4.4.0-128 linux-headers-4.4.0-128-generic
+  linux-image-4.4.0-128-generic linux-image-extra-4.4.0-128-generic python3-certifi python3-idna
+The following packages will be upgraded:
+  apport console-setup console-setup-linux dh-python dnsmasq-base file git git-man gnupg gpgv grub-common grub-pc
+  grub-pc-bin grub2-common ifupdown keyboard-configuration libelf1 libhogweed4 libldap-2.4-2 libmagic1 libnettle6
+  libnuma1 libperl5.22 libplymouth4 libprocps4 linux-firmware linux-generic linux-headers-generic
+  linux-image-generic perl perl-base perl-modules-5.22 plymouth plymouth-theme-ubuntu-text procps python3-apport
+  python3-chardet python3-pkg-resources python3-problem-report python3-requests python3-six python3-urllib3 snapd
+  vlan
+44 upgraded, 9 newly installed, 0 to remove and 0 not upgraded.
+Need to get 155 MB of archives.
+After this operation, 316 MB of additional disk space will be used.
+0% [Working]            Get:1 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 libperl5.22 amd64 5.22.1-9ubuntu0.5 [3,396 kB]
+0% [1 libperl5.22 14.2 kB/3,396 kB 0%] [Connecting to security.ubuntu.com (91.189.88.161)] [Connecting to ubuntu-cl                                                                                                                   Get:2 http://security.ubuntu.com/ubuntu xenial-security/main amd64 file amd64 1:5.25-2ubuntu1.1 [21.2 kB]
+                                                                                                                   2% [1 libperl5.22 3,394 kB/3,396 kB 100%] [2 file 2,645 B/21.2 kB 12%] [Waiting for headers]                                                                                            Get:3 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 dh-python all 3.20180325ubuntu2~cloud1 [89.1 kB]
+2% [1 libperl5.22 3,394 kB/3,396 kB 100%] [2 file 14.2 kB/21.2 kB 67%] [3 dh-python 2,630 B/89.1 kB 3%]                                                                                                       2% [1 libperl5.22 3,394 kB/3,396 kB 100%] [Waiting for headers] [3 dh-python 35.9 kB/89.1 kB 40%]                                                                                                 Get:4 http://security.ubuntu.com/ubuntu xenial-security/main amd64 libmagic1 amd64 1:5.25-2ubuntu1.1 [216 kB]
+2% [1 libperl5.22 3,394 kB/3,396 kB 100%] [4 libmagic1 2,643 B/216 kB 1%] [3 dh-python 57.7 kB/89.1 kB 65%]                                                                                                           3% [4 libmagic1 14.2 kB/216 kB 7%] [3 dh-python 57.7 kB/89.1 kB 65%]                                                                    Get:5 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 perl amd64 5.22.1-9ubuntu0.5 [238 kB]
+3% [5 perl 6,994 B/238 kB 3%] [4 libmagic1 17.1 kB/216 kB 8%] [3 dh-python 57.7 kB/89.1 kB 65%]                                                                                               3% [Waiting for headers] [4 libmagic1 20.0 kB/216 kB 9%] [3 dh-python 57.7 kB/89.1 kB 65%]                                                                                          Get:6 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 perl-base amd64 5.22.1-9ubuntu0.5 [1,284 kB]
+3% [6 perl-base 35.2 kB/1,284 kB 3%] [4 libmagic1 20.0 kB/216 kB 9%] [3 dh-python 57.7 kB/89.1 kB 65%]                                                                                                      4% [4 libmagic1 31.6 kB/216 kB 15%] [3 dh-python 57.7 kB/89.1 kB 65%]                                                                     Get:7 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 perl-modules-5.22 all 5.22.1-9ubuntu0.5 [2,645 kB]
+4% [7 perl-modules-5.22 62.0 kB/2,645 kB 2%] [4 libmagic1 31.6 kB/216 kB 15%] [3 dh-python 57.7 kB/89.1 kB 65%]                                                                                                               6% [Waiting for headers] [4 libmagic1 35.9 kB/216 kB 17%] [3 dh-python 88.1 kB/89.1 kB 99%]                                                                                           Get:8 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 grub-pc amd64 2.02~beta2-36ubuntu3.18 [197 kB]
+6% [8 grub-pc 38.2 kB/197 kB 19%] [4 libmagic1 35.9 kB/216 kB 17%] [3 dh-python 88.1 kB/89.1 kB 99%]                                                                                                    6% [Waiting for headers] [4 libmagic1 38.8 kB/216 kB 18%] [3 dh-python 88.1 kB/89.1 kB 99%]                                                                                           Get:9 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 grub-pc-bin amd64 2.02~beta2-36ubuntu3.18 [889 kB]
+6% [9 grub-pc-bin 37.4 kB/889 kB 4%] [4 libmagic1 38.8 kB/216 kB 18%] [3 dh-python 88.1 kB/89.1 kB 99%]                                                                                                       7% [9 grub-pc-bin 37.4 kB/889 kB 4%] [4 libmagic1 38.8 kB/216 kB 18%]8% [Waiting for headers] [4 libmagic1 44.6 kB/216 kB 21%] [Waiting for headers]                                                                               Get:10 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 grub2-common amd64 2.02~beta2-36ubuntu3.18 [511 kB]
+8% [10 grub2-common 65.5 kB/511 kB 13%] [4 libmagic1 44.6 kB/216 kB 21%] [Waiting for headers]                                                                                              8% [Waiting for headers] [4 libmagic1 47.5 kB/216 kB 22%] [Waiting for headers]                                                                               Get:11 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 grub-common amd64 2.02~beta2-36ubuntu3.18 [1,706 kB]
+8% [11 grub-common 13.6 kB/1,706 kB 1%] [4 libmagic1 47.5 kB/216 kB 22%] [Waiting for headers]                                                                                              9% [Waiting for headers] [4 libmagic1 56.2 kB/216 kB 26%] [Waiting for headers]                                                                               Get:12 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 gpgv amd64 1.4.20-1ubuntu3.2 [165 kB]
+10% [12 gpgv 65.5 kB/165 kB 40%] [4 libmagic1 56.2 kB/216 kB 26%] [Waiting for headers]                                                                                       10% [Waiting for headers] [4 libmagic1 56.2 kB/216 kB 26%] [Waiting for headers]                                                                                Get:13 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 gnupg amd64 1.4.20-1ubuntu3.2 [624 kB]
+10% [13 gnupg 42.2 kB/624 kB 7%] [4 libmagic1 56.2 kB/216 kB 26%] [Waiting for headers]                                                                                       11% [Waiting for headers] [4 libmagic1 59.1 kB/216 kB 27%] [Waiting for headers]                                                                                Get:14 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 libprocps4 amd64 2:3.3.10-4ubuntu2.4 [33.1 kB]
+11% [14 libprocps4 7,450 B/33.1 kB 23%] [4 libmagic1 59.1 kB/216 kB 27%] [Waiting for headers]                                                                                              11% [4 libmagic1 59.1 kB/216 kB 27%] [Waiting for headers]                                                          Get:15 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 procps amd64 2:3.3.10-4ubuntu2.4 [222 kB]
+11% [15 procps 39.7 kB/222 kB 18%] [4 libmagic1 59.1 kB/216 kB 27%] [Waiting for headers]                                                                                         12% [Waiting for headers] [4 libmagic1 62.0 kB/216 kB 29%] [Waiting for headers]                                                                                Get:16 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 console-setup-linux all 1.108ubuntu15.4 [984 kB]
+12% [16 console-setup-linux 14.1 kB/984 kB 1%] [4 libmagic1 62.0 kB/216 kB 29%] [Waiting for headers]                                                                                                     12% [Waiting for headers] [4 libmagic1 67.8 kB/216 kB 31%] [Waiting for headers]                                                                                Get:17 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 console-setup all 1.108ubuntu15.4 [117 kB]
+12% [17 console-setup 12.7 kB/117 kB 11%] [4 libmagic1 67.8 kB/216 kB 31%] [Waiting for headers]                                                                                                13% [Waiting for headers] [4 libmagic1 67.8 kB/216 kB 31%] [Waiting for headers]                                                                                Get:18 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 keyboard-configuration all 1.108ubuntu15.4 [657 kB]
+13% [18 keyboard-configuration 26.1 kB/657 kB 4%] [4 libmagic1 67.8 kB/216 kB 31%] [Waiting for headers]                                                                                                        14% [Waiting for headers] [4 libmagic1 73.6 kB/216 kB 34%] [Waiting for headers]                                                                                Get:19 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 ifupdown amd64 0.8.10ubuntu1.4 [54.9 kB]
+14% [19 ifupdown 24.1 kB/54.9 kB 44%] [4 libmagic1 73.6 kB/216 kB 34%] [Waiting for headers]                                                                                            14% [4 libmagic1 73.6 kB/216 kB 34%] [Waiting for headers]                                                          Get:20 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 libelf1 amd64 0.165-3ubuntu1.1 [43.0 kB]
+14% [20 libelf1 0 B/43.0 kB 0%] [4 libmagic1 73.6 kB/216 kB 34%] [Waiting for headers]                                                                                      14% [Waiting for headers] [4 libmagic1 73.6 kB/216 kB 34%] [Waiting for headers]                                                                                Get:21 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 libldap-2.4-2 amd64 2.4.42+dfsg-2ubuntu3.3 [161 kB]
+14% [21 libldap-2.4-2 0 B/161 kB 0%] [4 libmagic1 73.6 kB/216 kB 34%] [Waiting for headers]                                                                                           15% [Waiting for headers] [4 libmagic1 76.5 kB/216 kB 35%] [Waiting for headers]                                                                                Get:22 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 libplymouth4 amd64 0.9.2-3ubuntu13.5 [85.2 kB]
+15% [22 libplymouth4 27.1 kB/85.2 kB 32%] [4 libmagic1 76.5 kB/216 kB 35%] [Waiting for headers]                                                                                                Get:23 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 plymouth amd64 0.9.2-3ubuntu13.5 [107 kB]
+                                                                                                Get:24 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 plymouth-theme-ubuntu-text amd64 0.9.2-3ubuntu13.5 [9,090 B]
+16% [24 plymouth-theme-ubuntu-text 9,090 B/9,090 B 100%] [4 libmagic1 76.5 kB/216 kB 35%] [Waiting for headers]                                                                                                               16% [4 libmagic1 76.5 kB/216 kB 35%] [Waiting for headers]                                                          Get:25 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 python3-problem-report all 2.20.1-0ubuntu2.18 [9,754 B]
+16% [25 python3-problem-report 0 B/9,754 B 0%] [4 libmagic1 79.4 kB/216 kB 37%] [Waiting for headers]                                                                                                     16% [4 libmagic1 79.4 kB/216 kB 37%] [Waiting for headers]                                                          Get:26 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 python3-apport all 2.20.1-0ubuntu2.18 [79.6 kB]
+16% [26 python3-apport 0 B/79.6 kB 0%] [4 libmagic1 79.4 kB/216 kB 37%] [Waiting for headers]                                                                                             17% [4 libmagic1 80.8 kB/216 kB 37%] [Waiting for headers]                                                          Get:27 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 apport all 2.20.1-0ubuntu2.18 [121 kB]
+17% [27 apport 0 B/121 kB 0%] [4 libmagic1 82.3 kB/216 kB 38%] [Waiting for headers]                                                                                    17% [4 libmagic1 82.3 kB/216 kB 38%] [Waiting for headers]                                                          Get:28 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 git-man all 1:2.7.4-0ubuntu1.4 [736 kB]
+17% [28 git-man 0 B/736 kB 0%] [4 libmagic1 82.3 kB/216 kB 38%] [Waiting for headers]                                                                                     18% [4 libmagic1 92.4 kB/216 kB 43%] [Waiting for headers]                                                          Get:29 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 git amd64 1:2.7.4-0ubuntu1.4 [3,158 kB]
+18% [29 git 0 B/3,158 kB 0%] [4 libmagic1 92.4 kB/216 kB 43%] [Waiting for headers]                                                                                   Get:30 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 libhogweed4 amd64 3.4-1~cloud0 [137 kB]
+18% [29 git 582 kB/3,158 kB 18%] [4 libmagic1 95.3 kB/216 kB 44%] [30 libhogweed4 2,629 B/137 kB 2%]                                                                                                    20% [4 libmagic1 129 kB/216 kB 60%] [30 libhogweed4 44.6 kB/137 kB 33%]                                                                       Get:31 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 iucode-tool amd64 1.5.1-1ubuntu0.1 [33.8 kB]
+20% [31 iucode-tool 0 B/33.8 kB 0%] [4 libmagic1 129 kB/216 kB 60%] [30 libhogweed4 44.6 kB/137 kB 33%]                                                                                                       21% [4 libmagic1 129 kB/216 kB 60%] [30 libhogweed4 44.6 kB/137 kB 33%]                                                                       Get:32 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 linux-firmware all 1.157.19 [50.7 MB]
+21% [32 linux-firmware 0 B/50.7 MB 0%] [4 libmagic1 129 kB/216 kB 60%] [30 libhogweed4 44.6 kB/137 kB 33%]                                                                                                          26% [32 linux-firmware 9,644 kB/50.7 MB 19%] [30 libhogweed4 108 kB/137 kB 79%]                                                                               30% [32 linux-firmware 17.2 MB/50.7 MB 34%]                                           Get:33 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 libnettle6 amd64 3.4-1~cloud0 [111 kB]
+30% [32 linux-firmware 17.2 MB/50.7 MB 34%] [33 libnettle6 4,194 B/111 kB 4%]                                                                             36% [32 linux-firmware 27.7 MB/50.7 MB 55%]                                           Get:34 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 dnsmasq-base amd64 2.79-1~cloud0 [304 kB]
+36% [32 linux-firmware 27.7 MB/50.7 MB 55%] [34 dnsmasq-base 4,919 B/304 kB 2%]46% [32 linux-firmware 47.4 MB/50.7 MB 94%] [34 dnsmasq-base 223 kB/304 kB 73%]                                                                               48% [32 linux-firmware 48.9 MB/50.7 MB 97%] [Waiting for headers]                                                                 Get:35 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 libnuma1 amd64 2.0.11-2.1~cloud0 [21.7 kB]
+48% [32 linux-firmware 48.9 MB/50.7 MB 97%] [35 libnuma1 6,381 B/21.7 kB 29%]                                                                             48% [32 linux-firmware 49.1 MB/50.7 MB 97%]                                           Get:36 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python3-pkg-resources all 39.0.1-2~cloud0 [98.8 kB]
+48% [32 linux-firmware 49.1 MB/50.7 MB 97%] [36 python3-pkg-resources 6,542 B/98.8 kB 7%]                                                                                         Get:37 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python3-chardet all 3.0.4-1~cloud0 [81.2 kB]
+                                                                                         49% [32 linux-firmware 50.7 MB/50.7 MB 100%] [37 python3-chardet 13.2 kB/81.2 kB 16%]                                                                                     50% [37 python3-chardet 13.2 kB/81.2 kB 16%]                                            Get:38 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 linux-image-4.4.0-128-generic amd64 4.4.0-128.154 [22.1 MB]
+50% [38 linux-image-4.4.0-128-generic 0 B/22.1 MB 0%] [37 python3-chardet 13.2 kB/81.2 kB 16%]                                                                                              54% [38 linux-image-4.4.0-128-generic 6,683 kB/22.1 MB 30%]                                                           Get:39 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python3-idna all 2.6-1~cloud0 [32.6 kB]
+54% [38 linux-image-4.4.0-128-generic 6,683 kB/22.1 MB 30%] [39 python3-idna 0 B/32.6 kB 0%]                                                                                            Get:40 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python3-six all 1.11.0-2~cloud0 [11.2 kB]
+54% [38 linux-image-4.4.0-128-generic 7,011 kB/22.1 MB 32%] [40 python3-six 10.7 kB/11.2 kB 95%]                                                                                                55% [38 linux-image-4.4.0-128-generic 7,076 kB/22.1 MB 32%]                                                           Get:41 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python3-requests all 2.18.4-2~cloud0 [57.9 kB]
+55% [38 linux-image-4.4.0-128-generic 7,076 kB/22.1 MB 32%] [41 python3-requests 3,529 B/57.9 kB 6%]                                                                                                    56% [38 linux-image-4.4.0-128-generic 7,994 kB/22.1 MB 36%] [Waiting for headers]                                                                                 Get:42 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python3-urllib3 all 1.22-1~cloud0 [85.3 kB]
+56% [38 linux-image-4.4.0-128-generic 7,994 kB/22.1 MB 36%] [42 python3-urllib3 1,388 B/85.3 kB 2%]                                                                                                   62% [38 linux-image-4.4.0-128-generic 19.5 MB/22.1 MB 88%]                                                          64% [Waiting for headers]                         Get:43 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 linux-image-extra-4.4.0-128-generic amd64 4.4.0-128.154 [36.5 MB]
+64% [43 linux-image-extra-4.4.0-128-generic 65.5 kB/36.5 MB 0%]75% [43 linux-image-extra-4.4.0-128-generic 21.9 MB/36.5 MB 60%]                                                                83% [Waiting for headers]                         Get:44 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 intel-microcode amd64 3.20180425.1~ubuntu0.16.04.1 [1,145 kB]
+83% [44 intel-microcode 28.8 kB/1,145 kB 3%]                                            84% [Waiting for headers]                         Get:45 http://th.archive.ubuntu.com/ubuntu xenial/multiverse amd64 amd64-microcode amd64 2.20160316.1 [29.3 kB]
+84% [45 amd64-microcode 29.3 kB/29.3 kB 100%]                                             84% [Waiting for headers]                         Get:46 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 linux-generic amd64 4.4.0.128.134 [1,790 B]
+85% [Waiting for headers]                         Get:47 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 linux-image-generic amd64 4.4.0.128.134 [2,480 B]
+                         Get:48 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 linux-headers-4.4.0-128 all 4.4.0-128.154 [10.1 MB]
+85% [48 linux-headers-4.4.0-128 29.0 kB/10.1 MB 0%]                                                   91% [Working]             Get:49 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 linux-headers-4.4.0-128-generic amd64 4.4.0-128.154 [827 kB]
+91% [49 linux-headers-4.4.0-128-generic 63.9 kB/827 kB 8%]                                                          Get:50 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 linux-headers-generic amd64 4.4.0.128.134 [2,436 B]
+                                                          91% [50 linux-headers-generic 2,436 B/2,436 B 100%]                                                   92% [Waiting for headers]                         Get:51 http://th.archive.ubuntu.com/ubuntu xenial/universe amd64 python3-certifi all 2015.11.20.1-2 [173 kB]
+92% [51 python3-certifi 20.9 kB/173 kB 12%]                                           92% [Waiting for headers]                         Get:52 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 snapd amd64 2.32.9 [13.5 MB]
+92% [52 snapd 44.4 kB/13.5 MB 0%]                                 100% [Waiting for headers]                          Get:53 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 vlan amd64 1.9-3.2ubuntu1.16.04.5 [30.7 kB]
+100% [53 vlan 30.7 kB/30.7 kB 100%]                                   100% [Working]              Fetched 155 MB in 5s (29.9 MB/s)
+Extracting templates from packages: 56%Extracting templates from packages: 100%
+Preconfiguring packages ...
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 92595 files and directories currently installed.)
+Preparing to unpack .../libperl5.22_5.22.1-9ubuntu0.5_amd64.deb ...
+Unpacking libperl5.22:amd64 (5.22.1-9ubuntu0.5) over (5.22.1-9ubuntu0.3) ...
+Preparing to unpack .../perl_5.22.1-9ubuntu0.5_amd64.deb ...
+Unpacking perl (5.22.1-9ubuntu0.5) over (5.22.1-9ubuntu0.3) ...
+Preparing to unpack .../perl-base_5.22.1-9ubuntu0.5_amd64.deb ...
+Unpacking perl-base (5.22.1-9ubuntu0.5) over (5.22.1-9ubuntu0.3) ...
+Processing triggers for man-db (2.7.5-1) ...
+Setting up perl-base (5.22.1-9ubuntu0.5) ...
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 92595 files and directories currently installed.)
+Preparing to unpack .../perl-modules-5.22_5.22.1-9ubuntu0.5_all.deb ...
+Unpacking perl-modules-5.22 (5.22.1-9ubuntu0.5) over (5.22.1-9ubuntu0.3) ...
+Preparing to unpack .../grub-pc_2.02~beta2-36ubuntu3.18_amd64.deb ...
+Unpacking grub-pc (2.02~beta2-36ubuntu3.18) over (2.02~beta2-36ubuntu3.17) ...
+Preparing to unpack .../grub-pc-bin_2.02~beta2-36ubuntu3.18_amd64.deb ...
+Unpacking grub-pc-bin (2.02~beta2-36ubuntu3.18) over (2.02~beta2-36ubuntu3.17) ...
+Preparing to unpack .../grub2-common_2.02~beta2-36ubuntu3.18_amd64.deb ...
+Unpacking grub2-common (2.02~beta2-36ubuntu3.18) over (2.02~beta2-36ubuntu3.17) ...
+Preparing to unpack .../grub-common_2.02~beta2-36ubuntu3.18_amd64.deb ...
+Unpacking grub-common (2.02~beta2-36ubuntu3.18) over (2.02~beta2-36ubuntu3.17) ...
+Preparing to unpack .../gpgv_1.4.20-1ubuntu3.2_amd64.deb ...
+Unpacking gpgv (1.4.20-1ubuntu3.2) over (1.4.20-1ubuntu3.1) ...
+Processing triggers for man-db (2.7.5-1) ...
+Processing triggers for install-info (6.1.0.dfsg.1-5) ...
+Processing triggers for systemd (229-4ubuntu21.2) ...
+Processing triggers for ureadahead (0.100.0-19) ...
+Setting up gpgv (1.4.20-1ubuntu3.2) ...
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 92595 files and directories currently installed.)
+Preparing to unpack .../gnupg_1.4.20-1ubuntu3.2_amd64.deb ...
+Unpacking gnupg (1.4.20-1ubuntu3.2) over (1.4.20-1ubuntu3.1) ...
+Processing triggers for install-info (6.1.0.dfsg.1-5) ...
+Processing triggers for man-db (2.7.5-1) ...
+Setting up gnupg (1.4.20-1ubuntu3.2) ...
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 92595 files and directories currently installed.)
+Preparing to unpack .../libprocps4_2%3a3.3.10-4ubuntu2.4_amd64.deb ...
+Unpacking libprocps4:amd64 (2:3.3.10-4ubuntu2.4) over (2:3.3.10-4ubuntu2.3) ...
+Preparing to unpack .../procps_2%3a3.3.10-4ubuntu2.4_amd64.deb ...
+Unpacking procps (2:3.3.10-4ubuntu2.4) over (2:3.3.10-4ubuntu2.3) ...
+Preparing to unpack .../console-setup-linux_1.108ubuntu15.4_all.deb ...
+Unpacking console-setup-linux (1.108ubuntu15.4) over (1.108ubuntu15.3) ...
+Preparing to unpack .../console-setup_1.108ubuntu15.4_all.deb ...
+Obsolete conffile /etc/init.d/keyboard-setup has been modified by you, renaming to .dpkg-bak
+Unpacking console-setup (1.108ubuntu15.4) over (1.108ubuntu15.3) ...
+Preparing to unpack .../keyboard-configuration_1.108ubuntu15.4_all.deb ...
+Unpacking keyboard-configuration (1.108ubuntu15.4) over (1.108ubuntu15.3) ...
+Preparing to unpack .../file_1%3a5.25-2ubuntu1.1_amd64.deb ...
+Unpacking file (1:5.25-2ubuntu1.1) over (1:5.25-2ubuntu1) ...
+Preparing to unpack .../libmagic1_1%3a5.25-2ubuntu1.1_amd64.deb ...
+Unpacking libmagic1:amd64 (1:5.25-2ubuntu1.1) over (1:5.25-2ubuntu1) ...
+Preparing to unpack .../ifupdown_0.8.10ubuntu1.4_amd64.deb ...
+Unpacking ifupdown (0.8.10ubuntu1.4) over (0.8.10ubuntu1.3) ...
+Preparing to unpack .../libelf1_0.165-3ubuntu1.1_amd64.deb ...
+Unpacking libelf1:amd64 (0.165-3ubuntu1.1) over (0.165-3ubuntu1) ...
+Preparing to unpack .../libldap-2.4-2_2.4.42+dfsg-2ubuntu3.3_amd64.deb ...
+Unpacking libldap-2.4-2:amd64 (2.4.42+dfsg-2ubuntu3.3) over (2.4.42+dfsg-2ubuntu3.2) ...
+Preparing to unpack .../libplymouth4_0.9.2-3ubuntu13.5_amd64.deb ...
+Unpacking libplymouth4:amd64 (0.9.2-3ubuntu13.5) over (0.9.2-3ubuntu13.4) ...
+Preparing to unpack .../plymouth_0.9.2-3ubuntu13.5_amd64.deb ...
+Unpacking plymouth (0.9.2-3ubuntu13.5) over (0.9.2-3ubuntu13.4) ...
+Preparing to unpack .../plymouth-theme-ubuntu-text_0.9.2-3ubuntu13.5_amd64.deb ...
+Unpacking plymouth-theme-ubuntu-text (0.9.2-3ubuntu13.5) over (0.9.2-3ubuntu13.4) ...
+Preparing to unpack .../python3-problem-report_2.20.1-0ubuntu2.18_all.deb ...
+Unpacking python3-problem-report (2.20.1-0ubuntu2.18) over (2.20.1-0ubuntu2.17) ...
+Preparing to unpack .../python3-apport_2.20.1-0ubuntu2.18_all.deb ...
+Unpacking python3-apport (2.20.1-0ubuntu2.18) over (2.20.1-0ubuntu2.17) ...
+Preparing to unpack .../apport_2.20.1-0ubuntu2.18_all.deb ...
+Unpacking apport (2.20.1-0ubuntu2.18) over (2.20.1-0ubuntu2.17) ...
+Preparing to unpack .../dh-python_3.20180325ubuntu2~cloud1_all.deb ...
+Unpacking dh-python (3.20180325ubuntu2~cloud1) over (2.20151103ubuntu1.1) ...
+Preparing to unpack .../libhogweed4_3.4-1~cloud0_amd64.deb ...
+Unpacking libhogweed4:amd64 (3.4-1~cloud0) over (3.2-1ubuntu0.16.04.1) ...
+Preparing to unpack .../libnettle6_3.4-1~cloud0_amd64.deb ...
+Unpacking libnettle6:amd64 (3.4-1~cloud0) over (3.2-1ubuntu0.16.04.1) ...
+Preparing to unpack .../dnsmasq-base_2.79-1~cloud0_amd64.deb ...
+Unpacking dnsmasq-base (2.79-1~cloud0) over (2.75-1ubuntu0.16.04.4) ...
+Preparing to unpack .../git-man_1%3a2.7.4-0ubuntu1.4_all.deb ...
+Unpacking git-man (1:2.7.4-0ubuntu1.4) over (1:2.7.4-0ubuntu1.3) ...
+Preparing to unpack .../git_1%3a2.7.4-0ubuntu1.4_amd64.deb ...
+Unpacking git (1:2.7.4-0ubuntu1.4) over (1:2.7.4-0ubuntu1.3) ...
+Selecting previously unselected package iucode-tool.
+Preparing to unpack .../iucode-tool_1.5.1-1ubuntu0.1_amd64.deb ...
+Unpacking iucode-tool (1.5.1-1ubuntu0.1) ...
+Preparing to unpack .../libnuma1_2.0.11-2.1~cloud0_amd64.deb ...
+Unpacking libnuma1:amd64 (2.0.11-2.1~cloud0) over (2.0.11-1ubuntu1.1) ...
+Preparing to unpack .../linux-firmware_1.157.19_all.deb ...
+Unpacking linux-firmware (1.157.19) over (1.157.18) ...
+Selecting previously unselected package linux-image-4.4.0-128-generic.
+Preparing to unpack .../linux-image-4.4.0-128-generic_4.4.0-128.154_amd64.deb ...
+Done.
+Unpacking linux-image-4.4.0-128-generic (4.4.0-128.154) ...
+Selecting previously unselected package linux-image-extra-4.4.0-128-generic.
+Preparing to unpack .../linux-image-extra-4.4.0-128-generic_4.4.0-128.154_amd64.deb ...
+Unpacking linux-image-extra-4.4.0-128-generic (4.4.0-128.154) ...
+Selecting previously unselected package intel-microcode.
+Preparing to unpack .../intel-microcode_3.20180425.1~ubuntu0.16.04.1_amd64.deb ...
+Unpacking intel-microcode (3.20180425.1~ubuntu0.16.04.1) ...
+Selecting previously unselected package amd64-microcode.
+Preparing to unpack .../amd64-microcode_2.20160316.1_amd64.deb ...
+Unpacking amd64-microcode (2.20160316.1) ...
+Preparing to unpack .../linux-generic_4.4.0.128.134_amd64.deb ...
+Unpacking linux-generic (4.4.0.128.134) over (4.4.0.124.130) ...
+Preparing to unpack .../linux-image-generic_4.4.0.128.134_amd64.deb ...
+Unpacking linux-image-generic (4.4.0.128.134) over (4.4.0.124.130) ...
+Selecting previously unselected package linux-headers-4.4.0-128.
+Preparing to unpack .../linux-headers-4.4.0-128_4.4.0-128.154_all.deb ...
+Unpacking linux-headers-4.4.0-128 (4.4.0-128.154) ...
+Selecting previously unselected package linux-headers-4.4.0-128-generic.
+Preparing to unpack .../linux-headers-4.4.0-128-generic_4.4.0-128.154_amd64.deb ...
+Unpacking linux-headers-4.4.0-128-generic (4.4.0-128.154) ...
+Preparing to unpack .../linux-headers-generic_4.4.0.128.134_amd64.deb ...
+Unpacking linux-headers-generic (4.4.0.128.134) over (4.4.0.124.130) ...
+Selecting previously unselected package python3-certifi.
+Preparing to unpack .../python3-certifi_2015.11.20.1-2_all.deb ...
+Unpacking python3-certifi (2015.11.20.1-2) ...
+Preparing to unpack .../python3-pkg-resources_39.0.1-2~cloud0_all.deb ...
+Unpacking python3-pkg-resources (39.0.1-2~cloud0) over (20.7.0-1) ...
+Preparing to unpack .../python3-chardet_3.0.4-1~cloud0_all.deb ...
+Unpacking python3-chardet (3.0.4-1~cloud0) over (2.3.0-2) ...
+Selecting previously unselected package python3-idna.
+Preparing to unpack .../python3-idna_2.6-1~cloud0_all.deb ...
+Unpacking python3-idna (2.6-1~cloud0) ...
+Preparing to unpack .../python3-six_1.11.0-2~cloud0_all.deb ...
+Unpacking python3-six (1.11.0-2~cloud0) over (1.10.0-3) ...
+Preparing to unpack .../python3-requests_2.18.4-2~cloud0_all.deb ...
+Unpacking python3-requests (2.18.4-2~cloud0) over (2.9.1-3) ...
+Preparing to unpack .../python3-urllib3_1.22-1~cloud0_all.deb ...
+Unpacking python3-urllib3 (1.22-1~cloud0) over (1.13.1-2ubuntu0.16.04.1) ...
+Preparing to unpack .../snapd_2.32.9_amd64.deb ...
+Unpacking snapd (2.32.9) over (2.32.3.2) ...
+Preparing to unpack .../vlan_1.9-3.2ubuntu1.16.04.5_amd64.deb ...
+Unpacking vlan (1.9-3.2ubuntu1.16.04.5) over (1.9-3.2ubuntu1.16.04.4) ...
+Processing triggers for libc-bin (2.23-0ubuntu10) ...
+Processing triggers for man-db (2.7.5-1) ...
+Processing triggers for ureadahead (0.100.0-19) ...
+Processing triggers for systemd (229-4ubuntu21.2) ...
+Processing triggers for dbus (1.10.6-1ubuntu3.3) ...
+Setting up perl-modules-5.22 (5.22.1-9ubuntu0.5) ...
+Setting up libperl5.22:amd64 (5.22.1-9ubuntu0.5) ...
+Setting up perl (5.22.1-9ubuntu0.5) ...
+Setting up grub-common (2.02~beta2-36ubuntu3.18) ...
+update-rc.d: warning: start and stop actions are no longer supported; falling back to defaults
+Setting up grub2-common (2.02~beta2-36ubuntu3.18) ...
+Setting up grub-pc-bin (2.02~beta2-36ubuntu3.18) ...
+Setting up grub-pc (2.02~beta2-36ubuntu3.18) ...
+Installing for i386-pc platform.
+Installation finished. No error reported.
+Generating grub configuration file ...
+Found linux image: /boot/vmlinuz-4.4.0-128-generic
+Found linux image: /boot/vmlinuz-4.4.0-124-generic
+Found initrd image: /boot/initrd.img-4.4.0-124-generic
+Found linux image: /boot/vmlinuz-4.4.0-116-generic
+Found initrd image: /boot/initrd.img-4.4.0-116-generic
+done
+Setting up libprocps4:amd64 (2:3.3.10-4ubuntu2.4) ...
+Setting up procps (2:3.3.10-4ubuntu2.4) ...
+update-rc.d: warning: start and stop actions are no longer supported; falling back to defaults
+Setting up keyboard-configuration (1.108ubuntu15.4) ...
+update-rc.d: warning: start and stop actions are no longer supported; falling back to defaults
+update-initramfs: deferring update (trigger activated)
+Setting up console-setup-linux (1.108ubuntu15.4) ...
+Installing new version of config file /etc/console-setup/compose.ISO-8859-1.inc ...
+Installing new version of config file /etc/console-setup/compose.ISO-8859-13.inc ...
+Installing new version of config file /etc/console-setup/compose.ISO-8859-14.inc ...
+Installing new version of config file /etc/console-setup/compose.ISO-8859-15.inc ...
+Installing new version of config file /etc/console-setup/compose.ISO-8859-2.inc ...
+Installing new version of config file /etc/console-setup/compose.ISO-8859-3.inc ...
+Installing new version of config file /etc/console-setup/compose.ISO-8859-4.inc ...
+Installing new version of config file /etc/console-setup/compose.ISO-8859-7.inc ...
+Installing new version of config file /etc/console-setup/compose.ISO-8859-9.inc ...
+Setting up console-setup (1.108ubuntu15.4) ...
+update-initramfs: deferring update (trigger activated)
+Setting up libmagic1:amd64 (1:5.25-2ubuntu1.1) ...
+Setting up file (1:5.25-2ubuntu1.1) ...
+Setting up ifupdown (0.8.10ubuntu1.4) ...
+Setting up libelf1:amd64 (0.165-3ubuntu1.1) ...
+Setting up libldap-2.4-2:amd64 (2.4.42+dfsg-2ubuntu3.3) ...
+Setting up libplymouth4:amd64 (0.9.2-3ubuntu13.5) ...
+Setting up plymouth (0.9.2-3ubuntu13.5) ...
+update-initramfs: deferring update (trigger activated)
+update-rc.d: warning: start and stop actions are no longer supported; falling back to defaults
+update-rc.d: warning: start and stop actions are no longer supported; falling back to defaults
+Setting up plymouth-theme-ubuntu-text (0.9.2-3ubuntu13.5) ...
+update-initramfs: deferring update (trigger activated)
+Setting up python3-problem-report (2.20.1-0ubuntu2.18) ...
+Setting up python3-apport (2.20.1-0ubuntu2.18) ...
+Setting up apport (2.20.1-0ubuntu2.18) ...
+Setting up dh-python (3.20180325ubuntu2~cloud1) ...
+Setting up libnettle6:amd64 (3.4-1~cloud0) ...
+Setting up libhogweed4:amd64 (3.4-1~cloud0) ...
+Setting up dnsmasq-base (2.79-1~cloud0) ...
+Setting up git-man (1:2.7.4-0ubuntu1.4) ...
+Setting up git (1:2.7.4-0ubuntu1.4) ...
+Setting up iucode-tool (1.5.1-1ubuntu0.1) ...
+Setting up libnuma1:amd64 (2.0.11-2.1~cloud0) ...
+Setting up linux-firmware (1.157.19) ...
+update-initramfs: Generating /boot/initrd.img-4.4.0-124-generic
+cryptsetup: WARNING: failed to detect canonical device of /dev/sda1
+W: mdadm: /etc/mdadm/mdadm.conf defines no arrays.
+update-initramfs: Generating /boot/initrd.img-4.4.0-116-generic
+cryptsetup: WARNING: failed to detect canonical device of /dev/sda1
+W: mdadm: /etc/mdadm/mdadm.conf defines no arrays.
+Setting up linux-image-4.4.0-128-generic (4.4.0-128.154) ...
+Running depmod.
+update-initramfs: deferring update (hook will be called later)
+Examining /etc/kernel/postinst.d.
+run-parts: executing /etc/kernel/postinst.d/apt-auto-removal 4.4.0-128-generic /boot/vmlinuz-4.4.0-128-generic
+run-parts: executing /etc/kernel/postinst.d/initramfs-tools 4.4.0-128-generic /boot/vmlinuz-4.4.0-128-generic
+update-initramfs: Generating /boot/initrd.img-4.4.0-128-generic
+cryptsetup: WARNING: failed to detect canonical device of /dev/sda1
+W: mdadm: /etc/mdadm/mdadm.conf defines no arrays.
+run-parts: executing /etc/kernel/postinst.d/unattended-upgrades 4.4.0-128-generic /boot/vmlinuz-4.4.0-128-generic
+run-parts: executing /etc/kernel/postinst.d/update-notifier 4.4.0-128-generic /boot/vmlinuz-4.4.0-128-generic
+run-parts: executing /etc/kernel/postinst.d/x-grub-legacy-ec2 4.4.0-128-generic /boot/vmlinuz-4.4.0-128-generic
+Searching for GRUB installation directory ... found: /boot/grub
+Searching for default file ... found: /boot/grub/default
+Testing for an existing GRUB menu.lst file ... found: /boot/grub/menu.lst
+Searching for splash image ... none found, skipping ...
+Found kernel: /boot/vmlinuz-4.4.0-124-generic
+Found kernel: /boot/vmlinuz-4.4.0-116-generic
+Found kernel: /boot/vmlinuz-4.4.0-128-generic
+Found kernel: /boot/vmlinuz-4.4.0-124-generic
+Found kernel: /boot/vmlinuz-4.4.0-116-generic
+Replacing config file /run/grub/menu.lst with new version
+Updating /boot/grub/menu.lst ... done
+
+run-parts: executing /etc/kernel/postinst.d/zz-update-grub 4.4.0-128-generic /boot/vmlinuz-4.4.0-128-generic
+Generating grub configuration file ...
+Found linux image: /boot/vmlinuz-4.4.0-128-generic
+Found initrd image: /boot/initrd.img-4.4.0-128-generic
+Found linux image: /boot/vmlinuz-4.4.0-124-generic
+Found initrd image: /boot/initrd.img-4.4.0-124-generic
+Found linux image: /boot/vmlinuz-4.4.0-116-generic
+Found initrd image: /boot/initrd.img-4.4.0-116-generic
+done
+Setting up linux-image-extra-4.4.0-128-generic (4.4.0-128.154) ...
+run-parts: executing /etc/kernel/postinst.d/apt-auto-removal 4.4.0-128-generic /boot/vmlinuz-4.4.0-128-generic
+run-parts: executing /etc/kernel/postinst.d/initramfs-tools 4.4.0-128-generic /boot/vmlinuz-4.4.0-128-generic
+update-initramfs: Generating /boot/initrd.img-4.4.0-128-generic
+cryptsetup: WARNING: failed to detect canonical device of /dev/sda1
+W: mdadm: /etc/mdadm/mdadm.conf defines no arrays.
+run-parts: executing /etc/kernel/postinst.d/unattended-upgrades 4.4.0-128-generic /boot/vmlinuz-4.4.0-128-generic
+run-parts: executing /etc/kernel/postinst.d/update-notifier 4.4.0-128-generic /boot/vmlinuz-4.4.0-128-generic
+run-parts: executing /etc/kernel/postinst.d/x-grub-legacy-ec2 4.4.0-128-generic /boot/vmlinuz-4.4.0-128-generic
+Searching for GRUB installation directory ... found: /boot/grub
+Searching for default file ... found: /boot/grub/default
+Testing for an existing GRUB menu.lst file ... found: /boot/grub/menu.lst
+Searching for splash image ... none found, skipping ...
+Found kernel: /boot/vmlinuz-4.4.0-128-generic
+Found kernel: /boot/vmlinuz-4.4.0-124-generic
+Found kernel: /boot/vmlinuz-4.4.0-116-generic
+Found kernel: /boot/vmlinuz-4.4.0-128-generic
+Found kernel: /boot/vmlinuz-4.4.0-124-generic
+Found kernel: /boot/vmlinuz-4.4.0-116-generic
+Updating /boot/grub/menu.lst ... done
+
+run-parts: executing /etc/kernel/postinst.d/zz-update-grub 4.4.0-128-generic /boot/vmlinuz-4.4.0-128-generic
+Generating grub configuration file ...
+Found linux image: /boot/vmlinuz-4.4.0-128-generic
+Found initrd image: /boot/initrd.img-4.4.0-128-generic
+Found linux image: /boot/vmlinuz-4.4.0-124-generic
+Found initrd image: /boot/initrd.img-4.4.0-124-generic
+Found linux image: /boot/vmlinuz-4.4.0-116-generic
+Found initrd image: /boot/initrd.img-4.4.0-116-generic
+done
+Setting up intel-microcode (3.20180425.1~ubuntu0.16.04.1) ...
+update-initramfs: deferring update (trigger activated)
+intel-microcode: microcode will be updated at next boot
+Setting up amd64-microcode (2.20160316.1) ...
+update-initramfs: deferring update (trigger activated)
+amd64-microcode: microcode will be updated at next boot
+Setting up linux-image-generic (4.4.0.128.134) ...
+Setting up linux-headers-4.4.0-128 (4.4.0-128.154) ...
+Setting up linux-headers-4.4.0-128-generic (4.4.0-128.154) ...
+Setting up linux-headers-generic (4.4.0.128.134) ...
+Setting up linux-generic (4.4.0.128.134) ...
+Setting up python3-certifi (2015.11.20.1-2) ...
+Setting up python3-pkg-resources (39.0.1-2~cloud0) ...
+Setting up python3-chardet (3.0.4-1~cloud0) ...
+Setting up python3-idna (2.6-1~cloud0) ...
+Setting up python3-six (1.11.0-2~cloud0) ...
+Setting up python3-urllib3 (1.22-1~cloud0) ...
+Setting up python3-requests (2.18.4-2~cloud0) ...
+Setting up snapd (2.32.9) ...
+Job for snapd.seeded.service failed because the control process exited with error code. See "systemctl status snapd.seeded.service" and "journalctl -xe" for details.
+snapd.seeded.service couldn't start.
+snapd.snap-repair.service is a disabled or a static unit, not starting it.
+Setting up vlan (1.9-3.2ubuntu1.16.04.5) ...
+Installing new version of config file /etc/network/if-pre-up.d/vlan ...
+Processing triggers for libc-bin (2.23-0ubuntu10) ...
+Processing triggers for initramfs-tools (0.122ubuntu8.11) ...
+update-initramfs: Generating /boot/initrd.img-4.4.0-128-generic
+cryptsetup: WARNING: failed to detect canonical device of /dev/sda1
+W: mdadm: /etc/mdadm/mdadm.conf defines no arrays.
++ apt-get -y install python-openstackclient
+Reading package lists... 0%Reading package lists... 100%Reading package lists... Done
+Building dependency tree... 0%Building dependency tree... 0%Building dependency tree... 50%Building dependency tree... 50%Building dependency tree       
+Reading state information... 0%Reading state information... 1%Reading state information... Done
+The following packages were automatically installed and are no longer required:
+  linux-headers-4.4.0-116 linux-headers-4.4.0-116-generic linux-image-4.4.0-116-generic
+  linux-image-extra-4.4.0-116-generic
+Use 'sudo apt autoremove' to remove them.
+The following additional packages will be installed:
+  docutils-common docutils-doc ieee-data javascript-common libjbig0 libjpeg-turbo8 libjpeg8 libjs-jquery
+  libjs-sphinxdoc libjs-underscore liblcms2-2 libpaper-utils libpaper1 libpython-stdlib libpython2.7-minimal
+  libpython2.7-stdlib libtiff5 libwebp5 libwebpmux1 libyaml-0-2 python python-appdirs python-asn1crypto
+  python-babel python-babel-localedata python-blinker python-bs4 python-certifi python-cffi-backend python-chardet
+  python-cinderclient python-cliff python-cmd2 python-concurrent.futures python-crypto python-cryptography
+  python-dbus python-debtcollector python-decorator python-deprecation python-docutils python-dogpile.cache
+  python-enum34 python-funcsigs python-functools32 python-gi python-glanceclient python-html5lib python-idna
+  python-ipaddress python-iso8601 python-jmespath python-json-pointer python-jsonpatch python-jsonschema
+  python-jwt python-keyring python-keystoneauth1 python-keystoneclient python-lxml python-minimal python-mock
+  python-monotonic python-msgpack python-munch python-netaddr python-netifaces python-neutronclient
+  python-novaclient python-oauthlib python-openssl python-openstacksdk python-os-client-config
+  python-os-service-types python-osc-lib python-oslo.config python-oslo.i18n python-oslo.serialization
+  python-oslo.utils python-pbr python-pil python-pkg-resources python-positional python-prettytable
+  python-pygments python-pyparsing python-requests python-requestsexceptions python-rfc3986 python-roman
+  python-secretstorage python-simplejson python-six python-stevedore python-tz python-unicodecsv python-urllib3
+  python-warlock python-wrapt python-yaml python2.7 python2.7-minimal
+Suggested packages:
+  apache2 | lighttpd | httpd liblcms2-utils python-doc python-tk python-blinker-doc python-cliff-doc
+  python-crypto-dbg python-crypto-doc python-cryptography-doc python-cryptography-vectors python-dbus-doc
+  python-dbus-dbg python-debtcollector-doc texlive-latex-recommended texlive-latex-base texlive-lang-french
+  fonts-linuxlibertine | ttf-linux-libertine python-enum34-doc python-funcsigs-doc python-gi-cairo
+  python-glanceclient-doc python-genshi gir1.2-gnomekeyring-1.0 python-fs python-gdata python-kde4 python-keyczar
+  python-keystoneauth1-doc python-requests-kerberos python-lxml-dbg python-lxml-doc python-mock-doc ipython
+  python-netaddr-docs python-openssl-doc python-openssl-dbg python-openstacksdk-doc python-os-client-config-doc
+  python-osc-lib-doc python-pil-doc python-pil-dbg python-setuptools python-positional-doc ttf-bitstream-vera
+  python-pyparsing-doc python-socks gnome-keyring python-secretstorage-doc python-ntlm python2.7-doc binutils
+  binfmt-support
+The following NEW packages will be installed:
+  docutils-common docutils-doc ieee-data javascript-common libjbig0 libjpeg-turbo8 libjpeg8 libjs-jquery
+  libjs-sphinxdoc libjs-underscore liblcms2-2 libpaper-utils libpaper1 libpython-stdlib libpython2.7-minimal
+  libpython2.7-stdlib libtiff5 libwebp5 libwebpmux1 libyaml-0-2 python python-appdirs python-asn1crypto
+  python-babel python-babel-localedata python-blinker python-bs4 python-certifi python-cffi-backend python-chardet
+  python-cinderclient python-cliff python-cmd2 python-concurrent.futures python-crypto python-cryptography
+  python-dbus python-debtcollector python-decorator python-deprecation python-docutils python-dogpile.cache
+  python-enum34 python-funcsigs python-functools32 python-gi python-glanceclient python-html5lib python-idna
+  python-ipaddress python-iso8601 python-jmespath python-json-pointer python-jsonpatch python-jsonschema
+  python-jwt python-keyring python-keystoneauth1 python-keystoneclient python-lxml python-minimal python-mock
+  python-monotonic python-msgpack python-munch python-netaddr python-netifaces python-neutronclient
+  python-novaclient python-oauthlib python-openssl python-openstackclient python-openstacksdk
+  python-os-client-config python-os-service-types python-osc-lib python-oslo.config python-oslo.i18n
+  python-oslo.serialization python-oslo.utils python-pbr python-pil python-pkg-resources python-positional
+  python-prettytable python-pygments python-pyparsing python-requests python-requestsexceptions python-rfc3986
+  python-roman python-secretstorage python-simplejson python-six python-stevedore python-tz python-unicodecsv
+  python-urllib3 python-warlock python-wrapt python-yaml python2.7 python2.7-minimal
+0 upgraded, 103 newly installed, 0 to remove and 0 not upgraded.
+Need to get 17.0 MB of archives.
+After this operation, 89.9 MB of additional disk space will be used.
+0% [Working]            Get:1 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 libjpeg-turbo8 amd64 1.4.2-0ubuntu3 [111 kB]
+0% [1 libjpeg-turbo8 0 B/111 kB 0%] [Connecting to ubuntu-cloud.archive.canonical.com (91.189.92.152)]                                                                                                      1% [Connecting to ubuntu-cloud.archive.canonical.com (91.189.92.152)]                                                                     Get:2 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 liblcms2-2 amd64 2.6-3ubuntu2 [137 kB]
+1% [2 liblcms2-2 0 B/137 kB 0%] [Connecting to ubuntu-cloud.archive.canonical.com (91.189.92.152)]                                                                                                  2% [Connecting to ubuntu-cloud.archive.canonical.com (91.189.92.152)]                                                                     Get:3 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 libyaml-0-2 amd64 0.1.6-3 [47.6 kB]
+2% [3 libyaml-0-2 0 B/47.6 kB 0%] [Connecting to ubuntu-cloud.archive.canonical.com (91.189.92.152)]                                                                                                    2% [Connecting to ubuntu-cloud.archive.canonical.com (91.189.92.152)]                                                                     Get:4 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 libpython2.7-minimal amd64 2.7.12-1ubuntu0~16.04.3 [340 kB]
+2% [4 libpython2.7-minimal 0 B/340 kB 0%] [Connecting to ubuntu-cloud.archive.canonical.com (91.189.92.152)]                                                                                                            4% [Waiting for headers]                        Get:5 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 python2.7-minimal amd64 2.7.12-1ubuntu0~16.04.3 [1,261 kB]
+4% [5 python2.7-minimal 0 B/1,261 kB 0%] [Waiting for headers]                                                              10% [Waiting for headers]                         Get:6 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 python-minimal amd64 2.7.12-1~16.04 [28.1 kB]
+10% [6 python-minimal 0 B/28.1 kB 0%] [Waiting for headers]                                                           10% [Waiting for headers]                         Get:7 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 libpython2.7-stdlib amd64 2.7.12-1ubuntu0~16.04.3 [1,880 kB]
+10% [7 libpython2.7-stdlib 0 B/1,880 kB 0%] [Waiting for headers]                                                                 Get:8 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-pyparsing all 2.2.0+dfsg1-2~cloud0 [51.9 kB]
+13% [7 libpython2.7-stdlib 686 kB/1,880 kB 36%] [8 python-pyparsing 9,871 B/51.9 kB 19%]                                                                                        19% [8 python-pyparsing 14.2 kB/51.9 kB 27%]                                            Get:9 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 python2.7 amd64 2.7.12-1ubuntu0~16.04.3 [224 kB]
+19% [9 python2.7 0 B/224 kB 0%] [8 python-pyparsing 14.2 kB/51.9 kB 27%]                                                                        21% [8 python-pyparsing 14.2 kB/51.9 kB 27%]                                            Get:10 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 libpython-stdlib amd64 2.7.12-1~16.04 [7,768 B]
+21% [10 libpython-stdlib 0 B/7,768 B 0%] [8 python-pyparsing 14.2 kB/51.9 kB 27%]                                                                                 21% [8 python-pyparsing 14.2 kB/51.9 kB 27%]                                            Get:11 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 python amd64 2.7.12-1~16.04 [137 kB]
+21% [11 python 0 B/137 kB 0%] [8 python-pyparsing 14.2 kB/51.9 kB 27%]                                                                      22% [8 python-pyparsing 14.2 kB/51.9 kB 27%]                                            Get:12 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 python-cmd2 all 0.6.8-1 [22.4 kB]
+22% [12 python-cmd2 0 B/22.4 kB 0%] [8 python-pyparsing 14.2 kB/51.9 kB 27%]                                                                            22% [8 python-pyparsing 14.2 kB/51.9 kB 27%]                                            Get:13 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 python-wrapt amd64 1.8.0-5build2 [25.5 kB]
+22% [13 python-wrapt 0 B/25.5 kB 0%] [8 python-pyparsing 14.2 kB/51.9 kB 27%]                                                                             22% [8 python-pyparsing 14.2 kB/51.9 kB 27%]                                            Get:14 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 libjbig0 amd64 2.1-3.1 [26.6 kB]
+22% [14 libjbig0 0 B/26.6 kB 0%] [8 python-pyparsing 14.2 kB/51.9 kB 27%]                                                                         23% [8 python-pyparsing 14.2 kB/51.9 kB 27%]                                            Get:15 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 docutils-common all 0.12+dfsg-1 [141 kB]
+23% [15 docutils-common 0 B/141 kB 0%] [8 python-pyparsing 27.2 kB/51.9 kB 53%]                                                                               23% [8 python-pyparsing 31.6 kB/51.9 kB 61%]                                            Get:16 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 docutils-doc all 0.12+dfsg-1 [889 kB]
+23% [16 docutils-doc 0 B/889 kB 0%] [8 python-pyparsing 31.6 kB/51.9 kB 61%]                                                                            28% [Waiting for headers] [8 python-pyparsing 31.6 kB/51.9 kB 61%]                                                                  Get:17 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 ieee-data all 20150531.1 [830 kB]
+28% [17 ieee-data 27.9 kB/830 kB 3%] [8 python-pyparsing 31.6 kB/51.9 kB 61%]                                                                             Get:18 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 javascript-common all 11 [6,066 B]
+                                                                             Get:19 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 libjpeg8 amd64 8c-2ubuntu8 [2,194 B]
+                                                                             Get:20 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 libjs-jquery all 1.11.3+dfsg-4 [161 kB]
+32% [20 libjs-jquery 4,282 B/161 kB 3%] [8 python-pyparsing 31.6 kB/51.9 kB 61%]                                                                                33% [8 python-pyparsing 31.6 kB/51.9 kB 61%]                                            Get:21 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 libjs-underscore all 1.7.0~dfsg-1ubuntu1 [46.7 kB]
+33% [21 libjs-underscore 0 B/46.7 kB 0%] [8 python-pyparsing 31.6 kB/51.9 kB 61%]                                                                                 34% [8 python-pyparsing 31.6 kB/51.9 kB 61%]                                            Get:22 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 libpaper1 amd64 1.1.24+nmu4ubuntu1 [13.7 kB]
+34% [22 libpaper1 0 B/13.7 kB 0%] [8 python-pyparsing 31.6 kB/51.9 kB 61%]                                                                          34% [8 python-pyparsing 31.6 kB/51.9 kB 61%]                                            Get:23 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 libpaper-utils amd64 1.1.24+nmu4ubuntu1 [8,276 B]
+34% [23 libpaper-utils 0 B/8,276 B 0%] [8 python-pyparsing 31.6 kB/51.9 kB 61%]                                                                               34% [8 python-pyparsing 31.6 kB/51.9 kB 61%]                                            Get:24 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 libtiff5 amd64 4.0.6-1ubuntu0.4 [148 kB]
+34% [24 libtiff5 0 B/148 kB 0%] [8 python-pyparsing 31.6 kB/51.9 kB 61%]                                                                        35% [8 python-pyparsing 31.6 kB/51.9 kB 61%]                                            Get:25 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 python-appdirs all 1.4.0-2 [9,768 B]
+35% [25 python-appdirs 0 B/9,768 B 0%] [8 python-pyparsing 31.6 kB/51.9 kB 61%]                                                                               35% [8 python-pyparsing 31.6 kB/51.9 kB 61%]                                            Get:26 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 python-tz all 2014.10~dfsg1-0ubuntu2 [31.5 kB]
+35% [26 python-tz 0 B/31.5 kB 0%] [8 python-pyparsing 31.6 kB/51.9 kB 61%]                                                                          36% [8 python-pyparsing 50.4 kB/51.9 kB 97%]                                            36% [Waiting for headers]                         Get:27 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 python-blinker all 1.3.dfsg2-1build1 [12.4 kB]
+36% [27 python-blinker 6,995 B/12.4 kB 56%] [Waiting for headers]                                                                 36% [Waiting for headers] [Waiting for headers]                                               Get:28 http://th.archive.ubuntu.com/ubuntu xenial/universe amd64 python-certifi all 2015.11.20.1-2 [173 kB]
+36% [28 python-certifi 0 B/173 kB 0%] [Waiting for headers]                                                           37% [Waiting for headers]                         Get:29 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 python-iso8601 all 0.1.11-1 [12.8 kB]
+37% [29 python-iso8601 0 B/12.8 kB 0%] [Waiting for headers]                                                            37% [Waiting for headers]                         Get:30 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 python-lxml amd64 3.5.0-1build1 [819 kB]
+37% [30 python-lxml 0 B/819 kB 0%] [Waiting for headers]                                                        Get:31 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-six all 1.11.0-2~cloud0 [11.2 kB]
+41% [30 python-lxml 818 kB/819 kB 100%] [31 python-six 2,631 B/11.2 kB 24%]                                                                           42% [30 python-lxml 818 kB/819 kB 100%] [Waiting for headers]                                                             Get:32 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 libjs-sphinxdoc all 1.6.7-1ubuntu1~cloud0 [85.7 kB]
+42% [30 python-lxml 818 kB/819 kB 100%] [32 libjs-sphinxdoc 5,526 B/85.7 kB 6%]                                                                               42% [32 libjs-sphinxdoc 20.0 kB/85.7 kB 23%]                                            Get:33 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 python-enum34 all 1.1.2-1 [35.8 kB]
+42% [33 python-enum34 0 B/35.8 kB 0%] [32 libjs-sphinxdoc 20.0 kB/85.7 kB 23%]                                                                              42% [32 libjs-sphinxdoc 20.0 kB/85.7 kB 23%]                                            Get:34 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 python-ipaddress all 1.0.16-1 [18.0 kB]
+42% [34 python-ipaddress 0 B/18.0 kB 0%] [32 libjs-sphinxdoc 20.0 kB/85.7 kB 23%]                                                                                 43% [32 libjs-sphinxdoc 20.0 kB/85.7 kB 23%]                                            Get:35 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 python-jwt all 1.3.0-1ubuntu0.1 [20.5 kB]
+43% [35 python-jwt 0 B/20.5 kB 0%] [32 libjs-sphinxdoc 20.0 kB/85.7 kB 23%]                                                                           43% [32 libjs-sphinxdoc 20.0 kB/85.7 kB 23%]                                            Get:36 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 python-oauthlib all 1.0.3-1 [62.7 kB]
+43% [36 python-oauthlib 0 B/62.7 kB 0%] [32 libjs-sphinxdoc 20.0 kB/85.7 kB 23%]                                                                                43% [32 libjs-sphinxdoc 20.0 kB/85.7 kB 23%]                                            Get:37 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 python-msgpack amd64 0.4.6-1build1 [61.3 kB]
+43% [37 python-msgpack 0 B/61.3 kB 0%] [32 libjs-sphinxdoc 20.0 kB/85.7 kB 23%]                                                                               44% [32 libjs-sphinxdoc 20.0 kB/85.7 kB 23%]                                            Get:38 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 python-debtcollector all 1.3.0-2 [12.8 kB]
+44% [38 python-debtcollector 0 B/12.8 kB 0%] [32 libjs-sphinxdoc 20.0 kB/85.7 kB 23%]                                                                                     44% [32 libjs-sphinxdoc 20.0 kB/85.7 kB 23%]                                            Get:39 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 python-monotonic all 0.6-2 [4,974 B]
+44% [39 python-monotonic 0 B/4,974 B 0%] [32 libjs-sphinxdoc 20.0 kB/85.7 kB 23%]                                                                                 44% [32 libjs-sphinxdoc 20.0 kB/85.7 kB 23%]                                            Get:40 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 python-netaddr all 0.7.18-1 [174 kB]
+44% [40 python-netaddr 0 B/174 kB 0%] [32 libjs-sphinxdoc 20.0 kB/85.7 kB 23%]                                                                              45% [32 libjs-sphinxdoc 20.0 kB/85.7 kB 23%]                                            Get:41 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 python-netifaces amd64 0.10.4-0.1build2 [16.7 kB]
+45% [41 python-netifaces 0 B/16.7 kB 0%] [32 libjs-sphinxdoc 20.0 kB/85.7 kB 23%]                                                                                 46% [32 libjs-sphinxdoc 20.0 kB/85.7 kB 23%]                                            Get:42 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 python-prettytable all 0.7.2-3 [19.6 kB]
+46% [42 python-prettytable 0 B/19.6 kB 0%] [32 libjs-sphinxdoc 50.4 kB/85.7 kB 59%]                                                                                   46% [32 libjs-sphinxdoc 50.4 kB/85.7 kB 59%]                                            Get:43 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 python-simplejson amd64 3.8.1-1ubuntu2 [60.4 kB]
+46% [43 python-simplejson 0 B/60.4 kB 0%] [32 libjs-sphinxdoc 50.4 kB/85.7 kB 59%]                                                                                  46% [32 libjs-sphinxdoc 50.4 kB/85.7 kB 59%]                                            Get:44 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 python-unicodecsv all 0.14.1-1 [11.3 kB]
+46% [44 python-unicodecsv 0 B/11.3 kB 0%] [32 libjs-sphinxdoc 50.4 kB/85.7 kB 59%]                                                                                  47% [32 libjs-sphinxdoc 50.4 kB/85.7 kB 59%]                                            Get:45 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 python-concurrent.futures all 3.0.5-1 [31.6 kB]
+47% [45 python-concurrent.futures 0 B/31.6 kB 0%] [32 libjs-sphinxdoc 50.4 kB/85.7 kB 59%]                                                                                          47% [32 libjs-sphinxdoc 50.4 kB/85.7 kB 59%]                                            Get:46 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 python-crypto amd64 2.6.1-6ubuntu0.16.04.3 [246 kB]
+47% [46 python-crypto 0 B/246 kB 0%] [32 libjs-sphinxdoc 50.4 kB/85.7 kB 59%]                                                                             48% [32 libjs-sphinxdoc 50.4 kB/85.7 kB 59%]                                            Get:47 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 python-dbus amd64 1.2.0-3 [83.5 kB]
+48% [47 python-dbus 0 B/83.5 kB 0%] [32 libjs-sphinxdoc 50.4 kB/85.7 kB 59%]                                                                            49% [32 libjs-sphinxdoc 50.4 kB/85.7 kB 59%]                                            Get:48 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 python-decorator all 4.0.6-1 [9,326 B]
+49% [48 python-decorator 0 B/9,326 B 0%] [32 libjs-sphinxdoc 50.4 kB/85.7 kB 59%]                                                                                 49% [32 libjs-sphinxdoc 50.4 kB/85.7 kB 59%]                                            Get:49 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 python-roman all 2.0.0-2 [8,062 B]
+49% [49 python-roman 0 B/8,062 B 0%] [32 libjs-sphinxdoc 50.4 kB/85.7 kB 59%]                                                                             49% [32 libjs-sphinxdoc 50.4 kB/85.7 kB 59%]                                            Get:50 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 python-docutils all 0.12+dfsg-1 [348 kB]
+49% [50 python-docutils 0 B/348 kB 0%] [32 libjs-sphinxdoc 50.4 kB/85.7 kB 59%]                                                                               51% [32 libjs-sphinxdoc 50.4 kB/85.7 kB 59%]52% [Waiting for headers] [Waiting for headers]                                               Get:51 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-asn1crypto all 0.24.0-1~cloud0 [73.0 kB]
+52% [Waiting for headers] [51 python-asn1crypto 9,336 B/73.0 kB 13%]                                                                    Get:52 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 python-functools32 all 3.2.3.2-2 [10.7 kB]
+52% [52 python-functools32 0 B/10.7 kB 0%] [51 python-asn1crypto 18.0 kB/73.0 kB 25%]                                                                                     52% [51 python-asn1crypto 18.0 kB/73.0 kB 25%]                                              Get:53 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 python-gi amd64 3.20.0-0ubuntu1 [194 kB]
+52% [53 python-gi 0 B/194 kB 0%] [51 python-asn1crypto 18.0 kB/73.0 kB 25%]                                                                           53% [51 python-asn1crypto 18.0 kB/73.0 kB 25%]                                              Get:54 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 python-html5lib all 0.999-4 [83.1 kB]
+53% [54 python-html5lib 0 B/83.1 kB 0%] [51 python-asn1crypto 18.0 kB/73.0 kB 25%]                                                                                  54% [51 python-asn1crypto 18.0 kB/73.0 kB 25%]                                              Get:55 http://th.archive.ubuntu.com/ubuntu xenial/universe amd64 python-jmespath all 0.9.0-2 [16.9 kB]
+54% [55 python-jmespath 0 B/16.9 kB 0%] [51 python-asn1crypto 18.0 kB/73.0 kB 25%]                                                                                  54% [51 python-asn1crypto 18.0 kB/73.0 kB 25%]                                              Get:56 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 python-json-pointer all 1.9-3 [7,186 B]
+54% [56 python-json-pointer 0 B/7,186 B 0%] [51 python-asn1crypto 18.0 kB/73.0 kB 25%]                                                                                      54% [51 python-asn1crypto 18.0 kB/73.0 kB 25%]                                              Get:57 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 python-jsonpatch all 1.19-3 [12.3 kB]
+54% [57 python-jsonpatch 0 B/12.3 kB 0%] [51 python-asn1crypto 18.0 kB/73.0 kB 25%]                                                                                   54% [51 python-asn1crypto 18.0 kB/73.0 kB 25%]                                              Get:58 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 python-keyring all 7.3-1ubuntu1 [43.7 kB]
+54% [58 python-keyring 0 B/43.7 kB 0%] [51 python-asn1crypto 18.0 kB/73.0 kB 25%]                                                                                 55% [51 python-asn1crypto 18.0 kB/73.0 kB 25%]                                              Get:59 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 python-warlock all 1.1.0-1 [5,098 B]
+55% [59 python-warlock 0 B/5,098 B 0%] [51 python-asn1crypto 18.0 kB/73.0 kB 25%]                                                                                 55% [51 python-asn1crypto 18.0 kB/73.0 kB 25%]                                              Get:60 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 libwebp5 amd64 0.4.4-1 [165 kB]
+55% [60 libwebp5 0 B/165 kB 0%] [51 python-asn1crypto 64.4 kB/73.0 kB 88%]                                                                          56% [60 libwebp5 78.3 kB/165 kB 47%]                                    Get:61 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-babel-localedata all 2.4.0+dfsg.1-2ubuntu1~cloud0 [3,430 kB]
+56% [60 libwebp5 78.3 kB/165 kB 47%] [61 python-babel-localedata 2,669 B/3,430 kB 0%]                                                                                     57% [61 python-babel-localedata 18.6 kB/3,430 kB 1%]                                                    Get:62 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 libwebpmux1 amd64 0.4.4-1 [14.2 kB]
+57% [62 libwebpmux1 0 B/14.2 kB 0%] [61 python-babel-localedata 18.6 kB/3,430 kB 1%]                                                                                    57% [61 python-babel-localedata 18.6 kB/3,430 kB 1%]                                                    Get:63 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 python-pil amd64 3.1.2-0ubuntu1.1 [312 kB]
+57% [63 python-pil 0 B/312 kB 0%] [61 python-babel-localedata 18.6 kB/3,430 kB 1%]                                                                                  58% [61 python-babel-localedata 18.6 kB/3,430 kB 1%]                                                    Get:64 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 python-secretstorage all 2.1.3-1 [12.3 kB]
+58% [64 python-secretstorage 0 B/12.3 kB 0%] [61 python-babel-localedata 18.6 kB/3,430 kB 1%]                                                                                             59% [61 python-babel-localedata 18.6 kB/3,430 kB 1%]                                                    59% [61 python-babel-localedata 187 kB/3,430 kB 5%]61% [61 python-babel-localedata 476 kB/3,430 kB 14%]63% [61 python-babel-localedata 950 kB/3,430 kB 28%]68% [61 python-babel-localedata 1,905 kB/3,430 kB 56%]                                                      75% [Waiting for headers]                         Get:65 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-pkg-resources all 39.0.1-2~cloud0 [128 kB]
+75% [65 python-pkg-resources 13.8 kB/128 kB 11%]                                                76% [Waiting for headers]                         Get:66 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-babel all 2.4.0+dfsg.1-2ubuntu1~cloud0 [80.5 kB]
+76% [66 python-babel 16.0 kB/80.5 kB 20%]                                         76% [Waiting for headers]                         Get:67 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-bs4 all 4.6.0-1~cloud0 [68.1 kB]
+76% [67 python-bs4 0 B/68.1 kB 0%]                                  77% [Waiting for headers]                         Get:68 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-cffi-backend amd64 1.11.5-1~cloud0 [64.6 kB]
+77% [68 python-cffi-backend 20.0 kB/64.6 kB 31%]                                                77% [Waiting for headers]                         Get:69 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-chardet all 3.0.4-1~cloud0 [81.2 kB]
+77% [69 python-chardet 15.4 kB/81.2 kB 19%]                                           78% [Waiting for headers]                         Get:70 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-idna all 2.6-1~cloud0 [32.5 kB]
+78% [70 python-idna 3,505 B/32.5 kB 11%]                                        78% [Waiting for headers]                         Get:71 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-cryptography amd64 2.1.4-1ubuntu1.1~cloud0 [216 kB]
+78% [71 python-cryptography 11.3 kB/216 kB 5%]                                              79% [Waiting for headers]                         Get:72 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-pbr all 3.1.1-3ubuntu3~cloud0 [53.6 kB]
+79% [72 python-pbr 8,587 B/53.6 kB 16%]                                       80% [Waiting for headers]                         Get:73 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-urllib3 all 1.22-1~cloud0 [85.2 kB]
+80% [73 python-urllib3 4,078 B/85.2 kB 5%]                                          80% [Waiting for headers]                         Get:74 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-requests all 2.18.4-2~cloud0 [58.1 kB]
+81% [74 python-requests 24.3 kB/58.1 kB 42%]                                            81% [Waiting for headers]                         Get:75 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-stevedore all 1:1.28.0-0ubuntu1~cloud0 [18.7 kB]
+81% [75 python-stevedore 14.2 kB/18.7 kB 76%]                                             81% [Waiting for headers]                         Get:76 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-keystoneauth1 all 3.4.0-0ubuntu1~cloud0 [143 kB]
+81% [76 python-keystoneauth1 14.2 kB/143 kB 10%]                                                82% [Waiting for headers]                         Get:77 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-oslo.i18n all 3.19.0-0ubuntu1~cloud0 [21.2 kB]
+82% [77 python-oslo.i18n 11.4 kB/21.2 kB 54%]                                             82% [Waiting for headers]                         Get:78 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-funcsigs all 1.0.2-4~cloud0 [13.5 kB]
+82% [78 python-funcsigs 10.5 kB/13.5 kB 78%]                                            83% [Waiting for headers]                         Get:79 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-oslo.utils all 3.35.0-0ubuntu1~cloud0 [56.7 kB]
+83% [79 python-oslo.utils 8,440 B/56.7 kB 15%]                                              83% [Waiting for headers]                         Get:80 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-oslo.serialization all 2.24.0-0ubuntu2~cloud0 [15.2 kB]
+83% [80 python-oslo.serialization 5,313 B/15.2 kB 35%]                                                      Get:81 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-cinderclient all 1:3.5.0-0ubuntu1~cloud0 [144 kB]
+                                                      83% [81 python-cinderclient 14.2 kB/144 kB 10%]                                               Get:82 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-yaml amd64 3.12-1build2~cloud0 [105 kB]
+                                               84% [82 python-yaml 12.5 kB/105 kB 12%]                                       85% [Waiting for headers]                         Get:83 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-cliff all 2.11.0-0ubuntu2~cloud0 [40.3 kB]
+85% [83 python-cliff 10.9 kB/40.3 kB 27%]                                         85% [Waiting for headers]                         Get:84 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-deprecation all 1.0.1-0ubuntu1~cloud0 [7,150 B]
+85% [84 python-deprecation 7,150 B/7,150 B 100%]                                                86% [Waiting for headers]                         Get:85 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-dogpile.cache all 0.6.2-5~cloud0 [33.3 kB]
+86% [85 python-dogpile.cache 10.8 kB/33.3 kB 32%]                                                 86% [Waiting for headers]                         Get:86 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-mock all 2.0.0-3~cloud0 [47.4 kB]
+86% [86 python-mock 4,079 B/47.4 kB 9%]                                       86% [Waiting for headers]                         Get:87 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-jsonschema all 2.6.0-2~cloud0 [31.5 kB]
+86% [87 python-jsonschema 4,079 B/31.5 kB 13%]                                              87% [Waiting for headers]                         Get:88 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-munch all 2.2.0-1ubuntu2~cloud0 [7,334 B]
+87% [88 python-munch 1,321 B/7,334 B 18%]                                         87% [Waiting for headers]                         Get:89 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-rfc3986 all 0.3.1-2~cloud0 [14.2 kB]
+87% [89 python-rfc3986 962 B/14.2 kB 7%]                                        87% [Waiting for headers]                         Get:90 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-oslo.config all 1:5.2.0-0ubuntu1~cloud0 [79.9 kB]
+87% [90 python-oslo.config 1,406 B/79.9 kB 2%]                                              88% [Waiting for headers]                         Get:91 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-positional all 1.1.1-3~cloud0 [6,212 B]
+88% [91 python-positional 5,198 B/6,212 B 84%]                                              88% [Waiting for headers]                         Get:92 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-keystoneclient all 1:3.15.0-0ubuntu1~cloud0 [171 kB]
+88% [92 python-keystoneclient 6,973 B/171 kB 4%]                                                      2,419 kB/s 0s89% [Waiting for headers]                                                                             2,419 kB/s 0s                                                                                                                   Get:93 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-requestsexceptions all 1.3.0-3~cloud0 [4,094 B]
+89% [93 python-requestsexceptions 4,094 B/4,094 B 100%]                                               2,419 kB/s 0s89% [Working]                                                                                         2,419 kB/s 0s                                                                                                                   Get:94 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-os-client-config all 1.29.0-0ubuntu1~cloud0 [34.4 kB]
+89% [94 python-os-client-config 1,039 B/34.4 kB 3%]                                                   2,419 kB/s 0s90% [Working]                                                                                         2,419 kB/s 0s                                                                                                                   Get:95 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-os-service-types all 1.1.0-0ubuntu2~cloud0 [10.8 kB]
+90% [95 python-os-service-types 8,705 B/10.8 kB 80%]                                                  2,419 kB/s 0s90% [Waiting for headers]                                                                             2,419 kB/s 0s                                                                                                                   Get:96 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-openstacksdk all 0.11.3+repack-0ubuntu1~cloud0 [409 kB]
+90% [96 python-openstacksdk 4,077 B/409 kB 1%]                                                        2,419 kB/s 0s92% [Working]                                                                                         2,419 kB/s 0s                                                                                                                   Get:97 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-osc-lib all 1.9.0-0ubuntu1~cloud0 [48.3 kB]
+92% [97 python-osc-lib 10.5 kB/48.3 kB 22%]                                                           2,419 kB/s 0s92% [Waiting for headers]                                                                             2,419 kB/s 0s                                                                                                                   Get:98 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-neutronclient all 1:6.7.0-0ubuntu1~cloud0 [178 kB]
+92% [98 python-neutronclient 9,683 B/178 kB 5%]                                                       2,419 kB/s 0s93% [Waiting for headers]                                                                             2,419 kB/s 0s                                                                                                                   Get:99 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-novaclient all 2:9.1.1-0ubuntu1~cloud0 [166 kB]
+93% [99 python-novaclient 33.9 kB/166 kB 20%]                                                         2,419 kB/s 0s94% [Waiting for headers]                                                                             2,419 kB/s 0s                                                                                                                   Get:100 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-openssl all 17.5.0-1ubuntu1~cloud0 [41.2 kB]
+94% [100 python-openssl 7,699 B/41.2 kB 19%]                                                          2,419 kB/s 0s                                                                                                                   Get:101 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-glanceclient all 1:2.9.1-0ubuntu1~cloud0 [103 kB]
+95% [101 python-glanceclient 3,920 B/103 kB 4%]                                                       2,419 kB/s 0s95% [Waiting for headers]                                                                             2,419 kB/s 0s                                                                                                                   Get:102 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-openstackclient all 3.14.0-0ubuntu1~cloud0 [326 kB]
+95% [102 python-openstackclient 2,347 B/326 kB 1%]                                                    2,419 kB/s 0s97% [Waiting for headers]                                                                             2,419 kB/s 0s                                                                                                                   Get:103 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 python-pygments all 2.2.0+dfsg-1~cloud0 [580 kB]
+97% [103 python-pygments 6,395 B/580 kB 1%]                                                           2,419 kB/s 0s100% [Working]                                                                                        2,419 kB/s 0s                                                                                                                   Fetched 17.0 MB in 7s (2,313 kB/s)
+Extracting templates from packages: 29%Extracting templates from packages: 58%Extracting templates from packages: 87%Extracting templates from packages: 100%
+Preconfiguring packages ...
+Selecting previously unselected package libjpeg-turbo8:amd64.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 125157 files and directories currently installed.)
+Preparing to unpack .../libjpeg-turbo8_1.4.2-0ubuntu3_amd64.deb ...
+Unpacking libjpeg-turbo8:amd64 (1.4.2-0ubuntu3) ...
+Selecting previously unselected package liblcms2-2:amd64.
+Preparing to unpack .../liblcms2-2_2.6-3ubuntu2_amd64.deb ...
+Unpacking liblcms2-2:amd64 (2.6-3ubuntu2) ...
+Selecting previously unselected package libyaml-0-2:amd64.
+Preparing to unpack .../libyaml-0-2_0.1.6-3_amd64.deb ...
+Unpacking libyaml-0-2:amd64 (0.1.6-3) ...
+Selecting previously unselected package libpython2.7-minimal:amd64.
+Preparing to unpack .../libpython2.7-minimal_2.7.12-1ubuntu0~16.04.3_amd64.deb ...
+Unpacking libpython2.7-minimal:amd64 (2.7.12-1ubuntu0~16.04.3) ...
+Selecting previously unselected package python2.7-minimal.
+Preparing to unpack .../python2.7-minimal_2.7.12-1ubuntu0~16.04.3_amd64.deb ...
+Unpacking python2.7-minimal (2.7.12-1ubuntu0~16.04.3) ...
+Selecting previously unselected package python-minimal.
+Preparing to unpack .../python-minimal_2.7.12-1~16.04_amd64.deb ...
+Unpacking python-minimal (2.7.12-1~16.04) ...
+Selecting previously unselected package libpython2.7-stdlib:amd64.
+Preparing to unpack .../libpython2.7-stdlib_2.7.12-1ubuntu0~16.04.3_amd64.deb ...
+Unpacking libpython2.7-stdlib:amd64 (2.7.12-1ubuntu0~16.04.3) ...
+Selecting previously unselected package python2.7.
+Preparing to unpack .../python2.7_2.7.12-1ubuntu0~16.04.3_amd64.deb ...
+Unpacking python2.7 (2.7.12-1ubuntu0~16.04.3) ...
+Selecting previously unselected package libpython-stdlib:amd64.
+Preparing to unpack .../libpython-stdlib_2.7.12-1~16.04_amd64.deb ...
+Unpacking libpython-stdlib:amd64 (2.7.12-1~16.04) ...
+Processing triggers for libc-bin (2.23-0ubuntu10) ...
+Processing triggers for man-db (2.7.5-1) ...
+Processing triggers for mime-support (3.59ubuntu1) ...
+Setting up libpython2.7-minimal:amd64 (2.7.12-1ubuntu0~16.04.3) ...
+Setting up python2.7-minimal (2.7.12-1ubuntu0~16.04.3) ...
+Linking and byte-compiling packages for runtime python2.7...
+Setting up python-minimal (2.7.12-1~16.04) ...
+Selecting previously unselected package python.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 125920 files and directories currently installed.)
+Preparing to unpack .../python_2.7.12-1~16.04_amd64.deb ...
+Unpacking python (2.7.12-1~16.04) ...
+Selecting previously unselected package python-pyparsing.
+Preparing to unpack .../python-pyparsing_2.2.0+dfsg1-2~cloud0_all.deb ...
+Unpacking python-pyparsing (2.2.0+dfsg1-2~cloud0) ...
+Selecting previously unselected package python-cmd2.
+Preparing to unpack .../python-cmd2_0.6.8-1_all.deb ...
+Unpacking python-cmd2 (0.6.8-1) ...
+Selecting previously unselected package python-six.
+Preparing to unpack .../python-six_1.11.0-2~cloud0_all.deb ...
+Unpacking python-six (1.11.0-2~cloud0) ...
+Selecting previously unselected package python-wrapt.
+Preparing to unpack .../python-wrapt_1.8.0-5build2_amd64.deb ...
+Unpacking python-wrapt (1.8.0-5build2) ...
+Selecting previously unselected package libjbig0:amd64.
+Preparing to unpack .../libjbig0_2.1-3.1_amd64.deb ...
+Unpacking libjbig0:amd64 (2.1-3.1) ...
+Selecting previously unselected package docutils-common.
+Preparing to unpack .../docutils-common_0.12+dfsg-1_all.deb ...
+Unpacking docutils-common (0.12+dfsg-1) ...
+Selecting previously unselected package docutils-doc.
+Preparing to unpack .../docutils-doc_0.12+dfsg-1_all.deb ...
+Unpacking docutils-doc (0.12+dfsg-1) ...
+Selecting previously unselected package ieee-data.
+Preparing to unpack .../ieee-data_20150531.1_all.deb ...
+Unpacking ieee-data (20150531.1) ...
+Selecting previously unselected package javascript-common.
+Preparing to unpack .../javascript-common_11_all.deb ...
+Unpacking javascript-common (11) ...
+Selecting previously unselected package libjpeg8:amd64.
+Preparing to unpack .../libjpeg8_8c-2ubuntu8_amd64.deb ...
+Unpacking libjpeg8:amd64 (8c-2ubuntu8) ...
+Selecting previously unselected package libjs-jquery.
+Preparing to unpack .../libjs-jquery_1.11.3+dfsg-4_all.deb ...
+Unpacking libjs-jquery (1.11.3+dfsg-4) ...
+Selecting previously unselected package libjs-underscore.
+Preparing to unpack .../libjs-underscore_1.7.0~dfsg-1ubuntu1_all.deb ...
+Unpacking libjs-underscore (1.7.0~dfsg-1ubuntu1) ...
+Selecting previously unselected package libjs-sphinxdoc.
+Preparing to unpack .../libjs-sphinxdoc_1.6.7-1ubuntu1~cloud0_all.deb ...
+Unpacking libjs-sphinxdoc (1.6.7-1ubuntu1~cloud0) ...
+Selecting previously unselected package libpaper1:amd64.
+Preparing to unpack .../libpaper1_1.1.24+nmu4ubuntu1_amd64.deb ...
+Unpacking libpaper1:amd64 (1.1.24+nmu4ubuntu1) ...
+Selecting previously unselected package libpaper-utils.
+Preparing to unpack .../libpaper-utils_1.1.24+nmu4ubuntu1_amd64.deb ...
+Unpacking libpaper-utils (1.1.24+nmu4ubuntu1) ...
+Selecting previously unselected package libtiff5:amd64.
+Preparing to unpack .../libtiff5_4.0.6-1ubuntu0.4_amd64.deb ...
+Unpacking libtiff5:amd64 (4.0.6-1ubuntu0.4) ...
+Selecting previously unselected package python-appdirs.
+Preparing to unpack .../python-appdirs_1.4.0-2_all.deb ...
+Unpacking python-appdirs (1.4.0-2) ...
+Selecting previously unselected package python-asn1crypto.
+Preparing to unpack .../python-asn1crypto_0.24.0-1~cloud0_all.deb ...
+Unpacking python-asn1crypto (0.24.0-1~cloud0) ...
+Selecting previously unselected package python-babel-localedata.
+Preparing to unpack .../python-babel-localedata_2.4.0+dfsg.1-2ubuntu1~cloud0_all.deb ...
+Unpacking python-babel-localedata (2.4.0+dfsg.1-2ubuntu1~cloud0) ...
+Selecting previously unselected package python-pkg-resources.
+Preparing to unpack .../python-pkg-resources_39.0.1-2~cloud0_all.deb ...
+Unpacking python-pkg-resources (39.0.1-2~cloud0) ...
+Selecting previously unselected package python-tz.
+Preparing to unpack .../python-tz_2014.10~dfsg1-0ubuntu2_all.deb ...
+Unpacking python-tz (2014.10~dfsg1-0ubuntu2) ...
+Selecting previously unselected package python-babel.
+Preparing to unpack .../python-babel_2.4.0+dfsg.1-2ubuntu1~cloud0_all.deb ...
+Unpacking python-babel (2.4.0+dfsg.1-2ubuntu1~cloud0) ...
+Selecting previously unselected package python-blinker.
+Preparing to unpack .../python-blinker_1.3.dfsg2-1build1_all.deb ...
+Unpacking python-blinker (1.3.dfsg2-1build1) ...
+Selecting previously unselected package python-bs4.
+Preparing to unpack .../python-bs4_4.6.0-1~cloud0_all.deb ...
+Unpacking python-bs4 (4.6.0-1~cloud0) ...
+Selecting previously unselected package python-certifi.
+Preparing to unpack .../python-certifi_2015.11.20.1-2_all.deb ...
+Unpacking python-certifi (2015.11.20.1-2) ...
+Selecting previously unselected package python-cffi-backend.
+Preparing to unpack .../python-cffi-backend_1.11.5-1~cloud0_amd64.deb ...
+Unpacking python-cffi-backend (1.11.5-1~cloud0) ...
+Selecting previously unselected package python-chardet.
+Preparing to unpack .../python-chardet_3.0.4-1~cloud0_all.deb ...
+Unpacking python-chardet (3.0.4-1~cloud0) ...
+Selecting previously unselected package python-iso8601.
+Preparing to unpack .../python-iso8601_0.1.11-1_all.deb ...
+Unpacking python-iso8601 (0.1.11-1) ...
+Selecting previously unselected package python-lxml.
+Preparing to unpack .../python-lxml_3.5.0-1build1_amd64.deb ...
+Unpacking python-lxml (3.5.0-1build1) ...
+Selecting previously unselected package python-enum34.
+Preparing to unpack .../python-enum34_1.1.2-1_all.deb ...
+Unpacking python-enum34 (1.1.2-1) ...
+Selecting previously unselected package python-idna.
+Preparing to unpack .../python-idna_2.6-1~cloud0_all.deb ...
+Unpacking python-idna (2.6-1~cloud0) ...
+Selecting previously unselected package python-ipaddress.
+Preparing to unpack .../python-ipaddress_1.0.16-1_all.deb ...
+Unpacking python-ipaddress (1.0.16-1) ...
+Selecting previously unselected package python-cryptography.
+Preparing to unpack .../python-cryptography_2.1.4-1ubuntu1.1~cloud0_amd64.deb ...
+Unpacking python-cryptography (2.1.4-1ubuntu1.1~cloud0) ...
+Selecting previously unselected package python-jwt.
+Preparing to unpack .../python-jwt_1.3.0-1ubuntu0.1_all.deb ...
+Unpacking python-jwt (1.3.0-1ubuntu0.1) ...
+Selecting previously unselected package python-oauthlib.
+Preparing to unpack .../python-oauthlib_1.0.3-1_all.deb ...
+Unpacking python-oauthlib (1.0.3-1) ...
+Selecting previously unselected package python-pbr.
+Preparing to unpack .../python-pbr_3.1.1-3ubuntu3~cloud0_all.deb ...
+Unpacking python-pbr (3.1.1-3ubuntu3~cloud0) ...
+Selecting previously unselected package python-urllib3.
+Preparing to unpack .../python-urllib3_1.22-1~cloud0_all.deb ...
+Unpacking python-urllib3 (1.22-1~cloud0) ...
+Selecting previously unselected package python-requests.
+Preparing to unpack .../python-requests_2.18.4-2~cloud0_all.deb ...
+Unpacking python-requests (2.18.4-2~cloud0) ...
+Selecting previously unselected package python-stevedore.
+Preparing to unpack .../python-stevedore_1%3a1.28.0-0ubuntu1~cloud0_all.deb ...
+Unpacking python-stevedore (1:1.28.0-0ubuntu1~cloud0) ...
+Selecting previously unselected package python-keystoneauth1.
+Preparing to unpack .../python-keystoneauth1_3.4.0-0ubuntu1~cloud0_all.deb ...
+Unpacking python-keystoneauth1 (3.4.0-0ubuntu1~cloud0) ...
+Selecting previously unselected package python-oslo.i18n.
+Preparing to unpack .../python-oslo.i18n_3.19.0-0ubuntu1~cloud0_all.deb ...
+Unpacking python-oslo.i18n (3.19.0-0ubuntu1~cloud0) ...
+Selecting previously unselected package python-msgpack.
+Preparing to unpack .../python-msgpack_0.4.6-1build1_amd64.deb ...
+Unpacking python-msgpack (0.4.6-1build1) ...
+Selecting previously unselected package python-funcsigs.
+Preparing to unpack .../python-funcsigs_1.0.2-4~cloud0_all.deb ...
+Unpacking python-funcsigs (1.0.2-4~cloud0) ...
+Selecting previously unselected package python-debtcollector.
+Preparing to unpack .../python-debtcollector_1.3.0-2_all.deb ...
+Unpacking python-debtcollector (1.3.0-2) ...
+Selecting previously unselected package python-monotonic.
+Preparing to unpack .../python-monotonic_0.6-2_all.deb ...
+Unpacking python-monotonic (0.6-2) ...
+Selecting previously unselected package python-netaddr.
+Preparing to unpack .../python-netaddr_0.7.18-1_all.deb ...
+Unpacking python-netaddr (0.7.18-1) ...
+Selecting previously unselected package python-netifaces.
+Preparing to unpack .../python-netifaces_0.10.4-0.1build2_amd64.deb ...
+Unpacking python-netifaces (0.10.4-0.1build2) ...
+Selecting previously unselected package python-oslo.utils.
+Preparing to unpack .../python-oslo.utils_3.35.0-0ubuntu1~cloud0_all.deb ...
+Unpacking python-oslo.utils (3.35.0-0ubuntu1~cloud0) ...
+Selecting previously unselected package python-oslo.serialization.
+Preparing to unpack .../python-oslo.serialization_2.24.0-0ubuntu2~cloud0_all.deb ...
+Unpacking python-oslo.serialization (2.24.0-0ubuntu2~cloud0) ...
+Selecting previously unselected package python-prettytable.
+Preparing to unpack .../python-prettytable_0.7.2-3_all.deb ...
+Unpacking python-prettytable (0.7.2-3) ...
+Selecting previously unselected package python-simplejson.
+Preparing to unpack .../python-simplejson_3.8.1-1ubuntu2_amd64.deb ...
+Unpacking python-simplejson (3.8.1-1ubuntu2) ...
+Selecting previously unselected package python-cinderclient.
+Preparing to unpack .../python-cinderclient_1%3a3.5.0-0ubuntu1~cloud0_all.deb ...
+Unpacking python-cinderclient (1:3.5.0-0ubuntu1~cloud0) ...
+Selecting previously unselected package python-unicodecsv.
+Preparing to unpack .../python-unicodecsv_0.14.1-1_all.deb ...
+Unpacking python-unicodecsv (0.14.1-1) ...
+Selecting previously unselected package python-yaml.
+Preparing to unpack .../python-yaml_3.12-1build2~cloud0_amd64.deb ...
+Unpacking python-yaml (3.12-1build2~cloud0) ...
+Selecting previously unselected package python-cliff.
+Preparing to unpack .../python-cliff_2.11.0-0ubuntu2~cloud0_all.deb ...
+Unpacking python-cliff (2.11.0-0ubuntu2~cloud0) ...
+Selecting previously unselected package python-concurrent.futures.
+Preparing to unpack .../python-concurrent.futures_3.0.5-1_all.deb ...
+Unpacking python-concurrent.futures (3.0.5-1) ...
+Selecting previously unselected package python-crypto.
+Preparing to unpack .../python-crypto_2.6.1-6ubuntu0.16.04.3_amd64.deb ...
+Unpacking python-crypto (2.6.1-6ubuntu0.16.04.3) ...
+Selecting previously unselected package python-dbus.
+Preparing to unpack .../python-dbus_1.2.0-3_amd64.deb ...
+Unpacking python-dbus (1.2.0-3) ...
+Selecting previously unselected package python-decorator.
+Preparing to unpack .../python-decorator_4.0.6-1_all.deb ...
+Unpacking python-decorator (4.0.6-1) ...
+Selecting previously unselected package python-deprecation.
+Preparing to unpack .../python-deprecation_1.0.1-0ubuntu1~cloud0_all.deb ...
+Unpacking python-deprecation (1.0.1-0ubuntu1~cloud0) ...
+Selecting previously unselected package python-roman.
+Preparing to unpack .../python-roman_2.0.0-2_all.deb ...
+Unpacking python-roman (2.0.0-2) ...
+Selecting previously unselected package python-docutils.
+Preparing to unpack .../python-docutils_0.12+dfsg-1_all.deb ...
+Unpacking python-docutils (0.12+dfsg-1) ...
+Selecting previously unselected package python-dogpile.cache.
+Preparing to unpack .../python-dogpile.cache_0.6.2-5~cloud0_all.deb ...
+Unpacking python-dogpile.cache (0.6.2-5~cloud0) ...
+Selecting previously unselected package python-functools32.
+Preparing to unpack .../python-functools32_3.2.3.2-2_all.deb ...
+Unpacking python-functools32 (3.2.3.2-2) ...
+Selecting previously unselected package python-gi.
+Preparing to unpack .../python-gi_3.20.0-0ubuntu1_amd64.deb ...
+Unpacking python-gi (3.20.0-0ubuntu1) ...
+Selecting previously unselected package python-html5lib.
+Preparing to unpack .../python-html5lib_0.999-4_all.deb ...
+Unpacking python-html5lib (0.999-4) ...
+Selecting previously unselected package python-jmespath.
+Preparing to unpack .../python-jmespath_0.9.0-2_all.deb ...
+Unpacking python-jmespath (0.9.0-2) ...
+Selecting previously unselected package python-json-pointer.
+Preparing to unpack .../python-json-pointer_1.9-3_all.deb ...
+Unpacking python-json-pointer (1.9-3) ...
+Selecting previously unselected package python-jsonpatch.
+Preparing to unpack .../python-jsonpatch_1.19-3_all.deb ...
+Unpacking python-jsonpatch (1.19-3) ...
+Selecting previously unselected package python-mock.
+Preparing to unpack .../python-mock_2.0.0-3~cloud0_all.deb ...
+Unpacking python-mock (2.0.0-3~cloud0) ...
+Selecting previously unselected package python-jsonschema.
+Preparing to unpack .../python-jsonschema_2.6.0-2~cloud0_all.deb ...
+Unpacking python-jsonschema (2.6.0-2~cloud0) ...
+Selecting previously unselected package python-keyring.
+Preparing to unpack .../python-keyring_7.3-1ubuntu1_all.deb ...
+Unpacking python-keyring (7.3-1ubuntu1) ...
+Selecting previously unselected package python-munch.
+Preparing to unpack .../python-munch_2.2.0-1ubuntu2~cloud0_all.deb ...
+Unpacking python-munch (2.2.0-1ubuntu2~cloud0) ...
+Selecting previously unselected package python-rfc3986.
+Preparing to unpack .../python-rfc3986_0.3.1-2~cloud0_all.deb ...
+Unpacking python-rfc3986 (0.3.1-2~cloud0) ...
+Selecting previously unselected package python-oslo.config.
+Preparing to unpack .../python-oslo.config_1%3a5.2.0-0ubuntu1~cloud0_all.deb ...
+Unpacking python-oslo.config (1:5.2.0-0ubuntu1~cloud0) ...
+Selecting previously unselected package python-positional.
+Preparing to unpack .../python-positional_1.1.1-3~cloud0_all.deb ...
+Unpacking python-positional (1.1.1-3~cloud0) ...
+Selecting previously unselected package python-keystoneclient.
+Preparing to unpack .../python-keystoneclient_1%3a3.15.0-0ubuntu1~cloud0_all.deb ...
+Unpacking python-keystoneclient (1:3.15.0-0ubuntu1~cloud0) ...
+Selecting previously unselected package python-requestsexceptions.
+Preparing to unpack .../python-requestsexceptions_1.3.0-3~cloud0_all.deb ...
+Unpacking python-requestsexceptions (1.3.0-3~cloud0) ...
+Selecting previously unselected package python-os-client-config.
+Preparing to unpack .../python-os-client-config_1.29.0-0ubuntu1~cloud0_all.deb ...
+Unpacking python-os-client-config (1.29.0-0ubuntu1~cloud0) ...
+Selecting previously unselected package python-os-service-types.
+Preparing to unpack .../python-os-service-types_1.1.0-0ubuntu2~cloud0_all.deb ...
+Unpacking python-os-service-types (1.1.0-0ubuntu2~cloud0) ...
+Selecting previously unselected package python-openstacksdk.
+Preparing to unpack .../python-openstacksdk_0.11.3+repack-0ubuntu1~cloud0_all.deb ...
+Unpacking python-openstacksdk (0.11.3+repack-0ubuntu1~cloud0) ...
+Selecting previously unselected package python-osc-lib.
+Preparing to unpack .../python-osc-lib_1.9.0-0ubuntu1~cloud0_all.deb ...
+Unpacking python-osc-lib (1.9.0-0ubuntu1~cloud0) ...
+Selecting previously unselected package python-neutronclient.
+Preparing to unpack .../python-neutronclient_1%3a6.7.0-0ubuntu1~cloud0_all.deb ...
+Unpacking python-neutronclient (1:6.7.0-0ubuntu1~cloud0) ...
+Selecting previously unselected package python-novaclient.
+Preparing to unpack .../python-novaclient_2%3a9.1.1-0ubuntu1~cloud0_all.deb ...
+Unpacking python-novaclient (2:9.1.1-0ubuntu1~cloud0) ...
+Selecting previously unselected package python-openssl.
+Preparing to unpack .../python-openssl_17.5.0-1ubuntu1~cloud0_all.deb ...
+Unpacking python-openssl (17.5.0-1ubuntu1~cloud0) ...
+Selecting previously unselected package python-warlock.
+Preparing to unpack .../python-warlock_1.1.0-1_all.deb ...
+Unpacking python-warlock (1.1.0-1) ...
+Selecting previously unselected package python-glanceclient.
+Preparing to unpack .../python-glanceclient_1%3a2.9.1-0ubuntu1~cloud0_all.deb ...
+Unpacking python-glanceclient (1:2.9.1-0ubuntu1~cloud0) ...
+Selecting previously unselected package python-openstackclient.
+Preparing to unpack .../python-openstackclient_3.14.0-0ubuntu1~cloud0_all.deb ...
+Unpacking python-openstackclient (3.14.0-0ubuntu1~cloud0) ...
+Selecting previously unselected package libwebp5:amd64.
+Preparing to unpack .../libwebp5_0.4.4-1_amd64.deb ...
+Unpacking libwebp5:amd64 (0.4.4-1) ...
+Selecting previously unselected package libwebpmux1:amd64.
+Preparing to unpack .../libwebpmux1_0.4.4-1_amd64.deb ...
+Unpacking libwebpmux1:amd64 (0.4.4-1) ...
+Selecting previously unselected package python-pil:amd64.
+Preparing to unpack .../python-pil_3.1.2-0ubuntu1.1_amd64.deb ...
+Unpacking python-pil:amd64 (3.1.2-0ubuntu1.1) ...
+Selecting previously unselected package python-pygments.
+Preparing to unpack .../python-pygments_2.2.0+dfsg-1~cloud0_all.deb ...
+Unpacking python-pygments (2.2.0+dfsg-1~cloud0) ...
+Selecting previously unselected package python-secretstorage.
+Preparing to unpack .../python-secretstorage_2.1.3-1_all.deb ...
+Unpacking python-secretstorage (2.1.3-1) ...
+Processing triggers for man-db (2.7.5-1) ...
+Processing triggers for shared-mime-info (1.5-2ubuntu0.1) ...
+Processing triggers for sgml-base (1.26+nmu4ubuntu1) ...
+Processing triggers for libc-bin (2.23-0ubuntu10) ...
+Setting up libjpeg-turbo8:amd64 (1.4.2-0ubuntu3) ...
+Setting up liblcms2-2:amd64 (2.6-3ubuntu2) ...
+Setting up libyaml-0-2:amd64 (0.1.6-3) ...
+Setting up libpython2.7-stdlib:amd64 (2.7.12-1ubuntu0~16.04.3) ...
+Setting up python2.7 (2.7.12-1ubuntu0~16.04.3) ...
+Setting up libpython-stdlib:amd64 (2.7.12-1~16.04) ...
+Setting up python (2.7.12-1~16.04) ...
+Setting up python-pyparsing (2.2.0+dfsg1-2~cloud0) ...
+Setting up python-cmd2 (0.6.8-1) ...
+Setting up python-six (1.11.0-2~cloud0) ...
+Setting up python-wrapt (1.8.0-5build2) ...
+Setting up libjbig0:amd64 (2.1-3.1) ...
+Setting up docutils-common (0.12+dfsg-1) ...
+Setting up docutils-doc (0.12+dfsg-1) ...
+Setting up ieee-data (20150531.1) ...
+Setting up javascript-common (11) ...
+Setting up libjpeg8:amd64 (8c-2ubuntu8) ...
+Setting up libjs-jquery (1.11.3+dfsg-4) ...
+Setting up libjs-underscore (1.7.0~dfsg-1ubuntu1) ...
+Setting up libjs-sphinxdoc (1.6.7-1ubuntu1~cloud0) ...
+Setting up libpaper1:amd64 (1.1.24+nmu4ubuntu1) ...
+
+Creating config file /etc/papersize with new version
+Setting up libpaper-utils (1.1.24+nmu4ubuntu1) ...
+Setting up libtiff5:amd64 (4.0.6-1ubuntu0.4) ...
+Setting up python-appdirs (1.4.0-2) ...
+Setting up python-asn1crypto (0.24.0-1~cloud0) ...
+Setting up python-babel-localedata (2.4.0+dfsg.1-2ubuntu1~cloud0) ...
+Setting up python-pkg-resources (39.0.1-2~cloud0) ...
+Setting up python-tz (2014.10~dfsg1-0ubuntu2) ...
+Setting up python-babel (2.4.0+dfsg.1-2ubuntu1~cloud0) ...
+update-alternatives: using /usr/bin/pybabel-python2 to provide /usr/bin/pybabel (pybabel) in auto mode
+Setting up python-blinker (1.3.dfsg2-1build1) ...
+Setting up python-bs4 (4.6.0-1~cloud0) ...
+Setting up python-certifi (2015.11.20.1-2) ...
+Setting up python-cffi-backend (1.11.5-1~cloud0) ...
+Setting up python-chardet (3.0.4-1~cloud0) ...
+Setting up python-iso8601 (0.1.11-1) ...
+Setting up python-lxml (3.5.0-1build1) ...
+Setting up python-enum34 (1.1.2-1) ...
+Setting up python-idna (2.6-1~cloud0) ...
+Setting up python-ipaddress (1.0.16-1) ...
+Setting up python-cryptography (2.1.4-1ubuntu1.1~cloud0) ...
+Setting up python-jwt (1.3.0-1ubuntu0.1) ...
+Setting up python-oauthlib (1.0.3-1) ...
+Setting up python-pbr (3.1.1-3ubuntu3~cloud0) ...
+update-alternatives: using /usr/bin/python2-pbr to provide /usr/bin/pbr (pbr) in auto mode
+Setting up python-urllib3 (1.22-1~cloud0) ...
+Setting up python-requests (2.18.4-2~cloud0) ...
+Setting up python-stevedore (1:1.28.0-0ubuntu1~cloud0) ...
+Setting up python-keystoneauth1 (3.4.0-0ubuntu1~cloud0) ...
+Setting up python-oslo.i18n (3.19.0-0ubuntu1~cloud0) ...
+Setting up python-msgpack (0.4.6-1build1) ...
+Setting up python-funcsigs (1.0.2-4~cloud0) ...
+Setting up python-debtcollector (1.3.0-2) ...
+Setting up python-monotonic (0.6-2) ...
+Setting up python-netaddr (0.7.18-1) ...
+Setting up python-netifaces (0.10.4-0.1build2) ...
+Setting up python-oslo.utils (3.35.0-0ubuntu1~cloud0) ...
+Setting up python-oslo.serialization (2.24.0-0ubuntu2~cloud0) ...
+Setting up python-prettytable (0.7.2-3) ...
+Setting up python-simplejson (3.8.1-1ubuntu2) ...
+Setting up python-cinderclient (1:3.5.0-0ubuntu1~cloud0) ...
+update-alternatives: using /usr/bin/python2-cinder to provide /usr/bin/cinder (cinder) in auto mode
+Setting up python-unicodecsv (0.14.1-1) ...
+Setting up python-yaml (3.12-1build2~cloud0) ...
+Setting up python-cliff (2.11.0-0ubuntu2~cloud0) ...
+Setting up python-concurrent.futures (3.0.5-1) ...
+Setting up python-crypto (2.6.1-6ubuntu0.16.04.3) ...
+Setting up python-dbus (1.2.0-3) ...
+Remove stale byte-compiled files...
+Setting up python-decorator (4.0.6-1) ...
+Setting up python-deprecation (1.0.1-0ubuntu1~cloud0) ...
+Setting up python-roman (2.0.0-2) ...
+Setting up python-dogpile.cache (0.6.2-5~cloud0) ...
+Setting up python-functools32 (3.2.3.2-2) ...
+Setting up python-gi (3.20.0-0ubuntu1) ...
+Setting up python-html5lib (0.999-4) ...
+Setting up python-jmespath (0.9.0-2) ...
+Setting up python-json-pointer (1.9-3) ...
+update-alternatives: using /usr/bin/python2-jsonpointer to provide /usr/bin/jsonpointer (jsonpointer) in auto mode
+Setting up python-jsonpatch (1.19-3) ...
+update-alternatives: using /usr/bin/python2-jsondiff to provide /usr/bin/jsondiff (jsondiff) in auto mode
+update-alternatives: using /usr/bin/python2-jsonpatch to provide /usr/bin/jsonpatch (jsonpatch) in auto mode
+Setting up python-mock (2.0.0-3~cloud0) ...
+Setting up python-jsonschema (2.6.0-2~cloud0) ...
+update-alternatives: using /usr/bin/python2-jsonschema to provide /usr/bin/jsonschema (jsonschema) in auto mode
+Setting up python-keyring (7.3-1ubuntu1) ...
+Setting up python-munch (2.2.0-1ubuntu2~cloud0) ...
+Setting up python-rfc3986 (0.3.1-2~cloud0) ...
+Setting up python-positional (1.1.1-3~cloud0) ...
+Setting up python-requestsexceptions (1.3.0-3~cloud0) ...
+Setting up python-os-client-config (1.29.0-0ubuntu1~cloud0) ...
+Setting up python-os-service-types (1.1.0-0ubuntu2~cloud0) ...
+Setting up python-openstacksdk (0.11.3+repack-0ubuntu1~cloud0) ...
+Setting up python-osc-lib (1.9.0-0ubuntu1~cloud0) ...
+Setting up python-novaclient (2:9.1.1-0ubuntu1~cloud0) ...
+update-alternatives: using /usr/bin/python2-nova to provide /usr/bin/nova (nova) in auto mode
+Setting up python-openssl (17.5.0-1ubuntu1~cloud0) ...
+Setting up python-warlock (1.1.0-1) ...
+Setting up python-glanceclient (1:2.9.1-0ubuntu1~cloud0) ...
+update-alternatives: using /usr/bin/python2-glance to provide /usr/bin/glance (glance) in auto mode
+Setting up libwebp5:amd64 (0.4.4-1) ...
+Setting up libwebpmux1:amd64 (0.4.4-1) ...
+Setting up python-pil:amd64 (3.1.2-0ubuntu1.1) ...
+Setting up python-pygments (2.2.0+dfsg-1~cloud0) ...
+Setting up python-secretstorage (2.1.3-1) ...
+Processing triggers for sgml-base (1.26+nmu4ubuntu1) ...
+Setting up python-docutils (0.12+dfsg-1) ...
+update-alternatives: using /usr/share/docutils/scripts/python2/rst-buildhtml to provide /usr/bin/rst-buildhtml (rst-buildhtml) in auto mode
+update-alternatives: using /usr/share/docutils/scripts/python2/rst2html to provide /usr/bin/rst2html (rst2html) in auto mode
+update-alternatives: using /usr/share/docutils/scripts/python2/rst2latex to provide /usr/bin/rst2latex (rst2latex) in auto mode
+update-alternatives: using /usr/share/docutils/scripts/python2/rst2man to provide /usr/bin/rst2man (rst2man) in auto mode
+update-alternatives: using /usr/share/docutils/scripts/python2/rst2odt to provide /usr/bin/rst2odt (rst2odt) in auto mode
+update-alternatives: using /usr/share/docutils/scripts/python2/rst2odt_prepstyles to provide /usr/bin/rst2odt_prepstyles (rst2odt_prepstyles) in auto mode
+update-alternatives: using /usr/share/docutils/scripts/python2/rst2pseudoxml to provide /usr/bin/rst2pseudoxml (rst2pseudoxml) in auto mode
+update-alternatives: using /usr/share/docutils/scripts/python2/rst2s5 to provide /usr/bin/rst2s5 (rst2s5) in auto mode
+update-alternatives: using /usr/share/docutils/scripts/python2/rst2xetex to provide /usr/bin/rst2xetex (rst2xetex) in auto mode
+update-alternatives: using /usr/share/docutils/scripts/python2/rst2xml to provide /usr/bin/rst2xml (rst2xml) in auto mode
+update-alternatives: using /usr/share/docutils/scripts/python2/rstpep2html to provide /usr/bin/rstpep2html (rstpep2html) in auto mode
+Setting up python-oslo.config (1:5.2.0-0ubuntu1~cloud0) ...
+update-alternatives: using /usr/bin/python2-oslo-config-generator to provide /usr/bin/oslo-config-generator (oslo-config-generator) in auto mode
+Setting up python-keystoneclient (1:3.15.0-0ubuntu1~cloud0) ...
+Setting up python-neutronclient (1:6.7.0-0ubuntu1~cloud0) ...
+update-alternatives: using /usr/bin/python2-neutron to provide /usr/bin/neutron (neutron) in auto mode
+Setting up python-openstackclient (3.14.0-0ubuntu1~cloud0) ...
+update-alternatives: using /usr/bin/python2-openstack to provide /usr/bin/openstack (openstack) in auto mode
+Processing triggers for libc-bin (2.23-0ubuntu10) ...
++ reboot

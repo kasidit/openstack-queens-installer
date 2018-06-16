@@ -39,6 +39,8 @@ sleep 5
 ssh -t openstack@controller /bin/bash -x ./OPSInstaller/controller/exe-stage30-USER-verify-neutron3.sh | tee log/s30-controller.log
 if [ "$nettype" == "$ovs" ]
 then
-ssh -t openstack@controller /bin/bash -x ./OPSInstaller/controller/exe-stage31-USER-initial-network.sh | tee log/s31-controller.log
+  ssh -t openstack@controller /bin/bash -x ./OPSInstaller/controller/exe-stage37-USER-initial-network.sh | tee log/s37-controller.log
+  printf "\nnext run ./OS-installer-09-horizon.sh\n"
+else
+  printf "\nnext run ./OS-installer-08-set-dvr.sh\n"
 fi
-printf "\nnext run ./OS-installer-08-horizon.sh\n"

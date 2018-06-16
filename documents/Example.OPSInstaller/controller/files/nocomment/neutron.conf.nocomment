@@ -1,21 +1,20 @@
 [DEFAULT]
+core_plugin = ml2
 transport_url = rabbit://openstack:RABBIT_PASS@controller
 auth_strategy = keystone
-core_plugin = ml2
 service_plugins = router
 allow_overlapping_ips = true
 notify_nova_on_port_status_changes = true
 notify_nova_on_port_data_changes = true
 dhcp_agents_per_network = 2
 [agent]
-root_helper = sudo /usr/bin/neutron-rootwrap /etc/neutron/rootwrap.conf
+root_helper = "sudo /usr/bin/neutron-rootwrap /etc/neutron/rootwrap.conf"
 [cors]
-[cors.subdomain]
 [database]
 connection = mysql+pymysql://neutron:NEUTRON_DBPASS@controller/neutron
 [keystone_authtoken]
 auth_uri = http://controller:5000
-auth_url = http://controller:35357
+auth_url = http://controller:5000
 memcached_servers = controller:11211
 auth_type = password
 project_domain_name = default
@@ -25,7 +24,7 @@ username = neutron
 password = NEUTRON_PASS
 [matchmaker_redis]
 [nova]
-auth_url = http://controller:35357
+auth_url = http://controller:5000
 auth_type = password
 project_domain_name = default
 user_domain_name = default
@@ -41,6 +40,5 @@ password = NOVA_PASS
 [oslo_messaging_zmq]
 [oslo_middleware]
 [oslo_policy]
-[qos]
 [quotas]
 [ssl]

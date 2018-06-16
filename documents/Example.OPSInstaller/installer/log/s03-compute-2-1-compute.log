@@ -1,0 +1,114 @@
++ cd /home/openstack/OPSInstaller/newcompute
++ pwd
+/home/openstack/OPSInstaller/newcompute
++ printf '1. set interface/hosts files.. press\n'
+1. set interface/hosts files.. press
++ cp files/interfaces /etc/network/interfaces
++ cp files/hosts /etc/hosts
++ printf '2. set ntp server.. press\n'
+2. set ntp server.. press
++ apt-get -y install chrony
+Reading package lists... 0%Reading package lists... 100%Reading package lists... Done
+Building dependency tree... 0%Building dependency tree... 0%Building dependency tree... 50%Building dependency tree... 50%Building dependency tree       
+Reading state information... 0%Reading state information... 0%Reading state information... Done
+The following packages were automatically installed and are no longer required:
+  linux-headers-4.4.0-116 linux-headers-4.4.0-116-generic linux-image-4.4.0-116-generic
+  linux-image-extra-4.4.0-116-generic
+Use 'sudo apt autoremove' to remove them.
+The following additional packages will be installed:
+  libtomcrypt0 libtommath0 timelimit
+The following NEW packages will be installed:
+  chrony libtomcrypt0 libtommath0 timelimit
+0 upgraded, 4 newly installed, 0 to remove and 0 not upgraded.
+Need to get 581 kB of archives.
+After this operation, 1,700 kB of additional disk space will be used.
+0% [Working]            Get:1 http://th.archive.ubuntu.com/ubuntu xenial/universe amd64 timelimit amd64 1.8-1 [12.2 kB]
+2% [1 timelimit 11.3 kB/12.2 kB 93%]                                    7% [Waiting for headers]                        Get:2 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 libtommath0 amd64 0.42.0-1.2 [41.8 kB]
+9% [2 libtommath0 20.0 kB/41.8 kB 48%]                                      17% [Waiting for headers]                         Get:3 http://th.archive.ubuntu.com/ubuntu xenial/universe amd64 libtomcrypt0 amd64 1.17-7 [282 kB]
+18% [3 libtomcrypt0 1,202 B/282 kB 0%]                                      61% [Waiting for headers]                         Get:4 http://th.archive.ubuntu.com/ubuntu xenial/universe amd64 chrony amd64 2.1.1-1 [245 kB]
+69% [4 chrony 56.4 kB/245 kB 23%]                                 100% [Working]              Fetched 581 kB in 0s (1,190 kB/s)
+Selecting previously unselected package timelimit.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 132151 files and directories currently installed.)
+Preparing to unpack .../timelimit_1.8-1_amd64.deb ...
+Unpacking timelimit (1.8-1) ...
+Selecting previously unselected package libtommath0.
+Preparing to unpack .../libtommath0_0.42.0-1.2_amd64.deb ...
+Unpacking libtommath0 (0.42.0-1.2) ...
+Selecting previously unselected package libtomcrypt0:amd64.
+Preparing to unpack .../libtomcrypt0_1.17-7_amd64.deb ...
+Unpacking libtomcrypt0:amd64 (1.17-7) ...
+Selecting previously unselected package chrony.
+Preparing to unpack .../chrony_2.1.1-1_amd64.deb ...
+Unpacking chrony (2.1.1-1) ...
+Processing triggers for man-db (2.7.5-1) ...
+Processing triggers for systemd (229-4ubuntu21.2) ...
+Processing triggers for ureadahead (0.100.0-19) ...
+Setting up timelimit (1.8-1) ...
+Setting up libtommath0 (0.42.0-1.2) ...
+Setting up libtomcrypt0:amd64 (1.17-7) ...
+Setting up chrony (2.1.1-1) ...
+Creating '_chrony' system user/group for the chronyd daemon…
+
+Creating config file /etc/chrony/chrony.conf with new version
+Processing triggers for libc-bin (2.23-0ubuntu10) ...
+Processing triggers for systemd (229-4ubuntu21.2) ...
+Processing triggers for ureadahead (0.100.0-19) ...
++ cp files/chrony.conf /etc/chrony/chrony.conf
++ service chrony restart
++ printf '3. restart eth networking.. press\n'
+3. restart eth networking.. press
++ ifdown ens3
++ ifup ens3
++ ifdown ens4
+ifdown: interface ens4 not configured
++ ifup ens4
++ ifdown ens5
+ifdown: interface ens5 not configured
++ ifup ens5
++ ifdown ens6
+ifdown: interface ens6 not configured
++ ifup ens6
++ ifconfig
+ens3      Link encap:Ethernet  HWaddr 00:54:09:25:8c:17  
+          inet addr:10.0.0.41  Bcast:10.0.0.255  Mask:255.255.255.0
+          inet6 addr: fe80::254:9ff:fe25:8c17/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:640 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:645 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:944487 (944.4 KB)  TX bytes:66994 (66.9 KB)
+
+ens4      Link encap:Ethernet  HWaddr 00:54:09:25:8c:18  
+          inet addr:10.0.1.41  Bcast:10.0.1.255  Mask:255.255.255.0
+          inet6 addr: fe80::254:9ff:fe25:8c18/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)
+
+ens5      Link encap:Ethernet  HWaddr 00:54:09:25:8c:19  
+          inet6 addr: fe80::254:9ff:fe25:8c19/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)
+
+ens6      Link encap:Ethernet  HWaddr 00:54:09:25:8c:16  
+          inet6 addr: fe80::254:9ff:fe25:8c16/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:14 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:1032 (1.0 KB)  TX bytes:0 (0.0 B)
+
+lo        Link encap:Local Loopback  
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          inet6 addr: ::1/128 Scope:Host
+          UP LOOPBACK RUNNING  MTU:65536  Metric:1
+          RX packets:170 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:170 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1 
+          RX bytes:12648 (12.6 KB)  TX bytes:12648 (12.6 KB)
+

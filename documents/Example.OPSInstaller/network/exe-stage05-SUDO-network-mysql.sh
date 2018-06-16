@@ -1,4 +1,4 @@
-# OpenStack ocata installation script 
+# OpenStack Queens installation script 
 # on Ubuntu 16.04.2 by kasidit chanchio
 # vasabilab, dept of computer science, Thammasat University, Thailand
 # copyright 2014 
@@ -11,5 +11,3 @@ pwd
 printf "check chrony\n"
 chronyc sources
 #
-#printf "1. set mysql\n"
-#apt-get -y install python-mysqldb

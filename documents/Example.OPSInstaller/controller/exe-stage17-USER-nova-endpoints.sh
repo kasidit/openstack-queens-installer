@@ -1,14 +1,14 @@
-# OpenStack ocata installation script 
-# on Ubuntu 16.04.2 by kasidit chanchio
+# OpenStack Queens installation script 
+# on Ubuntu 16.04.4 by kasidit chanchio
 # vasabilab, dept of computer science, Thammasat University, Thailand
-# copyright 2014 
+# copyright 2018 
 #
 #
 #!/bin/bash -x
 cd $HOME/OPSInstaller/controller
 pwd
 echo "Run this script  as user."
-echo -n "1. create nova user and endpoint...press"
+echo -n "Create nova user and endpoint..."
 #read varkey
 
 source ./admin-openrc.sh
@@ -24,7 +24,7 @@ openstack endpoint create --region RegionOne \
 openstack endpoint create --region RegionOne \
   compute admin http://controller:8774/v2.1/
 
-openstack user create --domain default --password NOVA_PASS placement
+openstack user create --domain default --password PLACEMENT_PASS placement
 openstack role add --project service --user placement admin
 openstack service create --name placement \
   --description "Placement API" placement

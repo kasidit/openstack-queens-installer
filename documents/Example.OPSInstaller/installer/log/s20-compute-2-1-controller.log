@@ -1,0 +1,96 @@
++ cd /home/openstack/OPSInstaller/controller
++ pwd
+/home/openstack/OPSInstaller/controller
++ echo 'Run this script as a user.'
+Run this script as a user.
++ source ./admin-openrc.sh
+++ export OS_PROJECT_DOMAIN_NAME=default
+++ OS_PROJECT_DOMAIN_NAME=default
+++ export OS_USER_DOMAIN_NAME=default
+++ OS_USER_DOMAIN_NAME=default
+++ export OS_PROJECT_NAME=admin
+++ OS_PROJECT_NAME=admin
+++ export OS_USERNAME=admin
+++ OS_USERNAME=admin
+++ export OS_PASSWORD=adminpassword
+++ OS_PASSWORD=adminpassword
+++ export OS_AUTH_URL=http://controller:5000/v3
+++ OS_AUTH_URL=http://controller:5000/v3
+++ export OS_IDENTITY_API_VERSION=3
+++ OS_IDENTITY_API_VERSION=3
+++ export OS_IMAGE_API_VERSION=2
+++ OS_IMAGE_API_VERSION=2
++ openstack compute service list
++----+------------------+-------------+----------+---------+-------+----------------------------+
+| ID | Binary           | Host        | Zone     | Status  | State | Updated At                 |
++----+------------------+-------------+----------+---------+-------+----------------------------+
+|  1 | nova-scheduler   | controller  | internal | enabled | up    | 2018-06-16T04:45:35.000000 |
+|  2 | nova-consoleauth | controller  | internal | enabled | up    | 2018-06-16T04:45:28.000000 |
+|  3 | nova-conductor   | controller  | internal | enabled | up    | 2018-06-16T04:45:30.000000 |
+|  7 | nova-compute     | compute     | nova     | enabled | up    | 2018-06-16T04:45:31.000000 |
+|  8 | nova-compute     | compute1    | nova     | enabled | up    | 2018-06-16T04:45:29.000000 |
+|  9 | nova-compute     | compute-2-1 | nova     | enabled | up    | 2018-06-16T04:45:30.000000 |
++----+------------------+-------------+----------+---------+-------+----------------------------+
++ openstack catalog list
++-----------+-----------+------------------------------------------+
+| Name      | Type      | Endpoints                                |
++-----------+-----------+------------------------------------------+
+| nova      | compute   | RegionOne                                |
+|           |           |   public: http://controller:8774/v2.1/   |
+|           |           | RegionOne                                |
+|           |           |   admin: http://controller:8774/v2.1/    |
+|           |           | RegionOne                                |
+|           |           |   internal: http://controller:8774/v2.1/ |
+|           |           |                                          |
+| glance    | image     | RegionOne                                |
+|           |           |   admin: http://controller:9292          |
+|           |           | RegionOne                                |
+|           |           |   public: http://controller:9292         |
+|           |           | RegionOne                                |
+|           |           |   internal: http://controller:9292       |
+|           |           |                                          |
+| placement | placement | RegionOne                                |
+|           |           |   internal: http://controller:8778       |
+|           |           | RegionOne                                |
+|           |           |   admin: http://controller:8778          |
+|           |           | RegionOne                                |
+|           |           |   public: http://controller:8778         |
+|           |           |                                          |
+| keystone  | identity  | RegionOne                                |
+|           |           |   internal: http://controller:5000/v3/   |
+|           |           | RegionOne                                |
+|           |           |   admin: http://controller:5000/v3/      |
+|           |           | RegionOne                                |
+|           |           |   public: http://controller:5000/v3/     |
+|           |           |                                          |
+| neutron   | network   | RegionOne                                |
+|           |           |   internal: http://controller:9696       |
+|           |           | RegionOne                                |
+|           |           |   public: http://controller:9696         |
+|           |           | RegionOne                                |
+|           |           |   admin: http://controller:9696          |
+|           |           |                                          |
++-----------+-----------+------------------------------------------+
++ openstack image list
++--------------------------------------+--------+--------+
+| ID                                   | Name   | Status |
++--------------------------------------+--------+--------+
+| a1ffceb0-d543-4df3-878b-97ba990d2e58 | cirros | active |
++--------------------------------------+--------+--------+
++ sudo nova-status upgrade check
+Option "os_region_name" from group "placement" is deprecated. Use option "region-name" from group "placement".
++---------------------------+
+| Upgrade Check Results     |
++---------------------------+
+| Check: Cells v2           |
+| Result: Success           |
+| Details: None             |
++---------------------------+
+| Check: Placement API      |
+| Result: Success           |
+| Details: None             |
++---------------------------+
+| Check: Resource Providers |
+| Result: Success           |
+| Details: None             |
++---------------------------+

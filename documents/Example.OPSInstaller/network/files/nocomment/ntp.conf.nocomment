@@ -1,7 +1,0 @@
-driftfile /var/lib/ntp/ntp.drift
-statistics loopstats peerstats clockstats
-filegen loopstats file loopstats type day enable
-filegen peerstats file peerstats type day enable
-filegen clockstats file clockstats type day enable
-server 10.0.10.11 iburst
-server 10.0.10.126 iburst

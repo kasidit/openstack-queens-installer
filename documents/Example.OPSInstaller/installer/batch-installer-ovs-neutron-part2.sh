@@ -7,7 +7,7 @@
 ./OS-installer-05-glance.sh
 ./OS-installer-06-nova.sh
 ./OS-installer-07-neutron.sh
-./OS-installer-08-horizon.sh
-#./OS-installer-10-initial-user-network.sh
+./OS-installer-10-horizon.sh
+#./OS-installer-09-initial-user-network.sh
 /bin/date
 printf "Done"

@@ -1,0 +1,6 @@
+[DEFAULT]
+interface_driver = openvswitch
+external_network_bridge =
+agent_mode = dvr
+[agent]
+[ovs]

@@ -1,0 +1,11 @@
+[DEFAULT]
+[agent]
+tunnel_types = vxlan
+l2_population = True
+[network_log]
+[ovs]
+local_ip = vasabi-1234data_tunnel_GenericComputeHostname_node_ip4321-ibasav
+bridge_mappings = provider:br-provider
+[securitygroup]
+firewall_driver = iptables_hybrid
+[xenapi]

@@ -1,0 +1,25 @@
+auto lo
+iface lo inet loopback
+auto ens3
+iface ens3 inet static
+	address vasabi-1234GenericComputeHostname_ip4321-ibasav
+	netmask 255.255.255.0
+	network 10.0.0.0
+	broadcast 10.0.0.255
+	gateway 10.0.0.1
+	
+	dns-nameservers 8.8.8.8
+	dns-search cs.tu.ac.th
+auto ens4
+iface ens4 inet static
+	address vasabi-1234data_tunnel_GenericComputeHostname_node_ip4321-ibasav
+	netmask 255.255.255.0
+	network 10.0.1.0
+auto ens5
+iface ens5 inet manual
+	up ip link set dev $IFACE up
+	down ip link set dev $IFACE down
+auto ens6
+iface ens6 inet manual
+	up ip link set dev $IFACE up
+	down ip link set dev $IFACE down

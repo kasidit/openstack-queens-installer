@@ -47,65 +47,56 @@ export NTP_SERVER1=1.th.pool.ntp.org
 export NTP_SERVER2=2.th.pool.ntp.org
 export NTP_SERVER3=3.th.pool.ntp.org
 #
-# Deprecate
-export NTP_SERVER_LOCAL=10.0.10.126 
-#
 # Management Network
 #
+export MANAGEMENT_NETWORK=10.0.0.0
 export MANAGEMENT_NETWORK_NETMASK=255.255.255.0
-export MANAGEMENT_NETWORK=10.0.10.0
-export MANAGEMENT_BROADCAST_ADDRESS=10.0.10.255 
+export MANAGEMENT_BROADCAST_ADDRESS=10.0.0.255 
 export DNS_IP=8.8.8.8
-#
-# ---- gateway host ----
-#
-# The GATEWAY_IP_NIC is only used when you use the controller 
-# to simulate a network gateway.
-#
-export GATEWAY_IP_NIC=ens3
-#
-# ---- controller host ----
-#
-export CONTROLLER_IP=10.0.10.11
-export CONTROLLER_IP_NIC=ens3
 #
 # This GATEWAY_IP define the IP addr of the gateway of 
 # the management network on every node.
 #
-export GATEWAY_IP=10.0.10.1
+export GATEWAY_IP=10.0.0.1
 #
+#
+# ---- controller host ----
+#
+export CONTROLLER_IP=10.0.0.11
+export CONTROLLER_IP_NIC=ens3
 #
 # ---- network host ----
 #
-export NETWORK_IP=10.0.10.21
+export NETWORK_IP=10.0.0.21
 export NETWORK_IP_NIC=ens3
 #
-export DATA_TUNNEL_NETWORK_NODE_IP=10.0.11.21
+export DATA_TUNNEL_NETWORK_NODE_IP=10.0.1.21
 export DATA_TUNNEL_NETWORK_NODE_IP_NIC=ens4
-export DATA_TUNNEL_NETWORK_ADDRESS=10.0.11.0
+export DATA_TUNNEL_NETWORK_ADDRESS=10.0.1.0
 export DATA_TUNNEL_NETWORK_NETMASK=255.255.255.0
 export VLAN_NETWORK_NODE_IP_NIC=ens5
 #
-export EXTERNAL_CIDR=10.0.10.0\\/24
+export EXTERNAL_CIDR=10.0.0.0\\/24
 export EXTERNAL_CIDR_NIC=ens6
+export EXTERNAL_GATEWAY_IP=10.0.0.1
 #
-export START_FLOATING_IP=10.0.10.100
-export END_FLOATING_IP=10.0.10.200
+# For DVR, the EXTERNAL_CIDR* of network node is the same for every compute node.
+#
+export START_FLOATING_IP=10.0.0.100
+export END_FLOATING_IP=10.0.0.200
 #
 # ---- compute host ----
 #
-export COMPUTE_IP=10.0.10.31
+export COMPUTE_IP=10.0.0.31
 export COMPUTE_IP_NIC=ens3
-export DATA_TUNNEL_COMPUTE_NODE_IP=10.0.11.31
+export DATA_TUNNEL_COMPUTE_NODE_IP=10.0.1.31
 export DATA_TUNNEL_COMPUTE_NODE_IP_NIC=ens4
 export VLAN_COMPUTE_NODE_IP_NIC=ens5
 #
-# For DVR, the EXTERNAL_CIDR* of network node is used on every compute node.
-#
 # ---- compute1 host ----
 #
-export COMPUTE1_IP=10.0.10.32
+export COMPUTE1_IP=10.0.0.32
 export COMPUTE1_IP_NIC=ens3
-export DATA_TUNNEL_COMPUTE1_NODE_IP=10.0.11.32
+export DATA_TUNNEL_COMPUTE1_NODE_IP=10.0.1.32
 export DATA_TUNNEL_COMPUTE1_NODE_IP_NIC=ens4
 export VLAN_COMPUTE1_NODE_IP_NIC=ens5

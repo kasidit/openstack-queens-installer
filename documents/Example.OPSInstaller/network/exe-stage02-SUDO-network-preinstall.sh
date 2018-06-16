@@ -1,9 +1,9 @@
-# OpenStack ocata installation script on Ubuntu 16.04.2 
+# OpenStack Queens installation script on Ubuntu 16.04.2 
 # by kasidit chanchio
 # vasabilab, dept of computer science, 
 # Thammasat University, Thailand
 #
-# Copyright 2017  Kasidit Chanchio
+# Copyright 2018  Kasidit Chanchio
 #
 # run with sudo or as root
 #
@@ -32,16 +32,9 @@ ifup ens5
 ifdown ens6
 ifup ens6
 #
-# prevent fragmentation 
-#
-#ifconfig ens3 mtu 1700
-#ifconfig ens4 mtu 1700
-#ifconfig ens6 mtu 1700
-#
 sleep 5
 date
 # restore later 
 #cp /etc/sudoers files/sudoers.save
-#echo "vasabi ALL=NOPASSWD: ALL" >> /etc/sudoers
 #
 ifconfig

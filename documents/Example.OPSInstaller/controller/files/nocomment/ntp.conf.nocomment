@@ -8,6 +8,5 @@ server 1.th.pool.ntp.org iburst
 server 2.th.pool.ntp.org iburst
 server 3.th.pool.ntp.org iburst
 server ntp.ubuntu.com iburst
-server 10.0.10.126 iburst
 restrict -4 default kod notrap nomodify
 restrict -6 default kod notrap nomodify

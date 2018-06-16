@@ -12,7 +12,7 @@ logdir /var/log/chrony
 maxupdateskew 100.0
 dumponexit
 dumpdir /var/lib/chrony
-allow 10.0.10.0/24
+allow 10.0.0.0/24
 logchange 0.5
 hwclockfile /etc/adjtime
 rtcsync

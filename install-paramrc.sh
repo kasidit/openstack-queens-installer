@@ -29,11 +29,13 @@ export OPS_MYSQL_PASS=mysqlpassword
 export DEMO_PASS=demopassword
 export ADMIN_PASS=adminpassword
 #
-export HYPERVISOR=qemu
+#export HYPERVISOR=qemu
+export HYPERVISOR=kvm
 #
 export INIT_IMAGE_LOCATION=http:\\/\\/download.cirros-cloud.net\\/0.3.5\\/cirros-0.3.5-x86_64-disk.img
 export INIT_IMAGE_NAME=cirros
 #
+# The domainname of every node
 export DOMAINNAME=cs.tu.ac.th
 #
 # Ubuntu Repository Parameters

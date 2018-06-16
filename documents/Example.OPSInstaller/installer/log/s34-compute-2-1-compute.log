@@ -1,0 +1,81 @@
++ cd /home/openstack/OPSInstaller/newcompute
++ pwd
+/home/openstack/OPSInstaller/newcompute
++ printf '\n2. install extra agents. \n'
+
+2. install extra agents. 
++ apt-get -y install neutron-l3-agent
+Reading package lists... 0%Reading package lists... 100%Reading package lists... Done
+Building dependency tree... 0%Building dependency tree... 0%Building dependency tree... 50%Building dependency tree... 50%Building dependency tree       
+Reading state information... 0%Reading state information... 0%Reading state information... Done
+The following packages were automatically installed and are no longer required:
+  linux-headers-4.4.0-116 linux-headers-4.4.0-116-generic linux-image-4.4.0-116-generic
+  linux-image-extra-4.4.0-116-generic
+Use 'sudo apt autoremove' to remove them.
+The following additional packages will be installed:
+  iputils-arping ipvsadm keepalived libsensors4 libsnmp-base libsnmp30 radvd
+Suggested packages:
+  heartbeat ldirectord lm-sensors snmp-mibs-downloader
+The following NEW packages will be installed:
+  iputils-arping ipvsadm keepalived libsensors4 libsnmp-base libsnmp30 neutron-l3-agent radvd
+0 upgraded, 8 newly installed, 0 to remove and 0 not upgraded.
+Need to get 1,430 kB of archives.
+After this operation, 5,536 kB of additional disk space will be used.
+0% [Working]            Get:1 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 iputils-arping amd64 3:20121221-5ubuntu2 [26.6 kB]
+1% [1 iputils-arping 14.2 kB/26.6 kB 53%] [Connecting to ubuntu-cloud.archive.canonical.com (91.189.92.152)]                                                                                                            4% [Connecting to ubuntu-cloud.archive.canonical.com (91.189.92.152)]                                                                     Get:2 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 libsensors4 amd64 1:3.4.0-2 [28.4 kB]
+5% [2 libsensors4 21.5 kB/28.4 kB 76%] [Connecting to ubuntu-cloud.archive.canonical.com (91.189.92.152)]                                                                                                         8% [Waiting for headers] [Connecting to ubuntu-cloud.archive.canonical.com (91.189.92.152)]                                                                                           Get:3 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 libsnmp-base all 5.7.3+dfsg-1ubuntu4.1 [224 kB]
+9% [3 libsnmp-base 10.2 kB/224 kB 5%] [Connecting to ubuntu-cloud.archive.canonical.com (91.189.92.152)]                                                                                                        23% [Waiting for headers] [Connecting to ubuntu-cloud.archive.canonical.com (91.189.92.152)]                                                                                            Get:4 http://th.archive.ubuntu.com/ubuntu xenial-updates/main amd64 libsnmp30 amd64 5.7.3+dfsg-1ubuntu4.1 [811 kB]
+26% [4 libsnmp30 47.7 kB/811 kB 6%] [Connecting to ubuntu-cloud.archive.canonical.com (91.189.92.152)]                                                                                                      Get:5 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 radvd amd64 1:2.11-1 [59.1 kB]
+                                                                                                      77% [Waiting for headers]                         Get:6 http://th.archive.ubuntu.com/ubuntu xenial/main amd64 ipvsadm amd64 1:1.28-3 [35.5 kB]
+79% [6 ipvsadm 35.5 kB/35.5 kB 100%] [Waiting for headers]                                                          81% [Waiting for headers]                         Get:7 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 keepalived amd64 1:1.3.9-1build1~cloud0 [240 kB]
+82% [7 keepalived 6,973 B/240 kB 3%]83% [7 keepalived 37.4 kB/240 kB 16%]                                     88% [7 keepalived 116 kB/240 kB 48%]                                    97% [Working]             Get:8 http://ubuntu-cloud.archive.canonical.com/ubuntu xenial-updates/queens/main amd64 neutron-l3-agent all 2:12.0.2-0ubuntu1~cloud0 [4,830 B]
+97% [8 neutron-l3-agent 4,080 B/4,830 B 84%]                                            100% [Working]              Fetched 1,430 kB in 2s (633 kB/s)
+Selecting previously unselected package iputils-arping.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 147997 files and directories currently installed.)
+Preparing to unpack .../iputils-arping_3%3a20121221-5ubuntu2_amd64.deb ...
+Unpacking iputils-arping (3:20121221-5ubuntu2) ...
+Selecting previously unselected package libsensors4:amd64.
+Preparing to unpack .../libsensors4_1%3a3.4.0-2_amd64.deb ...
+Unpacking libsensors4:amd64 (1:3.4.0-2) ...
+Selecting previously unselected package libsnmp-base.
+Preparing to unpack .../libsnmp-base_5.7.3+dfsg-1ubuntu4.1_all.deb ...
+Unpacking libsnmp-base (5.7.3+dfsg-1ubuntu4.1) ...
+Selecting previously unselected package libsnmp30:amd64.
+Preparing to unpack .../libsnmp30_5.7.3+dfsg-1ubuntu4.1_amd64.deb ...
+Unpacking libsnmp30:amd64 (5.7.3+dfsg-1ubuntu4.1) ...
+Selecting previously unselected package keepalived.
+Preparing to unpack .../keepalived_1%3a1.3.9-1build1~cloud0_amd64.deb ...
+Unpacking keepalived (1:1.3.9-1build1~cloud0) ...
+Selecting previously unselected package radvd.
+Preparing to unpack .../radvd_1%3a2.11-1_amd64.deb ...
+Unpacking radvd (1:2.11-1) ...
+Selecting previously unselected package neutron-l3-agent.
+Preparing to unpack .../neutron-l3-agent_2%3a12.0.2-0ubuntu1~cloud0_all.deb ...
+Unpacking neutron-l3-agent (2:12.0.2-0ubuntu1~cloud0) ...
+Selecting previously unselected package ipvsadm.
+Preparing to unpack .../ipvsadm_1%3a1.28-3_amd64.deb ...
+Unpacking ipvsadm (1:1.28-3) ...
+Processing triggers for man-db (2.7.5-1) ...
+Processing triggers for libc-bin (2.23-0ubuntu10) ...
+Processing triggers for systemd (229-4ubuntu21.2) ...
+Processing triggers for ureadahead (0.100.0-19) ...
+Processing triggers for dbus (1.10.6-1ubuntu3.3) ...
+Setting up iputils-arping (3:20121221-5ubuntu2) ...
+Setcap worked! arping is not suid!
+Setting up libsensors4:amd64 (1:3.4.0-2) ...
+Setting up libsnmp-base (5.7.3+dfsg-1ubuntu4.1) ...
+Setting up libsnmp30:amd64 (5.7.3+dfsg-1ubuntu4.1) ...
+Setting up keepalived (1:1.3.9-1build1~cloud0) ...
+Setting up radvd (1:2.11-1) ...
+dpkg-statoverride: warning: --update given but /var/run/radvd does not exist
+Setting up neutron-l3-agent (2:12.0.2-0ubuntu1~cloud0) ...
+Setting up ipvsadm (1:1.28-3) ...
+Processing triggers for libc-bin (2.23-0ubuntu10) ...
+Processing triggers for dbus (1.10.6-1ubuntu3.3) ...
+Processing triggers for systemd (229-4ubuntu21.2) ...
+Processing triggers for ureadahead (0.100.0-19) ...
++ cp files/openvswitch_agent_stage34.ini /etc/neutron/plugins/ml2/openvswitch_agent.ini
++ cp files/l3_agent_stage34.ini /etc/neutron/l3_agent.ini
++ service openvswitch-switch restart
++ service neutron-openvswitch-agent restart
++ service neutron-l3-agent restart

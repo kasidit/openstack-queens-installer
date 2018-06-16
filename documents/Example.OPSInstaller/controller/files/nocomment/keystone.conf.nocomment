@@ -1,10 +1,11 @@
 [DEFAULT]
+log_dir = /var/log/keystone
+[application_credential]
 [assignment]
 [auth]
 [cache]
 [catalog]
 [cors]
-[cors.subdomain]
 [credential]
 [database]
 connection = mysql+pymysql://keystone:KEYSTONE_DBPASS@controller/keystone
@@ -18,7 +19,6 @@ connection = mysql+pymysql://keystone:KEYSTONE_DBPASS@controller/keystone
 [healthcheck]
 [identity]
 [identity_mapping]
-[kvs]
 [ldap]
 [matchmaker_redis]
 [memcache]
@@ -44,3 +44,4 @@ connection = mysql+pymysql://keystone:KEYSTONE_DBPASS@controller/keystone
 provider = fernet
 [tokenless_auth]
 [trust]
+[unified_limit]

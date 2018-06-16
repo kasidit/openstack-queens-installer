@@ -1,0 +1,12 @@
+auto lo
+iface lo inet loopback
+auto ens3
+iface ens3 inet static
+	address 10.0.0.11
+	netmask 255.255.255.0
+	network 10.0.0.0
+	broadcast 10.0.0.255
+	
+	
+	dns-nameservers 8.8.8.8
+	dns-search cs.tu.ac.th

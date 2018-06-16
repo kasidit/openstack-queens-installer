@@ -1,4 +1,4 @@
-# OpenStack ocata installation script 
+# OpenStack Queens installation script 
 # on Ubuntu 16.04.2 by kasidit chanchio
 # vasabilab, dept of computer science, Thammasat University, Thailand
 # copyright 2014 
@@ -8,12 +8,8 @@
 #!/bin/bash -x
 cd $HOME/OPSInstaller/compute1
 pwd
-#printf "\nRun as root\n1. set sysctl .. press\n"
-#read varkey
-#cp files/sysctl.conf /etc/sysctl.conf
-#sysctl -p
 
-printf "\n2. install neutron.. press \n"
+printf "\n2. install neutron..  \n"
 #read varkey
 apt-get -y install neutron-plugin-ml2 neutron-openvswitch-agent openvswitch-switch 
 apt-get -y install neutron-dhcp-agent neutron-metadata-agent 

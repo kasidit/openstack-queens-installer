@@ -1,31 +1,30 @@
 [DEFAULT]
+lock_path = /var/lock/nova
+state_path = /var/lib/nova
 transport_url = rabbit://openstack:RABBIT_PASS@controller
-my_ip = 10.0.10.31
+my_ip = 10.0.0.31
 use_neutron = True
 firewall_driver = nova.virt.firewall.NoopFirewallDriver
-dhcpbridge_flagfile=/etc/nova/nova.conf
-dhcpbridge=/usr/bin/nova-dhcpbridge
-force_dhcp_release=true
-state_path=/var/lib/nova
-enabled_apis=osapi_compute,metadata
+force_dhcp_release = true
+enabled_apis = osapi_compute,metadata
 [api]
-auth_strategy=keystone
+auth_strategy = keystone
 [api_database]
 connection = mysql+pymysql://nova:NOVA_DBPASS@controller/nova_api
 [barbican]
 [cache]
 [cells]
-enable=False
+enable = False
 [cinder]
-[cloudpipe]
+[compute]
 [conductor]
 [console]
 [consoleauth]
 [cors]
-[cors.subdomain]
 [crypto]
 [database]
 connection = mysql+pymysql://nova:NOVA_DBPASS@controller/nova
+[devices]
 [ephemeral_storage_encryption]
 [filter_scheduler]
 [glance]
@@ -33,12 +32,12 @@ api_servers = http://controller:9292
 [guestfs]
 [healthcheck]
 [hyperv]
-[image_file_url]
 [ironic]
 [key_manager]
+[keystone]
 [keystone_authtoken]
 auth_uri = http://controller:5000
-auth_url = http://controller:35357
+auth_url = http://controller:5000
 memcached_servers = controller:11211
 auth_type = password
 project_domain_name = default
@@ -52,7 +51,7 @@ password = NOVA_PASS
 [mks]
 [neutron]
 url = http://controller:9696
-auth_url = http://controller:35357
+auth_url = http://controller:5000
 auth_type = password
 project_domain_name = default
 user_domain_name = default
@@ -65,7 +64,7 @@ metadata_proxy_shared_secret = METADATA_SECRET
 [notifications]
 [osapi_v21]
 [oslo_concurrency]
-lock_path=/var/lib/nova/tmp
+lock_path = /var/lib/nova/tmp
 [oslo_messaging_amqp]
 [oslo_messaging_kafka]
 [oslo_messaging_notifications]
@@ -80,9 +79,9 @@ project_domain_name = Default
 project_name = service
 auth_type = password
 user_domain_name = Default
-auth_url = http://controller:35357/v3
+auth_url = http://controller:5000/v3
 username = placement
-password = NOVA_PASS
+password = PLACEMENT_PASS
 [quota]
 [rdp]
 [remote_debug]
@@ -90,18 +89,15 @@ password = NOVA_PASS
 [serial_console]
 [service_user]
 [spice]
-[ssl]
-[trusted_computing]
 [upgrade_levels]
+[vault]
 [vendordata_dynamic_auth]
 [vmware]
 [vnc]
-enabled = true
-vncserver_listen = $my_ip
-vncserver_proxyclient_address = $my_ip
-novncproxy_base_url=http://10.0.10.11:6080/vnc_auto.html
-novncproxy_host=10.0.10.11
-novncproxy_port=6080
+enabled = True
+server_listen = 0.0.0.0
+server_proxyclient_address = $my_ip
+novncproxy_base_url = http://controller:6080/vnc_auto.html
 [workarounds]
 [wsgi]
 api_paste_config=/etc/nova/api-paste.ini
