@@ -1,0 +1,408 @@
+<!--
+Copyright 2016 Kasidit Chanchio
+-->
+<!DOCTYPE html><html><head><style>thead {color:darkblue;}
+tbody {color:blue;}
+tfoot {color:black;}
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  border:1px solid black;
+}
+th {
+  background-color: #d4dd1d;
+  border:1px solid black;
+  padding: 8px;
+}
+td {
+  border:1px solid black;
+  padding: 8px;
+}
+tr:nth-child(odd) {
+  background-color: #dddddd;
+}
+</style>
+</head>
+<body>
+<p>
+The script consists of 10 big stages 
+and 36 detailed stages (spread across the controller, network, compute and compute1 nodes). We show them below. 
+<p>
+<table border="1">
+<thead>
+<tr>
+<th> big stage <br> (OS-installer-*) </th>
+<th>controller <br> (exe-*) </th>
+<th>network <br> (exe-*) </th>
+<th>compute <br> (exe-*) </th>
+<th>compute1 <br> (exe-*) </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> <a href="installer/OS-installer-00-1-set-remote-access.sh">00-1-set-remote-access.sh</a> </td>
+<td> <a href="installer/exe-preinstall00-SUDO-update.sh">preinstall00-SUDO-update.sh</a> <br> <br>
+     <a href="installer/exe-preinstall01-USER-set-remote-access.sh">preinstall01-USER-set-remote-access.sh</a> <br> <br>
+     <a href="installer/exe-preinstall02-USER-set-openstack-nodes.sh">preinstall02-USER-set-openstack-nodes.sh</a> <br> <br>
+</td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td> </td>
+<td> 
+     <a href="installer/files/hosts">files/hosts</a> <br> <br>
+     <a href="installer/files/local-sources.list">files/local-sources.list</a> <br> <br>
+</td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td> 
+     <a href="installer/OS-installer-00-2-update-ubuntu.sh">00-2-update-ubuntu.sh</a> 
+</td>
+<td> 
+     <a href="controller/exe-stage00-SUDO-update.sh">stage00-SUDO-update.sh</a> <br>
+     <b>Ref:</b> <a href="http://docs.openstack.org/mitaka/install-guide-ubuntu/environment-packages.html">[0]</a>
+</td>
+<td> 
+     <a href="network/exe-stage00-SUDO-update.sh">stage00-SUDO-update.sh</a> <br>
+     <b>Ref:</b> <a href="http://docs.openstack.org/mitaka/install-guide-ubuntu/environment-packages.html">[0]</a>
+</td>
+<td> 
+     <a href="compute/exe-stage00-SUDO-update.sh">stage00-SUDO-update.sh</a> <br> 
+     <b>Ref:</b> <a href="http://docs.openstack.org/mitaka/install-guide-ubuntu/environment-packages.html">[0]</a>
+</td>
+<td> 
+     <a href="compute1/exe-stage00-SUDO-update.sh">stage00-SUDO-update.sh</a> <br> 
+     <b>Ref:</b> <a href="http://docs.openstack.org/mitaka/install-guide-ubuntu/environment-packages.html">[0]</a>
+</td>
+</tr>
+<tr>
+<td> 
+</td>
+<td> 
+     <a href="controller/files/hosts">files/hosts</a> <br> <br>
+     <a href="controller/files/local-sources.list">files/local-sources.list</a> <br> <br>
+</td>
+<td> 
+     <a href="network/files/hosts">files/hosts</a> <br> <br>
+     <a href="network/files/local-sources.list">files/local-sources.list</a> <br> <br>
+</td>
+<td> 
+     <a href="compute/files/hosts">files/hosts</a> <br> <br>
+     <a href="compute/files/local-sources.list">files/local-sources.list</a> <br> <br>
+</td>
+<td> 
+     <a href="compute1/files/hosts">files/hosts</a> <br> <br>
+     <a href="compute1/files/local-sources.list">files/local-sources.list</a> <br> <br>
+</td>
+</tr>
+<tr>
+<td> <a href="installer/OS-installer-01-node-setups.sh">01-node-setups.sh</a> </td>
+<td> <a href="controller/exe-stage01-SUDO-preinstall.sh">stage01-SUDO-preinstall.sh</a> <br>
+     <b>Ref:</b> <a href="http://docs.openstack.org/mitaka/install-guide-ubuntu/environment-ntp-controller.html">[1]</a>
+</td>
+<td> <a href="network/exe-stage02-SUDO-network-preinstall.sh">stage02-SUDO-network-preinstall.sh</a> <br>
+     <b>Ref:</b> <a href="http://docs.openstack.org/mitaka/install-guide-ubuntu/environment-ntp-other.html">[2]</a>
+</td>
+<td> <a href="compute/exe-stage03-SUDO-compute-preinstall.sh">stage03-SUDO-compute-preinstall.sh</a> <br>
+     <b>Ref:</b> <a href="http://docs.openstack.org/mitaka/install-guide-ubuntu/environment-ntp-other.html">[2]</a>
+</td>
+<td> <a href="compute1/exe-stage03-SUDO-compute-preinstall.sh">stage03-SUDO-compute-preinstall.sh</a> <br>
+     <b>Ref:</b> <a href="http://docs.openstack.org/mitaka/install-guide-ubuntu/environment-ntp-other.html">[2]</a>
+</td>
+</tr>
+<tr>
+<td> </td>
+<td> 
+<a href="controller/files/chrony.conf">files/chrony.conf</a>
+</td>
+<td> 
+<a href="network/files/interfaces">files/interfaces</a> <br> <br>
+<a href="network/files/hosts">files/hosts</a> <br> <br>
+<a href="network/files/chrony.conf">files/chrony.conf</a>
+</td>
+<td> 
+<a href="compute/files/interfaces">files/interfaces</a> <br> <br>
+<a href="compute/files/hosts">files/hosts</a> <br> <br>
+<a href="compute/files/chrony.conf">files/chrony.conf</a>
+</td>
+<td> 
+<a href="compute1/files/interfaces">files/interfaces</a> <br> <br>
+<a href="compute1/files/hosts">files/hosts</a> <br> <br>
+<a href="compute1/files/chrony.conf">files/chrony.conf</a>
+</td>
+</tr>
+<tr>
+<td> <a href="installer/OS-installer-02-mysql.sh">02-mysql.sh</a> </td>
+<td> 
+     <a href="controller/exe-stage04-SUDO-mysql.sh">stage04-SUDO-mysql.sh</a> <br>
+     <b>Ref:</b> <a href="http://docs.openstack.org/mitaka/install-guide-ubuntu/environment-sql-database.html">[3]</a>
+</td>
+<td> 
+     <a href="network/exe-stage05-SUDO-network-mysql.sh">stage05-SUDO-network-mysql.sh</a> <br>
+</td>
+<td> 
+     <a href="compute/exe-stage06-SUDO-compute-mysql.sh">stage06-SUDO-compute-mysql.sh</a> <br>
+</td>
+<td> 
+     <a href="compute1/exe-stage06-SUDO-compute-mysql.sh">stage06-SUDO-compute-mysql.sh</a> <br>
+</td>
+</tr>
+<tr>
+<td> </td>
+<td> 
+     <a href="controller/files/openstack.cnf">files/openstack.cnf</a> <br> <br>
+     <a href="controller/files/mongodb.conf">files/mongodb.conf</a> <br> <br>
+</td>
+<td> 
+</td>
+<td> 
+</td>
+<td> 
+</td>
+</tr>
+<tr>
+<td> <a href="installer/OS-installer-03-rabbitmq.sh">03-rabbitmq.sh</a> </td>
+<td> 
+     <a href="controller/exe-stage07-SUDO-rabbit.sh">stage07-SUDO-rabbit.sh</a> <br>
+     <b>Ref:</b> <a href="http://docs.openstack.org/mitaka/install-guide-ubuntu/environment-messaging.html">[4]</a><a href="http://docs.openstack.org/mitaka/install-guide-ubuntu/environment-memcached.html">[5]</a>
+</td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td> </td>
+<td> <a href="controller/files/memcached.conf">files/memcached.conf</a> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td> <a href="installer/OS-installer-04-keystone.sh">04-keystone.sh</a> </td>
+<td> 
+     <a href="controller/exe-stage08-USER-keystone-database.sh">stage08-USER-keystone-database.sh</a> <br> <br>
+     <a href="controller/exe-stage09-SUDO-keystone.sh">stage09-SUDO-keystone.sh</a> <br> 
+     <b>Ref:</b> <a href="http://docs.openstack.org/mitaka/install-guide-ubuntu/keystone-install.html">[6]</a><br> <br>
+     <a href="controller/exe-stage10-USER-service-endpoints.sh">stage10-USER-service-endpoints.sh</a> <br> <br>
+     <a href="controller/exe-stage11-USER-test-envscript.sh">stage11-USER-test-envscript.sh</a> <br>
+     <b>Ref:</b><a href="http://docs.openstack.org/mitaka/install-guide-ubuntu/keystone-services.html">[7]</a><a href="http://docs.openstack.org/mitaka/install-guide-ubuntu/keystone.html">[8]</a>
+</td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td> </td>
+<td> 
+     <a href="controller/files/apache2.conf">files/apache2.conf</a> <br> <br>
+     <a href="controller/files/wsgi-keystone.conf">files/wsgi-keystone.conf</a> <br> <br>
+     <a href="controller/files/keystone-paste.ini">files/keystone-paste.ini</a> <br> <br>
+     <a href="controller/admin-openrc.sh">admin-openrc.sh</a> <br> <br>
+</td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td> <a href="installer/OS-installer-05-glance.sh">05-glance.sh</a> </td>
+<td> 
+     <a href="controller/exe-stage12-USER-glance-database.sh">stage12-USER-glance-database.sh</a> <br> <br>
+     <a href="controller/exe-stage13-USER-glance-endpoints.sh">stage13-USER-glance-endpoints.sh</a> <br> <br>
+     <a href="controller/exe-stage14-SUDO-glance.sh">stage14-SUDO-glance.sh</a> <br>
+     <b>Ref:</b> <a href="http://docs.openstack.org/mitaka/install-guide-ubuntu/glance-install.html">[9]</a><br> <br>
+     <a href="controller/exe-stage15-USER-verify-glance.sh">stage15-USER-verify-glance.sh</a> <br> 
+     <b>Ref:</b> <a href="http://docs.openstack.org/mitaka/install-guide-ubuntu/glance.html">[10]</a><br> <br>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td> </td>
+<td> 
+     <a href="controller/files/glance-api.conf">files/glance-api.conf</a> <br> <br>
+     <a href="controller/files/glance-registry.conf">files/glance-registry.conf</a> <br> <br>
+</td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td> <a href="installer/OS-installer-06-nova.sh">06-nova.sh</a> </td>
+<td> 
+     <a href="controller/exe-stage16-USER-nova-database.sh">stage16-USER-nova-database.sh</a> <br> <br>
+     <a href="controller/exe-stage17-USER-nova-endpoints.sh">stage17-USER-nova-endpoints.sh</a> <br> <br>
+     <a href="controller/exe-stage18-SUDO-nova.sh">stage18-SUDO-nova.sh</a> <br> 
+     <b>Ref:</b> <a href="http://docs.openstack.org/mitaka/install-guide-ubuntu/nova-controller-install.html">[11]</a><a href="http://docs.openstack.org/mitaka/install-guide-ubuntu/nova.html">[12]</a><br> 
+</td>
+<td> </td>
+<td> 
+     <a href="compute/exe-stage19-SUDO-nova-compute.sh">stage19-SUDO-nova-compute.sh</a> <br>
+     <b>Ref:</b> <a href="http://docs.openstack.org/mitaka/install-guide-ubuntu/nova-compute-install.html">[13]</a><br> 
+</td>
+<td> 
+     <a href="compute1/exe-stage19-SUDO-nova-compute.sh">stage19-SUDO-nova-compute.sh</a> <br>
+     <b>Ref:</b> <a href="http://docs.openstack.org/mitaka/install-guide-ubuntu/nova-compute-install.html">[13]</a><br> 
+</td>
+</tr>
+<tr>
+<td> </td>
+<td> 
+     <a href="controller/files/nova.conf">files/nova.conf</a> <br> <br>
+</td>
+<td> </td>
+<td> 
+     <a href="compute/files/nova.conf">files/nova.conf</a> <br> <br>
+     <a href="compute/files/nova-compute.conf">files/nova-compute.conf</a> <br> <br>
+</td>
+<td> 
+     <a href="compute1/files/nova.conf">files/nova.conf</a> <br> <br>
+     <a href="compute1/files/nova-compute.conf">files/nova-compute.conf</a> <br> <br>
+</td>
+</tr>
+<tr>
+<td> <a href="installer/OS-installer-07-neutron.sh">07-neutron.sh</a> </td>
+<td> 
+     <a href="controller/exe-stage21-USER-neutron-database.sh">stage21-USER-neutron-database.sh</a> <br> <br>
+     <a href="controller/exe-stage22-USER-neutron-endpoints.sh">stage22-USER-neutron-endpoints.sh</a> <br> 
+     <b>Ref:</b> <a href="http://docs.openstack.org/mitaka/install-guide-ubuntu/neutron-controller-install.html">[14]</a><a href="http://docs.openstack.org/mitaka/networking-guide/">[15]</a><br> <br> 
+     <a href="controller/exe-stage23-SUDO-neutron.sh">stage23-SUDO-neutron.sh</a> <br> <br>
+     <a href="controller/exe-stage24-USER-verify-neutron.sh">stage24-USER-verify-neutron.sh</a> <br> <br>
+     <a href="controller/exe-stage26-SUDO-reconfig-neutron-nova.sh">stage26-SUDO-reconfig-neutron-nova.sh</a> <br> <br>
+     <a href="controller/exe-stage28-USER-verify-neutron2.sh">stage28-USER-verify-neutron2.sh</a> <br> <br>
+     <a href="controller/exe-stage30-USER-verify-neutron3.sh">stage30-USER-verify-neutron3.sh</a> <br>
+     <b>Ref:</b> <a href="http://docs.openstack.org/mitaka/networking-guide/scenario-classic-ovs.html">[16]</a> <br> 
+</td>
+<td> 
+     <a href="network/exe-stage25-SUDO-network-neutron.sh">stage25-SUDO-network-neutron.sh</a> <br> <br>
+     <a href="network/exe-stage27-SUDO-ovs-service.sh">stage27-SUDO-ovs-service.sh</a> <br> <br>
+</td>
+<td>
+     <a href="compute/exe-stage29-SUDO-compute-neutron.sh">stage29-SUDO-compute-neutron.sh</a> <br> <br>
+</td>
+<td>
+     <a href="compute1/exe-stage29-SUDO-compute-neutron.sh">stage29-SUDO-compute-neutron.sh</a> <br> <br>
+</td>
+</tr>
+<tr>
+<td> </td>
+<td> 
+     <a href="controller/files/neutron.conf">files/neutron.conf</a> <br> <br>
+     <a href="controller/files/ml2_conf.ini">files/ml2_conf.ini</a> <br> <br>
+     <a href="controller/files/nova-stage23.conf">files/nova-stage23.conf</a> <br> <br>
+     <a href="controller/files/nova-stage26.conf">files/nova-stage26.conf</a> <br> <br>
+</td>
+<td> 
+     <a href="network/files/neutron.conf">files/neutron.conf</a> <br> <br>
+     <a href="network/files/ml2_conf.ini">files/ml2_conf.ini</a> <br> <br>
+     <a href="network/files/openvswitch_agent.ini">files/openvswitch_agent.ini</a> <br> <br>
+     <a href="network/files/l3_agent.ini">files/l3_agent.ini</a> <br> <br>
+     <a href="network/files/dhcp_agent.ini">files/dhcp_agent.ini</a> <br> <br>
+     <a href="network/files/metadata_agent.ini">files/metadata_agent.ini</a> <br> <br>
+</td>
+<td> 
+     <a href="compute/files/neutron.conf">files/neutron.conf</a> <br> <br>
+     <a href="compute/files/ml2_conf.ini">files/ml2_conf.ini</a> <br> <br>
+     <a href="compute/files/openvswitch_agent.ini">files/openvswitch_agent.ini</a> <br> <br>
+     <a href="compute/files/nova-stage29.conf">files/nova-stage29.conf</a> <br> <br>
+</td>
+<td> 
+     <a href="compute1/files/neutron.conf">files/neutron.conf</a> <br> <br>
+     <a href="compute1/files/ml2_conf.ini">files/ml2_conf.ini</a> <br> <br>
+     <a href="compute1/files/openvswitch_agent.ini">files/openvswitch_agent.ini</a> <br> <br>
+     <a href="compute1/files/nova-stage29.conf">files/nova-stage29.conf</a> <br> <br>
+</td>
+</tr>
+<tr>
+<td> <a href="installer/OS-installer-08-horizon.sh">08-horizon.sh</a> </td>
+<td> <a href="controller/exe-stage32-SUDO-horizon.sh">stage32-SUDO-horizon.sh</a> <br>  
+     <b>Ref:</b> <a href="http://docs.openstack.org/mitaka/install-guide-ubuntu/horizon-install.html">[18]</a><a href="http://docs.openstack.org/mitaka/install-guide-ubuntu/horizon.html">[19]</a> <br> 
+</td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td> </td>
+<td>  
+     <a href="controller/files/local_settings.py">files/local_settings.py</a> <br> <br>
+</td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td> <a href="installer/OS-installer-09-set-dvr.sh">09-set-dvr.sh</a> </td>
+<td> 
+     <a href="controller/exe-stage33-SUDO-dvr-controller-conf.sh">stage33-SUDO-dvr-controller-conf.sh</a> <br> <br>
+     <a href="controller/exe-stage37-USER-verify-dvr-network.sh">stage37-USER-verify-dvr-network.sh</a> <br> 
+     <b>Ref:</b> <a href="http://docs.openstack.org/mitaka/networking-guide/scenario-dvr-ovs.html">[17]</a> <br> 
+</td>
+<td>  
+     <a href="network/exe-stage34-SUDO-dvr-network-conf.sh">stage34-SUDO-dvr-network-conf.sh</a> <br> <br>
+</td>
+<td>  
+     <a href="compute/exe-stage35-SUDO-dvr-compute-conf.sh">stage35-SUDO-dvr-compute-conf.sh</a> <br> <br>
+</td>
+<td>  
+     <a href="compute1/exe-stage36-SUDO-dvr-compute1-conf.sh">stage36-SUDO-dvr-compute1-conf.sh</a> <br> <br>
+</td>
+</tr>
+<tr>
+<td> </td>
+<td> 
+     <a href="controller/files/neutron_stage33.conf">files/neutron_stage33.conf</a> <br> <br>
+     <a href="controller/files/ml2_conf_stage33.ini">files/ml2_conf_stage33.ini</a> <br> <br>
+</td>
+<td> 
+     <a href="network/files/openvswitch_agent_stage34.ini">files/openvswitch_agent_stage34.ini</a> <br> <br>
+     <a href="network/files/l3_agent_stage34.ini">files/l3_agent_stage34.ini</a> <br> <br>
+     <a href="network/files/dhcp_agent_stage34.ini">files/dhcp_agent_stage34.ini</a> <br> <br>
+     <a href="network/files/metadata_agent_stage34.ini">files/metadata_agent_stage34.ini</a> <br> <br>
+</td>
+<td> 
+     <a href="compute/files/openvswitch_agent_stage35.ini">files/openvswitch_agent_stage35.ini</a> <br> <br>
+     <a href="compute/files/l3_agent_stage35.ini">files/l3_agent_stage35.ini</a> <br> <br>
+     <a href="compute/files/metadata_agent_stage35.ini">files/metadata_agent_stage35.ini</a> <br> <br>
+</td>
+<td> 
+     <a href="compute1/files/openvswitch_agent_stage36.ini">files/openvswitch_agent_stage36.ini</a> <br> <br>
+     <a href="compute1/files/l3_agent_stage36.ini">files/l3_agent_stage36.ini</a> <br> <br>
+     <a href="compute1/files/metadata_agent_stage36.ini">files/metadata_agent_stage36.ini</a> <br> <br>
+</td>
+</tr>
+<tr>
+<td> <a href="installer/OS-installer-10-initial-user-network.sh">10-initial-user-network.sh</a> </td>
+<td> 
+     <a href="controller/exe-stage31-USER-initial-network.sh">stage31-USER-initial-network.sh</a> <br> <br>
+</td>
+<td> </td>
+<td>  </td>
+<td>  </td>
+</tr>
+<tr>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td> </td>
+</tr>
+</tbody>
+<!--
+<tfoot>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tfoot>
+-->
+</table>
+</body>
+</html>
