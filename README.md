@@ -834,8 +834,34 @@ $ ./OS-installer-10-horizon.sh
  <li>hostname: compute-2-2, Managenent Network IP: 10.0.0.42, Data Tunnel Network IP: 10.0.1.42
 </ul>
 <p><p>
-
+ในอันดับแรกเราจะเพิ่มเครื่อง compute-2-1 ก่อน ท่านสามารถใช้คำสั่งต่อไปนี้้
+<pre>
+$ cd $HOME/openstack-queens-installer/OPSInstaller/installer
+$ ./OS-newcompute-00-set-new-node.sh compute-2-1 10.0.0.41 10.0.1.41
+...
+[Enter]
+...
+$
+</pre>
+script ข้างต้นเป็นตอนแรกของการเพิ่ม host เข้า openstack ซึ่งมีการถามให้ท่านเคาะ Enter เพื่อยอมรับ Cloud repository และ Reboot เพื่อ update OS 
+<p><p>
+ถัดจากนั้นจะใช้คำสั่งข้างล่างเพื่อติดตั้ง nova และ neutron แบบใช้ openvswitch บนเครื่อง compute-2-1  
+<pre>
+$ ./OS-newcompute-01-nova-neutron-ovs.sh compute-2-1
+...
+$
+</pre>
+หลังจากนั้นเราจะกำหนดค่าให้ neutron ทำงานแบบ Distributed Virtual Routers
+<pre>
+$ ./OS-newcompute-02-set-dvr.sh compute-2-1
+...
+$
+</pre>
+หลังจากนั้นก็ทำแบบเดียวกันกับ compute-2-2
+<p><p> 
+ 
 # script ใช้ได้แล้ว แต่ คำอธิบายถัดจากนี้ไปอยู่ในระหว่างเปลี่ยนแปลงจาก ocata เป็น queens
+
 <a id="part3"> 
 <h3>ส่วนที่ 3: การใช้งาน OpenStack</h3>
 </a>
