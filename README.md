@@ -20,9 +20,14 @@ Contact: kasiditchanchio@gmail.com <br>
        <li> <a href="#downloadinstaller">2.1 ดาวน์โหลด openstack-queens-installer scripts</a>
        <li> <a href="#paramrc">2.2 กำหนดค่าพารามีเตอร์สำหรับการติดตั้ง </a>
        <li> <a href="#usescript">2.3 ติดตั้ง OpenStack queens ด้วย scripts </a> 
-       <li> <a href="#testhorizon">2.4 ใช้งาน OpenStack Horizon</a>
+       <li> <a href="#addnodes">2.4 การเพิ่ม compute node ด้วย scripts </a>
       </ul>
- <li> 3. <a href="#part3">ติดตั้งด้วยมือ</a> 
+ <li> 3. <a href="#part3">การใช้งาน OpenStack</a>
+       <ul>
+        <li> <a href="#testhorizon">3.1 ใช้งาน OpenStack ด้วย Horizon เบื้องต้น</a>
+        <li> <a href="#testhorizon">3.2 ใช้งาน OpenStack Command Line Interface เบื้องต้น</a>
+       </ul>
+ <li> 4. <a href="#part4">ติดตั้งด้วย scripts แบบละเอียด (ใกล้กับแบบ manual มาก)</a> 
       <ul>
        <li> <a href="#ubunupdate">3.1 update ubuntu บน ทุก node</a>
        <li> <a href="#setnicchrony">3.2 กำหนดค่า Network Interfaces และ Time Synchronization (chrony)</a>
@@ -820,12 +825,22 @@ rtt min/avg/max/mdev = 0.792/1.203/2.204/0.580 ms
 $ ./OS-installer-10-horizon.sh
 </pre>
 ท่านจะได้ ubuntu openstack dashbord โดย default
-<p>
-<p>
+<p><p>
+<i><a id="addnodes"><h4>2.4 การเพิ่ม Compute node ด้วย scripts </h4></a></i>
+<p><p>
+ก่อนอื่นเราสมมุติว่าท่านมีเครื่อง ubuntu 16.04 จำนวน 2 เครื่องอยู่โดยที่เรา Assume ว่าทั้งสองเครื่องนั้นมี network interfaces เหมือนกับ compute1 ก่อนที่ compute1 จะได้รับการรัน scripts ของเราใดๆ และกำหนดให้ทั้งสองเครื่องมีรายละเอียดดังนี้
+<ul>
+ <li>hostname: compute-2-1, Managenent Network IP: 10.0.0.41, Data Tunnel Network IP: 10.0.1.41
+ <li>hostname: compute-2-2, Managenent Network IP: 10.0.0.42, Data Tunnel Network IP: 10.0.1.42
+</ul>
+<p><p>
 
 # script ใช้ได้แล้ว แต่ คำอธิบายถัดจากนี้ไปอยู่ในระหว่างเปลี่ยนแปลงจาก ocata เป็น queens
-
-<i><a id="testhorizon"><h4>2.4 ใช้งาน OpenStack Horizon</h4></a></i>
+<a id="part3"> 
+<h3>ส่วนที่ 3: การใช้งาน OpenStack</h3>
+</a>
+<p><p>
+<i><a id="testhorizon"><h4>3.1 ใช้งาน OpenStack ด้วย Horizon</h4></a></i>
 <p>
 <p>
 ในกรณีที่ติดตั้งบนเครื่องจริง นศ ควรจะเข้าใช้ web interface ของ openstack ได้ที่ http://10.0.10.11:80/horizon/ (ดู <a href="https://www.youtube.com/watch?v=uXjlmfOvFCs&index=10&list=PLmUxMbTCUhr4vYsaeEKVkvAGF5K1Tw8oJ">youtube video</a>)
@@ -841,8 +856,8 @@ $ ./OS-installer-10-horizon.sh
 </td></tr>
 </table>
 <p>
-<a id="part3"> 
-<h3>ส่วนที่ 3: ติดตั้งด้วยมือ</h3>
+<a id="part4"> 
+<h3>ส่วนที่ 4: ติดตั้งด้วยมือ</h3>
 </a>
 <p><p>
 การติดตั้งด้วยมือเป็นวิธีการติดตั้งที่จะทำให้ผู้ติดตั้งได้มีโอกาสเรียนรู้จักส่วนประกอบของ OpenStack มากที่สุด OpenStack ประกอบไปด้วย software component หลาย software ผู้ใช้จะต้องติดตั้งและกำหนดค่าในไฟล์ configuration ของ component เหล่านั้น ซึ่งส่วนใหญ่จะอยู่ใน /etc directory 
