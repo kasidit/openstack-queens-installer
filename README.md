@@ -744,8 +744,12 @@ $ ./OS-installer-10-horizon.sh
 <p><p>
 ก่อนอื่นเราสมมุติว่าท่านมีเครื่อง ubuntu 16.04 จำนวน 1 เครื่องอยู่โดยที่เรา Assume ว่าทั้งสองเครื่องนั้นมี network interfaces เหมือนกับ compute1 ก่อนที่ compute1 จะได้รับการรัน scripts ของเราใดๆ และกำหนดให้เครื่องมีรายละเอียดที่แตกต่างจาก compute1 ดังนี้
 <ul>
+ <li>hostname: compute-2-1, Managenent Network IP: 10.0.0.41, Data Tunnel Network IP: 10.0.1.41
+ <li>hostname: compute-2-2, Managenent Network IP: 10.0.0.42, Data Tunnel Network IP: 10.0.1.42
  <li>hostname: compute-2-3, Managenent Network IP: 10.0.0.43, Data Tunnel Network IP: 10.0.1.43
 </ul>
+<p><p>
+ผมได้เพิ่ม compute-2-1 และ compute-2-2 ไปแล้ว ในที่นี่ผมจะแสดงการเพิ่ม compute-2-3 
 <p><p>
 ในอันดับแรกเราจะเตรียมเครื่อง compute-2-3 ก่อน โดยมีรายละเอียดดังนี้
 <pre>
@@ -788,25 +792,67 @@ $
  <b>บนเครื่อง controller node:</b>
 <pre>
 $ cd $HOME/openstack-queens-installer/OPSInstaller/installer
-$ ./OS-newcompute-00-set-new-node.sh compute-2-3 10.0.0.43 10.0.1.43
+$ <b>./OS-newcompute-00-set-new-node.sh    compute-2-3    10.0.0.43    10.0.1.43</b>
 ...
 $
 </pre>
 script ข้างต้นเป็นตอนแรกของการเพิ่ม host เข้า openstack ซึ่งมีการถามให้ท่านเคาะ Enter เพื่อยอมรับ Cloud repository และ Reboot เพื่อ update OS 
 <p><p>
-ถัดจากนั้นจะใช้คำสั่งข้างล่างเพื่อติดตั้ง nova และ neutron แบบใช้ openvswitch บนเครื่อง compute-2-1  
+ถัดจากนั้นจะใช้คำสั่งข้างล่างเพื่อติดตั้ง nova และ neutron แบบใช้ openvswitch บนเครื่อง compute-2-3  
 <pre>
-$ ./OS-newcompute-01-nova-neutron-ovs.sh compute-2-1
+$ <b>./OS-newcompute-01-nova-neutron-ovs.sh   compute-2-3</b>
 ...
 $
 </pre>
 หลังจากนั้นเราจะกำหนดค่าให้ neutron ทำงานแบบ Distributed Virtual Routers
 <pre>
-$ ./OS-newcompute-02-set-dvr.sh compute-2-1
+$ <b>./OS-newcompute-02-set-dvr.sh    compute-2-3 </b>
 ...
++ openstack compute service list
++----+------------------+-------------+----------+---------+-------+----------------------------+
+| ID | Binary           | Host        | Zone     | Status  | State | Updated At                 |
++----+------------------+-------------+----------+---------+-------+----------------------------+
+|  1 | nova-scheduler   | controller  | internal | enabled | up    | 2018-06-20T16:43:10.000000 |
+|  2 | nova-consoleauth | controller  | internal | enabled | up    | 2018-06-20T16:43:09.000000 |
+|  3 | nova-conductor   | controller  | internal | enabled | up    | 2018-06-20T16:43:04.000000 |
+|  6 | nova-compute     | compute     | nova     | enabled | up    | 2018-06-20T16:43:11.000000 |
+|  7 | nova-compute     | compute1    | nova     | enabled | up    | 2018-06-20T16:43:05.000000 |
+|  8 | nova-compute     | compute-2-1 | nova     | enabled | up    | 2018-06-20T16:43:09.000000 |
+|  9 | nova-compute     | compute-2-2 | nova     | enabled | up    | 2018-06-20T16:43:04.000000 |
+| 10 | nova-compute     | compute-2-3 | nova     | enabled | up    | 2018-06-20T16:43:05.000000 |
++----+------------------+-------------+----------+---------+-------+----------------------------+
++ openstack network agent list
++--------------------------------------+--------------------+-------------+-------------------+-------+-------+---------------------------+
+| ID                                   | Agent Type         | Host        | Availability Zone | Alive | State | Binary                    |
++--------------------------------------+--------------------+-------------+-------------------+-------+-------+---------------------------+
+| 028770a0-00b9-4550-90ef-afd76992ea85 | Metadata agent     | compute-2-1 | None              | :-)   | UP    | neutron-metadata-agent    |
+| 07d372e2-75f4-4d14-bb82-4c7f78d5d414 | L3 agent           | compute-2-1 | nova              | :-)   | UP    | neutron-l3-agent          |
+| 178fe47d-3694-4140-bff1-a1d88f185039 | Metadata agent     | compute-2-2 | None              | :-)   | UP    | neutron-metadata-agent    |
+| 1a7b774f-3474-44eb-8c49-97407957f52d | DHCP agent         | compute-2-1 | nova              | :-)   | UP    | neutron-dhcp-agent        |
+| 2ba25484-5b8b-4f79-a413-42340c280086 | L3 agent           | network     | nova              | :-)   | UP    | neutron-l3-agent          |
+| 42e6956b-7422-4395-8311-f11d4b9d2ba0 | Open vSwitch agent | compute-2-2 | None              | :-)   | UP    | neutron-openvswitch-agent |
+| 45b178d0-7bf5-404d-afcb-48bc9a597ae2 | Open vSwitch agent | network     | None              | :-)   | UP    | neutron-openvswitch-agent |
+| 605add15-afa8-475b-bf25-a1970d0e341b | Open vSwitch agent | compute-2-3 | None              | :-)   | UP    | neutron-openvswitch-agent |
+| 644150e2-2915-404d-a2bd-d3f0bc0a6b99 | Open vSwitch agent | compute-2-1 | None              | :-)   | UP    | neutron-openvswitch-agent |
+| 7ff05cc0-ba85-4517-8879-12ccedfb3b6b | L3 agent           | compute     | nova              | :-)   | UP    | neutron-l3-agent          |
+| 90e417dc-184e-4774-8d9e-23ac2cf86bb6 | Open vSwitch agent | compute1    | None              | :-)   | UP    | neutron-openvswitch-agent |
+| 980e0b5c-038c-4f69-ba10-5334bfbe6def | DHCP agent         | compute-2-2 | nova              | :-)   | UP    | neutron-dhcp-agent        |
+| 9ff640b4-db8d-4a48-8c8c-0b9e96ffdc64 | Metadata agent     | compute-2-3 | None              | :-)   | UP    | neutron-metadata-agent    |
+| a4f487d6-25a9-46f5-8c0b-11f3a33549be | Open vSwitch agent | compute     | None              | :-)   | UP    | neutron-openvswitch-agent |
+| b793d9cb-83d3-4aac-b351-ad5453b48d58 | DHCP agent         | compute-2-3 | nova              | :-)   | UP    | neutron-dhcp-agent        |
+| baa43908-3e05-43b2-8354-9801308e07e2 | L3 agent           | compute-2-2 | nova              | :-)   | UP    | neutron-l3-agent          |
+| c2961e22-e8cd-4d8b-b3ea-309ddfc7a6b4 | L3 agent           | compute1    | nova              | :-)   | UP    | neutron-l3-agent          |
+| d34947aa-fa9f-4bf7-bd25-7adcd98a44fa | DHCP agent         | compute     | nova              | :-)   | UP    | neutron-dhcp-agent        |
+| d5385d8b-6f79-4cfb-b0c8-45d27047338d | Metadata agent     | compute     | None              | :-)   | UP    | neutron-metadata-agent    |
+| ec7cf02d-0cb4-4070-a74f-03aefc477949 | L3 agent           | compute-2-3 | nova              | :-)   | UP    | neutron-l3-agent          |
+| f1693029-72fb-4d0b-b117-c640a9cd1ee8 | Metadata agent     | compute1    | None              | :-)   | UP    | neutron-metadata-agent    |
+| f26922dc-85a2-417b-bb9c-49041ea79a13 | DHCP agent         | compute1    | nova              | :-)   | UP    | neutron-dhcp-agent        |
++--------------------------------------+--------------------+-------------+-------------------+-------+-------+---------------------------+
+Connection to controller closed.
+
+Done!
 $
 </pre>
-หลังจากนั้นก็ทำแบบเดียวกันกับ compute-2-2
 <p><p> 
 <a id="part4"> 
 <h3>ส่วนที่ 4: สรุป</h3></a>
