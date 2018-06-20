@@ -570,7 +570,7 @@ $ ./OS-installer-00-1-update-ubuntu.sh
 <pre>
 $ ./OS-installer-00-2-update-ubuntu.sh 
 </pre>
-script นี้จะ remote ssh เข้าไปที่เครื่อง controller network compute และ compute1 และในระหว่างที่ update ubuntu ของแต่ละเครื่อง และ<b>มันจะถามให้ท่าน กด [ENTER] เครื่องละครั้ง</b> ท่านต้องคอยกด enter ด้วยตนเอง หลังจาก script update ubuntu บนแต่ละเครื่องเสร็จมันจะ reboot เครื่องเหล่านั้น โดยจะ reboot เครื่อง controller เป็นเครื่องสุดท้าย (เพราะเราใช้เครื่อง controller ไป update และ reboot เครื่องอื่นๆก่อน)
+script นี้จะ remote ssh เข้าไปที่เครื่อง controller network compute และ compute1 และ update ubuntu repository ของแต่ละเครื่องให้ใช้ openstack queens repository หลังจาก script update ubuntu บนแต่ละเครื่องเสร็จมันจะ reboot เครื่องเหล่านั้น โดยจะ reboot เครื่อง controller เป็นเครื่องสุดท้าย (เพราะเราใช้เครื่อง controller ไป update และ reboot เครื่องอื่นๆก่อน)
 <p><p>
 หลังจากนั้น เราจะ login เข้าสู่เครื่อง controller แต่ก่อนที่จะรัน script ถัดไป ขอให้ท่าน make sure ว่าทุกเครื่อง reboot เสร็จและสามารถ ssh ได้
 <pre>
@@ -742,14 +742,45 @@ $ ./OS-installer-10-horizon.sh
 <p><p>
 <i><a id="addnodes"><h4>2.4 การเพิ่ม Compute node ด้วย scripts </h4></a></i>
 <p><p>
-ก่อนอื่นเราสมมุติว่าท่านมีเครื่อง ubuntu 16.04 จำนวน 2 เครื่องอยู่โดยที่เรา Assume ว่าทั้งสองเครื่องนั้นมี network interfaces เหมือนกับ compute1 ก่อนที่ compute1 จะได้รับการรัน scripts ของเราใดๆ และกำหนดให้ทั้งสองเครื่องมีรายละเอียดที่แตกต่างจาก compute1 ดังนี้
+ก่อนอื่นเราสมมุติว่าท่านมีเครื่อง ubuntu 16.04 จำนวน 1 เครื่องอยู่โดยที่เรา Assume ว่าทั้งสองเครื่องนั้นมี network interfaces เหมือนกับ compute1 ก่อนที่ compute1 จะได้รับการรัน scripts ของเราใดๆ และกำหนดให้เครื่องมีรายละเอียดที่แตกต่างจาก compute1 ดังนี้
 <ul>
- <li>hostname: mycompute-2-1, Managenent Network IP: 10.0.0.41, Data Tunnel Network IP: 10.0.1.41
- <li>hostname: mycompute-2-2, Managenent Network IP: 10.0.0.42, Data Tunnel Network IP: 10.0.1.42
+ <li>hostname: compute-2-3, Managenent Network IP: 10.0.0.43, Data Tunnel Network IP: 10.0.1.43
 </ul>
 <p><p>
-ในอันดับแรกเราจะเตรียมเครื่อง mycompute-2-1 ก่อน โดยมีรายละเอียดดังนี้
+ในอันดับแรกเราจะเตรียมเครื่อง compute-2-3 ก่อน โดยมีรายละเอียดดังนี้
 <pre>
+$ ifconfig
+ens3      Link encap:Ethernet  HWaddr 00:54:09:3c:1c:17
+          inet addr:10.0.0.43  Bcast:10.0.0.255  Mask:255.255.255.0
+          inet6 addr: fe80::254:9ff:fe3c:1c17/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:223 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:198 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000
+          RX bytes:314544 (314.5 KB)  TX bytes:22413 (22.4 KB)
+
+lo        Link encap:Local Loopback
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          inet6 addr: ::1/128 Scope:Host
+          UP LOOPBACK RUNNING  MTU:65536  Metric:1
+          RX packets:160 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:160 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1
+          RX bytes:11840 (11.8 KB)  TX bytes:11840 (11.8 KB)
+$
+$
+$ ip link
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+2: ens3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP mode DEFAULT group default qlen 1000
+    link/ether 00:54:09:3c:1c:17 brd ff:ff:ff:ff:ff:ff
+3: ens4: <BROADCAST,MULTICAST> mtu 1500 qdisc noop state DOWN mode DEFAULT group default qlen 1000
+    link/ether 00:54:09:3c:1c:18 brd ff:ff:ff:ff:ff:ff
+4: ens5: <BROADCAST,MULTICAST> mtu 1500 qdisc noop state DOWN mode DEFAULT group default qlen 1000
+    link/ether 00:54:09:3c:1c:19 brd ff:ff:ff:ff:ff:ff
+5: ens6: <BROADCAST,MULTICAST> mtu 1500 qdisc noop state DOWN mode DEFAULT group default qlen 1000
+    link/ether 00:54:09:3c:1c:16 brd ff:ff:ff:ff:ff:ff
+$
 </pre>
 <p><p>
 หลังจากนั้นจะเริ่มต้นการติดตั้ง โดนที่ท่านสามารถใช้คำสั่งต่อไปนี้้
@@ -757,9 +788,7 @@ $ ./OS-installer-10-horizon.sh
  <b>บนเครื่อง controller node:</b>
 <pre>
 $ cd $HOME/openstack-queens-installer/OPSInstaller/installer
-$ ./OS-newcompute-00-set-new-node.sh compute-2-1 10.0.0.41 10.0.1.41
-...
-[Enter]
+$ ./OS-newcompute-00-set-new-node.sh compute-2-3 10.0.0.43 10.0.1.43
 ...
 $
 </pre>
