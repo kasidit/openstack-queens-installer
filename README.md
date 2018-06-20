@@ -822,7 +822,3 @@ OpenStack ประกอบไปด้วย software component ที่อ�
 [1] http://docs.openstack.org/ <br>
 [2] https://docs.openstack.org/queens/install/ubuntu-services.html <br>
 [3] https://docs.openstack.org/queens/networking-guide/ <br>
-
-=======
-# openstack-queens-installer
->>>>>>> 52c01fb39622b69bc429df14d50b01e2e45a48ed
