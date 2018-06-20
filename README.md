@@ -804,7 +804,7 @@ $ <b>./OS-newcompute-01-nova-neutron-ovs.sh   compute-2-3</b>
 ...
 $
 </pre>
-หลังจากนั้นเราจะกำหนดค่าให้ neutron ทำงานแบบ Distributed Virtual Routers
+ในตอนนี้ท่านมี compute node compute-2-3 ที่พร้อมใช้งานโดยใช้ network แบบ SNAT openvswitch แต่ถ้าท่านต้องการกำหนดค่าให้ neutron ทำงานแบบ Distributed Virtual Router ก็ให้ใช้ script ต่อไปนี้
 <pre>
 $ <b>./OS-newcompute-02-set-dvr.sh    compute-2-3 </b>
 ...
