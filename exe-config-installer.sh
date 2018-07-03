@@ -360,14 +360,14 @@ printf "\nsubstitution\n"
 
 printf "\n----------\n"
 printf "\n\n${CHANGETOPIC} (in etc files) \n\n"
-sed -i "s/${ORITIMEZONE}/${OPS_TIMEZONE}/g" ${CONTROLLER_ETC_FILES}
+sed -i "s/${ORITIMEZONE}/${OPS_TIMEZONE}/g" ${ETC_FILES}
 #read varkey
 #
 printf "\nsubstitution\n"
 
 printf "\n----------\n"
 printf "\n\n${CHANGETOPIC} \n\n"
-sed -i "s/${ORITIMEZONE}/${OPS_TIMEZONE}/g" ${CONTROLLER_SCRIPT_FILES}
+sed -i "s/${ORITIMEZONE}/${OPS_TIMEZONE}/g" ${SCRIPT_FILES}
 #read varkey
 #
 # Change NTP_SERVER0 
