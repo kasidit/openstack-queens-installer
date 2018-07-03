@@ -13,7 +13,6 @@ Contact: kasiditchanchio@gmail.com <br>
  <li> 1. <a href="#part1">เตรียมเครื่องและเนตสำหรับติตดั้ง</a>
       <ul>
        <li> <a href="#kvmhost">1.1 การเตรียมเครื่องเพื่อติดตั้งบน KVM VM </a>
-       <li> <a href="#btrfssnapshot">1.2 การสร้าง snapshot บน btrfs บน ubuntu 16.04 host</a>
       </ul>
  <li> 2. <a href="#part2">ติดตั้งด้วย scripts</a> 
       <ul>
@@ -273,8 +272,10 @@ openstack@compute1:~$
 <p><p>
 เมื่อเช็คเสร็จแล้วให้ ลบ และ ifdown หรือ ifconfig down IP address ของ ens4 ens5 ens6 บนทุกเครื่องออก เราจะใช้ installation scripts กำหนดค่า หรือกำหนดค่าเองด้วยมือภายหลัง   
 <p><p>
-<i><a id="btrfssnapshot"><h4>1.2 การสร้าง snapshot บน btrfs บน ubuntu 16.04 host</h4></a></i>
-<p>
+<table>
+<tr><td>
+<details>
+<summary><b>[กดเพื่อดูรายละเอียด] ในกรณีที่ท่านใช้ btrfs: การสร้าง snapshot บน btrfs บน ubuntu 16.04 host</b></summary>
 เนื้อหาในส่วนนี้ใช้สำหรับผู้ที่ประสงค์ใช้ btrfs เป๋น file system ของ host computers ที่จะใช้ติดตั้ง openstack และต้องการทำ snapshot ของ partition ที่ใช้ในการติดตั้งบนแต่ละเครื่องเป็นระยะๆ ถ้าท่านไม่ได้ใช้ btrfs ก็ให้ข้ามส่วนนี้ไป
 <p><p>
 ท่านสามารถติดตั้ง btrfs บน ubuntu 16.04 บนเครื่อง controller network compute compute1 hosts ระหว่างการติดตั้ง OS เมื่อกำหนด disk partitioning
@@ -408,6 +409,10 @@ ID 265 gen 7813 top level 5 path @home_snapshot1
 # btrfs filesystem defrag /mnt
 </pre>
 ผม recommend ให้ทุกท่านทำ snapshot ของ /mnt/@ และ /mnt/@home เมื่อผ่านการติดตั้งที่สำคัญๆ เผื่อว่าการติดตั้งในอนาคตผิดพลาด นศ จะได้ recover snapshot ล่าสุดได้
+</details>
+</td></tr>
+</table>
+<p><p>
 <a id="part2"> 
 <h3>ส่วนที่ 2: ติดตั้งด้วย scripts</h3>
 </a>
@@ -624,12 +629,12 @@ $ ./OS-cluster-btrfs-snapshot.sh snapshot OSi-01
 </td></tr>
 </table>
 <p><p>
-ในอันดับถัดไป เราจะเริ่มต้นด้วยการกำหนดค่า network configurations ที่จำเป็นสำหรับการติดตั้ง openstack ด้วย OS-installer-01-node-setups.sh ซึ่งจะกำหนดค่าและ ifup interfaces ต่างๆบนทุกๆเครื่องในภาพที่ 1 และติดตั้ง chrony เพื่อ sync เวลาระหว่าง NTP server กับ controller และระหว่าง controller กับทุกๆ node (ดู <a href="https://www.youtube.com/watch?v=ii7Ty4cW6mQ&index=5&list=PLmUxMbTCUhr4vYsaeEKVkvAGF5K1Tw8oJ">youtube video</a>)
+ในอันดับถัดไป เราจะเริ่มต้นด้วยการกำหนดค่า network configurations ที่จำเป็นสำหรับการติดตั้ง openstack ด้วย OS-installer-01-node-setups.sh ซึ่งจะกำหนดค่าและ ifup interfaces ต่างๆบนทุกๆเครื่องในภาพที่ 1 และติดตั้ง chrony เพื่อ sync เวลาระหว่าง NTP server กับ controller และระหว่าง controller กับทุกๆ node 
 <pre>
 $ ./OS-installer-01-node-setups.sh
 </pre>
 <p><p>
-ในขั้นถัดไป ท่านจะติดตั้ง mysql ด้วย script OS-installer-02-mysql.sh (ดู <a href="https://www.youtube.com/watch?v=pYuxnxX_WZw&index=6&list=PLmUxMbTCUhr4vYsaeEKVkvAGF5K1Tw8oJ">youtube video</a>)
+ในขั้นถัดไป ท่านจะติดตั้ง mysql ด้วย script OS-installer-02-mysql.sh 
 <pre>
 $ ./OS-installer-02-mysql.sh
 </pre>
@@ -668,15 +673,15 @@ $ ./OS-installer-04-keystone.sh
 <pre>
 $ ./OS-installer-05-glance.sh
 </pre>
-ขั้นตอนถัดไปเป็นการติดตั้ง component ที่สำคัญที่สุดของ openstack คือ nova ซึ่งเป็นระบบบริหารจัดการ vms บน cluster computer ทั้ง cluster ที่ใช้รัน openstack (ดู <a href="https://www.youtube.com/watch?v=dRQ9GPtPCZs&list=PLmUxMbTCUhr4vYsaeEKVkvAGF5K1Tw8oJ&index=7">youtube video</a>)
+ขั้นตอนถัดไปเป็นการติดตั้ง component ที่สำคัญที่สุดของ openstack คือ nova ซึ่งเป็นระบบบริหารจัดการ vms บน cluster computer ทั้ง cluster ที่ใช้รัน openstack 
 <pre>
 $ ./OS-installer-06-nova.sh
 </pre>
-และถัดจากนั้นคือ neutron ที่จะจัดการ virtual networks ทั้งหมด รวมทั้งการสื่อสารระหว่าง vms ภายใน OpenStack และระหว่าง vms เหล่านั้นกับ internet หลังจากรัน script เสร็จ ท่านจะได้ neutron network service แบบ multi-node ที่มี network node หนึ่ง network node ที่ให้บริการ network virtualization แบบ provider network และ self-service network ระบบ network ในการติดตั้งของเราปฏิบัติงานบน openvswitch และ VXLAN technology (ดู <a href="https://www.youtube.com/watch?v=5gC8dntxaE8&list=PLmUxMbTCUhr4vYsaeEKVkvAGF5K1Tw8oJ&index=8">youtube video</a>)
+และถัดจากนั้นคือ neutron ที่จะจัดการ virtual networks ทั้งหมด รวมทั้งการสื่อสารระหว่าง vms ภายใน OpenStack และระหว่าง vms เหล่านั้นกับ internet หลังจากรัน script เสร็จ ท่านจะได้ neutron network service แบบ multi-node ที่มี network node หนึ่ง network node ที่ให้บริการ network virtualization แบบ provider network และ self-service network ระบบ network ในการติดตั้งของเราปฏิบัติงานบน openvswitch และ VXLAN technology 
 <pre>
 $ ./OS-installer-07-neutron.sh
 </pre>
-script ถัดไปจะทำให้ neutron network service ที่เพิ่งติดตั้งปฏิบัติการแบบ Distributed Virtual Router (DVR) ซึ่งเป็น High Availability network service ของ nuetron ที่เป็นประโยชน์มากสำหรับ datacenters ที่ให้บริการ web servers แก่ลูกค้า DVR ทำให้ web servers ที่รันอยู่บน compute nodes สามารถปฏิบัติงานต่อได้แม้ว่าเครื่อง controller หรือเครื่อง network เกิดปัญหา offline (ดู <a href="https://www.youtube.com/watch?v=A-NkW1xYylY&list=PLmUxMbTCUhr4vYsaeEKVkvAGF5K1Tw8oJ&index=9">youtube video</a>)
+script ถัดไปจะทำให้ neutron network service ที่เพิ่งติดตั้งปฏิบัติการแบบ Distributed Virtual Router (DVR) ซึ่งเป็น High Availability network service ของ nuetron ที่เป็นประโยชน์มากสำหรับ datacenters ที่ให้บริการ web servers แก่ลูกค้า DVR ทำให้ web servers ที่รันอยู่บน compute nodes สามารถปฏิบัติงานต่อได้แม้ว่าเครื่อง controller หรือเครื่อง network เกิดปัญหา offline 
 <pre>
 $ ./OS-installer-08-set-dvr.sh
 </pre>
