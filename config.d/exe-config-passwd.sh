@@ -24,17 +24,13 @@ export NOVA_DBPASS=$(openssl rand -hex 10)
 export NOVA_PASS=$(openssl rand -hex 10)
 export PLACEMENT_PASS=$(openssl rand -hex 10)
 export DASH_DBPASS=$(openssl rand -hex 10)
-export CINDER_DBPASS=$(openssl rand -hex 10)
-export CINDER_PASS=$(openssl rand -hex 10)
 export NEUTRON_DBPASS=$(openssl rand -hex 10)
 export NEUTRON_PASS=$(openssl rand -hex 10)
-
 export HEAT_DBPASS=$(openssl rand -hex 10)
 export HEAT_PASS=$(openssl rand -hex 10)
-export CEILOMETER_DBPASS=$(openssl rand -hex 10)
-export CEILOMETER_PASS=$(openssl rand -hex 10)
-export TROVE_DBPASS=$(openssl rand -hex 10)
-export TROVE_PASS=$(openssl rand -hex 10)
+export HEAT_DOMAIN_PASS=$(openssl rand -hex 10)
+#export CEILOMETER_DBPASS=$(openssl rand -hex 10)
+#export CEILOMETER_PASS=$(openssl rand -hex 10)
 #
 else
 #
@@ -48,17 +44,13 @@ export NOVA_DBPASS=NOVA_DBPASS
 export NOVA_PASS=NOVA_PASS
 export PLACEMENT_PASS=PLACEMENT_PASS
 export DASH_DBPASS=DASH_DBPASS
-export CINDER_DBPASS=CINDER_DBPASS
-export CINDER_PASS=CINDER_PASS
 export NEUTRON_DBPASS=NEUTRON_DBPASS
 export NEUTRON_PASS=NEUTRON_PASS
-#
 export HEAT_DBPASS=HEAT_DBPASS
 export HEAT_PASS=HEAT_PASS
-export CEILOMETER_DBPASS=CEILOMETER_DBPASS
-export CEILOMETER_PASS=CEILOMETER_PASS
-export TROVE_DBPASS=TROVE_DBPASS
-export TROVE_PASS=TROVE_PASS
+export HEAT_DOMAIN_PASS=HEAT_DOMAIN_PASS
+#export CEILOMETER_DBPASS=CEILOMETER_DBPASS
+#export CEILOMETER_PASS=CEILOMETER_PASS
 #
 fi
 
@@ -74,22 +66,21 @@ export ORINOVA_DBPASS=vasabilabNOVA_DBPASS
 export ORINOVA_PASS=vasabilabNOVA_PASS
 export ORIPLACEMENT_PASS=vasabilabPLACEMENT_PASS
 export ORIDASH_DBPASS=vasabilabDASH_DBPASS
-export ORICINDER_DBPASS=vasabilabCINDER_DBPASS
-export ORICINDER_PASS=vasabilabCINDER_PASS
 export ORINEUTRON_DBPASS=vasabilabNEUTRON_DBPASS
 export ORINEUTRON_PASS=vasabilabNEUTRON_PASS
-#
 export ORIHEAT_DBPASS=vasabilabHEAT_DBPASS
 export ORIHEAT_PASS=vasabilabHEAT_PASS
-export ORICEILOMETER_DBPASS=vasabilabCEILOMETER_DBPASS
-export ORICEILOMETER_PASS=vasabilabCEILOMETER_PASS
-export ORITROVE_DBPASS=vasabilabTROVE_DBPASS
-export ORITROVE_PASS=vasabilabTROVE_PASS
+export ORIHEAT_DOMAIN_PASS=vasabilabHEAT_DOMAIN_PASS
+#export ORICEILOMETER_DBPASS=vasabilabCEILOMETER_DBPASS
+#export ORICEILOMETER_PASS=vasabilabCEILOMETER_PASS
 #
 # Password Propagation 
 #
 ETC_FILES=OPSInstaller/*/files/*
 SCRIPT_FILES=OPSInstaller/*/*.sh
+#
+CONTROLLER_ETC_FILES=OPSInstaller/controller/files/*
+CONTROLLER_SCRIPT_FILES=OPSInstaller/controller/*.sh
 #
 # Change RABBIT_PASS 
 #
@@ -301,48 +292,6 @@ sed -i "s/${ORIDASH_DBPASS}/${DASH_DBPASS}/g" ${SCRIPT_FILES}
 grep -n "${DASH_DBPASS}" ${SCRIPT_FILES}  | tee ./tmpfile ; wc -l ./tmpfile 
 printf "\n----------\n"
 #
-# Change CINDER_DBPASS 
-#
-CHANGETOPIC=CINDER_DBPASS
-#
-printf "\nsubstitution\n"
-
-printf "\n----------\n"
-grep -n "${ORICINDER_DBPASS}" ${ETC_FILES} | tee ./tmpfile ; wc -l ./tmpfile
-printf "\n\n${CHANGETOPIC} (in etc files) changed to\n\n"
-sed -i "s/${ORICINDER_DBPASS}/${CINDER_DBPASS}/g" ${ETC_FILES}
-grep -n "${CINDER_DBPASS}"  ${ETC_FILES}  | tee ./tmpfile ; wc -l ./tmpfile 
-#
-printf "\nsubstitution\n"
-
-printf "\n----------\n"
-grep -n "${ORICINDER_DBPASS}" ${SCRIPT_FILES} | tee ./tmpfile ; wc -l ./tmpfile
-printf "\n\n${CHANGETOPIC} changed to\n\n"
-sed -i "s/${ORICINDER_DBPASS}/${CINDER_DBPASS}/g" ${SCRIPT_FILES}
-grep -n "${CINDER_DBPASS}" ${SCRIPT_FILES}  | tee ./tmpfile ; wc -l ./tmpfile 
-printf "\n----------\n"
-#
-# Change CINDER_PASS 
-#
-CHANGETOPIC=CINDER_PASS
-#
-printf "\nsubstitution\n"
-
-printf "\n----------\n"
-grep -n "${ORICINDER_PASS}" ${ETC_FILES} | tee ./tmpfile ; wc -l ./tmpfile
-printf "\n\n${CHANGETOPIC} (in etc files) changed to\n\n"
-sed -i "s/${ORICINDER_PASS}/${CINDER_PASS}/g" ${ETC_FILES}
-grep -n "${CINDER_PASS}"  ${ETC_FILES}  | tee ./tmpfile ; wc -l ./tmpfile 
-#
-printf "\nsubstitution\n"
-
-printf "\n----------\n"
-grep -n "${ORICINDER_PASS}" ${SCRIPT_FILES} | tee ./tmpfile ; wc -l ./tmpfile
-printf "\n\n${CHANGETOPIC} changed to\n\n"
-sed -i "s/${ORICINDER_PASS}/${CINDER_PASS}/g" ${SCRIPT_FILES}
-grep -n "${CINDER_PASS}" ${SCRIPT_FILES}  | tee ./tmpfile ; wc -l ./tmpfile 
-printf "\n----------\n"
-#
 # Change NEUTRON_DBPASS 
 #
 CHANGETOPIC=NEUTRON_DBPASS
@@ -383,6 +332,75 @@ grep -n "${ORINEUTRON_PASS}" ${SCRIPT_FILES} | tee ./tmpfile ; wc -l ./tmpfile
 printf "\n\n${CHANGETOPIC} changed to\n\n"
 sed -i "s/${ORINEUTRON_PASS}/${NEUTRON_PASS}/g" ${SCRIPT_FILES}
 grep -n "${NEUTRON_PASS}" ${SCRIPT_FILES}  | tee ./tmpfile ; wc -l ./tmpfile 
+printf "\n----------\n"
+#
+# Change HEAT_PASS 
+#
+CHANGETOPIC=HEAT_PASS
+#
+printf "\nsubstitution\n"
+
+printf "\n----------\n"
+grep -n "${ORIHEAT_PASS}" ${CONTROLLER_ETC_FILES} | tee ./tmpfile ; wc -l ./tmpfile
+#grep -n "${ORIHEAT_PASS}" ${ETC_FILES} | tee ./tmpfile ; wc -l ./tmpfile
+printf "\n\n${CHANGETOPIC} (in etc files) changed to\n\n"
+sed -i "s/${ORIHEAT_PASS}/${HEAT_PASS}/g" ${CONTROLLER_ETC_FILES}
+#sed -i "s/${ORIHEAT_PASS}/${HEAT_PASS}/g" ${ETC_FILES}
+grep -n "${HEAT_PASS}"  ${CONTROLLER_ETC_FILES}  | tee ./tmpfile ; wc -l ./tmpfile 
+#grep -n "${HEAT_PASS}"  ${ETC_FILES}  | tee ./tmpfile ; wc -l ./tmpfile 
+#
+printf "\nsubstitution\n"
+
+printf "\n----------\n"
+grep -n "${ORIHEAT_PASS}" ${CONTROLLER_SCRIPT_FILES} | tee ./tmpfile ; wc -l ./tmpfile
+#grep -n "${ORIHEAT_PASS}" ${SCRIPT_FILES} | tee ./tmpfile ; wc -l ./tmpfile
+printf "\n\n${CHANGETOPIC} changed to\n\n"
+sed -i "s/${ORIHEAT_PASS}/${HEAT_PASS}/g" ${CONTROLLER_SCRIPT_FILES}
+#sed -i "s/${ORIHEAT_PASS}/${HEAT_PASS}/g" ${SCRIPT_FILES}
+grep -n "${HEAT_PASS}" ${CONTROLLER_SCRIPT_FILES}  | tee ./tmpfile ; wc -l ./tmpfile 
+#grep -n "${HEAT_PASS}" ${SCRIPT_FILES}  | tee ./tmpfile ; wc -l ./tmpfile 
+printf "\n----------\n"
+#
+# Change HEAT_DBPASS 
+#
+CHANGETOPIC=HEAT_DBPASS
+#
+printf "\nsubstitution\n"
+#
+printf "\n----------\n"
+grep -n "${ORIHEAT_DBPASS}" ${CONTROLLER_ETC_FILES} | tee ./tmpfile ; wc -l ./tmpfile
+printf "\n\n${CHANGETOPIC} (in etc files) changed to\n\n"
+sed -i "s/${ORIHEAT_DBPASS}/${HEAT_DBPASS}/g" ${CONTROLLER_ETC_FILES}
+grep -n "${HEAT_DBPASS}"  ${CONTROLLER_ETC_FILES}  | tee ./tmpfile ; wc -l ./tmpfile 
+#
+printf "\nsubstitution\n"
+
+printf "\n----------\n"
+grep -n "${ORIHEAT_DBPASS}" ${CONTROLLER_SCRIPT_FILES} | tee ./tmpfile ; wc -l ./tmpfile
+printf "\n\n${CHANGETOPIC} changed to\n\n"
+sed -i "s/${ORIHEAT_DBPASS}/${HEAT_DBPASS}/g" ${CONTROLLER_SCRIPT_FILES}
+grep -n "${HEAT_DBPASS}" ${CONTROLLER_SCRIPT_FILES}  | tee ./tmpfile ; wc -l ./tmpfile 
+printf "\n----------\n"
+#
+# Change HEAT_DOMAIN_PASS 
+#
+CHANGETOPIC=HEAT_DOMAIN_PASS
+#
+printf "\nsubstitution\n"
+
+printf "\n----------\n"
+grep -n "${ORIHEAT_DOMAIN_PASS}" ${CONTROLLER_ETC_FILES} | tee ./tmpfile ; wc -l ./tmpfile
+printf "\n\n${CHANGETOPIC} (in etc files) changed to\n\n"
+sed -i "s/${ORIHEAT_DOMAIN_PASS}/${HEAT_DOMAIN_PASS}/g" ${CONTROLLER_ETC_FILES}
+grep -n "${HEAT_DOMAIN_PASS}"  ${CONTROLLER_ETC_FILES}  | tee ./tmpfile ; wc -l ./tmpfile 
+#
+printf "\nsubstitution\n"
+
+printf "\n----------\n"
+grep -n "${ORIHEAT_DOMAIN_PASS}" ${CONTROLLER_SCRIPT_FILES} | tee ./tmpfile ; wc -l ./tmpfile
+printf "\n\n${CHANGETOPIC} changed to\n\n"
+sed -i "s/${ORIHEAT_DOMAIN_PASS}/${HEAT_DOMAIN_PASS}/g" ${CONTROLLER_SCRIPT_FILES}
+grep -n "${HEAT_DOMAIN_PASS}" ${CONTROLLER_SCRIPT_FILES}  | tee ./tmpfile ; wc -l ./tmpfile 
 printf "\n----------\n"
 #
 printf "Done propagating randomized passwords\n"
