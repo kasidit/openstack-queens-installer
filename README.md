@@ -460,9 +460,9 @@ export OPS_MYSQL_PASS=mysqlpassword
 export DEMO_PASS=demopassword
 export ADMIN_PASS=adminpassword
 #
-export HYPERVISOR=kvm
+export HYPERVISOR=qemu
 </pre>
-ถัดจจากนั้นจะเป็นการกำหนดค่า HYPERVISOR  ในกรณีที่ ท่านติดตั้งบนเครื่องจริง หรือบน vm ที่ทำ nested virtualization ได้ให้เปลี่ยนค่าของตัวแปรนี้เป็น "kvm" แต่ถ้าท่านติดจั้งบนเครื่อง vm ที่ไม่สนับสนุน nested virtualization ให้กำหนดค่าเป็น "qemu" โดย defualt เราจะกำหนดให้เป็น "kvm"
+ถัดจจากนั้นจะเป็นการกำหนดค่า HYPERVISOR  ในกรณีที่ ท่านติดตั้งบนเครื่องจริง หรือบน vm ที่ทำ nested virtualization ได้ให้เปลี่ยนค่าของตัวแปรนี้เป็น "kvm" แต่ถ้าท่านติดจั้งบนเครื่อง vm ที่ไม่สนับสนุน nested virtualization ให้กำหนดค่าเป็น "qemu" โดย defualt เราจะกำหนดให้เป็น "qemu"
 <p><p>
 สำหรับตัวแปรถัดไปต่อไปนี้ ท่านอาจไม่ต้องไปยุ่งกับมันก็ได้ มันเป็นการกำหนดค่า url ของ cirros OS image ที่ script จะไป download มา ตัวแปร LOCAL_REPO เป็นการกำหนดค่า apt repository และตัวแปร NTP_SERVER เป็นตัวแปรกำหนดค่า NTP server ซึ่งถ้าติดตั้งในเมืองไทยคงไม่ต้องเปลี่ยนอะไร
 <pre>
