@@ -29,7 +29,7 @@ export OPS_MYSQL_PASS=mysqlpassword
 export DEMO_PASS=demopassword
 export ADMIN_PASS=adminpassword
 #
-export HYPERVISOR=qemu
+export HYPERVISOR=kvm
 #export HYPERVISOR=kvm
 #
 export INIT_IMAGE_LOCATION=http:\\/\\/download.cirros-cloud.net\\/0.3.5\\/cirros-0.3.5-x86_64-disk.img
@@ -65,21 +65,21 @@ export GATEWAY_IP=10.0.0.1
 # ---- controller host ----
 #
 export CONTROLLER_IP=10.0.0.11
-export CONTROLLER_IP_NIC=enp0s3
+export CONTROLLER_IP_NIC=ens3
 #
 # ---- network host ----
 #
 export NETWORK_IP=10.0.0.21
-export NETWORK_IP_NIC=enp0s3
+export NETWORK_IP_NIC=ens3
 #
 export DATA_TUNNEL_NETWORK_NODE_IP=10.0.1.21
-export DATA_TUNNEL_NETWORK_NODE_IP_NIC=enp0s8
+export DATA_TUNNEL_NETWORK_NODE_IP_NIC=ens4
 export DATA_TUNNEL_NETWORK_ADDRESS=10.0.1.0
 export DATA_TUNNEL_NETWORK_NETMASK=255.255.255.0
-export VLAN_NETWORK_NODE_IP_NIC=enp0s9
+export VLAN_NETWORK_NODE_IP_NIC=ens5
 #
 export EXTERNAL_CIDR=10.0.0.0\\/24
-export EXTERNAL_CIDR_NIC=enp0s10
+export EXTERNAL_CIDR_NIC=ens6
 export EXTERNAL_GATEWAY_IP=10.0.0.1
 #
 # For DVR, the EXTERNAL_CIDR* of network node is the same for every compute node.
@@ -90,15 +90,15 @@ export END_FLOATING_IP=10.0.0.200
 # ---- compute host ----
 #
 export COMPUTE_IP=10.0.0.31
-export COMPUTE_IP_NIC=enp0s3
+export COMPUTE_IP_NIC=ens3
 export DATA_TUNNEL_COMPUTE_NODE_IP=10.0.1.31
-export DATA_TUNNEL_COMPUTE_NODE_IP_NIC=enp0s8
-export VLAN_COMPUTE_NODE_IP_NIC=enp0s9
+export DATA_TUNNEL_COMPUTE_NODE_IP_NIC=ens4
+export VLAN_COMPUTE_NODE_IP_NIC=ens5
 #
 # ---- compute1 host ----
 #
 export COMPUTE1_IP=10.0.0.32
-export COMPUTE1_IP_NIC=enp0s3
+export COMPUTE1_IP_NIC=ens3
 export DATA_TUNNEL_COMPUTE1_NODE_IP=10.0.1.32
-export DATA_TUNNEL_COMPUTE1_NODE_IP_NIC=enp0s8
-export VLAN_COMPUTE1_NODE_IP_NIC=enp0s9
+export DATA_TUNNEL_COMPUTE1_NODE_IP_NIC=ens4
+export VLAN_COMPUTE1_NODE_IP_NIC=ens5
