@@ -1,1 +1,0 @@
-OPSInstaller/controller/exe-stage39-USER-heat-endpoints.sh:39:openstack user create --domain heat --password HEAT_DOMAIN_PASS heat_domain_admin
