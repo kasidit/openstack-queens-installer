@@ -569,7 +569,7 @@ $ cd OPSInstaller/installer
 </pre>
 เริ่มต้นการติดตั้ง ท่านจะรัน OS-installer-00-1-update-ubuntu.sh script เพื่อทำให้ scripts ที่ขะใช้ในอันดับถัดไปสามารถ remote exeution ด้วย ssh จากเครื่อง controller ไปยังเครื่องอื่นๆได้โดยไม่ต้องใส่ password (<b>หมายเหตุ:</b> ในกรณีที่ท่านผู้อ่านจะใช้ script ติดตั้งเพื่อใช้งานจริง หลังจากติดตั้งเสร็จเรียบร้อยแล้ว ท่านต้องทำสองอย่างได้แก่ (1) เปลี่ยน password ของ openstack user บนทุกเครื่องและ (2) ลบไฟล์ $HOME/.ssh/id_rsa บนเครื่อง controller และไฟล์ $HOME/.ssh/authorized_keys ของ openstack user บนทุกๆเครื่อง) (ดู <a href="https://www.youtube.com/watch?v=zIVLVEvaDgs&list=PLmUxMbTCUhr4vYsaeEKVkvAGF5K1Tw8oJ&index=4">youtube video</a>)
 <pre>
-$ ./OS-installer-00-1-update-ubuntu.sh
+$ ./OS-installer-00-1-set-remote-access.sh
 </pre>
 หลังจากนั้นให้รัน OS-installer-00-2-update-ubuntu.sh script เพื่อ update ubuntu 16.04 บนโหนดต่างๆให้เป็นเวอรชันล่าสุดและกำหนด cloud repository สำหรับ openstack queens installation
 <pre>
