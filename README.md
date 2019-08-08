@@ -441,30 +441,35 @@ $
 เรามีตัวอย่าง install-paramrc.sh สำหรับการติดตั้งบน host แบบอื่นๆใน directory <a href="https://github.com/kasidit/openstack-queens-installer/tree/master/example.install-paramrc.sh"><b>example.install-paramrc.sh</b></a> ดังตารางต่อไปนี้
 <table>
 <tr>
+   <th> No. </th>
    <th> Filename </th>
    <th> ชนิด Host VM</th>
    <th> ชนิด VM Hypervisor ที่รันบน Host</th>
    <th> หมายเหตุ </th>
 </tr>
 <tr>
+   <th> 1 </th>
    <th> install-paramrc.sh.kvm.on_kvm_hosts </th>
    <th> Host เป็น VM ที่สร้างด้วย KVM </th>
    <th> ใช้ KVM เป็น hypervisor</th>
    <th> Physical Host มี Nested Virt </th>
 </tr>
 <tr>
+   <th> 2 </th>
    <th> install-paramrc.sh.kvm.on_vbox_hosts </th>
    <th> Host เป็น VM ที่สร้างด้วย virtualbox </th>
    <th> ใช้ KVM เป็น hypervisor</th>
    <th> Physical Host มี Nested Virt </th>
 </tr>
 <tr>
+   <th> 3 </th>
    <th> install-paramrc.sh.qemu.on_kvm_hosts </th>
    <th> Host เป็น VM ที่สร้างด้วย KVM </th>
    <th> ใช้ qemu เป็น hypervisor</th>
    <th> Physical Host ไม่มี Nested Virt </th>
 </tr>
 <tr>
+   <th> 4 </th>
    <th> install-paramrc.sh.qemu.on_vbox_hosts </th>
    <th> Host เป็น VM ที่สร้างด้วย virtualbox </th>
    <th> ใช้ qemu เป็น hypervisor</th>
@@ -472,8 +477,18 @@ $
         <b>ในการติดตั้งบน vbox ส่วนใหญ่จะใช้ไฟล์นี้</b> </th>
 </tr>
 </table>
+โดย default แล้วไฟล์ <a href="https://github.com/kasidit/openstack-queens-installer/blob/master/install-paramrc.sh">install-paramrc.sh</a> จะเป็นแบบที่ 1 ในกรณีที่ท่านใช้ virtualbox สร้าง Host VM ทั้ง 4 ใน section 1.1 ชื่อ interfaces ต่างๆจะเปลี่ยนไป และท่านจะต้องใช้ไฟล์ install-paramrc.sh.qemu.on_vbox_hosts มาเป็น install-paramrc.sh โดย copy มาทับของเดิมด้วยคำสั่ง
+<pre>
+$ ls
+config.d   exe-config-installer.sh  LICENSE                README.md
+documents  example.install-paramrc.sh install-paramrc.sh       OPSInstaller-init.tar
+$ cp example.install-paramrc.sh/install-paramrc.sh.qemu.on_vbox_hosts  install-paramrc.sh
+$
+</pre>
 <p><p>
-แต่อย่างไรก็ตาม หาก ท่านติดตั้งบนเครื่องจริง ชื่อ NICs และค่าอื่นๆก็อาจเปลี่ยนไป ดังนั้นผมจะอธิบายความหมายของตัวแปรต่างๆในไฟล์ install-paramrc.sh เพื่อที่จะได้กำหนดค่าอย่างถูกต้อง อันดับแรก environment variables สามตัวแรกในไฟล์นี้ได้แก่
+ในกรณีที่ท่านติดตั้งบน Host ที่เป็น Physical Host คือเป็นเครื่องจริง ชื่อ NICs และค่าอื่นๆก็จะเปลี่ยนไป ซึ่งผมจะอธิบายความหมายของตัวแปรต่างๆในไฟล์ install-paramrc.sh เพื่อที่จะได้กำหนดค่าอย่างถูกต้องดังต่อไปนี้ 
+<p><p>
+อันดับแรก environment variables สามตัวแรกในไฟล์นี้ได้แก่
 <pre>
 export INSTALL_TYPE=full
 export NETWORK_TYPE=dvr_ovs
