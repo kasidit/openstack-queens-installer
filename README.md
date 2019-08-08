@@ -430,15 +430,48 @@ $ cd openstack-queens-installer
 <pre>
 $ ls
 config.d   exe-config-installer.sh  LICENSE                README.md
-documents  install-paramrc.sh       OPSInstaller-init.tar
+documents  example.install-paramrc.sh install-paramrc.sh       OPSInstaller-init.tar
 $
-</pre>
-<p>
-ให้ใช้ไฟล์ <a href="https://github.com/kasidit/openstack-queens-installer/blob/master/install-paramrc.sh">install-paramrc.sh</a> เป็นตัวอย่าง <br> 
+</pre> 
 <p>
 <i><a id="paramrc"><h4>2.2 กำหนดค่าพารามีเตอร์สำหรับการติดตั้ง </h4></a></i>
 <p>
-ต่อไป ท่านจะกำหนด configuration สำหรับการติดตั้งโดยกำหนดค่าในไฟล์ <a href="https://github.com/kasidit/openstack-queens-installer/blob/master/install-paramrc.sh">install-paramrc.sh</a> ซึ่งถ้า ท่านกำหนดค่า vm และเนตตามที่ระบุใน ส่วนที่ 1.1 และติดตั้งบน kvm (ที่ใช้รหัส ens เป็นชื่อ NIC) ท่านก็สามารถใช้ไฟล์ install-paramrc.sh นี้ได้เลย 
+ต่อไป ท่านจะกำหนด configuration parameters สำหรับการติดตั้งโดยกำหนดค่าในไฟล์ <a href="https://github.com/kasidit/openstack-queens-installer/blob/master/install-paramrc.sh">install-paramrc.sh</a> ซึ่งถ้าท่านกำหนดค่า vm และเนตตามที่ระบุใน ส่วนที่ 1.1 และติดตั้งบน host ที่เป็น vm ที่รองรับ kvm nested virtualization (ที่ใช้รหัส ensXX โดยที่ XX เป็นตัวเลข positive interger เป็นชื่อ NIC) ท่านก็สามารถใช้ไฟล์ install-paramrc.sh นี้ได้เลย 
+<p><p>
+เรามีตัวอย่าง install-paramrc.sh สำหรับการติดตั้งบน host แบบอื่นๆใน directory <b>example.install-paramrc.sh</b> ดังตารางต่อไปนี้
+<table>
+<tr>
+   <th> Filename </th>
+   <th> ชนิด Host VM</th>
+   <th> ชนิด VM Hypervisor ที่รันบน Host</th>
+   <th> หมายเหตุ </th>
+</tr>
+<tr>
+   <th> install-paramrc.sh.kvm.on_kvm_hosts </th>
+   <th> Host เป็น VM ที่สร้างด้วย KVM </th>
+   <th> ใช้ KVM เป็น hypervisor</th>
+   <th> Physical Host มี Nested Virt </th>
+</tr>
+<tr>
+   <th> install-paramrc.sh.kvm.on_vbox_hosts </th>
+   <th> Host เป็น VM ที่สร้างด้วย virtualbox </th>
+   <th> ใช้ KVM เป็น hypervisor</th>
+   <th> Physical Host มี Nested Virt </th>
+</tr>
+<tr>
+   <th> install-paramrc.sh.qemu.on_kvm_hosts </th>
+   <th> Host เป็น VM ที่สร้างด้วย KVM </th>
+   <th> ใช้ qemu เป็น hypervisor</th>
+   <th> Physical Host ไม่มี Nested Virt </th>
+</tr>
+<tr>
+   <th> install-paramrc.sh.qemu.on_vbox_hosts </th>
+   <th> Host เป็น VM ที่สร้างด้วย virtualbox </th>
+   <th> ใช้ qemu เป็น hypervisor</th>
+   <th> Physical Host ไม่มี Nested Virt <br>
+        <b>ในการติดตั้งบน vbox ส่วนใหญ่จะใช้ไฟล์นี้</b> </th>
+</tr>
+</table>
 <p><p>
 แต่อย่างไรก็ตาม หาก ท่านติดตั้งบนเครื่องจริง ชื่อ NICs และค่าอื่นๆก็อาจเปลี่ยนไป ดังนั้นผมจะอธิบายความหมายของตัวแปรต่างๆในไฟล์ install-paramrc.sh เพื่อที่จะได้กำหนดค่าอย่างถูกต้อง อันดับแรก environment variables สามตัวแรกในไฟล์นี้ได้แก่
 <pre>
