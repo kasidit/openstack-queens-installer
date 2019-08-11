@@ -27,7 +27,13 @@ Contact: kasiditchanchio@gmail.com <br>
 <tr><td><b>แจ้งปัญหาหรือข้อผิดพลาด:</b> หากมีส่วนใดของเเนื้อหาใน web นี้ที่เป็น BUGS หรือมีข้อแนะนำขอให้แจ้งได้ที่ kasiditchanchio@gmail.com นะครับ ขอบคุณครับ </td></tr>
 </table>
 <p>
-<a id="part1"><h3>ส่วนที่ 1: เตรียมเครื่องและเนตสำหรับติดตั้ง</h3></a>
+<a id="part1"><h3>ส่วนที่ 1: เตรียมเครื่อง host และ networks สำหรับติดตั้ง</h3></a>
+<p><p>
+ในคู่มือนี้เราจะแนะนำการติดตั้งบนเครื่อง host จำนวนหนึ่งซึ่งมีลักษณะดังนี้
+<ul>
+  <li>เป็น host ที่ถูกสร้างขึ้นด้วย KVM hypervisor บนเครื่อง physical host (Ubuntu 16.04) เดียวกันจำนวน 4 เครื่อง
+  <li>เป็น host ที่ถูกสร้างขึ้นด้วย virtualbox (vbox) hypervisor บนเครื่อง physical host (Windows 10) เดียวกันจำนวน 4 เครื่อง
+</ul>
 <p><p>
 <p>
  <i><a id="kvmhost"><h4>1.1 การเตรียมเครื่องเพื่อติดตั้งบน KVM Virtual Machine (VM)</h4></a></i>
@@ -47,6 +53,10 @@ Contact: kasiditchanchio@gmail.com <br>
  </ul>
 จากภาพที่ 1 สมมุตว่า NIC ที่ 1 คือ ens3 NIC ที่ 2 คือ ens4 NIC ที่ 3 คือ ens5 NIC ที่ 4 คือ ens6 จะเห็นว่าเครื่อง conroller มี ens3 อันเดียว เครื่อง network compute และ compute1 ทั้งหมด มี ens3 ถึง ens6  
 <p><p>
+<details>
+<summary>[กดเพื่อดูรายละเอียด] รายละเอียดการติดตั้งบน host แบบ KVM VM </summary> 
+  
+
 เพื่อให้การติดตั้งเร็วขึ้น ให้กำหนดค่า apt configuration ของเครื่องต่างๆให้ใช้ ubuntu repository ในประเทศไทย โดยกำหนดค่าใน /etc/apt/sources.list ด้วยมือ หรือใช้คำสั่ง sed ข้างล่าง บน openstack node ทุกเครื่อง 
 <pre>
  $ sudo sed -i "s/us.arch/th.arch/g" /etc/apt/sources.list
@@ -271,6 +281,7 @@ openstack@compute1:~$
 <b>หมายเหตุ</b> ขอให้ระวังว่า ens4 IP ไม่ควร ping ens3 IP หรือ ens5 IP หรือ ens6 IP ได้ พูดอีกอย่างคือ  data tunnel network subnet และ vlan network subnet และ management network subnet ต้องแยก (isolate) จากกัน 
 <p><p>
 เมื่อเช็คเสร็จแล้วให้ ลบ และ ifdown หรือ ifconfig down IP address ของ ens4 ens5 ens6 บนทุกเครื่องออก เราจะใช้ installation scripts กำหนดค่า หรือกำหนดค่าเองด้วยมือภายหลัง   
+</details>
 <p><p>
 <table>
 <tr><td>
