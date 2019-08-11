@@ -501,7 +501,9 @@ $
         <b>ในการติดตั้งบน vbox ส่วนใหญ่จะใช้ไฟล์นี้</b> </th>
 </tr>
 </table>
-โดย default แล้วไฟล์ <a href="https://github.com/kasidit/openstack-queens-installer/blob/master/install-paramrc.sh">install-paramrc.sh</a> จะเป็นแบบที่ 1 ในกรณีที่ท่านใช้ virtualbox สร้าง Host VM ทั้ง 4 ใน section 1.1 ชื่อ interfaces ต่างๆจะเปลี่ยนไป และท่านจะต้องใช้ไฟล์ install-paramrc.sh.qemu.on_vbox_hosts มาเป็น install-paramrc.sh โดย copy มาทับของเดิมด้วยคำสั่ง
+โดย default แล้วไฟล์ <a href="https://github.com/kasidit/openstack-queens-installer/blob/master/install-paramrc.sh">install-paramrc.sh</a> จะเป็นแบบที่ 1 
+<p><p>
+ในกรณีที่ท่านใช้ virtualbox สร้าง Host VM ทั้ง 4 ใน section 1.1 ชื่อ interfaces ต่างๆจะเปลี่ยนไป และท่านจะต้องใช้ไฟล์ install-paramrc.sh.qemu.on_vbox_hosts มาเป็น install-paramrc.sh โดย copy มาทับของเดิมด้วยคำสั่ง
 <pre>
 $ ls
 config.d   exe-config-installer.sh  LICENSE                README.md
