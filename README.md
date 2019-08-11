@@ -283,6 +283,12 @@ openstack@compute1:~$
 เมื่อเช็คเสร็จแล้วให้ ลบ และ ifdown หรือ ifconfig down IP address ของ ens4 ens5 ens6 บนทุกเครื่องออก เราจะใช้ installation scripts กำหนดค่า หรือกำหนดค่าเองด้วยมือภายหลัง   
 </details>
 <p><p>
+<p>
+ <i><a id="kvmhost"><h4>1.2 การเตรียมเครื่องเพื่อติดตั้งบน Virtualbox VM</h4></a></i>
+<p>
+<p><p>
+TBA
+<p><p>
 <table>
 <tr><td>
 <details>
@@ -449,6 +455,10 @@ $
 <p>
 ต่อไป ท่านจะกำหนด configuration parameters สำหรับการติดตั้งโดยกำหนดค่าในไฟล์ <a href="https://github.com/kasidit/openstack-queens-installer/blob/master/install-paramrc.sh">install-paramrc.sh</a> ซึ่งถ้าท่านกำหนดค่า vm และเนตตามที่ระบุใน ส่วนที่ 1.1 และติดตั้งบน host ที่เป็น vm ที่รองรับ kvm nested virtualization (ที่ใช้รหัส ensXX โดยที่ XX เป็นตัวเลข positive interger เป็นชื่อ NIC) ท่านก็สามารถใช้ไฟล์ install-paramrc.sh นี้ได้เลย 
 <p><p>
+<p>
+ <i><a id="kvmhost"><h4>2.1.1 กำหนดค่าโดยใช้ไฟล์ตัวอย่างสำหรับ KVM host หรือ vbox host</h4></a></i>
+<p>
+<p><p>
 เรามีตัวอย่าง install-paramrc.sh สำหรับการติดตั้งบน host แบบอื่นๆใน directory <a href="https://github.com/kasidit/openstack-queens-installer/tree/master/example.install-paramrc.sh"><b>example.install-paramrc.sh</b></a> ดังตารางต่อไปนี้
 <table>
 <tr>
@@ -497,6 +507,10 @@ $ cp example.install-paramrc.sh/install-paramrc.sh.qemu.on_vbox_hosts  install-p
 $
 </pre>
 <p><p>
+<p>
+ <i><a id="kvmhost"><h4>2.1.1 กำหนดค่าโดยใช้ไฟล์ตัวอย่างสำหรับเครื่อง physical host หรือ host VM อื่นๆ</h4></a></i>
+<p>
+<p><p>
 ในกรณีที่ท่านติดตั้งบน Host ที่เป็น Physical Host คือเป็นเครื่องจริง ชื่อ NICs และค่าอื่นๆก็จะเปลี่ยนไป ซึ่งผมจะอธิบายความหมายของตัวแปรต่างๆในไฟล์ install-paramrc.sh เพื่อที่จะได้กำหนดค่าอย่างถูกต้องดังต่อไปนี้ 
 <p><p>
 อันดับแรก environment variables สามตัวแรกในไฟล์นี้ได้แก่
@@ -506,6 +520,10 @@ export NETWORK_TYPE=dvr_ovs
 export PASSWD_TYPE=studypass
 </pre>
 มีความหมายดังนี้ INSTALL_TYPE เป็นแบบ "full" คือเป็นการติดั้งแบบ 4 nodes ถ้าเปลี่ยนค่าเป็น "compact" จะหมายถึงติดตั้งแบบ 3 nodes ได้แก่ controller network และ compute ส่วน NETWORK_TYPE เป็นตัวแปรที่ระบุชนิดของ network deployment ถ้ากำหนดค่าเป็น "dvr_ovs" หมายถึงใช้ neutron ที่สร้างด้วย openvswitch และปฏิบัติงานแบบ Distributed Virtual Router (DVR) ซึ่งเป็น default configuration ถ้าเปลี่ยนค่าเป็น "classic_ovs" จะหมายถีง neutron ที่สร้างด้วย openvswitch ซึ่งจะปฏิบัติงานแบบธรรมดา ไม่มี DVR high availabiility feature สำหรับตัวแปร PASSWD_TYPE เป็นตัวแปรที่ระบุชนิดของ password ที่จะถูกกำหนดสำหรับการติดตั้ง component ต่างๆของ openstack ถ้า่าเป็น "studypass" หมายถึงการกำหนดค่า password ที่เป็น string ธรรมดาที่สื่อความหมายว่าเป็น password ของ component ใด (เหมือนที่ใช้เป็นตัวอย่างในคู่มือการติดตั้ง official) ในทางตรงกันข้าม ถ้ากำหนดค่าเป็น "randompass" จะหมายถึงการกำหนดค่า password สำหรับการติดตั้ง component เหล่านั้นให้เป็นตัวเลข random ซึ่งเหมาะสมสำหรับ production deployment
+<details>
+<summary>[กดเพื่อดูรายละเอียด] การกำหนดค่า parameters ในไฟล์ install-paramrc.sh </summary> 
+  
+
 <pre>
 export OPS_LOGIN_NAME=openstack
 export OPS_LOGIN_PASS=openstack
@@ -610,6 +628,7 @@ export DATA_TUNNEL_COMPUTE_NODE_IP_NIC=ens4
 export VLAN_COMPUTE_NODE_IP_NIC=ens5
 </pre>
 ในไฟล์ install-paramrc.sh เรากำหนดค่าตัวแปรสำหรับ compute1 node ในแบบเดียวกันกับการกำหนดค่าของ compute node ข้างต้น 
+</details>
 <p>
 <p>
 <i><a id="usescript"><h4>2.3 การติดตั้ง OpenStack queens ด้วย scripts </h4></a></i>
