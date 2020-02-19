@@ -7,7 +7,7 @@
 # Department of Computer Science, 
 # Faculty of Science and Technology, Thammasat University
 #
-export INSTALL_TYPE=full
+export INSTALL_TYPE=compact
 export NETWORK_TYPE=dvr_ovs
 export PASSWD_TYPE=studypass
 #
@@ -29,8 +29,8 @@ export OPS_MYSQL_PASS=mysqlpassword
 export DEMO_PASS=demopassword
 export ADMIN_PASS=adminpassword
 #
-export HYPERVISOR=qemu
-#export HYPERVISOR=kvm
+#export HYPERVISOR=qemu
+export HYPERVISOR=kvm
 #
 export INIT_IMAGE_LOCATION=http:\\/\\/download.cirros-cloud.net\\/0.3.5\\/cirros-0.3.5-x86_64-disk.img
 export INIT_IMAGE_NAME=cirros
@@ -51,25 +51,25 @@ export NTP_SERVER3=3.th.pool.ntp.org
 #
 # Management Network
 #
-export MANAGEMENT_NETWORK=10.0.0.0
+export MANAGEMENT_NETWORK=10.100.20.0
 export MANAGEMENT_NETWORK_NETMASK=255.255.255.0
-export MANAGEMENT_BROADCAST_ADDRESS=10.0.0.255 
+export MANAGEMENT_BROADCAST_ADDRESS=10.100.20.255 
 export DNS_IP=8.8.8.8
 #
 # This GATEWAY_IP define the IP addr of the gateway of 
 # the management network on every node.
 #
-export GATEWAY_IP=10.0.0.1
+export GATEWAY_IP=10.100.20.1
 #
 #
 # ---- controller host ----
 #
-export CONTROLLER_IP=10.0.0.11
+export CONTROLLER_IP=10.100.20.141
 export CONTROLLER_IP_NIC=ens3
 #
 # ---- network host ----
 #
-export NETWORK_IP=10.0.0.21
+export NETWORK_IP=10.100.20.142
 export NETWORK_IP_NIC=ens3
 #
 export DATA_TUNNEL_NETWORK_NODE_IP=10.0.1.21
@@ -78,18 +78,18 @@ export DATA_TUNNEL_NETWORK_ADDRESS=10.0.1.0
 export DATA_TUNNEL_NETWORK_NETMASK=255.255.255.0
 export VLAN_NETWORK_NODE_IP_NIC=ens5
 #
-export EXTERNAL_CIDR=10.0.0.0\\/24
+export EXTERNAL_CIDR=10.100.20.0\\/24
 export EXTERNAL_CIDR_NIC=ens6
-export EXTERNAL_GATEWAY_IP=10.0.0.1
+export EXTERNAL_GATEWAY_IP=10.100.20.1
 #
 # For DVR, the EXTERNAL_CIDR* of network node is the same for every compute node.
 #
-export START_FLOATING_IP=10.0.0.100
-export END_FLOATING_IP=10.0.0.200
+export START_FLOATING_IP=10.100.20.200
+export END_FLOATING_IP=10.100.20.225
 #
 # ---- compute host ----
 #
-export COMPUTE_IP=10.0.0.31
+export COMPUTE_IP=10.100.20.143
 export COMPUTE_IP_NIC=ens3
 export DATA_TUNNEL_COMPUTE_NODE_IP=10.0.1.31
 export DATA_TUNNEL_COMPUTE_NODE_IP_NIC=ens4
@@ -97,7 +97,7 @@ export VLAN_COMPUTE_NODE_IP_NIC=ens5
 #
 # ---- compute1 host ----
 #
-export COMPUTE1_IP=10.0.0.32
+export COMPUTE1_IP=10.100.20.144
 export COMPUTE1_IP_NIC=ens3
 export DATA_TUNNEL_COMPUTE1_NODE_IP=10.0.1.32
 export DATA_TUNNEL_COMPUTE1_NODE_IP_NIC=ens4

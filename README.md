@@ -887,15 +887,19 @@ $
  <b>บนเครื่อง controller node:</b>
 <pre>
 $ cd $HOME/openstack-queens-installer/OPSInstaller/installer
-$ <b>./OS-newcompute-00-set-new-node.sh    compute-2-3    10.0.0.43    10.0.1.43   10.0.0.11</b>
+$ <b>./OS-newcompute-00-set-new-node.sh    compute-2-3    ens3 10.0.0.43    ens4 10.0.1.43   ens5  ens6 10.0.0.11</b>
 ...
 $
 </pre>
 script ข้างต้นเป็นตอนแรกของการเพิ่ม host เข้า openstack ซึ่งท่านจะต้องใส่พารามีเตอร์ได้แก่ 
 <ul>
 <li> ชื่อเครื่อง compute ใหม่ (e.g. compute-2-3) 
+<li> NIC for management network ของเครื่อง (e.g. ens3)
 <li> IP address ของเครื่อง (e.g. 10.0.0.43)
+<li> NIC for Data tunnel network ของเครื่อง (e.g. ens4)
 <li> IP address ของ Data tunnel network endpoint บนเครื่องนั้น (e.g. 10.0.1.43)
+<li> NIC for Vlan network ของเครื่อง (e.g. ens5)
+<li> NIC for External network ของเครื่อง (e.g. ens6)
 <li> IP address ของเครื่อง controller (e.g. 10.0.0.11)
 </ul>
 โดยที่ script จะเพิ่มชื่อ compute-2-3 เข้าไปใน /etc/hosts บนเครื่อง controller และ update OS และ Reboot เครื่อง compute-2-3  
