@@ -10,18 +10,19 @@ Contact: kasiditchanchio@gmail.com <br>
 <p>
 ให้ท่านเตรียมเครื่องตามส่วนที่ 1 และหลังจากนั้นเลือกเอาว่าจะติดตั้งด้วย scripts(ส่วนที่ 2) หรือด้วยมือ (ส่วนที่ 3)  
 <ul>
- <li> 1. <a href="#part1">เตรียมเครื่องและเนตสำหรับติตดั้ง</a>
+ <li> 1. <a href="#part1">ส่วนที่ 1: เตรียมเครื่องและเนตสำหรับติตดั้ง</a>
       <ul>
        <li> <a href="#kvmhost">1.1 การเตรียมเครื่องเพื่อติดตั้งบน KVM VM </a>
       </ul>
- <li> 2. <a href="#part2">ติดตั้งด้วย scripts</a> 
+ <li> 2. <a href="#part2">ส่วนที่ 2: ติดตั้งด้วย scripts</a> 
       <ul>
        <li> <a href="#downloadinstaller">2.1 ดาวน์โหลด openstack-queens-installer scripts</a>
        <li> <a href="#paramrc">2.2 กำหนดค่าพารามีเตอร์สำหรับการติดตั้ง </a>
        <li> <a href="#usescript">2.3 ติดตั้ง OpenStack queens ด้วย scripts </a> 
        <li> <a href="#addnodes">2.4 การเพิ่ม compute node ด้วย scripts </a>
       </ul>
- <li><a href="#part4">ส่วนที่ 4: สรุป</a>
+ <li> 3. <a href="#part3">ส่วนที่ 3: การเพิ่มเครื่องจริงเป็น compute node </a> 
+ <li> 4. <a href="#part4">ส่วนที่ 4: สรุป</a>
 </ul>
 <table>
 <tr><td><b>แจ้งปัญหาหรือข้อผิดพลาด:</b> หากมีส่วนใดของเเนื้อหาใน web นี้ที่เป็น BUGS หรือมีข้อแนะนำขอให้แจ้งได้ที่ kasiditchanchio@gmail.com นะครับ ขอบคุณครับ </td></tr>
@@ -959,6 +960,37 @@ Connection to controller closed.
 Done!
 $
 </pre>
+<p><p>
+<a id="part3"> 
+<h3>ส่วนที่ 3: การเพิ่มเครื่องจริงเป็น compute node </h3>
+</a>
+<p>
+สมมุติว่าเริ่มต้นคุณติดตั้ง OpenStack บน VM โดยกำหนดให้มี controller network และ compute เราสามารถเพิ่มเครื่องจริงเป็น compute node ใหม่ได้โดยใช้ newnode script ดังที่ได้ยกตัวอย่างก่อนหน้า สมมุติว่าคุณใช้ bridge network "br0" เชื่อม management network กับ VM ทุกเครื่อง ก่อนที่คุณจะเพิ่มเครื่องจริงเข้ามาใน compute node pool ของ OpenStack และคุณต้องเตรียม Network ดังนี้
+<ul>
+ <li> Nic1 ต่อเข้ากับ management network 
+ <li> Nic2 เชื่อมต่อกับ data tunnel network (เครื่อง host ที่มี controller มี Linux bridge หรือ OVS ต่อกับ physical Nic ที่เชื่อมกับ network นี้)
+ <li> Nic3 เชื่อมต่อกับ vlan network
+ <li> Nic4 เชื่อมต่อกับ External network
+</ul>
+ก่อนเริ่มการจิดตั้งให้ make sure ว่าทุกเครื่องมีเวลาเหมือนกัน ให้ใช้คำสั่งนี้บนทุกเครื่อง
+<pre>
+$ sudo ntpdate 2.debian.pool.ntp.org
+</pre>
+สมมุติว่า Nic1 คือ br0 และ Nic2 คือ dataif และ Nic3 คือ vlanif และ Nic4 คือ enp3s4f1 โดยที่บางอันได้มาดังนี
+<pre>
+$ sudo ovs-vsctl add-port br-data dataif -- set interface dataif type=internal
+$ sudo ovs-vsctl add-port br-vlan vlanif -- set interface vlanif type=internal
+$ ifconfig enp3s4f1
+$ # if no physical net for external network 
+$ # sudo ip tuntap add dev extbr0 mode tap
+$ # sudo brctl addif br0 extbr0
+</pre>
+หลังจากนั้นให้รัน script 
+<pre>
+$ ./OS-newcompute-00-set-new-node.sh tanuki3 br0 10.100.20.128 dataif 10.0.1.41 vlanif enp3s4f1 10.100.20
+.141
+</pre>
+หลังจากรันแล้ว script อาจลบ br0 network configuration และ enp3s4f0 ออกจาก /etc/network/interfaces ขอให้กลับเข้าไปใส่ configuration และ ifup iface เหล่านี้
 <p><p> 
 <a id="part4"> 
 <h3>ส่วนที่ 4: สรุป</h3></a>
