@@ -987,7 +987,7 @@ $ # sudo brctl addif br0 extbr0
 </pre>
 หลังจากนั้นให้รัน script 
 <pre>
-$ ./OS-newcompute-00-set-new-node.sh tanuki3 br0 10.100.20.128 dataif 10.0.1.41 vlanif enp3s4f1 10.100.20
+$ ./OS-newcompute-00-set-new-node.sh sushi8 br0 10.100.20.155 dataif0f0 dataif 10.0.1.48 enp4s0f1 vlanif enp5s0f0 enp5s0f1 10.100.20.152
 .141
 </pre>
 หลังจากรันแล้ว script อาจลบ br0 network configuration และ enp3s4f0 ออกจาก /etc/network/interfaces ขอให้กลับเข้าไปใส่ configuration และ ifup iface เหล่านี้

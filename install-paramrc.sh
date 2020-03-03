@@ -64,12 +64,12 @@ export GATEWAY_IP=10.100.20.1
 #
 # ---- controller host ----
 #
-export CONTROLLER_IP=10.100.20.141
+export CONTROLLER_IP=10.100.20.152
 export CONTROLLER_IP_NIC=ens3
 #
 # ---- network host ----
 #
-export NETWORK_IP=10.100.20.142
+export NETWORK_IP=10.100.20.153
 export NETWORK_IP_NIC=ens3
 #
 export DATA_TUNNEL_NETWORK_NODE_IP=10.0.1.21
@@ -84,12 +84,12 @@ export EXTERNAL_GATEWAY_IP=10.100.20.1
 #
 # For DVR, the EXTERNAL_CIDR* of network node is the same for every compute node.
 #
-export START_FLOATING_IP=10.100.20.200
-export END_FLOATING_IP=10.100.20.225
+export START_FLOATING_IP=10.100.20.226
+export END_FLOATING_IP=10.100.20.236
 #
 # ---- compute host ----
 #
-export COMPUTE_IP=10.100.20.143
+export COMPUTE_IP=10.100.20.154
 export COMPUTE_IP_NIC=ens3
 export DATA_TUNNEL_COMPUTE_NODE_IP=10.0.1.31
 export DATA_TUNNEL_COMPUTE_NODE_IP_NIC=ens4
@@ -97,7 +97,7 @@ export VLAN_COMPUTE_NODE_IP_NIC=ens5
 #
 # ---- compute1 host ----
 #
-export COMPUTE1_IP=10.100.20.144
+export COMPUTE1_IP=10.100.20.155
 export COMPUTE1_IP_NIC=ens3
 export DATA_TUNNEL_COMPUTE1_NODE_IP=10.0.1.32
 export DATA_TUNNEL_COMPUTE1_NODE_IP_NIC=ens4
