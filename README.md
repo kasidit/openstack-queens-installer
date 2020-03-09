@@ -992,6 +992,20 @@ $ ./OS-newcompute-00-set-new-node.sh sushi8 br0 10.100.20.155 dataif0f0 dataif 1
 </pre>
 หลังจากรันแล้ว script อาจลบ br0 network configuration และ enp3s4f0 ออกจาก /etc/network/interfaces ขอให้กลับเข้าไปใส่ configuration และ ifup iface เหล่านี้
 <p><p> 
+ <b>การลบ compute node จาก openstack</b>
+ <p><p>
+  บนเครื่อง controller 
+  <pre>
+  $ openstack compute service set --disable compute1 nova-compute
+  $ openstack compute service list
+  $ openstack compute service delete <service_id>
+  $ openstack network agent list
+  $ openstack network agent delete 
+  $
+  </pre>
+  อ้างอิง [4]
+ 
+ 
 <a id="part4"> 
 <h3>ส่วนที่ 4: สรุป</h3></a>
 <p><p>
@@ -1035,3 +1049,4 @@ OpenStack ประกอบไปด้วย software component ที่อ�
 [1] http://docs.openstack.org/ <br>
 [2] https://docs.openstack.org/queens/install/ubuntu-services.html <br>
 [3] https://docs.openstack.org/queens/networking-guide/ <br>
+[4] https://docs.mirantis.com/mcp/q4-18/mcp-operations-guide/openstack-operations/manage-compute-nodes/remove-compute-node.html <br>
